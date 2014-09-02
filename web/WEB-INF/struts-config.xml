@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <global-exceptions />
+  <global-forwards />
+  <controller nocache="true">
+    <set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+  </controller>
+  <message-resources parameter="com.free.struts.ApplicationResources" />
+  <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn" />
+  <plug-in className="com.free.assist.framework.AppStartStrutsPlugIn">
+		<set-property property="serviceHostName" value="Jawan" />
+	</plug-in>
+</struts-config>
+

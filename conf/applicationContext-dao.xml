@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="ifaceConfigDeclareDAO" class="com.free.assist.dao.IfaceConfigDeclareDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceConfigInstanceDAO" class="com.free.assist.dao.IfaceConfigInstanceDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceConfigMappingDAO" class="com.free.assist.dao.IfaceConfigMappingDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceConfCacheDAO" class="com.free.assist.dao.IfaceConfCacheDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+ 
+	<bean id="ifaceConfigSystemDAO" class="com.free.assist.dao.IfaceConfigSystemDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="ifaceConfigProtocolDAO" class="com.free.assist.dao.IfaceConfigProtocolDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceLogListenerDAO" class="com.free.assist.dao.IfaceLogListenerDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="ifaceDaemonDocumentDAO" class="com.free.assist.dao.IfaceDaemonDocumentDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="ifaceDaemonAttachmentDAO" class="com.free.assist.dao.IfaceDaemonAttachmentDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceLogEventDAO" class="com.free.assist.dao.IfaceLogEventDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="ifaceLogEventHisDAO" class="com.free.assist.dao.IfaceLogEventHisDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceLogRepairDAO" class="com.free.assist.dao.IfaceLogRepairDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceLogRepositoryDAO" class="com.free.assist.dao.IfaceLogRepositoryDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="ifaceLogRepositoryHisDAO" class="com.free.assist.dao.IfaceLogRepositoryHisDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="ifaceLogStrategyDAO" class="com.free.assist.dao.IfaceLogStrategyDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="suptCheckDAO" class="com.free.assist.dao.SuptCheckDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="suptCheckOutDAO" class="com.free.assist.dao.SuptCheckOutDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="suptFaceDAO" class="com.free.assist.dao.SuptFaceDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="suptFaceTriggerDAO" class="com.free.assist.dao.SuptFaceTriggerDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysAlarmDAO" class="com.free.assist.dao.SysAlarmDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysAttachmentDAO" class="com.free.assist.dao.SysAttachmentDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysDicConfigDAO" class="com.free.assist.dao.SysDicConfigDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysDicItemDAO" class="com.free.assist.dao.SysDicItemDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysModuleDAO" class="com.free.assist.dao.SysModuleDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysRoleDAO" class="com.free.assist.dao.SysRoleDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysRoleModuleDAO" class="com.free.assist.dao.SysRoleModuleDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysServiceConfigDAO" class="com.free.assist.dao.SysServiceConfigDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysUnitDAO" class="com.free.assist.dao.SysUnitDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysUnitRoleDAO" class="com.free.assist.dao.SysUnitRoleDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysUserDAO" class="com.free.assist.dao.SysUserDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysUserRoleDAO" class="com.free.assist.dao.SysUserRoleDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysUserUnitDAO" class="com.free.assist.dao.SysUserUnitDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="sysParameterConfDAO" class="com.free.assist.dao.SysParameterConfDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+	
+	<bean id="genericDAO" class="com.free.assist.dao.GenericDAO" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="suptTaticElementDAO" class="com.free.assist.dao.SuptTaticElementDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="suptTaticGroupDAO" class="com.free.assist.dao.SuptTaticGroupDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="SuptTaticInstanceDAO" class="com.free.assist.dao.SuptTaticInstanceDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="SuptTaticRelationDAO" class="com.free.assist.dao.SuptTaticRelationDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="SuptIfaceGroupRelationDAO" class="com.free.assist.dao.SuptIfaceGroupRelationDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="SuptFaceErrTackDAO" class="com.free.assist.dao.SuptFaceErrTackDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="SuptValueListDAO" class="com.free.assist.dao.SuptValueListDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+   
+	<bean id="sysTipsDAO" class="com.free.assist.dao.SysTipsDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+	<bean id="suptReturnDAO" class="com.free.assist.dao.SuptReturnDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+    <bean id="suptReturnValidDAO" class="com.free.assist.dao.SuptReturnValidDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+    <bean id="suptSaveValueDAO" class="com.free.assist.dao.SuptSaveValueDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    
+    <bean id="suptQueryItemValueDAOImpl" class="com.free.assist.dao.SuptQueryItemValueDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    
+    <bean id="busReleaseTrendsDAO" class="com.free.assist.dao.BusReleaseTrendsDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />    
+    <bean id="suptActionDAO" class="com.free.assist.dao.SuptActionDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    <bean id="suptTaskDAO" class="com.free.assist.dao.SuptTaskDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    <bean id="suptAttachDAO" class="com.free.assist.dao.SuptAttachDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    <bean id="suptPointInfoDAO" class="com.free.assist.dao.SuptPointInfoDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+
+</beans>

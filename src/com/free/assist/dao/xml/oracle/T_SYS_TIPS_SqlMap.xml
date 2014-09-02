@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysTips" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SysTips" >
+    <result column="tip_id" property="tipId" jdbcType="VARCHAR" />
+    <result column="tip_label" property="tipLabel" jdbcType="VARCHAR" />
+    <result column="tip_context" property="tipContext" jdbcType="CLOB" javaType ="java.lang.String" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="tip_context_attach" property="tipContextAttach" jdbcType="CLOB" javaType="java.lang.String"/>
+    <result column="tip_module_id" property="tipModuleId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SysTipsExample" >
+    select tip_id, tip_label, tip_context, create_date, tip_context_attach, tip_module_id
+    from t_sys_tips
+    <isParameterPresent >
+      <include refid="SysTips.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SysTipsKey" >
+    select tip_id, tip_label, tip_context, create_date, tip_context_attach, tip_module_id
+    from t_sys_tips
+    where tip_id = #tipId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SysTipsKey" >
+    delete from t_sys_tips
+    where tip_id = #tipId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SysTipsExample" >
+    delete from t_sys_tips
+    <include refid="SysTips.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SysTips" >
+    <selectKey resultClass="java.lang.String" keyProperty="tipId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_sys_tips (tip_id, tip_label, tip_context, create_date, tip_context_attach,
+      tip_module_id)
+    values (#tipId:VARCHAR#, #tipLabel:VARCHAR#, #tipContext:text#, #createDate:TIMESTAMP#,
+      #tipContextAttach:text#, #tipModuleId:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SysTips" >
+    <selectKey resultClass="java.lang.String" keyProperty="tipId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_sys_tips
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="tipId" >
+        tip_id
+      </isNotNull>
+      <isNotNull prepend="," property="tipLabel" >
+        tip_label
+      </isNotNull>
+      <isNotNull prepend="," property="tipContext" >
+        tip_context
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        create_date
+      </isNotNull>
+      <isNotNull prepend="," property="tipContextAttach" >
+        tip_context_attach
+      </isNotNull>
+      <isNotNull prepend="," property="tipModuleId" >
+        tip_module_id
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="tipId" >
+        #tipId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="tipLabel" >
+        #tipLabel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="tipContext" >
+        #tipContext:text#
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        #createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="tipContextAttach" >
+        #tipContextAttach:text#
+      </isNotNull>
+      <isNotNull prepend="," property="tipModuleId" >
+        #tipModuleId:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SysTipsExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_tips
+    <include refid="SysTips.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_tips
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.tipId" >
+        tip_id = #record.tipId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.tipLabel" >
+        tip_label = #record.tipLabel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.tipContext" >
+        tip_context = #record.tipContext:text#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createDate" >
+        create_date = #record.createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.tipContextAttach" >
+        tip_context_attach = #record.tipContextAttach:text#
+      </isNotNull>
+      <isNotNull prepend="," property="record.tipModuleId" >
+        tip_module_id = #record.tipModuleId:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysTips.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_tips
+    set tip_id = #record.tipId:VARCHAR#,
+      tip_label = #record.tipLabel:VARCHAR#,
+      tip_context = #record.tipContext:text#,
+      create_date = #record.createDate:TIMESTAMP#,
+      tip_context_attach = #record.tipContextAttach:text#,
+      tip_module_id = #record.tipModuleId:VARCHAR#
+    <isParameterPresent >
+      <include refid="SysTips.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SysTips" >
+    update t_sys_tips
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="tipLabel" >
+        tip_label = #tipLabel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="tipContext" >
+        tip_context = #tipContext:text#
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        create_date = #createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="tipContextAttach" >
+        tip_context_attach = #tipContextAttach:text#
+      </isNotNull>
+      <isNotNull prepend="," property="tipModuleId" >
+        tip_module_id = #tipModuleId:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where tip_id = #tipId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SysTips" >
+    update t_sys_tips
+    set tip_label = #tipLabel:VARCHAR#,
+      tip_context = #tipContext:text#,
+      create_date = #createDate:TIMESTAMP#,
+      tip_context_attach = #tipContextAttach:text#,
+      tip_module_id = #tipModuleId:VARCHAR#
+    where tip_id = #tipId:VARCHAR#
+  </update>
+</sqlMap>

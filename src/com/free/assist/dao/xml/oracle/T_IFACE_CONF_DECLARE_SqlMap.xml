@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceConfigDeclare" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.IfaceConfigDeclare" >
+    <result column="DECLARE_ID" property="declareId" jdbcType="VARCHAR" />
+    <result column="APPLICATION_ID" property="applicationId" jdbcType="VARCHAR" />
+    <result column="DECLARE_SN" property="declareSn" jdbcType="VARCHAR" />
+    <result column="DECLARE_NAME" property="declareName" jdbcType="VARCHAR" />
+    <result column="DECLARE_NOTE" property="declareNote" jdbcType="VARCHAR" />
+    <result column="STRUCTURE_TYPE" property="structureType" jdbcType="VARCHAR" />
+    <result column="PRIORITY_ID" property="priorityId" jdbcType="INTEGER" />
+    <result column="IS_AVAILABLE" property="available" jdbcType="VARCHAR" />
+    <result column="LOCALE_ID" property="localeId" jdbcType="VARCHAR" />
+    <result column="IS_MATRIX" property="matrix" jdbcType="VARCHAR" />
+    <result column="ATTRIBUTE_BAK" property="attributeBak" jdbcType="VARCHAR" />
+    <result column="CASCADE_ID" property="cascadeId" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="STRUCT_SN" property="structSn" jdbcType="VARCHAR" />
+    <result column="UPDATE_ON" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_BY" property="updateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceConfigDeclareExample" >
+    select DECLARE_ID, APPLICATION_ID, DECLARE_SN, DECLARE_NAME, DECLARE_NOTE, STRUCTURE_TYPE,
+      PRIORITY_ID, IS_AVAILABLE, LOCALE_ID, IS_MATRIX, ATTRIBUTE_BAK, CASCADE_ID, PARENT_ID,
+      STRUCT_SN, UPDATE_ON, UPDATE_BY
+    from t_iface_conf_declare
+    <isParameterPresent >
+      <include refid="IfaceConfigDeclare.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceConfigDeclareKey" >
+    select DECLARE_ID, APPLICATION_ID, DECLARE_SN, DECLARE_NAME, DECLARE_NOTE, STRUCTURE_TYPE,
+      PRIORITY_ID, IS_AVAILABLE, LOCALE_ID, IS_MATRIX, ATTRIBUTE_BAK, CASCADE_ID, PARENT_ID,
+      STRUCT_SN, UPDATE_ON, UPDATE_BY
+    from t_iface_conf_declare
+    where DECLARE_ID = #declareId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.IfaceConfigDeclareKey" >
+    delete from t_iface_conf_declare
+    where DECLARE_ID = #declareId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.IfaceConfigDeclareExample" >
+    delete from t_iface_conf_declare
+    <include refid="IfaceConfigDeclare.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.IfaceConfigDeclare" >
+    <selectKey resultClass="java.lang.String" keyProperty="declareId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_conf_declare (DECLARE_ID, APPLICATION_ID, DECLARE_SN, DECLARE_NAME,
+      DECLARE_NOTE, STRUCTURE_TYPE, PRIORITY_ID, IS_AVAILABLE, LOCALE_ID, IS_MATRIX, ATTRIBUTE_BAK,
+      CASCADE_ID, PARENT_ID, STRUCT_SN, UPDATE_ON, UPDATE_BY)
+    values (#declareId:VARCHAR#, #applicationId:VARCHAR#, #declareSn:VARCHAR#, #declareName:VARCHAR#,
+      #declareNote:VARCHAR#, #structureType:VARCHAR#, #priorityId:INTEGER#, #available:VARCHAR#,
+      #localeId:VARCHAR#, #matrix:VARCHAR#, #attributeBak:VARCHAR#, #cascadeId:VARCHAR#, #parentId:VARCHAR#,
+      #structSn:VARCHAR#, #updateDate:TIMESTAMP#, #updateUser:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.IfaceConfigDeclare" >
+    <selectKey resultClass="java.lang.String" keyProperty="declareId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_conf_declare
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="declareId" >
+        DECLARE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="applicationId" >
+        APPLICATION_ID
+      </isNotNull>
+      <isNotNull prepend="," property="declareSn" >
+        DECLARE_SN
+      </isNotNull>
+      <isNotNull prepend="," property="declareName" >
+        DECLARE_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="declareNote" >
+        DECLARE_NOTE
+      </isNotNull>
+      <isNotNull prepend="," property="structureType" >
+        STRUCTURE_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="priorityId" >
+        PRIORITY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE
+      </isNotNull>
+      <isNotNull prepend="," property="localeId" >
+        LOCALE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="matrix" >
+        IS_MATRIX
+      </isNotNull>
+      <isNotNull prepend="," property="attributeBak" >
+        ATTRIBUTE_BAK
+      </isNotNull>
+      <isNotNull prepend="," property="cascadeId" >
+        CASCADE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="parentId" >
+        PARENT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="structSn" >
+        STRUCT_SN
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="declareId" >
+        #declareId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applicationId" >
+        #applicationId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="declareSn" >
+        #declareSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="declareName" >
+        #declareName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="declareNote" >
+        #declareNote:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="structureType" >
+        #structureType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="priorityId" >
+        #priorityId:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        #available:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="localeId" >
+        #localeId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="matrix" >
+        #matrix:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="attributeBak" >
+        #attributeBak:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cascadeId" >
+        #cascadeId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parentId" >
+        #parentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="structSn" >
+        #structSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        #updateUser:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.IfaceConfigDeclareExample" resultClass="java.lang.Integer" >
+    select count(*) from t_iface_conf_declare
+    <include refid="IfaceConfigDeclare.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_conf_declare
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.declareId" >
+        DECLARE_ID = #record.declareId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applicationId" >
+        APPLICATION_ID = #record.applicationId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.declareSn" >
+        DECLARE_SN = #record.declareSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.declareName" >
+        DECLARE_NAME = #record.declareName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.declareNote" >
+        DECLARE_NOTE = #record.declareNote:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.structureType" >
+        STRUCTURE_TYPE = #record.structureType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.priorityId" >
+        PRIORITY_ID = #record.priorityId:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.available" >
+        IS_AVAILABLE = #record.available:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.localeId" >
+        LOCALE_ID = #record.localeId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.matrix" >
+        IS_MATRIX = #record.matrix:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.attributeBak" >
+        ATTRIBUTE_BAK = #record.attributeBak:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.cascadeId" >
+        CASCADE_ID = #record.cascadeId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.parentId" >
+        PARENT_ID = #record.parentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.structSn" >
+        STRUCT_SN = #record.structSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateDate" >
+        UPDATE_ON = #record.updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateUser" >
+        UPDATE_BY = #record.updateUser:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceConfigDeclare.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_conf_declare
+    set DECLARE_ID = #record.declareId:VARCHAR#,
+      APPLICATION_ID = #record.applicationId:VARCHAR#,
+      DECLARE_SN = #record.declareSn:VARCHAR#,
+      DECLARE_NAME = #record.declareName:VARCHAR#,
+      DECLARE_NOTE = #record.declareNote:VARCHAR#,
+      STRUCTURE_TYPE = #record.structureType:VARCHAR#,
+      PRIORITY_ID = #record.priorityId:INTEGER#,
+      IS_AVAILABLE = #record.available:VARCHAR#,
+      LOCALE_ID = #record.localeId:VARCHAR#,
+      IS_MATRIX = #record.matrix:VARCHAR#,
+      ATTRIBUTE_BAK = #record.attributeBak:VARCHAR#,
+      CASCADE_ID = #record.cascadeId:VARCHAR#,
+      PARENT_ID = #record.parentId:VARCHAR#,
+      STRUCT_SN = #record.structSn:VARCHAR#,
+      UPDATE_ON = #record.updateDate:TIMESTAMP#,
+      UPDATE_BY = #record.updateUser:VARCHAR#
+    <isParameterPresent >
+      <include refid="IfaceConfigDeclare.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.IfaceConfigDeclare" >
+    update t_iface_conf_declare
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="applicationId" >
+        APPLICATION_ID = #applicationId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="declareSn" >
+        DECLARE_SN = #declareSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="declareName" >
+        DECLARE_NAME = #declareName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="declareNote" >
+        DECLARE_NOTE = #declareNote:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="structureType" >
+        STRUCTURE_TYPE = #structureType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="priorityId" >
+        PRIORITY_ID = #priorityId:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE = #available:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="localeId" >
+        LOCALE_ID = #localeId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="matrix" >
+        IS_MATRIX = #matrix:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="attributeBak" >
+        ATTRIBUTE_BAK = #attributeBak:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cascadeId" >
+        CASCADE_ID = #cascadeId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parentId" >
+        PARENT_ID = #parentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="structSn" >
+        STRUCT_SN = #structSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON = #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY = #updateUser:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where DECLARE_ID = #declareId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.IfaceConfigDeclare" >
+    update t_iface_conf_declare
+    set APPLICATION_ID = #applicationId:VARCHAR#,
+      DECLARE_SN = #declareSn:VARCHAR#,
+      DECLARE_NAME = #declareName:VARCHAR#,
+      DECLARE_NOTE = #declareNote:VARCHAR#,
+      STRUCTURE_TYPE = #structureType:VARCHAR#,
+      PRIORITY_ID = #priorityId:INTEGER#,
+      IS_AVAILABLE = #available:VARCHAR#,
+      LOCALE_ID = #localeId:VARCHAR#,
+      IS_MATRIX = #matrix:VARCHAR#,
+      ATTRIBUTE_BAK = #attributeBak:VARCHAR#,
+      CASCADE_ID = #cascadeId:VARCHAR#,
+      PARENT_ID = #parentId:VARCHAR#,
+      STRUCT_SN = #structSn:VARCHAR#,
+      UPDATE_ON = #updateDate:TIMESTAMP#,
+      UPDATE_BY = #updateUser:VARCHAR#
+    where DECLARE_ID = #declareId:VARCHAR#
+  </update>
+</sqlMap>

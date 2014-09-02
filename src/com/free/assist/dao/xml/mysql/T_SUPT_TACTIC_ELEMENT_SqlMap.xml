@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptTaticElement" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SuptTaticElement" >
+    <result column="elementId" property="elementid" jdbcType="VARCHAR" />
+    <result column="elementName" property="elementname" jdbcType="VARCHAR" />
+    <result column="elementCode" property="elementcode" jdbcType="VARCHAR" />
+    <result column="sourceType" property="sourcetype" jdbcType="VARCHAR" />
+    <result column="sqlStr" property="sqlstr" jdbcType="VARCHAR" />
+    <result column="spare1" property="spare1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SuptTaticElementExample" >
+    select elementId, elementName, elementCode, sourceType, sqlStr, spare1
+    from t_supt_tactic_element
+    <isParameterPresent >
+      <include refid="SuptTaticElement.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SuptTaticElementKey" >
+    select elementId, elementName, elementCode, sourceType, sqlStr, spare1
+    from t_supt_tactic_element
+    where elementId = #elementid:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptTaticElementKey" >
+    delete from t_supt_tactic_element
+    where elementId = #elementid:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SuptTaticElementExample" >
+    delete from t_supt_tactic_element
+    <include refid="SuptTaticElement.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SuptTaticElement" >
+    <selectKey resultClass="java.lang.String" keyProperty="elementid" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_supt_tactic_element (elementId, elementName, elementCode, sourceType, sqlStr,
+      spare1)
+    values (#elementid:VARCHAR#, #elementname:VARCHAR#, #elementcode:VARCHAR#, #sourcetype:VARCHAR#,
+      #sqlstr:VARCHAR#, #spare1:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SuptTaticElement" >
+    <selectKey resultClass="java.lang.String" keyProperty="elementid" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_supt_tactic_element
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="elementid" >
+        elementId
+      </isNotNull>
+      <isNotNull prepend="," property="elementname" >
+        elementName
+      </isNotNull>
+      <isNotNull prepend="," property="elementcode" >
+        elementCode
+      </isNotNull>
+      <isNotNull prepend="," property="sourcetype" >
+        sourceType
+      </isNotNull>
+      <isNotNull prepend="," property="sqlstr" >
+        sqlStr
+      </isNotNull>
+      <isNotNull prepend="," property="spare1" >
+        spare1
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="elementid" >
+        #elementid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="elementname" >
+        #elementname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="elementcode" >
+        #elementcode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sourcetype" >
+        #sourcetype:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sqlstr" >
+        #sqlstr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare1" >
+        #spare1:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SuptTaticElementExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_tactic_element
+    <include refid="SuptTaticElement.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_tactic_element
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.elementid" >
+        elementId = #record.elementid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.elementname" >
+        elementName = #record.elementname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.elementcode" >
+        elementCode = #record.elementcode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sourcetype" >
+        sourceType = #record.sourcetype:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sqlstr" >
+        sqlStr = #record.sqlstr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.spare1" >
+        spare1 = #record.spare1:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptTaticElement.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_tactic_element
+    set elementId = #record.elementid:VARCHAR#,
+      elementName = #record.elementname:VARCHAR#,
+      elementCode = #record.elementcode:VARCHAR#,
+      sourceType = #record.sourcetype:VARCHAR#,
+      sqlStr = #record.sqlstr:VARCHAR#,
+      spare1 = #record.spare1:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptTaticElement.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SuptTaticElement" >
+    update t_supt_tactic_element
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="elementname" >
+        elementName = #elementname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="elementcode" >
+        elementCode = #elementcode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sourcetype" >
+        sourceType = #sourcetype:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sqlstr" >
+        sqlStr = #sqlstr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare1" >
+        spare1 = #spare1:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where elementId = #elementid:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptTaticElement" >
+    update t_supt_tactic_element
+    set elementName = #elementname:VARCHAR#,
+      elementCode = #elementcode:VARCHAR#,
+      sourceType = #sourcetype:VARCHAR#,
+      sqlStr = #sqlstr:VARCHAR#,
+      spare1 = #spare1:VARCHAR#
+    where elementId = #elementid:VARCHAR#
+  </update>
+</sqlMap>

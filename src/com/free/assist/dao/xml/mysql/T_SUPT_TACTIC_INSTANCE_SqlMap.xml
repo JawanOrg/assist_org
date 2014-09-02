@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptTaticInstance">
+	<cacheModel id="SuptTaticInstance_Cache" type="OSCACHE">
+		<flushInterval hours="2" />
+		<flushOnExecute statement="SuptTaticInstance.ibatorgenerated_deleteByPrimaryKey" />
+		<flushOnExecute statement="SuptTaticInstance.ibatorgenerated_deleteByExample" />
+		<flushOnExecute statement="SuptTaticInstance.ibatorgenerated_insert" />
+		<flushOnExecute statement="SuptTaticInstance.ibatorgenerated_insertSelective" />
+		<flushOnExecute statement="SuptTaticInstance.ibatorgenerated_updateByPrimaryKey" />
+		<flushOnExecute
+			statement="SuptTaticInstance.ibatorgenerated_updateByPrimaryKeySelective" />
+		<flushOnExecute
+			statement="SuptTaticInstance.ibatorgenerated_updateByExampleSelective" />
+		<flushOnExecute statement="SuptTaticInstance.ibatorgenerated_updateByExample" />
+	</cacheModel>
+	<resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SuptTaticInstance">
+		<result column="taticInstanceId" property="taticinstanceid"
+			jdbcType="VARCHAR" />
+		<result column="taticGoupId" property="taticgoupid" jdbcType="VARCHAR" />
+		<result column="interfaceCode" property="interfacecode"
+			jdbcType="VARCHAR" />
+		<result column="dispatchObject" property="dispatchobject"
+			jdbcType="VARCHAR" />
+		<result column="isMore" property="ismore" jdbcType="VARCHAR" />
+		<result column="rowRecordId" property="rowrecordid" jdbcType="VARCHAR" />
+		<result column="elementId" property="elementid" jdbcType="VARCHAR" />
+		<result column="eleValue1" property="elevalue1" jdbcType="VARCHAR" />
+		<result column="eleValue2" property="elevalue2" jdbcType="VARCHAR" />
+		<result column="eleValue3" property="elevalue3" jdbcType="VARCHAR" />
+		<result column="matching_rule" property="matchingRule"
+			jdbcType="VARCHAR" />
+		<result column="xml_nodeName" property="xmlNodename" jdbcType="VARCHAR" />
+		<result column="change_element" property="changeElement"
+			jdbcType="VARCHAR" />
+		<result column="resulttype" property="resulttype" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="ibatorgenerated_Example_Where_Clause">
+		<iterate property="oredCriteria" conjunction="or" prepend="where"
+			removeFirstPrepend="iterate">
+			<isEqual property="oredCriteria[].valid" compareValue="true">
+				(
+				<iterate prepend="and" property="oredCriteria[].criteriaWithoutValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithSingleValue[].condition$
+					#oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithListValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithListValue[].condition$
+					<iterate property="oredCriteria[].criteriaWithListValue[].values"
+						open="(" close=")" conjunction=",">
+						#oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+				</iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithBetweenValue[].condition$
+					#oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+					#oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+				)
+			</isEqual>
+		</iterate>
+	</sql>
+	<select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticInstanceExample"
+		cacheModel="SuptTaticInstance.SuptTaticInstance_Cache">
+		select taticInstanceId, taticGoupId, interfaceCode, dispatchObject,
+		isMore, rowRecordId,
+		elementId, eleValue1, eleValue2, eleValue3,
+		matching_rule, xml_nodeName,
+		change_element,
+		resulttype
+		from
+		t_supt_tactic_instance
+		<isParameterPresent>
+			<include refid="SuptTaticInstance.ibatorgenerated_Example_Where_Clause" />
+			<isNotNull property="orderByClause">
+				order by $orderByClause$
+      </isNotNull>
+		</isParameterPresent>
+	</select>
+	<select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticInstanceKey"
+		cacheModel="SuptTaticInstance.SuptTaticInstance_Cache">
+		select taticInstanceId, taticGoupId, interfaceCode,
+		dispatchObject,
+		isMore, rowRecordId,
+		elementId, eleValue1, eleValue2,
+		eleValue3, matching_rule, xml_nodeName,
+		change_element,
+		resulttype
+		from
+		t_supt_tactic_instance
+		where taticInstanceId =
+		#taticinstanceid:VARCHAR#
+  </select>
+	<delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptTaticInstanceKey">
+		delete from t_supt_tactic_instance
+		where taticInstanceId =
+		#taticinstanceid:VARCHAR#
+  </delete>
+	<delete id="ibatorgenerated_deleteByExample"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticInstanceExample">
+		delete from t_supt_tactic_instance
+		<include refid="SuptTaticInstance.ibatorgenerated_Example_Where_Clause" />
+	</delete>
+	<insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SuptTaticInstance">
+		<selectKey resultClass="java.lang.String" keyProperty="taticinstanceid">
+			select replace(uuid(), '-', '') from dual
+    </selectKey>
+		insert into t_supt_tactic_instance (taticInstanceId, taticGoupId,
+		interfaceCode, dispatchObject,
+		isMore, rowRecordId, elementId,
+		eleValue1, eleValue2, eleValue3,
+		matching_rule, xml_nodeName,
+		change_element, resulttype)
+		values (#taticinstanceid:VARCHAR#,
+		#taticgoupid:VARCHAR#,
+		#interfacecode:VARCHAR#,
+		#dispatchobject:VARCHAR#, #ismore:VARCHAR#, #rowrecordid:VARCHAR#,
+		#elementid:VARCHAR#,
+		#elevalue1:VARCHAR#, #elevalue2:VARCHAR#,
+		#elevalue3:VARCHAR#,
+		#matchingRule:VARCHAR#,
+		#xmlNodename:VARCHAR#,
+		#changeElement:VARCHAR#, #resulttype:VARCHAR#)
+	</insert>
+	<insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SuptTaticInstance">
+		<selectKey resultClass="java.lang.String" keyProperty="taticinstanceid">
+			select replace(uuid(), '-', '') from dual
+    </selectKey>
+		insert into t_supt_tactic_instance
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="taticinstanceid">
+				taticInstanceId
+      </isNotNull>
+			<isNotNull prepend="," property="taticgoupid">
+				taticGoupId
+      </isNotNull>
+			<isNotNull prepend="," property="interfacecode">
+				interfaceCode
+      </isNotNull>
+			<isNotNull prepend="," property="dispatchobject">
+				dispatchObject
+      </isNotNull>
+			<isNotNull prepend="," property="ismore">
+				isMore
+      </isNotNull>
+			<isNotNull prepend="," property="rowrecordid">
+				rowRecordId
+      </isNotNull>
+			<isNotNull prepend="," property="elementid">
+				elementId
+      </isNotNull>
+			<isNotNull prepend="," property="elevalue1">
+				eleValue1
+      </isNotNull>
+			<isNotNull prepend="," property="elevalue2">
+				eleValue2
+      </isNotNull>
+			<isNotNull prepend="," property="elevalue3">
+				eleValue3
+      </isNotNull>
+			<isNotNull prepend="," property="matchingRule">
+				matching_rule
+      </isNotNull>
+			<isNotNull prepend="," property="xmlNodename">
+				xml_nodeName
+      </isNotNull>
+			<isNotNull prepend="," property="changeElement">
+				change_element
+      </isNotNull>
+			<isNotNull prepend="," property="resulttype">
+				resulttype
+      </isNotNull>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="taticinstanceid">
+				#taticinstanceid:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="taticgoupid">
+				#taticgoupid:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="interfacecode">
+				#interfacecode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dispatchobject">
+				#dispatchobject:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="ismore">
+				#ismore:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="rowrecordid">
+				#rowrecordid:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="elementid">
+				#elementid:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="elevalue1">
+				#elevalue1:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="elevalue2">
+				#elevalue2:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="elevalue3">
+				#elevalue3:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="matchingRule">
+				#matchingRule:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="xmlNodename">
+				#xmlNodename:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="changeElement">
+				#changeElement:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="resulttype">
+				#resulttype:VARCHAR#
+			</isNotNull>
+			)
+		</dynamic>
+	</insert>
+	<select id="ibatorgenerated_countByExample"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticInstanceExample"
+		resultClass="java.lang.Integer">
+		select count(*) from t_supt_tactic_instance
+		<include refid="SuptTaticInstance.ibatorgenerated_Example_Where_Clause" />
+	</select>
+	<update id="ibatorgenerated_updateByExampleSelective">
+		update t_supt_tactic_instance
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="record.taticinstanceid">
+				taticInstanceId =
+				#record.taticinstanceid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.taticgoupid">
+				taticGoupId =
+				#record.taticgoupid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.interfacecode">
+				interfaceCode =
+				#record.interfacecode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.dispatchobject">
+				dispatchObject =
+				#record.dispatchobject:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.ismore">
+				isMore =
+				#record.ismore:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.rowrecordid">
+				rowRecordId =
+				#record.rowrecordid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.elementid">
+				elementId =
+				#record.elementid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.elevalue1">
+				eleValue1 =
+				#record.elevalue1:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.elevalue2">
+				eleValue2 =
+				#record.elevalue2:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.elevalue3">
+				eleValue3 =
+				#record.elevalue3:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.matchingRule">
+				matching_rule =
+				#record.matchingRule:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.xmlNodename">
+				xml_nodeName =
+				#record.xmlNodename:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.changeElement">
+				change_element =
+				#record.changeElement:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.resulttype">
+				resulttype =
+				#record.resulttype:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		<isParameterPresent>
+			<include refid="SuptTaticInstance.ibatorgenerated_Example_Where_Clause" />
+		</isParameterPresent>
+	</update>
+	<update id="ibatorgenerated_updateByExample">
+		update t_supt_tactic_instance
+		set taticInstanceId =
+		#record.taticinstanceid:VARCHAR#,
+		taticGoupId =
+		#record.taticgoupid:VARCHAR#,
+		interfaceCode =
+		#record.interfacecode:VARCHAR#,
+		dispatchObject =
+		#record.dispatchobject:VARCHAR#,
+		isMore = #record.ismore:VARCHAR#,
+		rowRecordId = #record.rowrecordid:VARCHAR#,
+		elementId =
+		#record.elementid:VARCHAR#,
+		eleValue1 = #record.elevalue1:VARCHAR#,
+		eleValue2 = #record.elevalue2:VARCHAR#,
+		eleValue3 =
+		#record.elevalue3:VARCHAR#,
+		matching_rule =
+		#record.matchingRule:VARCHAR#,
+		xml_nodeName =
+		#record.xmlNodename:VARCHAR#,
+		change_element =
+		#record.changeElement:VARCHAR#,
+		resulttype =
+		#record.resulttype:VARCHAR#
+		<isParameterPresent>
+			<include refid="SuptTaticInstance.ibatorgenerated_Example_Where_Clause" />
+		</isParameterPresent>
+	</update>
+	<update id="ibatorgenerated_updateByPrimaryKeySelective"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticInstance">
+		update t_supt_tactic_instance
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="taticgoupid">
+				taticGoupId =
+				#taticgoupid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="interfacecode">
+				interfaceCode =
+				#interfacecode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="dispatchobject">
+				dispatchObject =
+				#dispatchobject:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="ismore">
+				isMore = #ismore:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="rowrecordid">
+				rowRecordId =
+				#rowrecordid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="elementid">
+				elementId =
+				#elementid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="elevalue1">
+				eleValue1 =
+				#elevalue1:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="elevalue2">
+				eleValue2 =
+				#elevalue2:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="elevalue3">
+				eleValue3 =
+				#elevalue3:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="matchingRule">
+				matching_rule =
+				#matchingRule:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="xmlNodename">
+				xml_nodeName =
+				#xmlNodename:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="changeElement">
+				change_element =
+				#changeElement:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="resulttype">
+				resulttype =
+				#resulttype:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		where taticInstanceId = #taticinstanceid:VARCHAR#
+	</update>
+	<update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptTaticInstance">
+		update t_supt_tactic_instance
+		set taticGoupId = #taticgoupid:VARCHAR#,
+		interfaceCode = #interfacecode:VARCHAR#,
+		dispatchObject =
+		#dispatchobject:VARCHAR#,
+		isMore = #ismore:VARCHAR#,
+		rowRecordId =
+		#rowrecordid:VARCHAR#,
+		elementId = #elementid:VARCHAR#,
+		eleValue1 =
+		#elevalue1:VARCHAR#,
+		eleValue2 = #elevalue2:VARCHAR#,
+		eleValue3 =
+		#elevalue3:VARCHAR#,
+		matching_rule = #matchingRule:VARCHAR#,
+		xml_nodeName = #xmlNodename:VARCHAR#,
+		change_element =
+		#changeElement:VARCHAR#,
+		resulttype = #resulttype:VARCHAR#
+		where
+		taticInstanceId = #taticinstanceid:VARCHAR#
+  </update>
+</sqlMap>

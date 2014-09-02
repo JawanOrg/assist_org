@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+  <settings cacheModelsEnabled="true" enhancementEnabled="false" useStatementNamespaces="true" statementCachingEnabled="false"/>
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_CONF_DECLARE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_CONF_INSTANCE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_CONF_MAPPING_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_LISTENER_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_DAEMON_DOCUMENT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_DAEMON_ATTACHMENT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_EVENT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_EVENT_HIS_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_REPAIR_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/V_IFACE_LOG_REPAIR_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_REPOSITORY_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_REPOSITORY_HIS_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_LOG_STRATEGY_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_CHECK_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_CHECK_OUT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_FACE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_FACE_TRIGGER_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_TACTIC_ELEMENT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_TACTIC_GROUP_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_TACTIC_RELATION_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_TACTIC_INSTANCE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_IFACE_GROUP_RELATION_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_ALARM_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_ATTACHMENT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_DIC_CONFIG_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_DIC_ITEM_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_MODULE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_ROLE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_ROLE_MODULE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_SERVICE_CONFIG_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_UNIT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_UNIT_ROLE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_USER_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_USER_ROLE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_USER_UNIT_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_BASE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_PARAMETER_CONF_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_FACE_ERRTACK_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_VALUE_LIST_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SYS_TIPS_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_RETURN_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_CONF_CACHE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_CONF_SYSTEM_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_IFACE_CONF_PROTOCOL_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_SAVE_VALUE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_RETURN_VALID_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_QUERY_ITEM_VALUE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_BACKGROUND_CONF_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_RELEASE_TRENDS_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_ACTION_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_TASK_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_ATTACH_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_POINT_INFO_SqlMap.xml" />
+</sqlMapConfig>

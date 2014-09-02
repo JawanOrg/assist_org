@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptBackgroundConf" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SuptBackgroundConf" >
+    <result column="BACKGROUND_TYPE" property="backgroundType" jdbcType="VARCHAR" />
+    <result column="BACKGROUND_TYPE_DESC" property="backgroundTypeDesc" jdbcType="VARCHAR" />
+    <result column="EXEC_INTERVAL" property="execInterval" jdbcType="INTEGER" />
+    <result column="LAST_RUN_TIME" property="lastRunTime" jdbcType="TIMESTAMP" />
+    <result column="NEXT_RUN_TIME" property="nextRunTime" jdbcType="TIMESTAMP" />
+    <result column="IS_VALID" property="isValid" jdbcType="VARCHAR" />
+    <result column="IS_NORMAL" property="isNormal" jdbcType="VARCHAR" />
+    <result column="SPARE1" property="spare1" jdbcType="VARCHAR" />
+    <result column="SPARE2" property="spare2" jdbcType="VARCHAR" />
+    <result column="SPARE3" property="spare3" jdbcType="VARCHAR" />
+    <result column="currentTime" property="currentTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConfExample" >
+    select BACKGROUND_TYPE, BACKGROUND_TYPE_DESC, EXEC_INTERVAL, LAST_RUN_TIME, NEXT_RUN_TIME,
+      IS_VALID, IS_NORMAL, SPARE1, SPARE2, SPARE3,SYSDATE() currentTime
+    from t_supt_background_conf
+    <isParameterPresent >
+      <include refid="SuptBackgroundConf.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConfKey" >
+    select BACKGROUND_TYPE, BACKGROUND_TYPE_DESC, EXEC_INTERVAL, LAST_RUN_TIME, NEXT_RUN_TIME,
+      IS_VALID, IS_NORMAL, SPARE1, SPARE2, SPARE3,SYSDATE() currentTime
+    from t_supt_background_conf
+    where BACKGROUND_TYPE = #backgroundType:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConfKey" >
+    delete from t_supt_background_conf
+    where BACKGROUND_TYPE = #backgroundType:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConfExample" >
+    delete from t_supt_background_conf
+    <include refid="SuptBackgroundConf.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConf" >
+    insert into t_supt_background_conf (BACKGROUND_TYPE, BACKGROUND_TYPE_DESC, EXEC_INTERVAL,
+      LAST_RUN_TIME, NEXT_RUN_TIME, IS_VALID, IS_NORMAL, SPARE1, SPARE2, SPARE3)
+    values (#backgroundType:VARCHAR#, #backgroundTypeDesc:VARCHAR#, #execInterval:INTEGER#,
+      #lastRunTime:TIMESTAMP#, #nextRunTime:TIMESTAMP#, #isValid:VARCHAR#, #isNormal:VARCHAR#,
+      #spare1:VARCHAR#, #spare2:VARCHAR#, #spare3:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConf" >
+    insert into t_supt_background_conf
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="backgroundType" >
+        BACKGROUND_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="backgroundTypeDesc" >
+        BACKGROUND_TYPE_DESC
+      </isNotNull>
+      <isNotNull prepend="," property="execInterval" >
+        EXEC_INTERVAL
+      </isNotNull>
+      <isNotNull prepend="," property="lastRunTime" >
+        LAST_RUN_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="nextRunTime" >
+        NEXT_RUN_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        IS_VALID
+      </isNotNull>
+      <isNotNull prepend="," property="isNormal" >
+        IS_NORMAL
+      </isNotNull>
+      <isNotNull prepend="," property="spare1" >
+        SPARE1
+      </isNotNull>
+      <isNotNull prepend="," property="spare2" >
+        SPARE2
+      </isNotNull>
+      <isNotNull prepend="," property="spare3" >
+        SPARE3
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="backgroundType" >
+        #backgroundType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="backgroundTypeDesc" >
+        #backgroundTypeDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="execInterval" >
+        #execInterval:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="lastRunTime" >
+        #lastRunTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="nextRunTime" >
+        #nextRunTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isNormal" >
+        #isNormal:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare1" >
+        #spare1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare2" >
+        #spare2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare3" >
+        #spare3:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConfExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_background_conf
+    <include refid="SuptBackgroundConf.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_background_conf
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.backgroundType" >
+        BACKGROUND_TYPE = #record.backgroundType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.backgroundTypeDesc" >
+        BACKGROUND_TYPE_DESC = #record.backgroundTypeDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.execInterval" >
+        EXEC_INTERVAL = #record.execInterval:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.lastRunTime" >
+        LAST_RUN_TIME = #record.lastRunTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.nextRunTime" >
+        NEXT_RUN_TIME = #record.nextRunTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isValid" >
+        IS_VALID = #record.isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isNormal" >
+        IS_NORMAL = #record.isNormal:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.spare1" >
+        SPARE1 = #record.spare1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.spare2" >
+        SPARE2 = #record.spare2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.spare3" >
+        SPARE3 = #record.spare3:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptBackgroundConf.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_background_conf
+    set BACKGROUND_TYPE = #record.backgroundType:VARCHAR#,
+      BACKGROUND_TYPE_DESC = #record.backgroundTypeDesc:VARCHAR#,
+      EXEC_INTERVAL = #record.execInterval:INTEGER#,
+      LAST_RUN_TIME = #record.lastRunTime:TIMESTAMP#,
+      NEXT_RUN_TIME = #record.nextRunTime:TIMESTAMP#,
+      IS_VALID = #record.isValid:VARCHAR#,
+      IS_NORMAL = #record.isNormal:VARCHAR#,
+      SPARE1 = #record.spare1:VARCHAR#,
+      SPARE2 = #record.spare2:VARCHAR#,
+      SPARE3 = #record.spare3:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptBackgroundConf.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConf" >
+    update t_supt_background_conf
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="backgroundTypeDesc" >
+        BACKGROUND_TYPE_DESC = #backgroundTypeDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="execInterval" >
+        EXEC_INTERVAL = #execInterval:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="lastRunTime" >
+        LAST_RUN_TIME = #lastRunTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="nextRunTime" >
+        NEXT_RUN_TIME = #nextRunTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        IS_VALID = #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isNormal" >
+        IS_NORMAL = #isNormal:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare1" >
+        SPARE1 = #spare1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare2" >
+        SPARE2 = #spare2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="spare3" >
+        SPARE3 = #spare3:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where BACKGROUND_TYPE = #backgroundType:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptBackgroundConf" >
+    update t_supt_background_conf
+    set BACKGROUND_TYPE_DESC = #backgroundTypeDesc:VARCHAR#,
+      EXEC_INTERVAL = #execInterval:INTEGER#,
+      LAST_RUN_TIME = #lastRunTime:TIMESTAMP#,
+      NEXT_RUN_TIME = #nextRunTime:TIMESTAMP#,
+      IS_VALID = #isValid:VARCHAR#,
+      IS_NORMAL = #isNormal:VARCHAR#,
+      SPARE1 = #spare1:VARCHAR#,
+      SPARE2 = #spare2:VARCHAR#,
+      SPARE3 = #spare3:VARCHAR#
+    where BACKGROUND_TYPE = #backgroundType:VARCHAR#
+  </update>
+</sqlMap>

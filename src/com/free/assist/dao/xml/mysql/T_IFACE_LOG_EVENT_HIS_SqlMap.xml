@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceLogEventHis" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.IfaceLogEventHis" >
+    <result column="EVENT_ID" property="eventId" jdbcType="CHAR" />
+    <result column="RELATE_ID" property="relateId" jdbcType="CHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="TEXT" />
+    <result column="DOCUMENT" property="document" jdbcType="LONGTEXT" />
+    <result column="SUCCESSFUL" property="successful" jdbcType="CHAR" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHisExample" >
+    select EVENT_ID, RELATE_ID, TYPE, DESCRIPTION, DOCUMENT, SUCCESSFUL, CREATED
+    from t_iface_log_event_his
+    <isParameterPresent >
+      <include refid="IfaceLogEventHis.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHisKey" >
+    select EVENT_ID, RELATE_ID, TYPE, DESCRIPTION, DOCUMENT, SUCCESSFUL, CREATED
+    from t_iface_log_event_his
+    where EVENT_ID = #eventId:CHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHisKey" >
+    delete from t_iface_log_event_his
+    where EVENT_ID = #eventId:CHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHisExample" >
+    delete from t_iface_log_event_his
+    <include refid="IfaceLogEventHis.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHis" >
+    <selectKey resultClass="java.lang.String" keyProperty="eventId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_log_event_his (EVENT_ID, RELATE_ID, TYPE, DESCRIPTION, DOCUMENT, SUCCESSFUL,
+      CREATED)
+    values (#eventId:CHAR#, #relateId:CHAR#, #type:VARCHAR#, #description:TEXT#,
+      #document:LONGTEXT#, #successful:CHAR#, #created:TIMESTAMP#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHis" >
+    <selectKey resultClass="java.lang.String" keyProperty="eventId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_log_event_his
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="eventId" >
+        EVENT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="relateId" >
+        RELATE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="type" >
+        TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="description" >
+        DESCRIPTION
+      </isNotNull>
+      <isNotNull prepend="," property="document" >
+        DOCUMENT
+      </isNotNull>
+      <isNotNull prepend="," property="successful" >
+        SUCCESSFUL
+      </isNotNull>
+      <isNotNull prepend="," property="created" >
+        CREATED
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="eventId" >
+        #eventId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="relateId" >
+        #relateId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="type" >
+        #type:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="description" >
+        #description:TEXT#
+      </isNotNull>
+      <isNotNull prepend="," property="document" >
+        #document:LONGTEXT#
+      </isNotNull>
+      <isNotNull prepend="," property="successful" >
+        #successful:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="created" >
+        #created:TIMESTAMP#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHisExample" resultClass="java.lang.Integer" >
+    select count(*) from t_iface_log_event_his
+    <include refid="IfaceLogEventHis.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_log_event_his
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.eventId" >
+        EVENT_ID = #record.eventId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.relateId" >
+        RELATE_ID = #record.relateId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.type" >
+        TYPE = #record.type:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.description" >
+        DESCRIPTION = #record.description:TEXT#
+      </isNotNull>
+      <isNotNull prepend="," property="record.document" >
+        DOCUMENT = #record.document:LONGTEXT#
+      </isNotNull>
+      <isNotNull prepend="," property="record.successful" >
+        SUCCESSFUL = #record.successful:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.created" >
+        CREATED = #record.created:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceLogEventHis.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_log_event_his
+    set EVENT_ID = #record.eventId:CHAR#,
+      RELATE_ID = #record.relateId:CHAR#,
+      TYPE = #record.type:VARCHAR#,
+      DESCRIPTION = #record.description:TEXT#,
+      DOCUMENT = #record.document:LONGTEXT#,
+      SUCCESSFUL = #record.successful:CHAR#,
+      CREATED = #record.created:TIMESTAMP#
+    <isParameterPresent >
+      <include refid="IfaceLogEventHis.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHis" >
+    update t_iface_log_event_his
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="relateId" >
+        RELATE_ID = #relateId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="type" >
+        TYPE = #type:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="description" >
+        DESCRIPTION = #description:TEXT#
+      </isNotNull>
+      <isNotNull prepend="," property="document" >
+        DOCUMENT = #document:LONGTEXT#
+      </isNotNull>
+      <isNotNull prepend="," property="successful" >
+        SUCCESSFUL = #successful:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="created" >
+        CREATED = #created:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    where EVENT_ID = #eventId:CHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceLogEventHis" >
+    update t_iface_log_event_his
+    set RELATE_ID = #relateId:CHAR#,
+      TYPE = #type:VARCHAR#,
+      DESCRIPTION = #description:TEXT#,
+      DOCUMENT = #document:LONGTEXT#,
+      SUCCESSFUL = #successful:CHAR#,
+      CREATED = #created:TIMESTAMP#
+    where EVENT_ID = #eventId:CHAR#
+  </update>
+</sqlMap>

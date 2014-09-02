@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysServiceConfig" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SysServiceConfig" >
+    <result column="Service_Id" property="serviceId" jdbcType="VARCHAR" />
+    <result column="Service_Name" property="serviceName" jdbcType="VARCHAR" />
+    <result column="Service_Type" property="serviceType" jdbcType="CHAR" />
+    <result column="Service_Class" property="serviceClass" jdbcType="VARCHAR" />
+    <result column="Service_Desc" property="serviceDesc" jdbcType="VARCHAR" />
+    <result column="Service_HostName" property="serviceHostname" jdbcType="VARCHAR" />
+    <result column="WS_URL" property="wsUrl" jdbcType="VARCHAR" />
+    <result column="Run_Mode" property="runMode" jdbcType="CHAR" />
+    <result column="Run_Interval" property="runInterval" jdbcType="INTEGER" />
+    <result column="Run_Parameter" property="runParameter" jdbcType="VARCHAR" />
+    <result column="Start_Default" property="startDefault" jdbcType="CHAR" />
+    <result column="Is_Deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="Start_RunOnce" property="startRunonce" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysServiceConfigExample" >
+    select Service_Id, Service_Name, Service_Type, Service_Class, Service_Desc, Service_HostName,
+      WS_URL, Run_Mode, Run_Interval, Run_Parameter, Start_Default, Is_Deleted, Start_RunOnce
+    from t_sys_service_config
+    <isParameterPresent >
+      <include refid="SysServiceConfig.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysServiceConfigKey" >
+    select Service_Id, Service_Name, Service_Type, Service_Class, Service_Desc, Service_HostName,
+      WS_URL, Run_Mode, Run_Interval, Run_Parameter, Start_Default, Is_Deleted, Start_RunOnce
+    from t_sys_service_config
+    where Service_Id = #serviceId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysServiceConfigKey" >
+    delete from t_sys_service_config
+    where Service_Id = #serviceId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SysServiceConfigExample" >
+    delete from t_sys_service_config
+    <include refid="SysServiceConfig.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SysServiceConfig" >
+    <selectKey resultClass="java.lang.String" keyProperty="serviceId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_sys_service_config (Service_Id, Service_Name, Service_Type, Service_Class,
+      Service_Desc, Service_HostName, WS_URL, Run_Mode, Run_Interval, Run_Parameter, Start_Default,
+      Is_Deleted, Start_RunOnce)
+    values (#serviceId:VARCHAR#, #serviceName:VARCHAR#, #serviceType:CHAR#, #serviceClass:VARCHAR#,
+      #serviceDesc:VARCHAR#, #serviceHostname:VARCHAR#, #wsUrl:VARCHAR#, #runMode:CHAR#,
+      #runInterval:INTEGER#, #runParameter:VARCHAR#, #startDefault:CHAR#, 'N',
+      #startRunonce:CHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SysServiceConfig" >
+    <selectKey resultClass="java.lang.String" keyProperty="serviceId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_sys_service_config
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="serviceId" >
+        Service_Id
+      </isNotNull>
+      <isNotNull prepend="," property="serviceName" >
+        Service_Name
+      </isNotNull>
+      <isNotNull prepend="," property="serviceType" >
+        Service_Type
+      </isNotNull>
+      <isNotNull prepend="," property="serviceClass" >
+        Service_Class
+      </isNotNull>
+      <isNotNull prepend="," property="serviceDesc" >
+        Service_Desc
+      </isNotNull>
+      <isNotNull prepend="," property="serviceHostname" >
+        Service_HostName
+      </isNotNull>
+      <isNotNull prepend="," property="wsUrl" >
+        WS_URL
+      </isNotNull>
+      <isNotNull prepend="," property="runMode" >
+        Run_Mode
+      </isNotNull>
+      <isNotNull prepend="," property="runInterval" >
+        Run_Interval
+      </isNotNull>
+      <isNotNull prepend="," property="runParameter" >
+        Run_Parameter
+      </isNotNull>
+      <isNotNull prepend="," property="startDefault" >
+        Start_Default
+      </isNotNull>
+      <isNotNull prepend="," property="isDeleted" >
+        Is_Deleted
+      </isNotNull>
+      <isNotNull prepend="," property="startRunonce" >
+        Start_RunOnce
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="serviceId" >
+        #serviceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceName" >
+        #serviceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceType" >
+        #serviceType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceClass" >
+        #serviceClass:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceDesc" >
+        #serviceDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceHostname" >
+        #serviceHostname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="wsUrl" >
+        #wsUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="runMode" >
+        #runMode:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="runInterval" >
+        #runInterval:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="runParameter" >
+        #runParameter:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="startDefault" >
+        #startDefault:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isDeleted" >
+        #isDeleted:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="startRunonce" >
+        #startRunonce:CHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SysServiceConfigExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_service_config
+    <include refid="SysServiceConfig.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_service_config
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.serviceId" >
+        Service_Id = #record.serviceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serviceName" >
+        Service_Name = #record.serviceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serviceType" >
+        Service_Type = #record.serviceType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serviceClass" >
+        Service_Class = #record.serviceClass:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serviceDesc" >
+        Service_Desc = #record.serviceDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serviceHostname" >
+        Service_HostName = #record.serviceHostname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.wsUrl" >
+        WS_URL = #record.wsUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.runMode" >
+        Run_Mode = #record.runMode:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.runInterval" >
+        Run_Interval = #record.runInterval:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.runParameter" >
+        Run_Parameter = #record.runParameter:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.startDefault" >
+        Start_Default = #record.startDefault:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isDeleted" >
+        Is_Deleted = #record.isDeleted:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.startRunonce" >
+        Start_RunOnce = #record.startRunonce:CHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysServiceConfig.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_service_config
+    set Service_Id = #record.serviceId:VARCHAR#,
+      Service_Name = #record.serviceName:VARCHAR#,
+      Service_Type = #record.serviceType:CHAR#,
+      Service_Class = #record.serviceClass:VARCHAR#,
+      Service_Desc = #record.serviceDesc:VARCHAR#,
+      Service_HostName = #record.serviceHostname:VARCHAR#,
+      WS_URL = #record.wsUrl:VARCHAR#,
+      Run_Mode = #record.runMode:CHAR#,
+      Run_Interval = #record.runInterval:INTEGER#,
+      Run_Parameter = #record.runParameter:VARCHAR#,
+      Start_Default = #record.startDefault:CHAR#,
+      Is_Deleted = #record.isDeleted:CHAR#,
+      Start_RunOnce = #record.startRunonce:CHAR#
+    <isParameterPresent >
+      <include refid="SysServiceConfig.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SysServiceConfig" >
+    update t_sys_service_config
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="serviceName" >
+        Service_Name = #serviceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceType" >
+        Service_Type = #serviceType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceClass" >
+        Service_Class = #serviceClass:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceDesc" >
+        Service_Desc = #serviceDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceHostname" >
+        Service_HostName = #serviceHostname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="wsUrl" >
+        WS_URL = #wsUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="runMode" >
+        Run_Mode = #runMode:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="runInterval" >
+        Run_Interval = #runInterval:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="runParameter" >
+        Run_Parameter = #runParameter:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="startDefault" >
+        Start_Default = #startDefault:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isDeleted" >
+        Is_Deleted = #isDeleted:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="startRunonce" >
+        Start_RunOnce = #startRunonce:CHAR#
+      </isNotNull>
+    </dynamic>
+    where Service_Id = #serviceId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysServiceConfig" >
+    update t_sys_service_config
+    set Service_Name = #serviceName:VARCHAR#,
+      Service_Type = #serviceType:CHAR#,
+      Service_Class = #serviceClass:VARCHAR#,
+      Service_Desc = #serviceDesc:VARCHAR#,
+      Service_HostName = #serviceHostname:VARCHAR#,
+      WS_URL = #wsUrl:VARCHAR#,
+      Run_Mode = #runMode:CHAR#,
+      Run_Interval = #runInterval:INTEGER#,
+      Run_Parameter = #runParameter:VARCHAR#,
+      Start_Default = #startDefault:CHAR#,
+      Is_Deleted = #isDeleted:CHAR#,
+      Start_RunOnce = #startRunonce:CHAR#
+    where Service_Id = #serviceId:VARCHAR#
+  </update>
+</sqlMap>

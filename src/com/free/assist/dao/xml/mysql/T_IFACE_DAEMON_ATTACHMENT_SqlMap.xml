@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceDaemonAttachment" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.IfaceDaemonAttachment" >
+    <result column="ATTACHMENT_ID" property="attachmentId" jdbcType="CHAR" />
+    <result column="HOST_ID" property="hostId" jdbcType="VARCHAR" />
+    <result column="HOST_LOCATION" property="hostLocation" jdbcType="VARCHAR" />
+    <result column="SITE_ID" property="siteId" jdbcType="VARCHAR" />
+    <result column="SITE_LOCATION" property="siteLocation" jdbcType="VARCHAR" />
+    <result column="RUN_COUNT" property="runCount" jdbcType="INTEGER" />
+    <result column="IS_AVAILABLE" property="available" jdbcType="CHAR" />
+    <result column="CREATE_ON" property="createOn" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_ON" property="updateOn" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachmentExample" >
+    select ATTACHMENT_ID, HOST_ID, HOST_LOCATION, SITE_ID, SITE_LOCATION, RUN_COUNT, IS_AVAILABLE,
+      CREATE_ON, UPDATE_ON
+    from t_iface_daemon_attachment
+    <isParameterPresent >
+      <include refid="IfaceDaemonAttachment.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachmentKey" >
+    select ATTACHMENT_ID, HOST_ID, HOST_LOCATION, SITE_ID, SITE_LOCATION, RUN_COUNT, IS_AVAILABLE,
+      CREATE_ON, UPDATE_ON
+    from t_iface_daemon_attachment
+    where ATTACHMENT_ID = #attachmentId:CHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachmentKey" >
+    delete from t_iface_daemon_attachment
+    where ATTACHMENT_ID = #attachmentId:CHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachmentExample" >
+    delete from t_iface_daemon_attachment
+    <include refid="IfaceDaemonAttachment.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachment" >
+    <selectKey resultClass="java.lang.String" keyProperty="attachmentId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_daemon_attachment (ATTACHMENT_ID, HOST_ID, HOST_LOCATION, SITE_ID,
+      SITE_LOCATION, RUN_COUNT, IS_AVAILABLE, CREATE_ON, UPDATE_ON)
+    values (#attachmentId:CHAR#, #hostId:VARCHAR#, #hostLocation:VARCHAR#, #siteId:VARCHAR#,
+      #siteLocation:VARCHAR#, 0, #available:CHAR#, CURRENT_TIMESTAMP(), #updateOn:TIMESTAMP#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachment" >
+    <selectKey resultClass="java.lang.String" keyProperty="attachmentId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_daemon_attachment
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="attachmentId" >
+        ATTACHMENT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="hostId" >
+        HOST_ID
+      </isNotNull>
+      <isNotNull prepend="," property="hostLocation" >
+        HOST_LOCATION
+      </isNotNull>
+      <isNotNull prepend="," property="siteId" >
+        SITE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="siteLocation" >
+        SITE_LOCATION
+      </isNotNull>
+      <isNotNull prepend="," property="runCount" >
+        RUN_COUNT
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE
+      </isNotNull>
+      <isNotNull prepend="," property="createOn" >
+        CREATE_ON
+      </isNotNull>
+      <isNotNull prepend="," property="updateOn" >
+        UPDATE_ON
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="attachmentId" >
+        #attachmentId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="hostId" >
+        #hostId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="hostLocation" >
+        #hostLocation:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="siteId" >
+        #siteId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="siteLocation" >
+        #siteLocation:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="runCount" >
+        #runCount:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        #available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createOn" >
+        CURRENT_TIMESTAMP()
+      </isNotNull>
+      <isNotNull prepend="," property="updateOn" >
+        #updateOn:TIMESTAMP#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachmentExample" resultClass="java.lang.Integer" >
+    select count(*) from t_iface_daemon_attachment
+    <include refid="IfaceDaemonAttachment.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_daemon_attachment
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.attachmentId" >
+        ATTACHMENT_ID = #record.attachmentId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.hostId" >
+        HOST_ID = #record.hostId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.hostLocation" >
+        HOST_LOCATION = #record.hostLocation:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.siteId" >
+        SITE_ID = #record.siteId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.siteLocation" >
+        SITE_LOCATION = #record.siteLocation:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.runCount" >
+        RUN_COUNT = #record.runCount:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.available" >
+        IS_AVAILABLE = #record.available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateOn" >
+        UPDATE_ON = #record.updateOn:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceDaemonAttachment.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_daemon_attachment
+    set ATTACHMENT_ID = #record.attachmentId:CHAR#,
+      HOST_ID = #record.hostId:VARCHAR#,
+      HOST_LOCATION = #record.hostLocation:VARCHAR#,
+      SITE_ID = #record.siteId:VARCHAR#,
+      SITE_LOCATION = #record.siteLocation:VARCHAR#,
+      RUN_COUNT = #record.runCount:INTEGER#,
+      IS_AVAILABLE = #record.available:CHAR#,
+      UPDATE_ON = #record.updateOn:TIMESTAMP#
+    <isParameterPresent >
+      <include refid="IfaceDaemonAttachment.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachment" >
+    update t_iface_daemon_attachment
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="hostId" >
+        HOST_ID = #hostId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="hostLocation" >
+        HOST_LOCATION = #hostLocation:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="siteId" >
+        SITE_ID = #siteId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="siteLocation" >
+        SITE_LOCATION = #siteLocation:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="runCount" >
+        RUN_COUNT = #runCount:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE = #available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateOn" >
+        UPDATE_ON = #updateOn:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    where ATTACHMENT_ID = #attachmentId:CHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceDaemonAttachment" >
+    update t_iface_daemon_attachment
+    set HOST_ID = #hostId:VARCHAR#,
+      HOST_LOCATION = #hostLocation:VARCHAR#,
+      SITE_ID = #siteId:VARCHAR#,
+      SITE_LOCATION = #siteLocation:VARCHAR#,
+      RUN_COUNT = #runCount:INTEGER#,
+      IS_AVAILABLE = #available:CHAR#,
+      UPDATE_ON = #updateOn:TIMESTAMP#
+    where ATTACHMENT_ID = #attachmentId:CHAR#
+  </update>
+</sqlMap>

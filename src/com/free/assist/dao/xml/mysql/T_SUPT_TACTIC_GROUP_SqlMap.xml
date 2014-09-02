@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptTaticGroup">
+	<cacheModel id="SuptTaticGroup_Cache" type="OSCACHE">
+		<flushInterval hours="2" />
+		<flushOnExecute statement="SuptTaticGroup.ibatorgenerated_deleteByPrimaryKey" />
+		<flushOnExecute statement="SuptTaticGroup.ibatorgenerated_deleteByExample" />
+		<flushOnExecute statement="SuptTaticGroup.ibatorgenerated_insert" />
+		<flushOnExecute statement="SuptTaticGroup.ibatorgenerated_insertSelective" />
+		<flushOnExecute statement="SuptTaticGroup.ibatorgenerated_updateByPrimaryKey" />
+		<flushOnExecute
+			statement="SuptTaticGroup.ibatorgenerated_updateByPrimaryKeySelective" />
+		<flushOnExecute
+			statement="SuptTaticGroup.ibatorgenerated_updateByExampleSelective" />
+		<flushOnExecute statement="SuptTaticGroup.ibatorgenerated_updateByExample" />
+	</cacheModel>
+	<resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SuptTaticGroup">
+		<result column="taticGoupId" property="taticgoupid" jdbcType="VARCHAR" />
+		<result column="taticGoupName" property="taticgoupname"
+			jdbcType="VARCHAR" />
+		<result column="priority" property="priority" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="tatictype" property="tatictype" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="ibatorgenerated_Example_Where_Clause">
+		<iterate property="oredCriteria" conjunction="or" prepend="where"
+			removeFirstPrepend="iterate">
+			<isEqual property="oredCriteria[].valid" compareValue="true">
+				(
+				<iterate prepend="and" property="oredCriteria[].criteriaWithoutValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithSingleValue[].condition$
+					#oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithListValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithListValue[].condition$
+					<iterate property="oredCriteria[].criteriaWithListValue[].values"
+						open="(" close=")" conjunction=",">
+						#oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+				</iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithBetweenValue[].condition$
+					#oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+					#oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+				)
+			</isEqual>
+		</iterate>
+	</sql>
+	<select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticGroupExample"
+		cacheModel="SuptTaticGroup.SuptTaticGroup_Cache">
+		select taticGoupId, taticGoupName, priority, remark, tatictype
+		from
+		t_supt_tactic_group
+		<isParameterPresent>
+			<include refid="SuptTaticGroup.ibatorgenerated_Example_Where_Clause" />
+			<isNotNull property="orderByClause">
+				order by $orderByClause$
+      </isNotNull>
+		</isParameterPresent>
+	</select>
+	<select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticGroupKey"
+		cacheModel="SuptTaticGroup.SuptTaticGroup_Cache">
+		select taticGoupId, taticGoupName, priority, remark,
+		tatictype
+		from t_supt_tactic_group
+		where taticGoupId =
+		#taticgoupid:VARCHAR#
+  </select>
+	<delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptTaticGroupKey">
+		delete from t_supt_tactic_group
+		where taticGoupId =
+		#taticgoupid:VARCHAR#
+  </delete>
+	<delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SuptTaticGroupExample">
+		delete from t_supt_tactic_group
+		<include refid="SuptTaticGroup.ibatorgenerated_Example_Where_Clause" />
+	</delete>
+	<insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SuptTaticGroup">
+		<selectKey resultClass="java.lang.String" keyProperty="taticgoupid">
+			select replace(uuid(), '-', '') from dual
+    </selectKey>
+		insert into t_supt_tactic_group (taticGoupId, taticGoupName, priority,
+		remark, tatictype)
+		values (#taticgoupid:VARCHAR#,
+		#taticgoupname:VARCHAR#, #priority:VARCHAR#,
+		#remark:VARCHAR#,#tatictype:VARCHAR#)
+	</insert>
+	<insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SuptTaticGroup">
+		<selectKey resultClass="java.lang.String" keyProperty="taticgoupid">
+			select replace(uuid(), '-', '') from dual
+    </selectKey>
+		insert into t_supt_tactic_group
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="taticgoupid">
+				taticGoupId
+      </isNotNull>
+			<isNotNull prepend="," property="taticgoupname">
+				taticGoupName
+      </isNotNull>
+			<isNotNull prepend="," property="priority">
+				priority
+      </isNotNull>
+			<isNotNull prepend="," property="remark">
+				remark
+      </isNotNull>
+			<isNotNull prepend="," property="tatictype">
+				tatictype
+      </isNotNull>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="taticgoupid">
+				#taticgoupid:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="taticgoupname">
+				#taticgoupname:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="priority">
+				#priority:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+				#remark:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="tatictype">
+				#tatictype:VARCHAR#
+			</isNotNull>
+			)
+		</dynamic>
+	</insert>
+	<select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SuptTaticGroupExample"
+		resultClass="java.lang.Integer">
+		select count(*) from t_supt_tactic_group
+		<include refid="SuptTaticGroup.ibatorgenerated_Example_Where_Clause" />
+	</select>
+	<update id="ibatorgenerated_updateByExampleSelective">
+		update t_supt_tactic_group
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="record.taticgoupid">
+				taticGoupId =
+				#record.taticgoupid:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.taticgoupname">
+				taticGoupName =
+				#record.taticgoupname:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.priority">
+				priority =
+				#record.priority:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.remark">
+				remark =
+				#record.remark:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.tatictype">
+				tatictype =
+				#record.tatictype:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		<isParameterPresent>
+			<include refid="SuptTaticGroup.ibatorgenerated_Example_Where_Clause" />
+		</isParameterPresent>
+	</update>
+	<update id="ibatorgenerated_updateByExample">
+		update t_supt_tactic_group
+		set taticGoupId =
+		#record.taticgoupid:VARCHAR#,
+		taticGoupName =
+		#record.taticgoupname:VARCHAR#,
+		priority = #record.priority:VARCHAR#,
+		remark = #record.remark:VARCHAR#,
+		tatictype =
+		#record.tatictype:VARCHAR#
+		<isParameterPresent>
+			<include refid="SuptTaticGroup.ibatorgenerated_Example_Where_Clause" />
+		</isParameterPresent>
+	</update>
+	<update id="ibatorgenerated_updateByPrimaryKeySelective"
+		parameterClass="com.regaltec.blocimp.domain.SuptTaticGroup">
+		update t_supt_tactic_group
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="taticgoupname">
+				taticGoupName =
+				#taticgoupname:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="priority">
+				priority =
+				#priority:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="remark">
+				remark = #remark:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="tatictype">
+				tatictype =
+				#tatictype:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		where taticGoupId = #taticgoupid:VARCHAR#
+	</update>
+	<update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptTaticGroup">
+		update t_supt_tactic_group
+		set taticGoupName = #taticgoupname:VARCHAR#,
+		priority = #priority:VARCHAR#,
+		remark = #remark:VARCHAR#,
+		tatictype =
+		#tatictype:VARCHAR#
+		where taticGoupId = #taticgoupid:VARCHAR#
+  </update>
+</sqlMap>

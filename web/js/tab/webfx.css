@@ -1,0 +1,95 @@
+.tab-pane {
+	WIDTH: 100%; POSITION: relative
+	
+}
+.tabpanebg{
+	background-image:url("/js/tab/tabpanebg.gif");
+	color:#000000;
+	font:normal normal normal 13px ËÎÌו;
+	height:23px;
+}
+
+.tabpaneleft{
+	background-image:url("/js/tab/tabpaneleft.gif");
+	width:8px;
+	height:23px;
+}
+.tabpaneright{
+	background-image:url("/js/tab/tabpaneright.gif");
+	width:8px;
+	height:23px;
+}
+.tabpanebg2{
+    color:#000000;
+	font:normal normal normal 13px ËÎÌו;
+	background-image:url("/js/tab/tabpanebg2.gif");
+	height:23px;
+}
+
+.tabpaneleft2{
+	background-image:url("/js/tab/tabpaneleft2.gif");
+	width:8px;
+	height:23px;
+}
+.tabpaneright2{
+	background-image:url("/js/tab/tabpaneright2.gif");
+	width:8px;
+	height:23px;
+}
+.dynamic-tab-pane-control .tab-row .tab {
+	PADDING-RIGHT: 0px;
+	DISPLAY: inline;
+	PADDING-LEFT: 0px;
+	FONT-SIZE: 12px; Z-INDEX: 1;
+	CURSOR: pointer;
+	FONT-FAMILY: Verdana, Helvetica, Arial;
+	POSITION: relative;
+	TOP: 0px;
+	
+	
+}
+.dynamic-tab-pane-control .tab-row .selected {
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px;
+	TOP: -2px;
+	
+}
+.dynamic-tab-pane-control .tab-row .tab A {
+	FONT-SIZE: 13px;
+	CURSOR: pointer;
+	COLOR: rgb(0,66,174);
+	FONT-FAMILY: Verdana, Helvetica, Arial;
+	TEXT-DECORATION: none
+}
+.dynamic-tab-pane-control .tab-row .hover A {
+	COLOR: #0066FF;
+}
+.dynamic-tab-pane-control .tab-row .selected A {
+	FONT-WEIGHT: bold
+}
+.dynamic-tab-pane-control .tab-page {
+	CLEAR: both;
+	BORDER-RIGHT: RGB(156,191,230) 1px solid;
+	PADDING-RIGHT: 10px;
+	BORDER-TOP: RGB(156,191,230) 1px solid;
+	PADDING-LEFT: 10px;
+	FONT-SIZE: 13px;
+	Z-INDEX: 2;
+	BACKGROUND: white;
+	PADDING-BOTTOM: 10px;
+	BORDER-LEFT: RGB(156,191,230) 1px solid;
+	COLOR: black;
+	PADDING-TOP: 10px;
+	BORDER-BOTTOM: RGB(156,191,230) 1px solid;
+	FONT-FAMILY: Verdana, Helvetica, Arial;
+	POSITION: relative;
+	TOP: -2px;
+	background-image: url("/images/main/bg01.gif");
+}
+.dynamic-tab-pane-control .tab-row {
+	Z-INDEX: 1;
+	BACKGROUND: #FFFFFF;
+	WIDTH: 100%;
+	WHITE-SPACE: nowrap;
+	HEIGHT: 1.85em
+}

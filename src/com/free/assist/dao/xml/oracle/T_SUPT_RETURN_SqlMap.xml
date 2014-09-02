@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptReturn" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SuptReturn" >
+    <result column="return_id" property="returnId" jdbcType="VARCHAR" />
+    <result column="method_id" property="methodId" jdbcType="VARCHAR" />
+    <result column="workItem_id" property="workitemId" jdbcType="VARCHAR" />
+    <result column="oldwork_id" property="oldworkId" jdbcType="VARCHAR" />
+    <result column="userID" property="userid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptReturnExample" >
+    select return_id, method_id, workItem_id, oldwork_id, userID
+    from t_supt_return
+    <isParameterPresent >
+      <include refid="SuptReturn.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptReturnKey" >
+    select return_id, method_id, workItem_id, oldwork_id, userID
+    from t_supt_return
+    where return_id = #returnId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SuptReturnKey" >
+    delete from t_supt_return
+    where return_id = #returnId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SuptReturnExample" >
+    delete from t_supt_return
+    <include refid="SuptReturn.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SuptReturn" >
+    <selectKey resultClass="java.lang.String" keyProperty="returnId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_return (return_id, method_id, workItem_id, oldwork_id, userID)
+    values (#returnId:VARCHAR#, #methodId:VARCHAR#, #workitemId:VARCHAR#, #oldworkId:VARCHAR#,
+      #userid:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SuptReturn" >
+    <selectKey resultClass="java.lang.String" keyProperty="returnId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_return
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="returnId" >
+        return_id
+      </isNotNull>
+      <isNotNull prepend="," property="methodId" >
+        method_id
+      </isNotNull>
+      <isNotNull prepend="," property="workitemId" >
+        workItem_id
+      </isNotNull>
+      <isNotNull prepend="," property="oldworkId" >
+        oldwork_id
+      </isNotNull>
+      <isNotNull prepend="," property="userid" >
+        userID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="returnId" >
+        #returnId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="methodId" >
+        #methodId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="workitemId" >
+        #workitemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="oldworkId" >
+        #oldworkId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userid" >
+        #userid:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SuptReturnExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_return
+    <include refid="SuptReturn.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_return
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.returnId" >
+        return_id = #record.returnId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.methodId" >
+        method_id = #record.methodId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.workitemId" >
+        workItem_id = #record.workitemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.oldworkId" >
+        oldwork_id = #record.oldworkId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.userid" >
+        userID = #record.userid:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptReturn.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_return
+    set return_id = #record.returnId:VARCHAR#,
+      method_id = #record.methodId:VARCHAR#,
+      workItem_id = #record.workitemId:VARCHAR#,
+      oldwork_id = #record.oldworkId:VARCHAR#,
+      userID = #record.userid:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptReturn.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SuptReturn" >
+    update t_supt_return
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="methodId" >
+        method_id = #methodId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="workitemId" >
+        workItem_id = #workitemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="oldworkId" >
+        oldwork_id = #oldworkId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userid" >
+        userID = #userid:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where return_id = #returnId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SuptReturn" >
+    update t_supt_return
+    set method_id = #methodId:VARCHAR#,
+      workItem_id = #workitemId:VARCHAR#,
+      oldwork_id = #oldworkId:VARCHAR#,
+      userID = #userid:VARCHAR#
+    where return_id = #returnId:VARCHAR#
+  </update>
+</sqlMap>

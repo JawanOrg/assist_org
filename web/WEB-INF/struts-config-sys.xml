@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" type="com.free.assist.web.sys.LoginForm" />
+		<form-bean name="sysTaskForm" type="com.free.assist.web.sys.SysTaskForm" />
+		<form-bean name="sysUnitActionForm" type="com.free.assist.web.sys.SysUnitActionForm" />
+		<form-bean name="sysUserActionForm" type="com.free.assist.web.sys.SysUserActionForm" />
+		<form-bean name="sysUserUnitActionForm" type="com.free.assist.web.sys.SysUserUnitActionForm" />
+	    <form-bean name="alarmForm" type="com.free.assist.web.sys.AlarmForm" />
+	    <form-bean name="sysModuleActionForm" type="com.free.assist.web.sys.SysModuleActionForm" />
+	    <form-bean name="sysRoleActionForm" type="com.free.assist.web.sys.SysRoleActionForm" />
+        <form-bean name="sysRoleModuleActionForm" type="com.free.assist.web.sys.SysRoleModuleActionForm" />
+	    <form-bean name="sysDicItemActionForm" type="com.free.assist.web.sys.SysDicItemActionForm" />
+	    <form-bean name="sysDicConfigActionForm" type="com.free.assist.web.sys.SysDicConfigActionForm" />	
+        <form-bean name="sysParameterConfActionForm" type="com.free.assist.web.sys.SysParameterConfActionForm" />	
+        <form-bean name="sysServiceConfigActionForm" type="com.free.assist.web.sys.SysServiceConfigActionForm" />  
+        <form-bean name="sysTipActionForm" type="com.free.assist.web.sys.SysTipActionForm" />  	    
+	</form-beans>
+	<action-mappings>
+		<action path="/sys/loginAction" name="loginForm" scope="request" parameter="method" validate="false">
+			<description>用户登陆</description>
+		</action>
+		<action path="/sys/sysTaskAction" name="sysTaskForm" scope="request" parameter="method" validate="false">
+			<description>后台服务管理</description>
+		</action>
+		<action path="/sys/sysServiceConfigAction" name="sysServiceConfigActionForm" scope="request" parameter="method" validate="false">
+			<description>后台服务配置</description>
+		</action>
+		<action path="/sys/sysUnitAction" name="sysUnitActionForm" scope="request" parameter="method" validate="false">
+			<description>组织机构管理</description>
+		</action>
+		<action path="/sys/sysUserAction" name="sysUserActionForm" scope="request" parameter="method" validate="false" >
+			<description>人员信息管理</description>
+		</action>
+		<action path="/sys/sysUserUnitAction" name="sysUserUnitActionForm" scope="request" parameter="method" validate="false" >
+			<description>组织人员关系管理</description>
+		</action>
+		<action path="/sys/alarmAction" name="alarmForm" scope="request" parameter="method" validate="false">
+			<description>系统告警</description>
+		</action>
+		<action path="/sys/sysModuleAction" name="sysModuleActionForm" scope="request" parameter="method" validate="false">
+			<description>模块管理</description>
+		</action>
+		<action path="/sys/sysRoleAction" name="sysRoleActionForm" scope="request" parameter="method" validate="false">
+			<description>权限管理</description>
+		</action>
+		<action path="/sys/sysRoleModuleAction" name="sysRoleModuleActionForm" scope="request" parameter="method" validate="false">
+			<description>权限组管理</description>
+		</action>
+		<action path="/sys/sysDicItemAction" name="sysDicItemAcitonForm" scope="request" parameter="method" validate="false" >
+			<description>字典条目管理</description>
+		</action>
+		<action path="/sys/sysDicConfigAction" name="sysDicConfigActionForm" scope="request" parameter="method" validate="false">
+			<description>字典配置</description>
+		</action>
+		<action path="/sys/sysParameterConfAction" name="sysParameterConfActionForm" scope="request" parameter="method" validate="false">
+			<description>参数配置</description>
+		</action>
+		<action path="/sys/sysTipAction" name="sysTipActionForm" scope="request" parameter="method" validate="false">
+			<description>标签配置</description>
+		</action>
+	</action-mappings>
+</struts-config>

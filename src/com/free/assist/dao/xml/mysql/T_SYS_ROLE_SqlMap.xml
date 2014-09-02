@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysRole" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SysRole" >
+    <result column="RoleId" property="roleid" jdbcType="VARCHAR" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="RoleDesc" property="roledesc" jdbcType="VARCHAR" />
+    <result column="Is_Valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="Sort_Order" property="sortOrder" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysRoleExample" >
+    select RoleId, RoleName, RoleDesc, Is_Valid, Sort_Order
+    from t_sys_role
+    <isParameterPresent >
+      <include refid="SysRole.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysRoleKey" >
+    select RoleId, RoleName, RoleDesc, Is_Valid, Sort_Order
+    from t_sys_role
+    where RoleId = #roleid:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysRoleKey" >
+    delete from t_sys_role
+    where RoleId = #roleid:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SysRoleExample" >
+    delete from t_sys_role
+    <include refid="SysRole.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SysRole" >
+    <selectKey resultClass="java.lang.String" keyProperty="roleid" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_sys_role (RoleId, RoleName, RoleDesc, Is_Valid, Sort_Order)
+    values (#roleid:VARCHAR#, #rolename:VARCHAR#, #roledesc:VARCHAR#, #isValid:VARCHAR#,
+      #sortOrder:INTEGER#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SysRole" >
+    <selectKey resultClass="java.lang.String" keyProperty="roleid" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_sys_role
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="roleid" >
+        RoleId
+      </isNotNull>
+      <isNotNull prepend="," property="rolename" >
+        RoleName
+      </isNotNull>
+      <isNotNull prepend="," property="roledesc" >
+        RoleDesc
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        Is_Valid
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        Sort_Order
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="roleid" >
+        #roleid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="rolename" >
+        #rolename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="roledesc" >
+        #roledesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        #sortOrder:INTEGER#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SysRoleExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_role
+    <include refid="SysRole.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_role
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.roleid" >
+        RoleId = #record.roleid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.rolename" >
+        RoleName = #record.rolename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.roledesc" >
+        RoleDesc = #record.roledesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isValid" >
+        Is_Valid = #record.isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sortOrder" >
+        Sort_Order = #record.sortOrder:INTEGER#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysRole.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_role
+    set RoleId = #record.roleid:VARCHAR#,
+      RoleName = #record.rolename:VARCHAR#,
+      RoleDesc = #record.roledesc:VARCHAR#,
+      Is_Valid = #record.isValid:VARCHAR#,
+      Sort_Order = #record.sortOrder:INTEGER#
+    <isParameterPresent >
+      <include refid="SysRole.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SysRole" >
+    update t_sys_role
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="rolename" >
+        RoleName = #rolename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="roledesc" >
+        RoleDesc = #roledesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        Is_Valid = #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        Sort_Order = #sortOrder:INTEGER#
+      </isNotNull>
+    </dynamic>
+    where RoleId = #roleid:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysRole" >
+    update t_sys_role
+    set RoleName = #rolename:VARCHAR#,
+      RoleDesc = #roledesc:VARCHAR#,
+      Is_Valid = #isValid:VARCHAR#,
+      Sort_Order = #sortOrder:INTEGER#
+    where RoleId = #roleid:VARCHAR#
+  </update>
+</sqlMap>

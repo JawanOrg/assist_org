@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptReturnValid" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SuptReturnValid" >
+    <result column="return_valid_id" property="returnValidId" jdbcType="VARCHAR" />
+    <result column="oper_name" property="operName" jdbcType="VARCHAR" />
+    <result column="opername_path" property="opernamePath" jdbcType="VARCHAR" />
+    <result column="operpath_from" property="operpathFrom" jdbcType="VARCHAR" />
+    <result column="field_name" property="fieldName" jdbcType="CLOB" javaType ="java.lang.String" />
+    <result column="field_path" property="fieldPath" jdbcType="CLOB" javaType ="java.lang.String" />
+    <result column="fieldpath_from" property="fieldpathFrom" jdbcType="VARCHAR" />
+    <result column="prikey_name" property="prikeyName" jdbcType="VARCHAR" />
+    <result column="prikey_path" property="prikeyPath" jdbcType="VARCHAR" />
+    <result column="prikey_from" property="prikeyFrom" jdbcType="VARCHAR" />
+    <result column="cimp_face_id" property="cimpFaceId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptReturnValidExample" >
+    select return_valid_id, oper_name, opername_path, operpath_from, field_name, field_path,
+      fieldpath_from, prikey_name, prikey_path, prikey_from, cimp_face_id
+    from t_supt_return_valid  
+    <isParameterPresent >
+      <include refid="SuptReturnValid.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+      <isNotNull property="beforeOrSQL" >
+         $beforeOrSQL$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptReturnValidKey" >
+    select return_valid_id, oper_name, opername_path, operpath_from, field_name, field_path,
+      fieldpath_from, prikey_name, prikey_path, prikey_from, cimp_face_id
+    from t_supt_return_valid
+    where return_valid_id = #returnValidId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SuptReturnValidKey" >
+    delete from t_supt_return_valid
+    where return_valid_id = #returnValidId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SuptReturnValidExample" >
+    delete from t_supt_return_valid
+    <include refid="SuptReturnValid.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SuptReturnValid" >
+    <selectKey resultClass="java.lang.String" keyProperty="returnValidId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_return_valid (return_valid_id, oper_name, opername_path, operpath_from,
+      field_name, field_path, fieldpath_from, prikey_name, prikey_path, prikey_from, cimp_face_id)
+    values (#returnValidId:VARCHAR#, #operName:VARCHAR#, #opernamePath:VARCHAR#,
+      #operpathFrom:VARCHAR#, #fieldName:CLOB#, #fieldPath:CLOB#, #fieldpathFrom:VARCHAR#,
+      #prikeyName:VARCHAR#, #prikeyPath:VARCHAR#, #prikeyFrom:VARCHAR#, #cimpFaceId:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SuptReturnValid" >
+    <selectKey resultClass="java.lang.String" keyProperty="returnValidId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_return_valid
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="returnValidId" >
+        return_valid_id
+      </isNotNull>
+      <isNotNull prepend="," property="operName" >
+        oper_name
+      </isNotNull>
+      <isNotNull prepend="," property="opernamePath" >
+        opername_path
+      </isNotNull>
+      <isNotNull prepend="," property="operpathFrom" >
+        operpath_from
+      </isNotNull>
+      <isNotNull prepend="," property="fieldName" >
+        field_name
+      </isNotNull>
+      <isNotNull prepend="," property="fieldPath" >
+        field_path
+      </isNotNull>
+      <isNotNull prepend="," property="fieldpathFrom" >
+        fieldpath_from
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyName" >
+        prikey_name
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyPath" >
+        prikey_path
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyFrom" >
+        prikey_from
+      </isNotNull>
+      <isNotNull prepend="," property="cimpFaceId" >
+        cimp_face_id
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="returnValidId" >
+        #returnValidId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operName" >
+        #operName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="opernamePath" >
+        #opernamePath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operpathFrom" >
+        #operpathFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldName" >
+        #fieldName:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldPath" >
+        #fieldPath:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldpathFrom" >
+        #fieldpathFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyName" >
+        #prikeyName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyPath" >
+        #prikeyPath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyFrom" >
+        #prikeyFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cimpFaceId" >
+        #cimpFaceId:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SuptReturnValidExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_return_valid
+    <include refid="SuptReturnValid.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_return_valid
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.returnValidId" >
+        return_valid_id = #record.returnValidId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operName" >
+        oper_name = #record.operName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.opernamePath" >
+        opername_path = #record.opernamePath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operpathFrom" >
+        operpath_from = #record.operpathFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.fieldName" >
+        field_name = #record.fieldName:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="record.fieldPath" >
+        field_path = #record.fieldPath:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="record.fieldpathFrom" >
+        fieldpath_from = #record.fieldpathFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.prikeyName" >
+        prikey_name = #record.prikeyName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.prikeyPath" >
+        prikey_path = #record.prikeyPath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.prikeyFrom" >
+        prikey_from = #record.prikeyFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.cimpFaceId" >
+        cimp_face_id = #record.cimpFaceId:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptReturnValid.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_return_valid
+    set return_valid_id = #record.returnValidId:VARCHAR#,
+      oper_name = #record.operName:VARCHAR#,
+      opername_path = #record.opernamePath:VARCHAR#,
+      operpath_from = #record.operpathFrom:VARCHAR#,
+      field_name = #record.fieldName:CLOB#,
+      field_path = #record.fieldPath:CLOB#,
+      fieldpath_from = #record.fieldpathFrom:VARCHAR#,
+      prikey_name = #record.prikeyName:VARCHAR#,
+      prikey_path = #record.prikeyPath:VARCHAR#,
+      prikey_from = #record.prikeyFrom:VARCHAR#,
+      cimp_face_id = #record.cimpFaceId:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptReturnValid.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SuptReturnValid" >
+    update t_supt_return_valid
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="operName" >
+        oper_name = #operName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="opernamePath" >
+        opername_path = #opernamePath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operpathFrom" >
+        operpath_from = #operpathFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldName" >
+        field_name = #fieldName:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldPath" >
+        field_path = #fieldPath:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="fieldpathFrom" >
+        fieldpath_from = #fieldpathFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyName" >
+        prikey_name = #prikeyName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyPath" >
+        prikey_path = #prikeyPath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="prikeyFrom" >
+        prikey_from = #prikeyFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cimpFaceId" >
+        cimp_face_id = #cimpFaceId:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where return_valid_id = #returnValidId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SuptReturnValid" >
+    update t_supt_return_valid
+    set oper_name = #operName:VARCHAR#,
+      opername_path = #opernamePath:VARCHAR#,
+      operpath_from = #operpathFrom:VARCHAR#,
+      field_name = #fieldName:CLOB#,
+      field_path = #fieldPath:CLOB#,
+      fieldpath_from = #fieldpathFrom:VARCHAR#,
+      prikey_name = #prikeyName:VARCHAR#,
+      prikey_path = #prikeyPath:VARCHAR#,
+      prikey_from = #prikeyFrom:VARCHAR#,
+      cimp_face_id = #cimpFaceId:VARCHAR#
+    where return_valid_id = #returnValidId:VARCHAR#
+  </update>
+</sqlMap>

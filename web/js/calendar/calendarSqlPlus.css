@@ -1,0 +1,17 @@
+#RoyalCalendar{visibility:hidden;cursor:default;background-color:#E9E9E9;position:absolute;top:0;left:0;width:90px;height:200px;border:solid black 1px;font:normal normal lighter 9pt}
+#RoyalCalendar_TopTable{background-color:transparent}
+#RoyalCalendar_Month{background-color:#E9E9E9;font:normal normal lighter 9pt}
+#RoyalCalendar_Year{background-color:#E9E9E9;font:normal normal lighter 9pt}
+#RoyalCalendar_CalendarTable{background-color:transparent;font:normal normal lighter 9pt}
+#RoyalCalendar_Hour{background-color:#E9E9E9;font:normal normal lighter 9pt}
+#RoyalCalendar_Minute{background-color:#E9E9E9;font:normal normal lighter 9pt}
+#RoyalCalendar_Second{background-color:#E9E9E9;font:normal normal lighter 9pt}
+#RoyalCalendar_AMPM{background-color:#E9E9E9;font:normal normal lighter 9pt}
+.RoyalSmallButton{font:normal normal lighter 8pt;height:8pt;line-height:6pt;width:15pt}
+.RoyalSmallButton2{font:normal normal lighter 8pt;height:12pt;line-height:6pt;width:8pt}
+.RoyalCalendar_Day_Normal{font:normal normal lighter 9pt;background-color:transparent;cursor:hand}
+.RoyalCalendar_Day_MouseOver{font:normal normal lighter 9pt;background-color:#FF00FF;cursor:hand}
+.RoyalCalendar_Sunday_Normal{border-left:solid black 1px;font:normal normal lighter 9pt;background-color:transparent;cursor:hand}
+.RoyalCalendar_Sunday_MouseOver{border-left:solid black 1px;font:normal normal lighter 9pt;background-color:#FF00FF;cursor:hand}
+#RoyalOKButton{font:normal normal lighter 8pt;height:12pt;line-height:10pt;width:20pt}
+#RoyalCancelButton{font:normal normal lighter 8pt;height:12pt;line-height:10pt;width:20pt}

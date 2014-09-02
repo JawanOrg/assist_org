@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptTask" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SuptTask" >
+    <result column="TASK_ID" property="taskId" jdbcType="VARCHAR" />
+    <result column="BUSINESS_TYPE" property="businessType" jdbcType="VARCHAR" />
+    <result column="BILL_ID" property="billId" jdbcType="VARCHAR" />
+    <result column="TASK_SN" property="taskSn" jdbcType="VARCHAR" />
+    <result column="TASK_STATUS" property="taskStatus" jdbcType="VARCHAR" />
+    <result column="TASK_ID_SON" property="taskIdSon" jdbcType="VARCHAR" />
+    <result column="TASK_ID_PARENT" property="taskIdParent" jdbcType="VARCHAR" />
+    <result column="CREATOR" property="creator" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="FINISH_TIME" property="finishTime" jdbcType="TIMESTAMP" />
+    <result column="IS_FINISH" property="isFinish" jdbcType="VARCHAR" />
+    <result column="IS_REDO" property="isRedo" jdbcType="VARCHAR" />
+    <result column="DEAL_OBJECT_ID" property="dealObjectId" jdbcType="VARCHAR" />
+    <result column="DEAL_OBJECT_TYPE" property="dealObjectType" jdbcType="VARCHAR" />
+    <result column="DEAL_OBJECT_GROUP" property="dealObjectGroup" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptTaskExample" >
+    select TASK_ID, BUSINESS_TYPE, BILL_ID, TASK_SN, TASK_STATUS, TASK_ID_SON, TASK_ID_PARENT,
+      CREATOR, CREATE_TIME, FINISH_TIME, IS_FINISH, IS_REDO, DEAL_OBJECT_ID, DEAL_OBJECT_TYPE,
+      DEAL_OBJECT_GROUP, REMARK
+    from T_SUPT_TASK
+    <isParameterPresent >
+      <include refid="SuptTask.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptTaskKey" >
+    select TASK_ID, BUSINESS_TYPE, BILL_ID, TASK_SN, TASK_STATUS, TASK_ID_SON, TASK_ID_PARENT,
+      CREATOR, CREATE_TIME, FINISH_TIME, IS_FINISH, IS_REDO, DEAL_OBJECT_ID, DEAL_OBJECT_TYPE,
+      DEAL_OBJECT_GROUP, REMARK
+    from T_SUPT_TASK
+    where TASK_ID = #taskId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SuptTaskKey" >
+    delete from T_SUPT_TASK
+    where TASK_ID = #taskId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SuptTaskExample" >
+    delete from T_SUPT_TASK
+    <include refid="SuptTask.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SuptTask" >
+    <selectKey resultClass="java.lang.String" keyProperty="taskId" >
+      select seq_task_id.nextval from dual
+    </selectKey>
+    insert into T_SUPT_TASK (TASK_ID, BUSINESS_TYPE, BILL_ID, TASK_SN, TASK_STATUS, TASK_ID_SON,
+      TASK_ID_PARENT, CREATOR, CREATE_TIME, FINISH_TIME, IS_FINISH, IS_REDO, DEAL_OBJECT_ID,
+      DEAL_OBJECT_TYPE, DEAL_OBJECT_GROUP, REMARK)
+    values (#taskId:VARCHAR#, #businessType:VARCHAR#, #billId:VARCHAR#, #taskSn:VARCHAR#,
+      #taskStatus:VARCHAR#, #taskIdSon:VARCHAR#, #taskIdParent:VARCHAR#, #creator:VARCHAR#,
+      #createTime:TIMESTAMP#, #finishTime:TIMESTAMP#, #isFinish:VARCHAR#, #isRedo:VARCHAR#,
+      #dealObjectId:VARCHAR#, #dealObjectType:VARCHAR#, #dealObjectGroup:VARCHAR#, #remark:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SuptTask" >
+    <selectKey resultClass="java.lang.String" keyProperty="taskId" >
+      select seq_task_id.nextval from dual
+    </selectKey>
+    insert into T_SUPT_TASK
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="taskId" >
+        TASK_ID
+      </isNotNull>
+      <isNotNull prepend="," property="businessType" >
+        BUSINESS_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        BILL_ID
+      </isNotNull>
+      <isNotNull prepend="," property="taskSn" >
+        TASK_SN
+      </isNotNull>
+      <isNotNull prepend="," property="taskStatus" >
+        TASK_STATUS
+      </isNotNull>
+      <isNotNull prepend="," property="taskIdSon" >
+        TASK_ID_SON
+      </isNotNull>
+      <isNotNull prepend="," property="taskIdParent" >
+        TASK_ID_PARENT
+      </isNotNull>
+      <isNotNull prepend="," property="creator" >
+        CREATOR
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        CREATE_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="finishTime" >
+        FINISH_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="isFinish" >
+        IS_FINISH
+      </isNotNull>
+      <isNotNull prepend="," property="isRedo" >
+        IS_REDO
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectId" >
+        DEAL_OBJECT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectType" >
+        DEAL_OBJECT_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectGroup" >
+        DEAL_OBJECT_GROUP
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="taskId" >
+        #taskId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="businessType" >
+        #businessType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        #billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskSn" >
+        #taskSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskStatus" >
+        #taskStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskIdSon" >
+        #taskIdSon:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskIdParent" >
+        #taskIdParent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="creator" >
+        #creator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        #createTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="finishTime" >
+        #finishTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="isFinish" >
+        #isFinish:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isRedo" >
+        #isRedo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectId" >
+        #dealObjectId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectType" >
+        #dealObjectType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectGroup" >
+        #dealObjectGroup:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SuptTaskExample" resultClass="java.lang.Integer" >
+    select count(*) from T_SUPT_TASK
+    <include refid="SuptTask.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update T_SUPT_TASK
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.taskId" >
+        TASK_ID = #record.taskId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.businessType" >
+        BUSINESS_TYPE = #record.businessType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.billId" >
+        BILL_ID = #record.billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.taskSn" >
+        TASK_SN = #record.taskSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.taskStatus" >
+        TASK_STATUS = #record.taskStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.taskIdSon" >
+        TASK_ID_SON = #record.taskIdSon:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.taskIdParent" >
+        TASK_ID_PARENT = #record.taskIdParent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.creator" >
+        CREATOR = #record.creator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createTime" >
+        CREATE_TIME = #record.createTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.finishTime" >
+        FINISH_TIME = #record.finishTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isFinish" >
+        IS_FINISH = #record.isFinish:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isRedo" >
+        IS_REDO = #record.isRedo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.dealObjectId" >
+        DEAL_OBJECT_ID = #record.dealObjectId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.dealObjectType" >
+        DEAL_OBJECT_TYPE = #record.dealObjectType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.dealObjectGroup" >
+        DEAL_OBJECT_GROUP = #record.dealObjectGroup:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptTask.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update T_SUPT_TASK
+    set TASK_ID = #record.taskId:VARCHAR#,
+      BUSINESS_TYPE = #record.businessType:VARCHAR#,
+      BILL_ID = #record.billId:VARCHAR#,
+      TASK_SN = #record.taskSn:VARCHAR#,
+      TASK_STATUS = #record.taskStatus:VARCHAR#,
+      TASK_ID_SON = #record.taskIdSon:VARCHAR#,
+      TASK_ID_PARENT = #record.taskIdParent:VARCHAR#,
+      CREATOR = #record.creator:VARCHAR#,
+      CREATE_TIME = #record.createTime:TIMESTAMP#,
+      FINISH_TIME = #record.finishTime:TIMESTAMP#,
+      IS_FINISH = #record.isFinish:VARCHAR#,
+      IS_REDO = #record.isRedo:VARCHAR#,
+      DEAL_OBJECT_ID = #record.dealObjectId:VARCHAR#,
+      DEAL_OBJECT_TYPE = #record.dealObjectType:VARCHAR#,
+      DEAL_OBJECT_GROUP = #record.dealObjectGroup:VARCHAR#,
+      REMARK = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptTask.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SuptTask" >
+    update T_SUPT_TASK
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="businessType" >
+        BUSINESS_TYPE = #businessType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        BILL_ID = #billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskSn" >
+        TASK_SN = #taskSn:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskStatus" >
+        TASK_STATUS = #taskStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskIdSon" >
+        TASK_ID_SON = #taskIdSon:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskIdParent" >
+        TASK_ID_PARENT = #taskIdParent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="creator" >
+        CREATOR = #creator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        CREATE_TIME = #createTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="finishTime" >
+        FINISH_TIME = #finishTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="isFinish" >
+        IS_FINISH = #isFinish:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isRedo" >
+        IS_REDO = #isRedo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectId" >
+        DEAL_OBJECT_ID = #dealObjectId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectType" >
+        DEAL_OBJECT_TYPE = #dealObjectType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dealObjectGroup" >
+        DEAL_OBJECT_GROUP = #dealObjectGroup:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where TASK_ID = #taskId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SuptTask" >
+    update T_SUPT_TASK
+    set BUSINESS_TYPE = #businessType:VARCHAR#,
+      BILL_ID = #billId:VARCHAR#,
+      TASK_SN = #taskSn:VARCHAR#,
+      TASK_STATUS = #taskStatus:VARCHAR#,
+      TASK_ID_SON = #taskIdSon:VARCHAR#,
+      TASK_ID_PARENT = #taskIdParent:VARCHAR#,
+      CREATOR = #creator:VARCHAR#,
+      CREATE_TIME = #createTime:TIMESTAMP#,
+      FINISH_TIME = #finishTime:TIMESTAMP#,
+      IS_FINISH = #isFinish:VARCHAR#,
+      IS_REDO = #isRedo:VARCHAR#,
+      DEAL_OBJECT_ID = #dealObjectId:VARCHAR#,
+      DEAL_OBJECT_TYPE = #dealObjectType:VARCHAR#,
+      DEAL_OBJECT_GROUP = #dealObjectGroup:VARCHAR#,
+      REMARK = #remark:VARCHAR#
+    where TASK_ID = #taskId:VARCHAR#
+  </update>
+</sqlMap>

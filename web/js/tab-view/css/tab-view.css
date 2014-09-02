@@ -1,0 +1,31 @@
+	.tab_tabPane{
+		height:22px;	
+		border-bottom:1px solid #919b9c;
+	}
+	.tab_aTab{
+		border-left:1px solid #919b9c;
+		border-right:1px solid #919b9c;
+		border-bottom:1px solid #919b9c;
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+		padding:5px;		
+		
+	}
+	.tab_tabPane DIV{
+		float:left;
+		cursor:pointer;
+		position:relative;
+		margin-left:2px;
+	}
+
+	.tab_tabPane span{
+		color: #808080;
+		font-weight: bold;
+	}
+	.tab_tabPane .tabActive span{
+		font-weight: bold;
+		color: #000000;
+	}
+	
+	.tab_tabPane img{
+		float:left;
+	}

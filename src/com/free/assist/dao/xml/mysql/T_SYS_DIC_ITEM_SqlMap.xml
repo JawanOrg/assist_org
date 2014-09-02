@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysDicItem" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SysDicItem" >
+    <result column="Item_Id" property="itemId" jdbcType="VARCHAR" />
+    <result column="Dictionary_Id" property="dictionaryId" jdbcType="VARCHAR" />
+    <result column="Dictionary_Code" property="dictionaryCode" jdbcType="VARCHAR" />
+    <result column="Dictionary_Name" property="dictionaryName" jdbcType="VARCHAR" />
+    <result column="Item_Code" property="itemCode" jdbcType="VARCHAR" />
+    <result column="Item_Value" property="itemValue" jdbcType="VARCHAR" />
+    <result column="Item_Desc" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="Sort_Order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="Internal_Code" property="internalCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysDicItemExample" >
+    select Item_Id, Dictionary_Id, Dictionary_Code, Dictionary_Name, Item_Code, Item_Value,
+      Item_Desc, Sort_Order, Internal_Code
+    from v_sys_dic_item
+    <isParameterPresent >
+      <include refid="SysDicItem.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysDicItemKey" >
+   select Item_Id, Dictionary_Id, Dictionary_Code, Dictionary_Name, Item_Code, Item_Value,
+      Item_Desc, Sort_Order, Internal_Code
+    from v_sys_dic_item
+    where Item_Id = #itemId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysDicItemKey" >
+    delete from t_sys_dic_item
+    where Item_Id = #itemId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SysDicItemExample" >
+    delete from t_sys_dic_item
+    <include refid="SysDicItem.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SysDicItem" >
+    <selectKey resultClass="java.lang.String" keyProperty="itemId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_sys_dic_item (Item_Id, Dictionary_Id, Item_Code, Item_Value, Item_Desc,
+      Sort_Order, Internal_Code)
+    values (#itemId:VARCHAR#, #dictionaryId:VARCHAR#, #itemCode:VARCHAR#, #itemValue:VARCHAR#,
+      #itemDesc:VARCHAR#, #sortOrder:INTEGER#, #internalCode:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SysDicItem" >
+    <selectKey resultClass="java.lang.String" keyProperty="itemId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_sys_dic_item
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="itemId" >
+        Item_Id
+      </isNotNull>
+      <isNotNull prepend="," property="dictionaryId" >
+        Dictionary_Id
+      </isNotNull>
+      <isNotNull prepend="," property="itemCode" >
+        Item_Code
+      </isNotNull>
+      <isNotNull prepend="," property="itemValue" >
+        Item_Value
+      </isNotNull>
+      <isNotNull prepend="," property="itemDesc" >
+        Item_Desc
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        Sort_Order
+      </isNotNull>
+      <isNotNull prepend="," property="internalCode" >
+        Internal_Code
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="itemId" >
+        #itemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dictionaryId" >
+        #dictionaryId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemCode" >
+        #itemCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemValue" >
+        #itemValue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemDesc" >
+        #itemDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        #sortOrder:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="internalCode" >
+        #internalCode:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SysDicItemExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_dic_item
+    <include refid="SysDicItem.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_dic_item
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.itemId" >
+        Item_Id = #record.itemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.dictionaryId" >
+        Dictionary_Id = #record.dictionaryId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.itemCode" >
+        Item_Code = #record.itemCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.itemValue" >
+        Item_Value = #record.itemValue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.itemDesc" >
+        Item_Desc = #record.itemDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sortOrder" >
+        Sort_Order = #record.sortOrder:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.internalCode" >
+        Internal_Code = #record.internalCode:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysDicItem.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_dic_item
+    set Item_Id = #record.itemId:VARCHAR#,
+      Dictionary_Id = #record.dictionaryId:VARCHAR#,
+      Item_Code = #record.itemCode:VARCHAR#,
+      Item_Value = #record.itemValue:VARCHAR#,
+      Item_Desc = #record.itemDesc:VARCHAR#,
+      Sort_Order = #record.sortOrder:INTEGER#,
+      Internal_Code = #record.internalCode:VARCHAR#
+    <isParameterPresent >
+      <include refid="SysDicItem.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SysDicItem" >
+    update t_sys_dic_item
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="dictionaryId" >
+        Dictionary_Id = #dictionaryId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemCode" >
+        Item_Code = #itemCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemValue" >
+        Item_Value = #itemValue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemDesc" >
+        Item_Desc = #itemDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        Sort_Order = #sortOrder:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="internalCode" >
+        Internal_Code = #internalCode:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where Item_Id = #itemId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysDicItem" >
+    update t_sys_dic_item
+    set Dictionary_Id = #dictionaryId:VARCHAR#,
+      Item_Code = #itemCode:VARCHAR#,
+      Item_Value = #itemValue:VARCHAR#,
+      Item_Desc = #itemDesc:VARCHAR#,
+      Sort_Order = #sortOrder:INTEGER#,
+      Internal_Code = #internalCode:VARCHAR#
+    where Item_Id = #itemId:VARCHAR#
+  </update>
+</sqlMap>

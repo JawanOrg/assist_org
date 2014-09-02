@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceLogRepairMixedWithBLOBs" >
+  <resultMap id="ibatorgenerated_ResultMapWithBLOBs" class="com.free.assist.domain.IfaceLogRepairMixedWithBLOBs" >
+    <result column="REPAIR_ID" property="repairId" jdbcType="VARCHAR" />
+    <result column="REPOSITORY_ID" property="repositoryId" jdbcType="VARCHAR" />
+    <result column="APPLICATION_ID" property="applicationId" jdbcType="VARCHAR" />
+    <result column="APPLICATION_SN" property="applicationSn" jdbcType="VARCHAR" />
+    <result column="APPLICATION_NAME" property="applicationName" jdbcType="VARCHAR" />
+    <result column="METHOD_NAME" property="methodName" jdbcType="VARCHAR" />
+    <result column="TRACE_INDICATOR" property="traceIndicator" jdbcType="VARCHAR" />
+    <result column="TRACE_LEVEL" property="traceLevel" jdbcType="VARCHAR" />
+    <result column="TRACE_TEXT" property="traceText" jdbcType="CLOB" javaType ="java.lang.String" />
+    <result column="XML_DOCUMENT" property="xmlDocument" jdbcType="CLOB" javaType ="java.lang.String" />
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+    <result column="CREATE_ON" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="FAULT_CAUSE" property="faultCause" jdbcType="VARCHAR" />
+    <result column="FAULT_DESCRIPTION" property="faultDescription" jdbcType="LONGVARCHAR" />
+    <result column="REPAIR_BY" property="repairUser" jdbcType="VARCHAR" />
+    <result column="REPAIR_ON" property="repairDate" jdbcType="TIMESTAMP" />
+    <result column="COMMIT_ON" property="commitDate" jdbcType="TIMESTAMP" />
+    <result column="COMMIT_BY" property="commitUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_ResultMapWithBLOBs" parameterClass="com.free.assist.domain.IfaceLogRepairKey" >
+    select REPAIR_ID, REPOSITORY_ID, APPLICATION_ID, APPLICATION_SN, APPLICATION_NAME, METHOD_NAME,
+      TRACE_INDICATOR, TRACE_LEVEL, PARENT_ID, CREATE_ON, FAULT_CAUSE, REPAIR_BY, REPAIR_ON,
+      COMMIT_ON, COMMIT_BY, TRACE_TEXT, XML_DOCUMENT, FAULT_DESCRIPTION
+    from v_iface_log_repair where REPAIR_ID = #repairId:VARCHAR#
+  </select>
+  <select id="ibatorgenerated_selectByExampleWithBLOBs" resultMap="ibatorgenerated_ResultMapWithBLOBs" parameterClass="com.free.assist.domain.IfaceLogRepairMixedExample" >
+    select REPAIR_ID, REPOSITORY_ID, APPLICATION_ID, APPLICATION_SN, APPLICATION_NAME, METHOD_NAME,
+      TRACE_INDICATOR, TRACE_LEVEL, PARENT_ID, CREATE_ON, FAULT_CAUSE, REPAIR_BY, REPAIR_ON,
+      COMMIT_ON, COMMIT_BY, TRACE_TEXT, XML_DOCUMENT, FAULT_DESCRIPTION
+    from v_iface_log_repair
+    <isParameterPresent >
+      <include refid="IfaceLogRepairMixedWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.IfaceLogRepairMixedExample" resultClass="java.lang.Integer" >
+    select count(*) from v_iface_log_repair
+    <include refid="IfaceLogRepairMixedWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+  </select>
+</sqlMap>

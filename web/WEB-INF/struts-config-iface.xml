@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="ifaceLoggerFaultActionForm" type="com.free.assist.web.iface.IfaceLoggerFaultActionForm" />
+		<form-bean name="ifaceLoggerTraceActionForm" type="com.free.assist.web.iface.IfaceLoggerTraceActionForm" />
+		<form-bean name="ifaceLoggerEventActionForm" type="com.free.assist.web.iface.IfaceLoggerEventActionForm" />
+		<form-bean name="ifaceConfigCacheActionForm" type="com.free.assist.web.iface.IfaceConfigCacheActionForm" />
+		<form-bean name="ifaceConfigSystemActionForm" type="com.free.assist.web.iface.IfaceConfigSystemActionForm" />
+		<form-bean name="ifaceConfigProtocolActionForm" type="com.free.assist.web.iface.IfaceConfigProtocolActionForm" />
+		<form-bean name="ifaceMonitorActionForm" type="com.free.assist.web.iface.IfaceMonitorActionForm"/>
+	</form-beans>
+	<action-mappings>
+		<action path="/iface/ifaceLoggerFaultAction" name="ifaceLoggerFaultActionForm" scope="request" parameter="method" validate="false">
+			<description>异常日志管理</description>
+		</action>
+		<action path="/iface/ifaceLoggerTraceAction" name="ifaceLoggerTraceActionForm" scope="request" parameter="method" validate="false">
+			<description>数据查询</description>
+		</action>
+		<action path="/iface/ifaceLoggerEventAction" name="ifaceLoggerEventActionForm" scope="request" parameter="method" validate="false">
+			<description>接口事件管理</description>
+		</action>
+		<action path="/iface/ifaceConfigCacheAction" name="ifaceConfigCacheActionForm" scope="request" parameter="method" validate="false">
+			<description>静态数据缓存</description>
+		</action>
+		<action path="/iface/ifaceConfigSystemAction" name="ifaceConfigSystemActionForm" scope="request" parameter="method" validate="false">
+			<description>接口系统表</description>
+		</action>
+		<action path="/iface/ifaceConfigProtocolAction" name="ifaceConfigProtocolActionForm" scope="request" parameter="method" validate="false">
+			<description>接口系统配置</description>
+		</action>
+		<action path="/iface/ifaceMonitorAction" name="ifaceMonitorActionForm" scope="request" parameter="method" validate="false">
+			<description>接口监控</description>
+		</action>
+	</action-mappings>
+</struts-config>

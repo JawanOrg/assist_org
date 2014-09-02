@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptFace" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SuptFace" >
+    <result column="sf_cimp_face_id" property="cimpFaceId" jdbcType="VARCHAR" />
+    <result column="sf_application_id" property="applicationId" jdbcType="VARCHAR" />
+    <result column="sf_method_name" property="methodName" jdbcType="VARCHAR" />
+    <result column="sf_cimp_name" property="cimpName" jdbcType="VARCHAR" />
+    <result column="sf_error_take" property="errorTake" jdbcType="VARCHAR" />
+    <result column="sf_out_xml" property="outXml" jdbcType="VARCHAR" />
+    <result column="sf_in_xml" property="inXml" jdbcType="VARCHAR" />
+    <result column="sf_paramater" property="paramater" jdbcType="VARCHAR" />
+    <result column="sf_back_limite" property="backLimite" jdbcType="VARCHAR" />
+    <result column="sf_isauto_take" property="isautoTake" jdbcType="VARCHAR" />
+    <result column="sf_return_appid" property="returnAppid" jdbcType="VARCHAR" />
+    <result column="sf_is_valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="sf_application_name" property="applicationName" jdbcType="VARCHAR" />
+    <result column="sf_return_appname" property="returnAppname" jdbcType="VARCHAR" />
+    <result column="sf_exet_methodname" property="exetMethodname" jdbcType="VARCHAR" />
+    <result column="sf_is_send" property="isSend" jdbcType="VARCHAR" />
+    <result column="sf_xmlstr" property="xmlstr" jdbcType="CLOB" javaType ="java.lang.String"/>
+    <result column="sf_xml_node" property="xmlNode" jdbcType="VARCHAR" />
+    <result column="sf_is_returnId" property="isReturnid" jdbcType="VARCHAR" />
+    <result column="sf_PROTOCOL_TYPE" property="protocolType" jdbcType="VARCHAR" />
+    <result column="sf_is_returnValue" property="isReturnvalue" jdbcType="VARCHAR" />
+    <result column="sf_isJudgeBillSystem" property="isjudgebillsystem" jdbcType="VARCHAR" />
+    <result column="sf_needDealAction" property="needdealaction" jdbcType="VARCHAR" />
+    <result column="sf_notNeedDealAction" property="notneeddealaction" jdbcType="VARCHAR" />
+    <result column="sf_actionPath" property="actionpath" jdbcType="VARCHAR" />
+    <result column="sf_return_Code_Path" property="returnCodePath" jdbcType="VARCHAR" />
+    <result column="sf_key_Paths" property="keyPaths" jdbcType="VARCHAR" />
+    <result column="sf_bill_Of_Systems" property="billOfSystems" jdbcType="VARCHAR" />
+    <result column="sf_INDICANT_NODE" property="indicantNode" jdbcType="VARCHAR" />
+    <result column="sf_SUCCESS_VALUE" property="successValue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptFaceExample" >
+    select sf.cimp_face_id as sf_cimp_face_id, sf.application_id as sf_application_id,
+      sf.method_name as sf_method_name, sf.cimp_name as sf_cimp_name, sf.error_take as
+      sf_error_take, sf.out_xml as sf_out_xml, sf.in_xml as sf_in_xml, sf.paramater as sf_paramater,
+      sf.back_limite as sf_back_limite, sf.isauto_take as sf_isauto_take, sf.return_appid as
+      sf_return_appid, sf.is_valid as sf_is_valid, (SELECT ap.APPLICATION_NAME FROM t_iface_conf_system ap 
+      WHERE ap.APPLICATION_ID=sf.application_id) as sf_application_name,
+      sf.return_appname as sf_return_appname, sf.exet_methodname as sf_exet_methodname, sf.is_send
+      as sf_is_send, sf.xmlstr as sf_xmlstr, sf.xml_node as sf_xml_node, sf.is_returnId as
+      sf_is_returnId, sf.PROTOCOL_TYPE as sf_PROTOCOL_TYPE, sf.is_returnValue as sf_is_returnValue,
+      sf.isJudgeBillSystem as sf_isJudgeBillSystem, sf.needDealAction as sf_needDealAction,
+      sf.notNeedDealAction as sf_notNeedDealAction, sf.actionPath as sf_actionPath,
+      sf.return_Code_Path as sf_return_Code_Path, sf.key_Paths as sf_key_Paths, sf.bill_Of_Systems
+      as sf_bill_Of_Systems, sf.INDICANT_NODE as sf_INDICANT_NODE, sf.SUCCESS_VALUE as
+      sf_SUCCESS_VALUE
+    from t_supt_face sf
+    <isParameterPresent >
+      <include refid="SuptFace.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="beforeOrSQL" >
+         $beforeOrSQL$
+      </isNotNull>
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptFaceKey" >
+    select sf.cimp_face_id as sf_cimp_face_id, sf.application_id as sf_application_id,
+      sf.method_name as sf_method_name, sf.cimp_name as sf_cimp_name, sf.error_take as
+      sf_error_take, sf.out_xml as sf_out_xml, sf.in_xml as sf_in_xml, sf.paramater as sf_paramater,
+      sf.back_limite as sf_back_limite, sf.isauto_take as sf_isauto_take, sf.return_appid as
+      sf_return_appid, sf.is_valid as sf_is_valid, sf.application_name as sf_application_name,
+      sf.return_appname as sf_return_appname, sf.exet_methodname as sf_exet_methodname, sf.is_send
+      as sf_is_send, sf.xmlstr as sf_xmlstr, sf.xml_node as sf_xml_node, sf.is_returnId as
+      sf_is_returnId, sf.PROTOCOL_TYPE as sf_PROTOCOL_TYPE, sf.is_returnValue as sf_is_returnValue,
+      sf.isJudgeBillSystem as sf_isJudgeBillSystem, sf.needDealAction as sf_needDealAction,
+      sf.notNeedDealAction as sf_notNeedDealAction, sf.actionPath as sf_actionPath,
+      sf.return_Code_Path as sf_return_Code_Path, sf.key_Paths as sf_key_Paths, sf.bill_Of_Systems
+      as sf_bill_Of_Systems, sf.INDICANT_NODE as sf_INDICANT_NODE, sf.SUCCESS_VALUE as
+      sf_SUCCESS_VALUE
+    from t_supt_face sf
+    where sf.cimp_face_id = #cimpFaceId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SuptFaceKey" >
+    delete from t_supt_face
+    where cimp_face_id = #cimpFaceId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SuptFaceExample" >
+    delete from t_supt_face sf
+    <include refid="SuptFace.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SuptFace" >
+    <selectKey resultClass="java.lang.String" keyProperty="cimpFaceId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_face (cimp_face_id, application_id, method_name, cimp_name, error_take,
+      out_xml, in_xml, paramater, back_limite, isauto_take, return_appid, is_valid,
+      application_name, return_appname, exet_methodname, is_send, xmlstr, xml_node, is_returnId,
+      PROTOCOL_TYPE, is_returnValue, isJudgeBillSystem, needDealAction, notNeedDealAction,
+      actionPath, return_Code_Path, key_Paths, bill_Of_Systems, INDICANT_NODE, SUCCESS_VALUE)
+    values (#cimpFaceId:VARCHAR#, #applicationId:VARCHAR#, #methodName:VARCHAR#, #cimpName:VARCHAR#,
+      #errorTake:VARCHAR#, #outXml:VARCHAR#, #inXml:VARCHAR#, #paramater:VARCHAR#,
+      #backLimite:VARCHAR#, #isautoTake:VARCHAR#, #returnAppid:VARCHAR#, #isValid:VARCHAR#,
+      #applicationName:VARCHAR#, #returnAppname:VARCHAR#, #exetMethodname:VARCHAR#,
+      #isSend:VARCHAR#, #xmlstr:CLOB#, #xmlNode:VARCHAR#, #isReturnid:VARCHAR#,
+      #protocolType:VARCHAR#, #isReturnvalue:VARCHAR#, #isjudgebillsystem:VARCHAR#,
+      #needdealaction:VARCHAR#, #notneeddealaction:VARCHAR#, #actionpath:VARCHAR#,
+      #returnCodePath:VARCHAR#, #keyPaths:VARCHAR#, #billOfSystems:VARCHAR#, #indicantNode:VARCHAR#,
+      #successValue:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SuptFace" >
+    <selectKey resultClass="java.lang.String" keyProperty="cimpFaceId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_face
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="cimpFaceId" >
+        cimp_face_id
+      </isNotNull>
+      <isNotNull prepend="," property="applicationId" >
+        application_id
+      </isNotNull>
+      <isNotNull prepend="," property="methodName" >
+        method_name
+      </isNotNull>
+      <isNotNull prepend="," property="cimpName" >
+        cimp_name
+      </isNotNull>
+      <isNotNull prepend="," property="errorTake" >
+        error_take
+      </isNotNull>
+      <isNotNull prepend="," property="outXml" >
+        out_xml
+      </isNotNull>
+      <isNotNull prepend="," property="inXml" >
+        in_xml
+      </isNotNull>
+      <isNotNull prepend="," property="paramater" >
+        paramater
+      </isNotNull>
+      <isNotNull prepend="," property="backLimite" >
+        back_limite
+      </isNotNull>
+      <isNotNull prepend="," property="isautoTake" >
+        isauto_take
+      </isNotNull>
+      <isNotNull prepend="," property="returnAppid" >
+        return_appid
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        is_valid
+      </isNotNull>
+      <isNotNull prepend="," property="applicationName" >
+        application_name
+      </isNotNull>
+      <isNotNull prepend="," property="returnAppname" >
+        return_appname
+      </isNotNull>
+      <isNotNull prepend="," property="exetMethodname" >
+        exet_methodname
+      </isNotNull>
+      <isNotNull prepend="," property="isSend" >
+        is_send
+      </isNotNull>
+      <isNotNull prepend="," property="xmlstr" >
+        xmlstr
+      </isNotNull>
+      <isNotNull prepend="," property="xmlNode" >
+        xml_node
+      </isNotNull>
+      <isNotNull prepend="," property="isReturnid" >
+        is_returnId
+      </isNotNull>
+      <isNotNull prepend="," property="protocolType" >
+        PROTOCOL_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="isReturnvalue" >
+        is_returnValue
+      </isNotNull>
+      <isNotNull prepend="," property="isjudgebillsystem" >
+        isJudgeBillSystem
+      </isNotNull>
+      <isNotNull prepend="," property="needdealaction" >
+        needDealAction
+      </isNotNull>
+      <isNotNull prepend="," property="notneeddealaction" >
+        notNeedDealAction
+      </isNotNull>
+      <isNotNull prepend="," property="actionpath" >
+        actionPath
+      </isNotNull>
+      <isNotNull prepend="," property="returnCodePath" >
+        return_Code_Path
+      </isNotNull>
+      <isNotNull prepend="," property="keyPaths" >
+        key_Paths
+      </isNotNull>
+      <isNotNull prepend="," property="billOfSystems" >
+        bill_Of_Systems
+      </isNotNull>
+      <isNotNull prepend="," property="indicantNode" >
+        INDICANT_NODE
+      </isNotNull>
+      <isNotNull prepend="," property="successValue" >
+        SUCCESS_VALUE
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="cimpFaceId" >
+        #cimpFaceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applicationId" >
+        #applicationId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="methodName" >
+        #methodName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cimpName" >
+        #cimpName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="errorTake" >
+        #errorTake:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="outXml" >
+        #outXml:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="inXml" >
+        #inXml:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="paramater" >
+        #paramater:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="backLimite" >
+        #backLimite:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isautoTake" >
+        #isautoTake:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="returnAppid" >
+        #returnAppid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applicationName" >
+        #applicationName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="returnAppname" >
+        #returnAppname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="exetMethodname" >
+        #exetMethodname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isSend" >
+        #isSend:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="xmlstr" >
+        #xmlstr:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="xmlNode" >
+        #xmlNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isReturnid" >
+        #isReturnid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="protocolType" >
+        #protocolType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isReturnvalue" >
+        #isReturnvalue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isjudgebillsystem" >
+        #isjudgebillsystem:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="needdealaction" >
+        #needdealaction:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notneeddealaction" >
+        #notneeddealaction:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="actionpath" >
+        #actionpath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="returnCodePath" >
+        #returnCodePath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="keyPaths" >
+        #keyPaths:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billOfSystems" >
+        #billOfSystems:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="indicantNode" >
+        #indicantNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="successValue" >
+        #successValue:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SuptFaceExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_face sf
+    <include refid="SuptFace.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_face sf
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.cimpFaceId" >
+        sf.cimp_face_id = #record.cimpFaceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applicationId" >
+        sf.application_id = #record.applicationId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.methodName" >
+        sf.method_name = #record.methodName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.cimpName" >
+        sf.cimp_name = #record.cimpName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.errorTake" >
+        sf.error_take = #record.errorTake:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.outXml" >
+        sf.out_xml = #record.outXml:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.inXml" >
+        sf.in_xml = #record.inXml:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.paramater" >
+        sf.paramater = #record.paramater:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.backLimite" >
+        sf.back_limite = #record.backLimite:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isautoTake" >
+        sf.isauto_take = #record.isautoTake:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.returnAppid" >
+        sf.return_appid = #record.returnAppid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isValid" >
+        sf.is_valid = #record.isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applicationName" >
+        sf.application_name = #record.applicationName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.returnAppname" >
+        sf.return_appname = #record.returnAppname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.exetMethodname" >
+        sf.exet_methodname = #record.exetMethodname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isSend" >
+        sf.is_send = #record.isSend:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.xmlstr" >
+        sf.xmlstr = #record.xmlstr:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="record.xmlNode" >
+        sf.xml_node = #record.xmlNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isReturnid" >
+        sf.is_returnId = #record.isReturnid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.protocolType" >
+        sf.PROTOCOL_TYPE = #record.protocolType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isReturnvalue" >
+        sf.is_returnValue = #record.isReturnvalue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isjudgebillsystem" >
+        sf.isJudgeBillSystem = #record.isjudgebillsystem:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.needdealaction" >
+        sf.needDealAction = #record.needdealaction:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.notneeddealaction" >
+        sf.notNeedDealAction = #record.notneeddealaction:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.actionpath" >
+        sf.actionPath = #record.actionpath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.returnCodePath" >
+        sf.return_Code_Path = #record.returnCodePath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.keyPaths" >
+        sf.key_Paths = #record.keyPaths:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.billOfSystems" >
+        sf.bill_Of_Systems = #record.billOfSystems:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.indicantNode" >
+        sf.INDICANT_NODE = #record.indicantNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.successValue" >
+        sf.SUCCESS_VALUE = #record.successValue:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptFace.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_face sf
+    set sf.cimp_face_id = #record.cimpFaceId:VARCHAR#,
+      sf.application_id = #record.applicationId:VARCHAR#,
+      sf.method_name = #record.methodName:VARCHAR#,
+      sf.cimp_name = #record.cimpName:VARCHAR#,
+      sf.error_take = #record.errorTake:VARCHAR#,
+      sf.out_xml = #record.outXml:VARCHAR#,
+      sf.in_xml = #record.inXml:VARCHAR#,
+      sf.paramater = #record.paramater:VARCHAR#,
+      sf.back_limite = #record.backLimite:VARCHAR#,
+      sf.isauto_take = #record.isautoTake:VARCHAR#,
+      sf.return_appid = #record.returnAppid:VARCHAR#,
+      sf.is_valid = #record.isValid:VARCHAR#,
+      sf.application_name = #record.applicationName:VARCHAR#,
+      sf.return_appname = #record.returnAppname:VARCHAR#,
+      sf.exet_methodname = #record.exetMethodname:VARCHAR#,
+      sf.is_send = #record.isSend:VARCHAR#,
+      sf.xmlstr = #record.xmlstr:CLOB#,
+      sf.xml_node = #record.xmlNode:VARCHAR#,
+      sf.is_returnId = #record.isReturnid:VARCHAR#,
+      sf.PROTOCOL_TYPE = #record.protocolType:VARCHAR#,
+      sf.is_returnValue = #record.isReturnvalue:VARCHAR#,
+      sf.isJudgeBillSystem = #record.isjudgebillsystem:VARCHAR#,
+      sf.needDealAction = #record.needdealaction:VARCHAR#,
+      sf.notNeedDealAction = #record.notneeddealaction:VARCHAR#,
+      sf.actionPath = #record.actionpath:VARCHAR#,
+      sf.return_Code_Path = #record.returnCodePath:VARCHAR#,
+      sf.key_Paths = #record.keyPaths:VARCHAR#,
+      sf.bill_Of_Systems = #record.billOfSystems:VARCHAR#,
+      sf.INDICANT_NODE = #record.indicantNode:VARCHAR#,
+      sf.SUCCESS_VALUE = #record.successValue:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptFace.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SuptFace" >
+    update t_supt_face
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="applicationId" >
+        application_id = #applicationId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="methodName" >
+        method_name = #methodName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cimpName" >
+        cimp_name = #cimpName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="errorTake" >
+        error_take = #errorTake:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="outXml" >
+        out_xml = #outXml:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="inXml" >
+        in_xml = #inXml:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="paramater" >
+        paramater = #paramater:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="backLimite" >
+        back_limite = #backLimite:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isautoTake" >
+        isauto_take = #isautoTake:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="returnAppid" >
+        return_appid = #returnAppid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        is_valid = #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applicationName" >
+        application_name = #applicationName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="returnAppname" >
+        return_appname = #returnAppname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="exetMethodname" >
+        exet_methodname = #exetMethodname:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isSend" >
+        is_send = #isSend:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="xmlstr" >
+        xmlstr = #xmlstr:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="xmlNode" >
+        xml_node = #xmlNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isReturnid" >
+        is_returnId = #isReturnid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="protocolType" >
+        PROTOCOL_TYPE = #protocolType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isReturnvalue" >
+        is_returnValue = #isReturnvalue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isjudgebillsystem" >
+        isJudgeBillSystem = #isjudgebillsystem:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="needdealaction" >
+        needDealAction = #needdealaction:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notneeddealaction" >
+        notNeedDealAction = #notneeddealaction:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="actionpath" >
+        actionPath = #actionpath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="returnCodePath" >
+        return_Code_Path = #returnCodePath:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="keyPaths" >
+        key_Paths = #keyPaths:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billOfSystems" >
+        bill_Of_Systems = #billOfSystems:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="indicantNode" >
+        INDICANT_NODE = #indicantNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="successValue" >
+        SUCCESS_VALUE = #successValue:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where cimp_face_id = #cimpFaceId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SuptFace" >
+    update t_supt_face
+    set application_id = #applicationId:VARCHAR#,
+      method_name = #methodName:VARCHAR#,
+      cimp_name = #cimpName:VARCHAR#,
+      error_take = #errorTake:VARCHAR#,
+      out_xml = #outXml:VARCHAR#,
+      in_xml = #inXml:VARCHAR#,
+      paramater = #paramater:VARCHAR#,
+      back_limite = #backLimite:VARCHAR#,
+      isauto_take = #isautoTake:VARCHAR#,
+      return_appid = #returnAppid:VARCHAR#,
+      is_valid = #isValid:VARCHAR#,
+      application_name = #applicationName:VARCHAR#,
+      return_appname = #returnAppname:VARCHAR#,
+      exet_methodname = #exetMethodname:VARCHAR#,
+      is_send = #isSend:VARCHAR#,
+      xmlstr = #xmlstr:CLOB#,
+      xml_node = #xmlNode:VARCHAR#,
+      is_returnId = #isReturnid:VARCHAR#,
+      PROTOCOL_TYPE = #protocolType:VARCHAR#,
+      is_returnValue = #isReturnvalue:VARCHAR#,
+      isJudgeBillSystem = #isjudgebillsystem:VARCHAR#,
+      needDealAction = #needdealaction:VARCHAR#,
+      notNeedDealAction = #notneeddealaction:VARCHAR#,
+      actionPath = #actionpath:VARCHAR#,
+      return_Code_Path = #returnCodePath:VARCHAR#,
+      key_Paths = #keyPaths:VARCHAR#,
+      bill_Of_Systems = #billOfSystems:VARCHAR#,
+      INDICANT_NODE = #indicantNode:VARCHAR#,
+      SUCCESS_VALUE = #successValue:VARCHAR#
+    where cimp_face_id = #cimpFaceId:VARCHAR#
+  </update>
+</sqlMap>

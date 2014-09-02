@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="checkActionForm" type="com.free.assist.web.supt.CheckActionForm" />
+	    <form-bean name="taticConfigForm" type="com.free.assist.web.supt.TaticConfigForm" />
+	    <form-bean name="triggerActionForm" type="com.free.assist.web.supt.TriggerActionForm" />
+	</form-beans>
+	<action-mappings>
+		<action path="/supt/checkAction" name="checkActionForm" scope="request" parameter="method" validate="false" type="com.free.assist.web.supt.CheckAction">
+			<description>校验显示</description>
+		</action>
+		<action path="/supt/triggerAction" name="triggerActionForm" scope="request" parameter="method" validate="false" type="com.free.assist.web.supt.CheckAction">
+			<description>校验显示</description>
+		</action>
+		<action path="/supt/taticConfigAction" name="taticConfigForm" scope="request" parameter="method" validate="false" type="com.free.assist.web.supt.TaticConfigAction">
+			<description>策略元素配置</description>
+		</action>
+	</action-mappings>
+</struts-config>

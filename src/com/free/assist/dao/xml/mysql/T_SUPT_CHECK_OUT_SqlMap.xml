@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptCheckOut">
+	<cacheModel id="SuptCheckOut_Cache" type="OSCACHE">
+		<flushInterval hours="2" />
+		<flushOnExecute statement="SuptCheckOut.ibatorgenerated_deleteByPrimaryKey" />
+		<flushOnExecute statement="SuptCheckOut.ibatorgenerated_deleteByExample" />
+		<flushOnExecute statement="SuptCheckOut.ibatorgenerated_insert" />
+		<flushOnExecute statement="SuptCheckOut.ibatorgenerated_insertSelective" />
+		<flushOnExecute statement="SuptCheckOut.ibatorgenerated_updateByPrimaryKey" />
+		<flushOnExecute
+			statement="SuptCheckOut.ibatorgenerated_updateByPrimaryKeySelective" />
+		<flushOnExecute
+			statement="SuptCheckOut.ibatorgenerated_updateByExampleSelective" />
+		<flushOnExecute statement="SuptCheckOut.ibatorgenerated_updateByExample" />
+	</cacheModel>
+	<resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SuptCheckOut">
+		<result column="send_id" property="sendId" jdbcType="VARCHAR" />
+		<result column="cimp_face_id" property="cimpFaceId" jdbcType="VARCHAR" />
+		<result column="out_node" property="outNode" jdbcType="VARCHAR" />
+		<result column="out_ischid_node" property="outIschidNode"
+			jdbcType="VARCHAR" />
+		<result column="out_parent_node" property="outParentNode"
+			jdbcType="VARCHAR" />
+		<result column="out_chidnode_over" property="outChidnodeOver"
+			jdbcType="VARCHAR" />
+		<result column="in_node" property="inNode" jdbcType="TEXT" />
+		<result column="mapp_patt" property="mappPatt" jdbcType="VARCHAR" />
+		<result column="mapp_for_data" property="mappForData" jdbcType="VARCHAR" />
+		<result column="mapp_for_format" property="mappForFormat"
+			jdbcType="VARCHAR" />
+		<result column="mapp_aft_data" property="mappAftData" jdbcType="VARCHAR" />
+		<result column="mapp_aft_format" property="mappAftFormat"
+			jdbcType="VARCHAR" />
+		<result column="order_id" property="orderId" jdbcType="REAL" />
+		<result column="join_name" property="joinName" jdbcType="VARCHAR" />
+		<result column="JOIN_ENABLE" property="joinEnable" jdbcType="CHAR" />
+		<result column="depen_node" property="depenNode" jdbcType="VARCHAR" />
+		<result column="depen_key" property="depenKey" jdbcType="VARCHAR" />
+		<result column="is_simpsys" property="isSimpsys" jdbcType="VARCHAR" />
+		<result column="declare_sn" property="declareSn" jdbcType="VARCHAR" />
+		<result column="is_doubuxml" property="isDoubuxml" jdbcType="VARCHAR" />
+		<result column="doubu_num" property="doubuNum" jdbcType="VARCHAR" />
+		<result column="doubu_par" property="doubuPar" jdbcType="VARCHAR" />
+		<result column="doubu_chi" property="doubuChi" jdbcType="VARCHAR" />
+		<result column="mapping_sn" property="mappingSn" jdbcType="VARCHAR" />
+		<result column="APPEND_CHARS" property="appendChars" jdbcType="VARCHAR" />
+		<result column="APPEND_NODES" property="appendNodes" jdbcType="TEXT" />
+		<result column="IGNORE_ABSENT" property="ignoreAbsent"
+			jdbcType="CHAR" />
+		<result column="SERVER_ID" property="serverId" jdbcType="CHAR" />
+		<result column="PATH_INDICATOR" property="pathIndicator"
+			jdbcType="CHAR" />
+		<result column="ATTACH_HOME" property="attachHome" jdbcType="VARCHAR" />
+		<result column="FILE_NAME_NODE" property="fileNameNode"
+			jdbcType="VARCHAR" />
+		<result column="IS_AVAILABLE" property="available" jdbcType="CHAR" />
+		<result column="IS_ANNOTATE" property="isAnnotate" jdbcType="CHAR" />
+		<result column="SUCCESS_VALUE" property="successValue"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="checkout_BaseResultMap" class="com.regaltec.blocimp.domain.SuptCheckOut"
+		extends="ibatorgenerated_BaseResultMap">
+		<result column="cimp_name" property="cimpName" jdbcType="VARCHAR" />
+		<result column="method_name" property="methodName" jdbcType="VARCHAR" />
+		<result column="application_id" property="applicationId"
+			jdbcType="VARCHAR" />
+		<result column="application_name" property="applicationName"
+			jdbcType="VARCHAR" />
+		<result column="return_appid" property="returnAppid" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="ibatorgenerated_Example_Where_Clause">
+		<iterate property="oredCriteria" conjunction="or" prepend="where"
+			removeFirstPrepend="iterate">
+			<isEqual property="oredCriteria[].valid" compareValue="true">
+				(
+				<iterate prepend="and" property="oredCriteria[].criteriaWithoutValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithSingleValue[].condition$
+					#oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithListValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithListValue[].condition$
+					<iterate property="oredCriteria[].criteriaWithListValue[].values"
+						open="(" close=")" conjunction=",">
+						#oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+				</iterate>
+				<iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue"
+					conjunction="and">
+					$oredCriteria[].criteriaWithBetweenValue[].condition$
+					#oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+					#oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+				)
+			</isEqual>
+		</iterate>
+	</sql>
+	<select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptCheckOutExample"
+		cacheModel="SuptCheckOut.SuptCheckOut_Cache">
+		select send_id, cimp_face_id, out_node, out_ischid_node,
+		out_parent_node, out_chidnode_over,
+		in_node, mapp_patt, mapp_for_data,
+		mapp_for_format, mapp_aft_data,
+		mapp_aft_format, order_id,
+		join_name,
+		JOIN_ENABLE, depen_node, depen_key, is_simpsys, declare_sn,
+		is_doubuxml, doubu_num,
+		doubu_par, doubu_chi, mapping_sn, APPEND_CHARS,
+		APPEND_NODES, IGNORE_ABSENT,
+		SERVER_ID,
+		PATH_INDICATOR, ATTACH_HOME,
+		FILE_NAME_NODE, IS_AVAILABLE, IS_ANNOTATE, SUCCESS_VALUE
+		from
+		t_supt_check_out
+		<isParameterPresent>
+			<include refid="SuptCheckOut.ibatorgenerated_Example_Where_Clause" />
+			<isNotNull property="orderByClause">
+				order by $orderByClause$
+      </isNotNull>
+		</isParameterPresent>
+	</select>
+	<select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptCheckOutKey"
+		cacheModel="SuptCheckOut.SuptCheckOut_Cache">
+		select send_id, cimp_face_id, out_node,
+		out_ischid_node,
+		out_parent_node,
+		out_chidnode_over,
+		in_node, mapp_patt,
+		mapp_for_data,
+		mapp_for_format, mapp_aft_data,
+		mapp_aft_format,
+		order_id,
+		join_name,
+		JOIN_ENABLE, depen_node, depen_key, is_simpsys,
+		declare_sn,
+		is_doubuxml, doubu_num,
+		doubu_par, doubu_chi, mapping_sn,
+		APPEND_CHARS,
+		APPEND_NODES, IGNORE_ABSENT,
+		SERVER_ID,
+		PATH_INDICATOR,
+		ATTACH_HOME,
+		FILE_NAME_NODE, IS_AVAILABLE, IS_ANNOTATE, SUCCESS_VALUE
+		from
+		t_supt_check_out
+		where send_id = #sendId:VARCHAR#
+  </select>
+	<delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptCheckOutKey">
+		delete from t_supt_check_out
+		where send_id = #sendId:VARCHAR#
+  </delete>
+	<delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SuptCheckOutExample">
+		delete from t_supt_check_out
+		<include refid="SuptCheckOut.ibatorgenerated_Example_Where_Clause" />
+	</delete>
+	<insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SuptCheckOut">
+		<selectKey resultClass="java.lang.String" keyProperty="sendId">
+			select replace(uuid(), '-', '') from dual
+    </selectKey>
+		insert into t_supt_check_out (send_id, cimp_face_id, out_node,
+		out_ischid_node, out_parent_node,
+		out_chidnode_over, in_node,
+		mapp_patt, mapp_for_data, mapp_for_format, mapp_aft_data,
+		mapp_aft_format, order_id, join_name, JOIN_ENABLE, depen_node,
+		depen_key, is_simpsys,
+		declare_sn, is_doubuxml, doubu_num, doubu_par,
+		doubu_chi, mapping_sn,
+		APPEND_CHARS,
+		APPEND_NODES, IGNORE_ABSENT,
+		SERVER_ID, PATH_INDICATOR, ATTACH_HOME,
+		FILE_NAME_NODE,
+		IS_AVAILABLE,
+		IS_ANNOTATE, SUCCESS_VALUE)
+		values (#sendId:VARCHAR#,
+		#cimpFaceId:VARCHAR#, #outNode:VARCHAR#,
+		#outIschidNode:VARCHAR#,
+		#outParentNode:VARCHAR#, #outChidnodeOver:VARCHAR#, #inNode:TEXT#,
+		#mappPatt:VARCHAR#,
+		#mappForData:VARCHAR#, #mappForFormat:VARCHAR#,
+		#mappAftData:VARCHAR#,
+		#mappAftFormat:VARCHAR#, #orderId:REAL#,
+		#joinName:VARCHAR#,
+		#joinEnable:CHAR#,
+		#depenNode:VARCHAR#,
+		#depenKey:VARCHAR#, #isSimpsys:VARCHAR#, #declareSn:VARCHAR#,
+		#isDoubuxml:VARCHAR#, #doubuNum:VARCHAR#, #doubuPar:VARCHAR#,
+		#doubuChi:VARCHAR#,
+		#mappingSn:VARCHAR#, #appendChars:VARCHAR#,
+		#appendNodes:TEXT#, #ignoreAbsent:CHAR#,
+		#serverId:CHAR#,
+		#pathIndicator:CHAR#, #attachHome:VARCHAR#,
+		#fileNameNode:VARCHAR#,
+		#available:CHAR#, #isAnnotate:CHAR#, #successValue:VARCHAR#)
+	</insert>
+	<insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SuptCheckOut">
+		<selectKey resultClass="java.lang.String" keyProperty="sendId">
+			select replace(uuid(), '-', '') from dual
+    </selectKey>
+		insert into t_supt_check_out
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="sendId">
+				send_id
+      </isNotNull>
+			<isNotNull prepend="," property="cimpFaceId">
+				cimp_face_id
+      </isNotNull>
+			<isNotNull prepend="," property="outNode">
+				out_node
+      </isNotNull>
+			<isNotNull prepend="," property="outIschidNode">
+				out_ischid_node
+      </isNotNull>
+			<isNotNull prepend="," property="outParentNode">
+				out_parent_node
+      </isNotNull>
+			<isNotNull prepend="," property="outChidnodeOver">
+				out_chidnode_over
+			</isNotNull>
+			<isNotNull prepend="," property="inNode">
+				in_node
+      </isNotNull>
+			<isNotNull prepend="," property="mappPatt">
+				mapp_patt
+      </isNotNull>
+			<isNotNull prepend="," property="mappForData">
+				mapp_for_data
+      </isNotNull>
+			<isNotNull prepend="," property="mappForFormat">
+				mapp_for_format
+      </isNotNull>
+			<isNotNull prepend="," property="mappAftData">
+				mapp_aft_data
+      </isNotNull>
+			<isNotNull prepend="," property="mappAftFormat">
+				mapp_aft_format
+      </isNotNull>
+			<isNotNull prepend="," property="orderId">
+				order_id
+      </isNotNull>
+			<isNotNull prepend="," property="joinName">
+				join_name
+      </isNotNull>
+			<isNotNull prepend="," property="joinEnable">
+				JOIN_ENABLE
+      </isNotNull>
+			<isNotNull prepend="," property="depenNode">
+				depen_node
+      </isNotNull>
+			<isNotNull prepend="," property="depenKey">
+				depen_key
+      </isNotNull>
+			<isNotNull prepend="," property="isSimpsys">
+				is_simpsys
+      </isNotNull>
+			<isNotNull prepend="," property="declareSn">
+				declare_sn
+      </isNotNull>
+			<isNotNull prepend="," property="isDoubuxml">
+				is_doubuxml
+      </isNotNull>
+			<isNotNull prepend="," property="doubuNum">
+				doubu_num
+      </isNotNull>
+			<isNotNull prepend="," property="doubuPar">
+				doubu_par
+      </isNotNull>
+			<isNotNull prepend="," property="doubuChi">
+				doubu_chi
+      </isNotNull>
+			<isNotNull prepend="," property="mappingSn">
+				mapping_sn
+      </isNotNull>
+			<isNotNull prepend="," property="appendChars">
+				APPEND_CHARS
+      </isNotNull>
+			<isNotNull prepend="," property="appendNodes">
+				APPEND_NODES
+      </isNotNull>
+			<isNotNull prepend="," property="ignoreAbsent">
+				IGNORE_ABSENT
+      </isNotNull>
+			<isNotNull prepend="," property="serverId">
+				SERVER_ID
+      </isNotNull>
+			<isNotNull prepend="," property="pathIndicator">
+				PATH_INDICATOR
+      </isNotNull>
+			<isNotNull prepend="," property="attachHome">
+				ATTACH_HOME
+      </isNotNull>
+			<isNotNull prepend="," property="fileNameNode">
+				FILE_NAME_NODE
+      </isNotNull>
+			<isNotNull prepend="," property="available">
+				IS_AVAILABLE
+      </isNotNull>
+			<isNotNull prepend="," property="isAnnotate">
+				IS_ANNOTATE
+      </isNotNull>
+			<isNotNull prepend="," property="successValue">
+				SUCCESS_VALUE
+      </isNotNull>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="sendId">
+				#sendId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cimpFaceId">
+				#cimpFaceId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="outNode">
+				#outNode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="outIschidNode">
+				#outIschidNode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="outParentNode">
+				#outParentNode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="outChidnodeOver">
+				#outChidnodeOver:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="inNode">
+				#inNode:TEXT#
+      </isNotNull>
+			<isNotNull prepend="," property="mappPatt">
+				#mappPatt:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="mappForData">
+				#mappForData:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="mappForFormat">
+				#mappForFormat:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="mappAftData">
+				#mappAftData:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="mappAftFormat">
+				#mappAftFormat:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="orderId">
+				#orderId:REAL#
+      </isNotNull>
+			<isNotNull prepend="," property="joinName">
+				#joinName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="joinEnable">
+				#joinEnable:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="depenNode">
+				#depenNode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="depenKey">
+				#depenKey:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isSimpsys">
+				#isSimpsys:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="declareSn">
+				#declareSn:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isDoubuxml">
+				#isDoubuxml:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="doubuNum">
+				#doubuNum:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="doubuPar">
+				#doubuPar:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="doubuChi">
+				#doubuChi:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="mappingSn">
+				#mappingSn:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="appendChars">
+				#appendChars:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="appendNodes">
+				#appendNodes:TEXT#
+			</isNotNull>
+			<isNotNull prepend="," property="ignoreAbsent">
+				#ignoreAbsent:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="serverId">
+				#serverId:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="pathIndicator">
+				#pathIndicator:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="attachHome">
+				#attachHome:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="fileNameNode">
+				#fileNameNode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="available">
+				#available:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isAnnotate">
+				#isAnnotate:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="successValue">
+				#successValue:VARCHAR#
+			</isNotNull>
+			)
+		</dynamic>
+	</insert>
+	<select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SuptCheckOutExample"
+		resultClass="java.lang.Integer">
+		select count(*) from t_supt_check_out
+		<include refid="SuptCheckOut.ibatorgenerated_Example_Where_Clause" />
+	</select>
+	<update id="ibatorgenerated_updateByExampleSelective">
+		update t_supt_check_out
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="record.sendId">
+				send_id =
+				#record.sendId:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.cimpFaceId">
+				cimp_face_id =
+				#record.cimpFaceId:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.outNode">
+				out_node =
+				#record.outNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.outIschidNode">
+				out_ischid_node =
+				#record.outIschidNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.outParentNode">
+				out_parent_node =
+				#record.outParentNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.outChidnodeOver">
+				out_chidnode_over =
+				#record.outChidnodeOver:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.inNode">
+				in_node =
+				#record.inNode:TEXT#
+      </isNotNull>
+			<isNotNull prepend="," property="record.mappPatt">
+				mapp_patt =
+				#record.mappPatt:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.mappForData">
+				mapp_for_data =
+				#record.mappForData:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.mappForFormat">
+				mapp_for_format =
+				#record.mappForFormat:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.mappAftData">
+				mapp_aft_data =
+				#record.mappAftData:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.mappAftFormat">
+				mapp_aft_format =
+				#record.mappAftFormat:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.orderId">
+				order_id =
+				#record.orderId:REAL#
+      </isNotNull>
+			<isNotNull prepend="," property="record.joinName">
+				join_name =
+				#record.joinName:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.joinEnable">
+				JOIN_ENABLE =
+				#record.joinEnable:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.depenNode">
+				depen_node =
+				#record.depenNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.depenKey">
+				depen_key =
+				#record.depenKey:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.isSimpsys">
+				is_simpsys =
+				#record.isSimpsys:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.declareSn">
+				declare_sn =
+				#record.declareSn:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.isDoubuxml">
+				is_doubuxml =
+				#record.isDoubuxml:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.doubuNum">
+				doubu_num =
+				#record.doubuNum:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.doubuPar">
+				doubu_par =
+				#record.doubuPar:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.doubuChi">
+				doubu_chi =
+				#record.doubuChi:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.mappingSn">
+				mapping_sn =
+				#record.mappingSn:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.appendChars">
+				APPEND_CHARS =
+				#record.appendChars:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.appendNodes">
+				APPEND_NODES =
+				#record.appendNodes:TEXT#
+      </isNotNull>
+			<isNotNull prepend="," property="record.ignoreAbsent">
+				IGNORE_ABSENT =
+				#record.ignoreAbsent:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.serverId">
+				SERVER_ID =
+				#record.serverId:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.pathIndicator">
+				PATH_INDICATOR =
+				#record.pathIndicator:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.attachHome">
+				ATTACH_HOME =
+				#record.attachHome:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.fileNameNode">
+				FILE_NAME_NODE =
+				#record.fileNameNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.available">
+				IS_AVAILABLE =
+				#record.available:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.isAnnotate">
+				IS_ANNOTATE =
+				#record.isAnnotate:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="record.successValue">
+				SUCCESS_VALUE =
+				#record.successValue:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		<isParameterPresent>
+			<include refid="SuptCheckOut.ibatorgenerated_Example_Where_Clause" />
+		</isParameterPresent>
+	</update>
+	<update id="ibatorgenerated_updateByExample">
+		update t_supt_check_out
+		set send_id = #record.sendId:VARCHAR#,
+		cimp_face_id = #record.cimpFaceId:VARCHAR#,
+		out_node =
+		#record.outNode:VARCHAR#,
+		out_ischid_node =
+		#record.outIschidNode:VARCHAR#,
+		out_parent_node =
+		#record.outParentNode:VARCHAR#,
+		out_chidnode_over =
+		#record.outChidnodeOver:VARCHAR#,
+		in_node = #record.inNode:TEXT#,
+		mapp_patt = #record.mappPatt:VARCHAR#,
+		mapp_for_data =
+		#record.mappForData:VARCHAR#,
+		mapp_for_format =
+		#record.mappForFormat:VARCHAR#,
+		mapp_aft_data =
+		#record.mappAftData:VARCHAR#,
+		mapp_aft_format =
+		#record.mappAftFormat:VARCHAR#,
+		order_id = #record.orderId:REAL#,
+		join_name = #record.joinName:VARCHAR#,
+		JOIN_ENABLE =
+		#record.joinEnable:CHAR#,
+		depen_node = #record.depenNode:VARCHAR#,
+		depen_key = #record.depenKey:VARCHAR#,
+		is_simpsys =
+		#record.isSimpsys:VARCHAR#,
+		declare_sn = #record.declareSn:VARCHAR#,
+		is_doubuxml = #record.isDoubuxml:VARCHAR#,
+		doubu_num =
+		#record.doubuNum:VARCHAR#,
+		doubu_par = #record.doubuPar:VARCHAR#,
+		doubu_chi = #record.doubuChi:VARCHAR#,
+		mapping_sn =
+		#record.mappingSn:VARCHAR#,
+		APPEND_CHARS =
+		#record.appendChars:VARCHAR#,
+		APPEND_NODES = #record.appendNodes:TEXT#,
+		IGNORE_ABSENT = #record.ignoreAbsent:CHAR#,
+		SERVER_ID =
+		#record.serverId:CHAR#,
+		PATH_INDICATOR = #record.pathIndicator:CHAR#,
+		ATTACH_HOME = #record.attachHome:VARCHAR#,
+		FILE_NAME_NODE =
+		#record.fileNameNode:VARCHAR#,
+		IS_AVAILABLE = #record.available:CHAR#,
+		IS_ANNOTATE = #record.isAnnotate:CHAR#,
+		SUCCESS_VALUE =
+		#record.successValue:VARCHAR#
+		<isParameterPresent>
+			<include refid="SuptCheckOut.ibatorgenerated_Example_Where_Clause" />
+		</isParameterPresent>
+	</update>
+	<update id="ibatorgenerated_updateByPrimaryKeySelective"
+		parameterClass="com.regaltec.blocimp.domain.SuptCheckOut">
+		update t_supt_check_out
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="cimpFaceId">
+				cimp_face_id =
+				#cimpFaceId:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="outNode">
+				out_node =
+				#outNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="outIschidNode">
+				out_ischid_node =
+				#outIschidNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="outParentNode">
+				out_parent_node =
+				#outParentNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="outChidnodeOver">
+				out_chidnode_over =
+				#outChidnodeOver:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="inNode">
+				in_node = #inNode:TEXT#
+			</isNotNull>
+			<isNotNull prepend="," property="mappPatt">
+				mapp_patt =
+				#mappPatt:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="mappForData">
+				mapp_for_data =
+				#mappForData:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="mappForFormat">
+				mapp_for_format =
+				#mappForFormat:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="mappAftData">
+				mapp_aft_data =
+				#mappAftData:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="mappAftFormat">
+				mapp_aft_format =
+				#mappAftFormat:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="orderId">
+				order_id = #orderId:REAL#
+			</isNotNull>
+			<isNotNull prepend="," property="joinName">
+				join_name =
+				#joinName:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="joinEnable">
+				JOIN_ENABLE =
+				#joinEnable:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="depenNode">
+				depen_node =
+				#depenNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="depenKey">
+				depen_key =
+				#depenKey:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="isSimpsys">
+				is_simpsys =
+				#isSimpsys:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="declareSn">
+				declare_sn =
+				#declareSn:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="isDoubuxml">
+				is_doubuxml =
+				#isDoubuxml:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="doubuNum">
+				doubu_num =
+				#doubuNum:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="doubuPar">
+				doubu_par =
+				#doubuPar:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="doubuChi">
+				doubu_chi =
+				#doubuChi:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="mappingSn">
+				mapping_sn =
+				#mappingSn:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="appendChars">
+				APPEND_CHARS =
+				#appendChars:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="appendNodes">
+				APPEND_NODES =
+				#appendNodes:TEXT#
+      </isNotNull>
+			<isNotNull prepend="," property="ignoreAbsent">
+				IGNORE_ABSENT =
+				#ignoreAbsent:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="serverId">
+				SERVER_ID = #serverId:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="pathIndicator">
+				PATH_INDICATOR =
+				#pathIndicator:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="attachHome">
+				ATTACH_HOME =
+				#attachHome:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="fileNameNode">
+				FILE_NAME_NODE =
+				#fileNameNode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="available">
+				IS_AVAILABLE =
+				#available:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="isAnnotate">
+				IS_ANNOTATE =
+				#isAnnotate:CHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="successValue">
+				SUCCESS_VALUE =
+				#successValue:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		where send_id = #sendId:VARCHAR#
+	</update>
+	<update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptCheckOut">
+		update t_supt_check_out
+		set cimp_face_id = #cimpFaceId:VARCHAR#,
+		out_node = #outNode:VARCHAR#,
+		out_ischid_node =
+		#outIschidNode:VARCHAR#,
+		out_parent_node = #outParentNode:VARCHAR#,
+		out_chidnode_over = #outChidnodeOver:VARCHAR#,
+		in_node = #inNode:TEXT#,
+		mapp_patt = #mappPatt:VARCHAR#,
+		mapp_for_data = #mappForData:VARCHAR#,
+		mapp_for_format = #mappForFormat:VARCHAR#,
+		mapp_aft_data =
+		#mappAftData:VARCHAR#,
+		mapp_aft_format = #mappAftFormat:VARCHAR#,
+		order_id = #orderId:REAL#,
+		join_name = #joinName:VARCHAR#,
+		JOIN_ENABLE =
+		#joinEnable:CHAR#,
+		depen_node = #depenNode:VARCHAR#,
+		depen_key =
+		#depenKey:VARCHAR#,
+		is_simpsys = #isSimpsys:VARCHAR#,
+		declare_sn =
+		#declareSn:VARCHAR#,
+		is_doubuxml = #isDoubuxml:VARCHAR#,
+		doubu_num =
+		#doubuNum:VARCHAR#,
+		doubu_par = #doubuPar:VARCHAR#,
+		doubu_chi =
+		#doubuChi:VARCHAR#,
+		mapping_sn = #mappingSn:VARCHAR#,
+		APPEND_CHARS =
+		#appendChars:VARCHAR#,
+		APPEND_NODES = #appendNodes:TEXT#,
+		IGNORE_ABSENT
+		= #ignoreAbsent:CHAR#,
+		SERVER_ID = #serverId:CHAR#,
+		PATH_INDICATOR =
+		#pathIndicator:CHAR#,
+		ATTACH_HOME = #attachHome:VARCHAR#,
+		FILE_NAME_NODE = #fileNameNode:VARCHAR#,
+		IS_AVAILABLE =
+		#available:CHAR#,
+		IS_ANNOTATE = #isAnnotate:CHAR#,
+		SUCCESS_VALUE =
+		#successValue:VARCHAR#
+		where send_id = #sendId:VARCHAR#
+  </update>
+	<select id="ibatorgenerated_selectCheckOutByExample" resultMap="checkout_BaseResultMap"
+		parameterClass="com.regaltec.blocimp.domain.SuptCheckOutExample"
+		cacheModel="SuptCheckOut.SuptCheckOut_Cache">
+		SELECT send_id, sc.cimp_face_id, out_node, out_ischid_node,
+		out_parent_node, out_chidnode_over,
+		in_node, mapp_patt, mapp_for_data,
+		mapp_for_format, mapp_aft_data,
+		mapp_aft_format, order_id,join_name,
+		JOIN_ENABLE,depen_node,depen_key,is_simpsys,declare_sn,sf.cimp_name,sf.method_name,sf.application_id,sf.application_name,sf.return_appid,
+		sc.is_doubuxml,sc.doubu_num,sc.doubu_par,sc.doubu_chi,sc.mapping_sn,
+		sc.APPEND_CHARS as APPEND_CHARS, sc.APPEND_NODES, sc.IGNORE_ABSENT as
+		IGNORE_ABSENT,sc.ATTACH_HOME as ATTACH_HOME,sc.FILE_NAME_NODE as
+		FILE_NAME_NODE,
+		sc.IS_AVAILABLE as IS_AVAILABLE,sc.SERVER_ID as
+		SERVER_ID, sc.PATH_INDICATOR as
+		PATH_INDICATOR, sc.IS_ANNOTATE as
+		IS_ANNOTATE, sc.SUCCESS_VALUE as
+		SUCCESS_VALUE
+		FROM t_supt_check_out
+		sc,t_supt_face sf WHERE
+		sc.cimp_face_id=sf.cimp_face_id
+		<isParameterPresent>
+			<include refid="SuptCheck.ibatorgenerated_Example_Where_Clause" />
+			<isNotNull property="beforeOrSQL">
+				$beforeOrSQL$
+      </isNotNull>
+			<isNotNull property="orderByClause">
+				order by $orderByClause$
+      </isNotNull>
+		</isParameterPresent>
+	</select>
+</sqlMap>

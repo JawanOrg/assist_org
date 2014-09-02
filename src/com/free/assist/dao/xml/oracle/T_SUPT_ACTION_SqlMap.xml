@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptAction" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SuptAction" >
+    <result column="ACTION_ID" property="actionId" jdbcType="VARCHAR" />
+    <result column="BUSINESS_TYPE" property="businessType" jdbcType="VARCHAR" />
+    <result column="BILL_ID" property="billId" jdbcType="VARCHAR" />
+    <result column="TASK_ID" property="taskId" jdbcType="VARCHAR" />
+    <result column="BILL_STATUS" property="billStatus" jdbcType="VARCHAR" />
+    <result column="TASK_STATUS" property="taskStatus" jdbcType="VARCHAR" />
+    <result column="ACTION_TYPE" property="actionType" jdbcType="VARCHAR" />
+    <result column="PRE_ACTION_ID" property="preActionId" jdbcType="VARCHAR" />
+    <result column="AGENTOR" property="agentor" jdbcType="VARCHAR" />
+    <result column="AGENTOR_GROUP" property="agentorGroup" jdbcType="VARCHAR" />
+    <result column="OPERATE_MACHINE_INFO" property="operateMachineInfo" jdbcType="VARCHAR" />
+    <result column="OPERATE_WAY" property="operateWay" jdbcType="VARCHAR" />
+    <result column="OPERATE_DEPT" property="operateDept" jdbcType="VARCHAR" />
+    <result column="NOTIFY_MODE" property="notifyMode" jdbcType="VARCHAR" />
+    <result column="NOTIFY_TYPE" property="notifyType" jdbcType="VARCHAR" />
+    <result column="NOTIFY_CONTENT" property="notifyContent" jdbcType="VARCHAR" />
+    <result column="NOTIFY_OTHER_PHONES" property="notifyOtherPhones" jdbcType="VARCHAR" />
+    <result column="LINKS" property="links" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="OPERATOR" property="operator" jdbcType="VARCHAR" />
+    <result column="OPERATE_TIME" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptActionExample" >
+    select ACTION_ID, BUSINESS_TYPE, BILL_ID, TASK_ID, BILL_STATUS, TASK_STATUS, ACTION_TYPE,
+      PRE_ACTION_ID, AGENTOR, AGENTOR_GROUP, OPERATE_MACHINE_INFO, OPERATE_WAY, OPERATE_DEPT,
+      NOTIFY_MODE, NOTIFY_TYPE, NOTIFY_CONTENT, NOTIFY_OTHER_PHONES, LINKS, REMARK, OPERATOR,
+      OPERATE_TIME
+    from T_SUPT_ACTION
+    <isParameterPresent >
+      <include refid="SuptAction.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptActionKey" >
+    select ACTION_ID, BUSINESS_TYPE, BILL_ID, TASK_ID, BILL_STATUS, TASK_STATUS, ACTION_TYPE,
+      PRE_ACTION_ID, AGENTOR, AGENTOR_GROUP, OPERATE_MACHINE_INFO, OPERATE_WAY, OPERATE_DEPT,
+      NOTIFY_MODE, NOTIFY_TYPE, NOTIFY_CONTENT, NOTIFY_OTHER_PHONES, LINKS, REMARK, OPERATOR,
+      OPERATE_TIME
+    from T_SUPT_ACTION
+    where ACTION_ID = #actionId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SuptActionKey" >
+    delete from T_SUPT_ACTION
+    where ACTION_ID = #actionId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SuptActionExample" >
+    delete from T_SUPT_ACTION
+    <include refid="SuptAction.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SuptAction" >
+    <selectKey resultClass="java.lang.String" keyProperty="actionId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into T_SUPT_ACTION (ACTION_ID, BUSINESS_TYPE, BILL_ID, TASK_ID, BILL_STATUS, TASK_STATUS,
+      ACTION_TYPE, PRE_ACTION_ID, AGENTOR, AGENTOR_GROUP, OPERATE_MACHINE_INFO, OPERATE_WAY,
+      OPERATE_DEPT, NOTIFY_MODE, NOTIFY_TYPE, NOTIFY_CONTENT, NOTIFY_OTHER_PHONES, LINKS, REMARK,
+      OPERATOR, OPERATE_TIME)
+    values (#actionId:VARCHAR#, #businessType:VARCHAR#, #billId:VARCHAR#, #taskId:VARCHAR#,
+      #billStatus:VARCHAR#, #taskStatus:VARCHAR#, #actionType:VARCHAR#, #preActionId:VARCHAR#,
+      #agentor:VARCHAR#, #agentorGroup:VARCHAR#, #operateMachineInfo:VARCHAR#, #operateWay:VARCHAR#,
+      #operateDept:VARCHAR#, #notifyMode:VARCHAR#, #notifyType:VARCHAR#, #notifyContent:VARCHAR#,
+      #notifyOtherPhones:VARCHAR#, #links:VARCHAR#, #remark:VARCHAR#, #operator:VARCHAR#,
+      #operateTime:TIMESTAMP#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SuptAction" >
+    <selectKey resultClass="java.lang.String" keyProperty="actionId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into T_SUPT_ACTION
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="actionId" >
+        ACTION_ID
+      </isNotNull>
+      <isNotNull prepend="," property="businessType" >
+        BUSINESS_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        BILL_ID
+      </isNotNull>
+      <isNotNull prepend="," property="taskId" >
+        TASK_ID
+      </isNotNull>
+      <isNotNull prepend="," property="billStatus" >
+        BILL_STATUS
+      </isNotNull>
+      <isNotNull prepend="," property="taskStatus" >
+        TASK_STATUS
+      </isNotNull>
+      <isNotNull prepend="," property="actionType" >
+        ACTION_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="preActionId" >
+        PRE_ACTION_ID
+      </isNotNull>
+      <isNotNull prepend="," property="agentor" >
+        AGENTOR
+      </isNotNull>
+      <isNotNull prepend="," property="agentorGroup" >
+        AGENTOR_GROUP
+      </isNotNull>
+      <isNotNull prepend="," property="operateMachineInfo" >
+        OPERATE_MACHINE_INFO
+      </isNotNull>
+      <isNotNull prepend="," property="operateWay" >
+        OPERATE_WAY
+      </isNotNull>
+      <isNotNull prepend="," property="operateDept" >
+        OPERATE_DEPT
+      </isNotNull>
+      <isNotNull prepend="," property="notifyMode" >
+        NOTIFY_MODE
+      </isNotNull>
+      <isNotNull prepend="," property="notifyType" >
+        NOTIFY_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="notifyContent" >
+        NOTIFY_CONTENT
+      </isNotNull>
+      <isNotNull prepend="," property="notifyOtherPhones" >
+        NOTIFY_OTHER_PHONES
+      </isNotNull>
+      <isNotNull prepend="," property="links" >
+        LINKS
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      <isNotNull prepend="," property="operator" >
+        OPERATOR
+      </isNotNull>
+      <isNotNull prepend="," property="operateTime" >
+        OPERATE_TIME
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="actionId" >
+        #actionId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="businessType" >
+        #businessType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        #billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskId" >
+        #taskId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billStatus" >
+        #billStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskStatus" >
+        #taskStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="actionType" >
+        #actionType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="preActionId" >
+        #preActionId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="agentor" >
+        #agentor:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="agentorGroup" >
+        #agentorGroup:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateMachineInfo" >
+        #operateMachineInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateWay" >
+        #operateWay:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateDept" >
+        #operateDept:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyMode" >
+        #notifyMode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyType" >
+        #notifyType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyContent" >
+        #notifyContent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyOtherPhones" >
+        #notifyOtherPhones:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="links" >
+        #links:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operator" >
+        #operator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateTime" >
+        #operateTime:TIMESTAMP#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SuptActionExample" resultClass="java.lang.Integer" >
+    select count(*) from T_SUPT_ACTION
+    <include refid="SuptAction.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update T_SUPT_ACTION
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.actionId" >
+        ACTION_ID = #record.actionId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.businessType" >
+        BUSINESS_TYPE = #record.businessType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.billId" >
+        BILL_ID = #record.billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.taskId" >
+        TASK_ID = #record.taskId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.billStatus" >
+        BILL_STATUS = #record.billStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.taskStatus" >
+        TASK_STATUS = #record.taskStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.actionType" >
+        ACTION_TYPE = #record.actionType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.preActionId" >
+        PRE_ACTION_ID = #record.preActionId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.agentor" >
+        AGENTOR = #record.agentor:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.agentorGroup" >
+        AGENTOR_GROUP = #record.agentorGroup:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operateMachineInfo" >
+        OPERATE_MACHINE_INFO = #record.operateMachineInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operateWay" >
+        OPERATE_WAY = #record.operateWay:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operateDept" >
+        OPERATE_DEPT = #record.operateDept:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.notifyMode" >
+        NOTIFY_MODE = #record.notifyMode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.notifyType" >
+        NOTIFY_TYPE = #record.notifyType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.notifyContent" >
+        NOTIFY_CONTENT = #record.notifyContent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.notifyOtherPhones" >
+        NOTIFY_OTHER_PHONES = #record.notifyOtherPhones:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.links" >
+        LINKS = #record.links:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operator" >
+        OPERATOR = #record.operator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operateTime" >
+        OPERATE_TIME = #record.operateTime:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptAction.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update T_SUPT_ACTION
+    set ACTION_ID = #record.actionId:VARCHAR#,
+      BUSINESS_TYPE = #record.businessType:VARCHAR#,
+      BILL_ID = #record.billId:VARCHAR#,
+      TASK_ID = #record.taskId:VARCHAR#,
+      BILL_STATUS = #record.billStatus:VARCHAR#,
+      TASK_STATUS = #record.taskStatus:VARCHAR#,
+      ACTION_TYPE = #record.actionType:VARCHAR#,
+      PRE_ACTION_ID = #record.preActionId:VARCHAR#,
+      AGENTOR = #record.agentor:VARCHAR#,
+      AGENTOR_GROUP = #record.agentorGroup:VARCHAR#,
+      OPERATE_MACHINE_INFO = #record.operateMachineInfo:VARCHAR#,
+      OPERATE_WAY = #record.operateWay:VARCHAR#,
+      OPERATE_DEPT = #record.operateDept:VARCHAR#,
+      NOTIFY_MODE = #record.notifyMode:VARCHAR#,
+      NOTIFY_TYPE = #record.notifyType:VARCHAR#,
+      NOTIFY_CONTENT = #record.notifyContent:VARCHAR#,
+      NOTIFY_OTHER_PHONES = #record.notifyOtherPhones:VARCHAR#,
+      LINKS = #record.links:VARCHAR#,
+      REMARK = #record.remark:VARCHAR#,
+      OPERATOR = #record.operator:VARCHAR#,
+      OPERATE_TIME = #record.operateTime:TIMESTAMP#
+    <isParameterPresent >
+      <include refid="SuptAction.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SuptAction" >
+    update T_SUPT_ACTION
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="businessType" >
+        BUSINESS_TYPE = #businessType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        BILL_ID = #billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskId" >
+        TASK_ID = #taskId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billStatus" >
+        BILL_STATUS = #billStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="taskStatus" >
+        TASK_STATUS = #taskStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="actionType" >
+        ACTION_TYPE = #actionType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="preActionId" >
+        PRE_ACTION_ID = #preActionId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="agentor" >
+        AGENTOR = #agentor:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="agentorGroup" >
+        AGENTOR_GROUP = #agentorGroup:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateMachineInfo" >
+        OPERATE_MACHINE_INFO = #operateMachineInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateWay" >
+        OPERATE_WAY = #operateWay:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateDept" >
+        OPERATE_DEPT = #operateDept:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyMode" >
+        NOTIFY_MODE = #notifyMode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyType" >
+        NOTIFY_TYPE = #notifyType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyContent" >
+        NOTIFY_CONTENT = #notifyContent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="notifyOtherPhones" >
+        NOTIFY_OTHER_PHONES = #notifyOtherPhones:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="links" >
+        LINKS = #links:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operator" >
+        OPERATOR = #operator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operateTime" >
+        OPERATE_TIME = #operateTime:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    where ACTION_ID = #actionId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SuptAction" >
+    update T_SUPT_ACTION
+    set BUSINESS_TYPE = #businessType:VARCHAR#,
+      BILL_ID = #billId:VARCHAR#,
+      TASK_ID = #taskId:VARCHAR#,
+      BILL_STATUS = #billStatus:VARCHAR#,
+      TASK_STATUS = #taskStatus:VARCHAR#,
+      ACTION_TYPE = #actionType:VARCHAR#,
+      PRE_ACTION_ID = #preActionId:VARCHAR#,
+      AGENTOR = #agentor:VARCHAR#,
+      AGENTOR_GROUP = #agentorGroup:VARCHAR#,
+      OPERATE_MACHINE_INFO = #operateMachineInfo:VARCHAR#,
+      OPERATE_WAY = #operateWay:VARCHAR#,
+      OPERATE_DEPT = #operateDept:VARCHAR#,
+      NOTIFY_MODE = #notifyMode:VARCHAR#,
+      NOTIFY_TYPE = #notifyType:VARCHAR#,
+      NOTIFY_CONTENT = #notifyContent:VARCHAR#,
+      NOTIFY_OTHER_PHONES = #notifyOtherPhones:VARCHAR#,
+      LINKS = #links:VARCHAR#,
+      REMARK = #remark:VARCHAR#,
+      OPERATOR = #operator:VARCHAR#,
+      OPERATE_TIME = #operateTime:TIMESTAMP#
+    where ACTION_ID = #actionId:VARCHAR#
+  </update>
+</sqlMap>

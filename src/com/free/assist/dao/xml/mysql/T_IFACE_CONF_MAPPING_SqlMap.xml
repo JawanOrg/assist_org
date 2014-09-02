@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceConfigMapping" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.IfaceConfigMapping" >
+    <result column="MAPPING_ID" property="mappingId" jdbcType="CHAR" />
+    <result column="SOURCE_PID" property="sourcePid" jdbcType="CHAR" />
+    <result column="SOURCE_ID" property="sourceId" jdbcType="CHAR" />
+    <result column="SOURCE_SN" property="sourceSn" jdbcType="VARCHAR" />
+    <result column="SOURCE_NAME" property="sourceName" jdbcType="VARCHAR" />
+    <result column="RESULT_PID" property="resultPid" jdbcType="CHAR" />
+    <result column="RESULT_ID" property="resultId" jdbcType="CHAR" />
+    <result column="RESULT_SN" property="resultSn" jdbcType="VARCHAR" />
+    <result column="RESULT_NAME" property="resultName" jdbcType="VARCHAR" />
+    <result column="IS_AVAILABLE" property="available" jdbcType="CHAR" />
+    <result column="UPDATE_ON" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_BY" property="updateUser" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMappingExample" >
+    select MAPPING_ID, SOURCE_PID, SOURCE_ID, SOURCE_SN, SOURCE_NAME, RESULT_PID, RESULT_ID,
+      RESULT_SN, RESULT_NAME, IS_AVAILABLE, UPDATE_ON, UPDATE_BY
+    from v_iface_conf_mapping
+    <isParameterPresent >
+      <include refid="IfaceConfigMapping.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMappingKey" >
+    select MAPPING_ID, SOURCE_PID, SOURCE_ID, SOURCE_SN, SOURCE_NAME, RESULT_PID, RESULT_ID,
+      RESULT_SN, RESULT_NAME, IS_AVAILABLE, UPDATE_ON, UPDATE_BY
+    from v_iface_conf_mapping
+    where MAPPING_ID = #mappingId:CHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMappingKey" >
+    delete from t_iface_conf_mapping
+    where MAPPING_ID = #mappingId:CHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMappingExample" >
+    delete from t_iface_conf_mapping
+    <include refid="IfaceConfigMapping.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMapping" >
+    <selectKey resultClass="java.lang.String" keyProperty="mappingId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_conf_mapping (MAPPING_ID, SOURCE_ID, RESULT_ID, IS_AVAILABLE, UPDATE_ON,
+      UPDATE_BY)
+    values (#mappingId:CHAR#, #sourceId:CHAR#, #resultId:CHAR#, #available:CHAR#,
+      #updateDate:TIMESTAMP#, #updateUser:CHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMapping" >
+    <selectKey resultClass="java.lang.String" keyProperty="mappingId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_conf_mapping
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="mappingId" >
+        MAPPING_ID
+      </isNotNull>
+      <isNotNull prepend="," property="sourceId" >
+        SOURCE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="resultId" >
+        RESULT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="mappingId" >
+        #mappingId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sourceId" >
+        #sourceId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="resultId" >
+        #resultId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        #available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        #updateUser:CHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMappingExample" resultClass="java.lang.Integer" >
+    select count(*) from v_iface_conf_mapping
+    <include refid="IfaceConfigMapping.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_conf_mapping
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.mappingId" >
+        MAPPING_ID = #record.mappingId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sourceId" >
+        SOURCE_ID = #record.sourceId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.resultId" >
+        RESULT_ID = #record.resultId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.available" >
+        IS_AVAILABLE = #record.available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateDate" >
+        UPDATE_ON = #record.updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateUser" >
+        UPDATE_BY = #record.updateUser:CHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceConfigMapping.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_conf_mapping
+    set MAPPING_ID = #record.mappingId:CHAR#,
+      SOURCE_ID = #record.sourceId:CHAR#,
+      RESULT_ID = #record.resultId:CHAR#,
+      IS_AVAILABLE = #record.available:CHAR#,
+      UPDATE_ON = #record.updateDate:TIMESTAMP#,
+      UPDATE_BY = #record.updateUser:CHAR#
+    <isParameterPresent >
+      <include refid="IfaceConfigMapping.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMapping" >
+    update t_iface_conf_mapping
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="sourceId" >
+        SOURCE_ID = #sourceId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="resultId" >
+        RESULT_ID = #resultId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE = #available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON = #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY = #updateUser:CHAR#
+      </isNotNull>
+    </dynamic>
+    where MAPPING_ID = #mappingId:CHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceConfigMapping" >
+    update t_iface_conf_mapping
+    set SOURCE_ID = #sourceId:CHAR#,
+      RESULT_ID = #resultId:CHAR#,
+      IS_AVAILABLE = #available:CHAR#,
+      UPDATE_ON = #updateDate:TIMESTAMP#,
+      UPDATE_BY = #updateUser:CHAR#
+    where MAPPING_ID = #mappingId:CHAR#
+  </update>
+</sqlMap>

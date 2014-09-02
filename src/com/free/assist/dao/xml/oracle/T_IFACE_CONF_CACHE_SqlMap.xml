@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceConfCache" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.IfaceConfCache" >
+    <result column="ROOT_ID" property="rootId" jdbcType="VARCHAR" />
+    <result column="RESPONSE_CODE" property="responseCode" jdbcType="VARCHAR" />
+    <result column="RESPONSE_INFO" property="responseInfo" jdbcType="VARCHAR" />
+    <result column="SYS_CODE" property="sysCode" jdbcType="VARCHAR" />
+    <result column="SYS_CODENAME" property="sysCodename" jdbcType="VARCHAR" />
+    <result column="ITEM_ID" property="itemId" jdbcType="VARCHAR" />
+    <result column="ITEM_NAME" property="itemName" jdbcType="VARCHAR" />
+    <result column="PARENT_ITEM_ID" property="parentItemId" jdbcType="VARCHAR" />
+    <result column="CHANGETYPE" property="changetype" jdbcType="VARCHAR" />
+    <result column="SERIAL_NUMBER" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="IS_AVAILABLE" property="isAvailable" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceConfCacheExample" >
+    select ROOT_ID, RESPONSE_CODE, RESPONSE_INFO, SYS_CODE, SYS_CODENAME, ITEM_ID, ITEM_NAME,
+      PARENT_ITEM_ID, CHANGETYPE, SERIAL_NUMBER, IS_AVAILABLE
+    from t_iface_conf_cache
+    <isParameterPresent >
+      <include refid="IfaceConfCache.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceConfCacheKey" >
+    select ROOT_ID, RESPONSE_CODE, RESPONSE_INFO, SYS_CODE, SYS_CODENAME, ITEM_ID, ITEM_NAME,
+      PARENT_ITEM_ID, CHANGETYPE, SERIAL_NUMBER, IS_AVAILABLE
+    from t_iface_conf_cache
+    where ROOT_ID = #rootId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.IfaceConfCacheKey" >
+    delete from t_iface_conf_cache
+    where ROOT_ID = #rootId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.IfaceConfCacheExample" >
+    delete from t_iface_conf_cache
+    <include refid="IfaceConfCache.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.IfaceConfCache" >
+    <selectKey resultClass="java.lang.String" keyProperty="rootId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_conf_cache (ROOT_ID, RESPONSE_CODE, RESPONSE_INFO, SYS_CODE, SYS_CODENAME,
+      ITEM_ID, ITEM_NAME, PARENT_ITEM_ID, CHANGETYPE, SERIAL_NUMBER, IS_AVAILABLE)
+    values (#rootId:VARCHAR#, #responseCode:VARCHAR#, #responseInfo:VARCHAR#, #sysCode:VARCHAR#,
+      #sysCodename:VARCHAR#, #itemId:VARCHAR#, #itemName:VARCHAR#, #parentItemId:VARCHAR#,
+      #changetype:VARCHAR#, #serialNumber:VARCHAR#, #isAvailable:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.IfaceConfCache" >
+    <selectKey resultClass="java.lang.String" keyProperty="rootId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_conf_cache
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="rootId" >
+        ROOT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="responseCode" >
+        RESPONSE_CODE
+      </isNotNull>
+      <isNotNull prepend="," property="responseInfo" >
+        RESPONSE_INFO
+      </isNotNull>
+      <isNotNull prepend="," property="sysCode" >
+        SYS_CODE
+      </isNotNull>
+      <isNotNull prepend="," property="sysCodename" >
+        SYS_CODENAME
+      </isNotNull>
+      <isNotNull prepend="," property="itemId" >
+        ITEM_ID
+      </isNotNull>
+      <isNotNull prepend="," property="itemName" >
+        ITEM_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="parentItemId" >
+        PARENT_ITEM_ID
+      </isNotNull>
+      <isNotNull prepend="," property="changetype" >
+        CHANGETYPE
+      </isNotNull>
+      <isNotNull prepend="," property="serialNumber" >
+        SERIAL_NUMBER
+      </isNotNull>
+      <isNotNull prepend="," property="isAvailable" >
+        IS_AVAILABLE
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="rootId" >
+        #rootId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="responseCode" >
+        #responseCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="responseInfo" >
+        #responseInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sysCode" >
+        #sysCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sysCodename" >
+        #sysCodename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemId" >
+        #itemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemName" >
+        #itemName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parentItemId" >
+        #parentItemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="changetype" >
+        #changetype:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serialNumber" >
+        #serialNumber:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isAvailable" >
+        #isAvailable:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.IfaceConfCacheExample" resultClass="java.lang.Integer" >
+    select count(*) from t_iface_conf_cache
+    <include refid="IfaceConfCache.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_conf_cache
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.rootId" >
+        ROOT_ID = #record.rootId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.responseCode" >
+        RESPONSE_CODE = #record.responseCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.responseInfo" >
+        RESPONSE_INFO = #record.responseInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sysCode" >
+        SYS_CODE = #record.sysCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sysCodename" >
+        SYS_CODENAME = #record.sysCodename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.itemId" >
+        ITEM_ID = #record.itemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.itemName" >
+        ITEM_NAME = #record.itemName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.parentItemId" >
+        PARENT_ITEM_ID = #record.parentItemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.changetype" >
+        CHANGETYPE = #record.changetype:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serialNumber" >
+        SERIAL_NUMBER = #record.serialNumber:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isAvailable" >
+        IS_AVAILABLE = #record.isAvailable:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceConfCache.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_conf_cache
+    set ROOT_ID = #record.rootId:VARCHAR#,
+      RESPONSE_CODE = #record.responseCode:VARCHAR#,
+      RESPONSE_INFO = #record.responseInfo:VARCHAR#,
+      SYS_CODE = #record.sysCode:VARCHAR#,
+      SYS_CODENAME = #record.sysCodename:VARCHAR#,
+      ITEM_ID = #record.itemId:VARCHAR#,
+      ITEM_NAME = #record.itemName:VARCHAR#,
+      PARENT_ITEM_ID = #record.parentItemId:VARCHAR#,
+      CHANGETYPE = #record.changetype:VARCHAR#,
+      SERIAL_NUMBER = #record.serialNumber:VARCHAR#,
+      IS_AVAILABLE = #record.isAvailable:VARCHAR#
+    <isParameterPresent >
+      <include refid="IfaceConfCache.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.IfaceConfCache" >
+    update t_iface_conf_cache
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="responseCode" >
+        RESPONSE_CODE = #responseCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="responseInfo" >
+        RESPONSE_INFO = #responseInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sysCode" >
+        SYS_CODE = #sysCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sysCodename" >
+        SYS_CODENAME = #sysCodename:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemId" >
+        ITEM_ID = #itemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="itemName" >
+        ITEM_NAME = #itemName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parentItemId" >
+        PARENT_ITEM_ID = #parentItemId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="changetype" >
+        CHANGETYPE = #changetype:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serialNumber" >
+        SERIAL_NUMBER = #serialNumber:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isAvailable" >
+        IS_AVAILABLE = #isAvailable:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where ROOT_ID = #rootId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.IfaceConfCache" >
+    update t_iface_conf_cache
+    set RESPONSE_CODE = #responseCode:VARCHAR#,
+      RESPONSE_INFO = #responseInfo:VARCHAR#,
+      SYS_CODE = #sysCode:VARCHAR#,
+      SYS_CODENAME = #sysCodename:VARCHAR#,
+      ITEM_ID = #itemId:VARCHAR#,
+      ITEM_NAME = #itemName:VARCHAR#,
+      PARENT_ITEM_ID = #parentItemId:VARCHAR#,
+      CHANGETYPE = #changetype:VARCHAR#,
+      SERIAL_NUMBER = #serialNumber:VARCHAR#,
+      IS_AVAILABLE = #isAvailable:VARCHAR#
+    where ROOT_ID = #rootId:VARCHAR#
+  </update>
+</sqlMap>

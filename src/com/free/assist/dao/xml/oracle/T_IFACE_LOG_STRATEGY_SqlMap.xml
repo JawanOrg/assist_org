@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceLogStrategy" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.IfaceLogStrategy" >
+    <result column="STRATEGY_ID" property="strategyId" jdbcType="VARCHAR" />
+    <result column="TIME_ENABLE" property="timeEnable" jdbcType="VARCHAR" />
+    <result column="TIME_UPPER" property="timeUpper" jdbcType="TIMESTAMP" />
+    <result column="TIME_LOWER" property="timeLower" jdbcType="TIMESTAMP" />
+    <result column="WEEK_ENABLE" property="weekEnable" jdbcType="VARCHAR" />
+    <result column="WEEK_SETTING" property="weekSetting" jdbcType="VARCHAR" />
+    <result column="DATE_ENABLE" property="dateEnable" jdbcType="VARCHAR" />
+    <result column="DATE_SETTING" property="dateSetting" jdbcType="VARCHAR" />
+    <result column="MONTH_ENABLE" property="monthEnable" jdbcType="VARCHAR" />
+    <result column="MONTH_SETTING" property="monthSetting" jdbcType="VARCHAR" />
+    <result column="UPDATE_ON" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_BY" property="updateUser" jdbcType="VARCHAR" />
+    <result column="IS_AVAILABLE" property="available" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceLogStrategyExample" >
+    select STRATEGY_ID, TIME_ENABLE, TIME_UPPER, TIME_LOWER, WEEK_ENABLE, WEEK_SETTING, DATE_ENABLE,
+      DATE_SETTING, MONTH_ENABLE, MONTH_SETTING, UPDATE_ON, UPDATE_BY, IS_AVAILABLE
+    from t_iface_log_strategy
+    <isParameterPresent >
+      <include refid="IfaceLogStrategy.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceLogStrategyKey" >
+    select STRATEGY_ID, TIME_ENABLE, TIME_UPPER, TIME_LOWER, WEEK_ENABLE, WEEK_SETTING, DATE_ENABLE,
+      DATE_SETTING, MONTH_ENABLE, MONTH_SETTING, UPDATE_ON, UPDATE_BY, IS_AVAILABLE
+    from t_iface_log_strategy
+    where STRATEGY_ID = #strategyId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.IfaceLogStrategyKey" >
+    delete from t_iface_log_strategy
+    where STRATEGY_ID = #strategyId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.IfaceLogStrategyExample" >
+    delete from t_iface_log_strategy
+    <include refid="IfaceLogStrategy.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.IfaceLogStrategy" >
+    <selectKey resultClass="java.lang.String" keyProperty="strategyId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_log_strategy (STRATEGY_ID, TIME_ENABLE, TIME_UPPER, TIME_LOWER, WEEK_ENABLE,
+      WEEK_SETTING, DATE_ENABLE, DATE_SETTING, MONTH_ENABLE, MONTH_SETTING, UPDATE_ON, UPDATE_BY,
+      IS_AVAILABLE)
+    values (#strategyId:VARCHAR#, #timeEnable:VARCHAR#, #timeUpper:TIMESTAMP#, #timeLower:TIMESTAMP#,
+      #weekEnable:VARCHAR#, #weekSetting:VARCHAR#, #dateEnable:VARCHAR#, #dateSetting:VARCHAR#,
+      #monthEnable:VARCHAR#, #monthSetting:VARCHAR#, #updateDate:TIMESTAMP#, #updateUser:VARCHAR#,
+      #available:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.IfaceLogStrategy" >
+    <selectKey resultClass="java.lang.String" keyProperty="strategyId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_log_strategy
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="strategyId" >
+        STRATEGY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="timeEnable" >
+        TIME_ENABLE
+      </isNotNull>
+      <isNotNull prepend="," property="timeUpper" >
+        TIME_UPPER
+      </isNotNull>
+      <isNotNull prepend="," property="timeLower" >
+        TIME_LOWER
+      </isNotNull>
+      <isNotNull prepend="," property="weekEnable" >
+        WEEK_ENABLE
+      </isNotNull>
+      <isNotNull prepend="," property="weekSetting" >
+        WEEK_SETTING
+      </isNotNull>
+      <isNotNull prepend="," property="dateEnable" >
+        DATE_ENABLE
+      </isNotNull>
+      <isNotNull prepend="," property="dateSetting" >
+        DATE_SETTING
+      </isNotNull>
+      <isNotNull prepend="," property="monthEnable" >
+        MONTH_ENABLE
+      </isNotNull>
+      <isNotNull prepend="," property="monthSetting" >
+        MONTH_SETTING
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="strategyId" >
+        #strategyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="timeEnable" >
+        #timeEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="timeUpper" >
+        #timeUpper:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="timeLower" >
+        #timeLower:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="weekEnable" >
+        #weekEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="weekSetting" >
+        #weekSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dateEnable" >
+        #dateEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dateSetting" >
+        #dateSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="monthEnable" >
+        #monthEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="monthSetting" >
+        #monthSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        #updateUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        #available:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.IfaceLogStrategyExample" resultClass="java.lang.Integer" >
+    select count(*) from t_iface_log_strategy
+    <include refid="IfaceLogStrategy.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_log_strategy
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.strategyId" >
+        STRATEGY_ID = #record.strategyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.timeEnable" >
+        TIME_ENABLE = #record.timeEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.timeUpper" >
+        TIME_UPPER = #record.timeUpper:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.timeLower" >
+        TIME_LOWER = #record.timeLower:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.weekEnable" >
+        WEEK_ENABLE = #record.weekEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.weekSetting" >
+        WEEK_SETTING = #record.weekSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.dateEnable" >
+        DATE_ENABLE = #record.dateEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.dateSetting" >
+        DATE_SETTING = #record.dateSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.monthEnable" >
+        MONTH_ENABLE = #record.monthEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.monthSetting" >
+        MONTH_SETTING = #record.monthSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateDate" >
+        UPDATE_ON = #record.updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateUser" >
+        UPDATE_BY = #record.updateUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.available" >
+        IS_AVAILABLE = #record.available:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceLogStrategy.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_log_strategy
+    set STRATEGY_ID = #record.strategyId:VARCHAR#,
+      TIME_ENABLE = #record.timeEnable:VARCHAR#,
+      TIME_UPPER = #record.timeUpper:TIMESTAMP#,
+      TIME_LOWER = #record.timeLower:TIMESTAMP#,
+      WEEK_ENABLE = #record.weekEnable:VARCHAR#,
+      WEEK_SETTING = #record.weekSetting:VARCHAR#,
+      DATE_ENABLE = #record.dateEnable:VARCHAR#,
+      DATE_SETTING = #record.dateSetting:VARCHAR#,
+      MONTH_ENABLE = #record.monthEnable:VARCHAR#,
+      MONTH_SETTING = #record.monthSetting:VARCHAR#,
+      UPDATE_ON = #record.updateDate:TIMESTAMP#,
+      UPDATE_BY = #record.updateUser:VARCHAR#,
+      IS_AVAILABLE = #record.available:VARCHAR#
+    <isParameterPresent >
+      <include refid="IfaceLogStrategy.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.IfaceLogStrategy" >
+    update t_iface_log_strategy
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="timeEnable" >
+        TIME_ENABLE = #timeEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="timeUpper" >
+        TIME_UPPER = #timeUpper:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="timeLower" >
+        TIME_LOWER = #timeLower:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="weekEnable" >
+        WEEK_ENABLE = #weekEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="weekSetting" >
+        WEEK_SETTING = #weekSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dateEnable" >
+        DATE_ENABLE = #dateEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="dateSetting" >
+        DATE_SETTING = #dateSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="monthEnable" >
+        MONTH_ENABLE = #monthEnable:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="monthSetting" >
+        MONTH_SETTING = #monthSetting:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON = #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY = #updateUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE = #available:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where STRATEGY_ID = #strategyId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.IfaceLogStrategy" >
+    update t_iface_log_strategy
+    set TIME_ENABLE = #timeEnable:VARCHAR#,
+      TIME_UPPER = #timeUpper:TIMESTAMP#,
+      TIME_LOWER = #timeLower:TIMESTAMP#,
+      WEEK_ENABLE = #weekEnable:VARCHAR#,
+      WEEK_SETTING = #weekSetting:VARCHAR#,
+      DATE_ENABLE = #dateEnable:VARCHAR#,
+      DATE_SETTING = #dateSetting:VARCHAR#,
+      MONTH_ENABLE = #monthEnable:VARCHAR#,
+      MONTH_SETTING = #monthSetting:VARCHAR#,
+      UPDATE_ON = #updateDate:TIMESTAMP#,
+      UPDATE_BY = #updateUser:VARCHAR#,
+      IS_AVAILABLE = #available:VARCHAR#
+    where STRATEGY_ID = #strategyId:VARCHAR#
+  </update>
+</sqlMap>

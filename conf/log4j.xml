@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!--                             -->
+	<!-- Declare the ConsoleAppender -->
+	<!--                             -->
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<!--                          -->
+	<!-- Declare the SMTPAppender -->
+	<!--                          -->
+	<appender name="smtp" class="org.apache.log4j.net.SMTPAppender">
+		<param name="BufferSize" value="512" />
+		<param name="SMTPHost" value="smtp.21cn.com" />
+		<param name="From" value="webmaster@regaltec.com.cn" />
+		<param name="To" value="webmaster@regaltec.com.cn" />
+		<param name="Subject"
+			value="[SMTPAppender] Application message" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{ISO8601}]%n%n%-5p%n%n%c%n%n%m%n%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+
+	<appender name="file"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${jboss.server.log.dir}/blocimp.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<category name="org.directwebremoting">
+		<priority value="INFO" />
+	</category>
+	<category name="net.sf.ehcache">
+		<priority value="ERROR" />
+	</category>
+	<category name="org.springframework.cache">
+		<priority value="ERROR" />
+	</category>
+	<category name="org.springframework.aop">
+		<priority value="ERROR" />
+	</category>
+	<category name="org.springframework">
+		<priority value="INFO" />
+	</category>
+	<category name="java.sql.Connection">
+		<priority value="debug" />
+	</category>
+	<category name="java.sql.PreparedStatement">
+		<priority value="debug" />
+	</category>
+	<category name="java.sql.ResultSet">
+		<priority value="debug" />
+	</category>
+	<category name="com.free.assist">
+		<priority value="debug" />
+	</category>
+	<category name="org.apache">
+		<priority value="INFO" />
+	</category>
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="stdout" />
+	</root>
+
+</log4j:configuration>

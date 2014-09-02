@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<context:component-scan base-package="com.free.assist.service">
+		<context:include-filter type="regex"
+			expression=".*ServiceImpl" />
+	</context:component-scan>
+
+	<!-- 支持 @AspectJ 标记-->
+	<aop:aspectj-autoproxy />
+
+
+	<bean id="secrityAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="pattern" value=".*run.*" />
+		<property name="advice">
+			<bean class="com.free.assist.framework.CombinedThrowsAdvice" />
+		</property>
+	</bean>
+	<!-- 以AspectJ方式 定义 AOP -->
+	<aop:config proxy-target-class="true">
+		<aop:advisor
+			pointcut="execution(* com.free.assist.service.*Service*.*(..))"
+			advice-ref="txAdvice" />
+	</aop:config>
+
+	<!--
+		基本事务定义,使用transactionManager作事务管理,默认get*方法的事务为readonly,其余方法按默认设置.
+		默认的设置请参考Spring文档事务一章.
+	-->
+	<tx:advice id="txAdvice">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="load*" read-only="true" />
+			<tx:method name="*" rollback-for="BOException,Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+	<tx:annotation-driven />
+
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/assist"
+		resource-ref="true" />
+
+	<!--
+		bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" /> <property name="username"
+		value="${jdbc.username}" /> <property name="password"
+		value="${jdbc.password}" /> </bean
+	-->
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient">
+			<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+				<property name="dataSource" ref="dataSource" />
+				<property name="configLocation" value="classpath:sql-map-config.xml" />
+			</bean>
+		</property>
+	</bean>
+	<!-- 后台服务配置 -->
+	<bean id="sysTask" class="com.free.assist.framework.SysTask"
+		scope="prototype" />
+	<bean id="scanAttachmentTask" class="com.free.assist.daemon.ScanAttachmentTask"
+		scope="prototype" />
+	<!-- 后台服务配置 -->
+
+	<bean id="userIncrementer" class="${maxValueIncrementer}">
+		<property name="dataSource" ref="dataSource" />
+		<property name="incrementerName" value="t_sys_sequence" /><!-- mysql需要建立此表，列名为value(number24)，oracle则建立此序列 -->
+		<!-- property name="columnName" value="value" /> -->
+	</bean>
+
+	<!--bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="session">
+			<jee:jndi-lookup jndi-name="mail/warn" />
+		</property>
+	</bean-->
+
+</beans>

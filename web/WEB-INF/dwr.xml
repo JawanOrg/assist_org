@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://directwebremoting.org/schema/dwr20.dtd">
+
+<dwr>
+    <allow>
+
+		<create creator="spring" javascript="sysTipAction">
+            <param name="beanName" value="/sys/sysTipAction"/>
+        </create>
+		<create creator="spring" javascript="sysServiceConfig">
+            <param name="beanName" value="/sys/sysServiceConfigAction"/>
+        </create>
+        <create creator="spring" javascript="sysTaskAction">
+            <param name="beanName" value="/sys/sysTaskAction"/>
+        </create>
+        <create creator="spring" javascript="sysUnitAction">
+            <param name="beanName" value="/sys/sysUnitAction"/>
+        </create>
+        <create creator="spring" javascript="sysUserAction">
+            <param name="beanName" value="/sys/sysUserAction"/>
+        </create>
+        <create creator="spring" javascript="sysUserUnitAction">
+            <param name="beanName" value="/sys/sysUserUnitAction"/>
+        </create>        
+        <create creator="spring" javascript="alarmAction">
+            <param name="beanName" value="/sys/alarmAction"/>
+        </create>
+         <create creator="spring" javascript="loginAction">
+            <param name="beanName" value="/sys/loginAction"/>
+        </create>
+         <create creator="spring" javascript="sysModuleAction">
+            <param name="beanName" value="/sys/sysModuleAction"/>
+        </create>
+         <create creator="spring" javascript="sysRoleAction">
+            <param name="beanName" value="/sys/sysRoleAction"/>
+        </create>
+         <create creator="spring" javascript="sysDicItemAction">
+            <param name="beanName" value="/sys/sysDicItemAction"/>
+        </create>
+         <create creator="spring" javascript="sysDicConfigAction">
+            <param name="beanName" value="/sys/sysDicConfigAction"/>
+        </create>
+         <create creator="spring" javascript="sysParameterConfAction">
+            <param name="beanName" value="/sys/sysParameterConfAction"/>
+        </create>
+         <create creator="spring" javascript="sysRoleModuleAction">
+            <param name="beanName" value="/sys/sysRoleModuleAction"/>
+        </create>
+
+        <create creator="spring" javascript="ifaceLoggerFaultAction">
+            <param name="beanName" value="/iface/ifaceLoggerFaultAction"/>
+        </create>
+
+        <create creator="spring" javascript="ifaceLoggerTraceAction">
+            <param name="beanName" value="/iface/ifaceLoggerTraceAction"/>
+        </create>
+        
+        <create creator="spring" javascript="ifaceConfigCacheAction">
+            <param name="beanName" value="/iface/ifaceConfigCacheAction"/>
+        </create>
+        
+        <create creator="spring" javascript="ifaceConfigSystemAction">
+            <param name="beanName" value="/iface/ifaceConfigSystemAction"/>
+        </create>
+        
+        <create creator="spring" javascript="ifaceConfigProtocolAction">
+            <param name="beanName" value="/iface/ifaceConfigProtocolAction"/>
+        </create>
+
+        <create creator="spring" javascript="taticConfigAction">
+            <param name="beanName" value="/supt/taticConfigAction"/>
+        </create>
+
+        <create creator="spring" javascript="checkAction">
+            <param name="beanName" value="/supt/checkAction"/>
+        </create>
+        
+        <create creator="spring" javascript="ifaceMonitorAction">
+            <param name="beanName" value="/iface/ifaceMonitorAction"/>
+        </create>
+
+		<create creator="spring" javascript="dynamicAction">
+            <param name="beanName" value="/business/dynamicAction"/>
+        </create>
+
+		<create creator="spring" javascript="mapOperateAction">
+            <param name="beanName" value="/map/mapOperateAction"/>
+        </create>
+
+        <convert converter="bean" match="java.util.*"/>
+        <convert converter="bean" match="com.free.assist.web.iface.*"/>
+        <convert converter="bean" match="com.free.assist.domain.*"/>
+        <convert converter="bean" match="com.free.assist.web.supt.*"/>
+        <convert converter="bean" match="com.free.assist.web.sys.*"/>
+        <convert converter="bean" match="com.free.assist.web.business.*"/>
+        <convert converter="bean" match="com.free.assist.web.map.*"/>
+
+        <convert match='java.lang.Exception' converter='exception'/>
+        <convert converter="bean" match="java.lang.StackTraceElement" />
+        
+    </allow>
+
+    <signatures>
+        <![CDATA[
+  		import java.util.*;
+  		import com.free.assist.domain.SuptTaticInstance;
+  		import com.free.assist.web.supt.TaticConfigForm;
+
+  		taticConfigAction.saveInstance(TaticConfigForm form,List<SuptTaticInstance> list);
+  		]]>
+    </signatures>
+</dwr>

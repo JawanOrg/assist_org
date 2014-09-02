@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysUserUnit" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SysUserUnit" >
+    <result column="Unit_Id" property="unitId" jdbcType="VARCHAR" />
+    <result column="User_Id" property="userId" jdbcType="VARCHAR" />
+    <result column="Login_Name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_Password" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="User_Name" property="userName" jdbcType="VARCHAR" />
+    <result column="Mobile_Phone" property="mobilePhone" jdbcType="VARCHAR" />
+    <result column="Is_Valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="Create_date" property="createDate" jdbcType="DATE" />
+    <result column="Creator_Id" property="creatorId" jdbcType="VARCHAR" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="isValidName" property="isValidName" jdbcType="VARCHAR" />
+    <result column="creatorIdName" property="creatorIdName" jdbcType="VARCHAR" />
+    <result column="unitName" property="unitName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysUserUnitExample" >
+    SELECT t_sys_user_unit.Unit_Id, t_sys_user_unit.User_Id
+      ,( select Login_Name from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Login_Name 
+      ,( select login_Password from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) login_Password 
+      ,( select User_Name from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) User_Name 
+      ,( select Mobile_Phone from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Mobile_Phone 
+      ,( select Is_Valid from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Is_Valid 
+      ,( select DATE_FORMAT(Create_date,'%Y-%m-%d') from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Create_date 
+      ,( select Creator_Id from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Creator_Id 
+      ,( select Remark from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Remark 
+      ,( select CASE WHEN t_sys_user.is_valid='Y' THEN '有效' ELSE '无效' END from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) isValidName 
+      ,( select tsu1.User_Name from t_sys_user tsu1,t_sys_user tsu2 where tsu2.User_Id=t_sys_user_unit.User_Id and tsu1.User_Id=tsu2.Creator_Id) creatorIdName
+      , (SELECT Unit_Name FROM t_sys_unit unit1 WHERE unit1.Unit_Id=t_sys_user_unit.Unit_Id ) unitName
+    FROM t_sys_user_unit
+    <isParameterPresent >
+      <include refid="SysUserUnit.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysUserUnitKey" >
+    SELECT t_sys_user_unit.Unit_Id, t_sys_user_unit.User_Id
+      ,( select Login_Name from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Login_Name 
+      ,( select login_Password from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) login_Password 
+      ,( select User_Name from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) User_Name 
+      ,( select Mobile_Phone from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Mobile_Phone 
+      ,( select Is_Valid from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Is_Valid 
+      ,( select DATE_FORMAT(Create_date,'%Y-%m-%d') from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Create_date 
+      ,( select Creator_Id from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Creator_Id 
+      ,( select Remark from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) Remark 
+      ,( select CASE WHEN t_sys_user.is_valid='Y' THEN '有效' ELSE '无效' END from t_sys_user where t_sys_user.User_Id=t_sys_user_unit.User_Id) isValidName 
+      ,( select tsu1.User_Name from t_sys_user tsu1,t_sys_user tsu2 where tsu2.User_Id=t_sys_user_unit.User_Id and tsu1.User_Id=tsu2.Creator_Id) creatorIdName
+      , (SELECT Unit_Name FROM t_sys_unit unit1 WHERE unit1.Unit_Id=t_sys_user_unit.Unit_Id ) unitName
+    FROM t_sys_user_unit
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysUserUnitKey" >
+    delete from t_sys_user_unit
+    where Unit_Id = #unitId:VARCHAR#
+      and User_Id = #userId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SysUserUnitExample" >
+    delete from t_sys_user_unit
+    <include refid="SysUserUnit.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SysUserUnit" >
+    insert into t_sys_user_unit (Unit_Id, User_Id, Remark)
+    values (#unitId:VARCHAR#, #userId:VARCHAR#, #remark:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SysUserUnit" >
+    insert into t_sys_user_unit
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="unitId" >
+        Unit_Id
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        User_Id
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        Remark
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="unitId" >
+        #unitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        #userId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SysUserUnitExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_user_unit
+    <include refid="SysUserUnit.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_user_unit
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.unitId" >
+        Unit_Id = #record.unitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.userId" >
+        User_Id = #record.userId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        Remark = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysUserUnit.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_user_unit
+    set Unit_Id = #record.unitId:VARCHAR#,
+      User_Id = #record.userId:VARCHAR#,
+      Remark = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="SysUserUnit.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SysUserUnit" >
+    update t_sys_user_unit
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="remark" >
+        Remark = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where Unit_Id = #unitId:VARCHAR#
+      and User_Id = #userId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysUserUnit" >
+    update t_sys_user_unit
+    set Remark = #remark:VARCHAR#
+    where Unit_Id = #unitId:VARCHAR#
+      and User_Id = #userId:VARCHAR#
+  </update>
+</sqlMap>

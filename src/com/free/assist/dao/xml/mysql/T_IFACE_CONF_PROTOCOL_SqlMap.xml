@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceConfigProtocol" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.IfaceConfigProtocol" >
+    <result column="PROTOCOL_ID" property="protocolId" jdbcType="CHAR" />
+    <result column="APPLICATION_ID" property="applicationId" jdbcType="CHAR" />
+    <result column="APPLICATION_SN" property="applicationSn" jdbcType="VARCHAR" />
+    <result column="APPLICATION_NAME" property="applicationName" jdbcType="VARCHAR" />
+    <result column="SERVE_TYPE" property="serveType" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="PHONE_NUMBER" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="EMAIL_ADDRESS" property="emailAddress" jdbcType="VARCHAR" />
+    <result column="INTERFACE_NAME" property="interfaceName" jdbcType="VARCHAR" />
+    <result column="PROTOCOL_NAME" property="protocolName" jdbcType="CHAR" />
+    <result column="REMOTE_HOST" property="remoteHost" jdbcType="VARCHAR" />
+    <result column="REMOTE_PORT" property="remotePort" jdbcType="INTEGER" />
+    <result column="AUTH_ACCOUNT" property="authAccount" jdbcType="VARCHAR" />
+    <result column="AUTH_PASSWORD" property="authPassword" jdbcType="VARCHAR" />
+    <result column="PROVIDER_NAME" property="providerName" jdbcType="VARCHAR" />
+    <result column="JNDI_NAME" property="jndiName" jdbcType="VARCHAR" />
+    <result column="DESTINATION" property="destination" jdbcType="VARCHAR" />
+    <result column="WSDL_ADDR" property="wsdlAddr" jdbcType="VARCHAR" />
+    <result column="SERVICE_NAME" property="serviceName" jdbcType="VARCHAR" />
+    <result column="PORT_NAME" property="portName" jdbcType="VARCHAR" />
+    <result column="NAME_SPACE" property="nameSpace" jdbcType="VARCHAR" />
+    <result column="IS_AVAILABLE" property="available" jdbcType="CHAR" />
+    <result column="CREATE_ON" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_ON" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_BY" property="updateUser" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocolExample" >
+    select PROTOCOL_ID, APPLICATION_ID, APPLICATION_SN, APPLICATION_NAME, SERVE_TYPE, USER_NAME,
+      PHONE_NUMBER, EMAIL_ADDRESS, INTERFACE_NAME, PROTOCOL_NAME, REMOTE_HOST, REMOTE_PORT,
+      AUTH_ACCOUNT, AUTH_PASSWORD, PROVIDER_NAME, JNDI_NAME, DESTINATION, WSDL_ADDR, SERVICE_NAME,
+      PORT_NAME, NAME_SPACE, IS_AVAILABLE, CREATE_ON, UPDATE_ON, UPDATE_BY
+    from v_iface_conf_protocol
+    <isParameterPresent >
+      <include refid="IfaceConfigProtocol.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocolKey" >
+    select PROTOCOL_ID, APPLICATION_ID, APPLICATION_SN, APPLICATION_NAME, SERVE_TYPE, USER_NAME,
+      PHONE_NUMBER, EMAIL_ADDRESS, INTERFACE_NAME, PROTOCOL_NAME, REMOTE_HOST, REMOTE_PORT,
+      AUTH_ACCOUNT, AUTH_PASSWORD, PROVIDER_NAME, JNDI_NAME, DESTINATION, WSDL_ADDR, SERVICE_NAME,
+      PORT_NAME, NAME_SPACE, IS_AVAILABLE, CREATE_ON, UPDATE_ON, UPDATE_BY
+    from v_iface_conf_protocol
+    where PROTOCOL_ID = #protocolId:CHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocolKey" >
+    delete from t_iface_conf_protocol
+    where PROTOCOL_ID = #protocolId:CHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocolExample" >
+    delete from t_iface_conf_protocol
+    <include refid="IfaceConfigProtocol.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocol" >
+    <selectKey resultClass="java.lang.String" keyProperty="protocolId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_conf_protocol (PROTOCOL_ID, APPLICATION_ID, SERVE_TYPE, USER_NAME,
+      PHONE_NUMBER, EMAIL_ADDRESS, INTERFACE_NAME, PROTOCOL_NAME, REMOTE_HOST, REMOTE_PORT,
+      AUTH_ACCOUNT, AUTH_PASSWORD, PROVIDER_NAME, JNDI_NAME, DESTINATION, WSDL_ADDR, SERVICE_NAME,
+      PORT_NAME, NAME_SPACE, IS_AVAILABLE, CREATE_ON, UPDATE_ON, UPDATE_BY)
+    values (#protocolId:CHAR#, #applicationId:CHAR#, #serveType:VARCHAR#, #userName:VARCHAR#,
+      #phoneNumber:VARCHAR#, #emailAddress:VARCHAR#, #interfaceName:VARCHAR#, #protocolName:CHAR#,
+      #remoteHost:VARCHAR#, #remotePort:INTEGER#, #authAccount:VARCHAR#, #authPassword:VARCHAR#,
+      #providerName:VARCHAR#, #jndiName:VARCHAR#, #destination:VARCHAR#, #wsdlAddr:VARCHAR#,
+      #serviceName:VARCHAR#, #portName:VARCHAR#, #nameSpace:VARCHAR#, #available:CHAR#,
+      #createDate:TIMESTAMP#, #updateDate:TIMESTAMP#, #updateUser:CHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocol" >
+    <selectKey resultClass="java.lang.String" keyProperty="protocolId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_iface_conf_protocol
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="protocolId" >
+        PROTOCOL_ID
+      </isNotNull>
+      <isNotNull prepend="," property="applicationId" >
+        APPLICATION_ID
+      </isNotNull>
+      <isNotNull prepend="," property="serveType" >
+        SERVE_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="userName" >
+        USER_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="phoneNumber" >
+        PHONE_NUMBER
+      </isNotNull>
+      <isNotNull prepend="," property="emailAddress" >
+        EMAIL_ADDRESS
+      </isNotNull>
+      <isNotNull prepend="," property="interfaceName" >
+        INTERFACE_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="protocolName" >
+        PROTOCOL_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="remoteHost" >
+        REMOTE_HOST
+      </isNotNull>
+      <isNotNull prepend="," property="remotePort" >
+        REMOTE_PORT
+      </isNotNull>
+      <isNotNull prepend="," property="authAccount" >
+        AUTH_ACCOUNT
+      </isNotNull>
+      <isNotNull prepend="," property="authPassword" >
+        AUTH_PASSWORD
+      </isNotNull>
+      <isNotNull prepend="," property="providerName" >
+        PROVIDER_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="jndiName" >
+        JNDI_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="destination" >
+        DESTINATION
+      </isNotNull>
+      <isNotNull prepend="," property="wsdlAddr" >
+        WSDL_ADDR
+      </isNotNull>
+      <isNotNull prepend="," property="serviceName" >
+        SERVICE_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="portName" >
+        PORT_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="nameSpace" >
+        NAME_SPACE
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        CREATE_ON
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="protocolId" >
+        #protocolId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applicationId" >
+        #applicationId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serveType" >
+        #serveType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userName" >
+        #userName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="phoneNumber" >
+        #phoneNumber:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="emailAddress" >
+        #emailAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="interfaceName" >
+        #interfaceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="protocolName" >
+        #protocolName:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remoteHost" >
+        #remoteHost:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remotePort" >
+        #remotePort:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="authAccount" >
+        #authAccount:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="authPassword" >
+        #authPassword:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="providerName" >
+        #providerName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="jndiName" >
+        #jndiName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="destination" >
+        #destination:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="wsdlAddr" >
+        #wsdlAddr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceName" >
+        #serviceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="portName" >
+        #portName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="nameSpace" >
+        #nameSpace:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        #available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        #createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        #updateUser:CHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocolExample" resultClass="java.lang.Integer" >
+    select count(*) from v_iface_conf_protocol
+    <include refid="IfaceConfigProtocol.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_conf_protocol
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.protocolId" >
+        PROTOCOL_ID = #record.protocolId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applicationId" >
+        APPLICATION_ID = #record.applicationId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serveType" >
+        SERVE_TYPE = #record.serveType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.userName" >
+        USER_NAME = #record.userName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.phoneNumber" >
+        PHONE_NUMBER = #record.phoneNumber:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.emailAddress" >
+        EMAIL_ADDRESS = #record.emailAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.interfaceName" >
+        INTERFACE_NAME = #record.interfaceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.protocolName" >
+        PROTOCOL_NAME = #record.protocolName:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remoteHost" >
+        REMOTE_HOST = #record.remoteHost:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remotePort" >
+        REMOTE_PORT = #record.remotePort:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.authAccount" >
+        AUTH_ACCOUNT = #record.authAccount:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.authPassword" >
+        AUTH_PASSWORD = #record.authPassword:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.providerName" >
+        PROVIDER_NAME = #record.providerName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.jndiName" >
+        JNDI_NAME = #record.jndiName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.destination" >
+        DESTINATION = #record.destination:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.wsdlAddr" >
+        WSDL_ADDR = #record.wsdlAddr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.serviceName" >
+        SERVICE_NAME = #record.serviceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.portName" >
+        PORT_NAME = #record.portName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.nameSpace" >
+        NAME_SPACE = #record.nameSpace:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.available" >
+        IS_AVAILABLE = #record.available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createDate" >
+        CREATE_ON = #record.createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateDate" >
+        UPDATE_ON = #record.updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.updateUser" >
+        UPDATE_BY = #record.updateUser:CHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceConfigProtocol.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_conf_protocol
+    set PROTOCOL_ID = #record.protocolId:CHAR#,
+      APPLICATION_ID = #record.applicationId:CHAR#,
+      SERVE_TYPE = #record.serveType:VARCHAR#,
+      USER_NAME = #record.userName:VARCHAR#,
+      PHONE_NUMBER = #record.phoneNumber:VARCHAR#,
+      EMAIL_ADDRESS = #record.emailAddress:VARCHAR#,
+      INTERFACE_NAME = #record.interfaceName:VARCHAR#,
+      PROTOCOL_NAME = #record.protocolName:CHAR#,
+      REMOTE_HOST = #record.remoteHost:VARCHAR#,
+      REMOTE_PORT = #record.remotePort:INTEGER#,
+      AUTH_ACCOUNT = #record.authAccount:VARCHAR#,
+      AUTH_PASSWORD = #record.authPassword:VARCHAR#,
+      PROVIDER_NAME = #record.providerName:VARCHAR#,
+      JNDI_NAME = #record.jndiName:VARCHAR#,
+      DESTINATION = #record.destination:VARCHAR#,
+      WSDL_ADDR = #record.wsdlAddr:VARCHAR#,
+      SERVICE_NAME = #record.serviceName:VARCHAR#,
+      PORT_NAME = #record.portName:VARCHAR#,
+      NAME_SPACE = #record.nameSpace:VARCHAR#,
+      IS_AVAILABLE = #record.available:CHAR#,
+      CREATE_ON = #record.createDate:TIMESTAMP#,
+      UPDATE_ON = #record.updateDate:TIMESTAMP#,
+      UPDATE_BY = #record.updateUser:CHAR#
+    <isParameterPresent >
+      <include refid="IfaceConfigProtocol.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocol" >
+    update t_iface_conf_protocol
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="applicationId" >
+        APPLICATION_ID = #applicationId:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serveType" >
+        SERVE_TYPE = #serveType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userName" >
+        USER_NAME = #userName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="phoneNumber" >
+        PHONE_NUMBER = #phoneNumber:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="emailAddress" >
+        EMAIL_ADDRESS = #emailAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="interfaceName" >
+        INTERFACE_NAME = #interfaceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="protocolName" >
+        PROTOCOL_NAME = #protocolName:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remoteHost" >
+        REMOTE_HOST = #remoteHost:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remotePort" >
+        REMOTE_PORT = #remotePort:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="authAccount" >
+        AUTH_ACCOUNT = #authAccount:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="authPassword" >
+        AUTH_PASSWORD = #authPassword:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="providerName" >
+        PROVIDER_NAME = #providerName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="jndiName" >
+        JNDI_NAME = #jndiName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="destination" >
+        DESTINATION = #destination:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="wsdlAddr" >
+        WSDL_ADDR = #wsdlAddr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="serviceName" >
+        SERVICE_NAME = #serviceName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="portName" >
+        PORT_NAME = #portName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="nameSpace" >
+        NAME_SPACE = #nameSpace:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="available" >
+        IS_AVAILABLE = #available:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        CREATE_ON = #createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateDate" >
+        UPDATE_ON = #updateDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="updateUser" >
+        UPDATE_BY = #updateUser:CHAR#
+      </isNotNull>
+    </dynamic>
+    where PROTOCOL_ID = #protocolId:CHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.IfaceConfigProtocol" >
+    update t_iface_conf_protocol
+    set APPLICATION_ID = #applicationId:CHAR#,
+      SERVE_TYPE = #serveType:VARCHAR#,
+      USER_NAME = #userName:VARCHAR#,
+      PHONE_NUMBER = #phoneNumber:VARCHAR#,
+      EMAIL_ADDRESS = #emailAddress:VARCHAR#,
+      INTERFACE_NAME = #interfaceName:VARCHAR#,
+      PROTOCOL_NAME = #protocolName:CHAR#,
+      REMOTE_HOST = #remoteHost:VARCHAR#,
+      REMOTE_PORT = #remotePort:INTEGER#,
+      AUTH_ACCOUNT = #authAccount:VARCHAR#,
+      AUTH_PASSWORD = #authPassword:VARCHAR#,
+      PROVIDER_NAME = #providerName:VARCHAR#,
+      JNDI_NAME = #jndiName:VARCHAR#,
+      DESTINATION = #destination:VARCHAR#,
+      WSDL_ADDR = #wsdlAddr:VARCHAR#,
+      SERVICE_NAME = #serviceName:VARCHAR#,
+      PORT_NAME = #portName:VARCHAR#,
+      NAME_SPACE = #nameSpace:VARCHAR#,
+      IS_AVAILABLE = #available:CHAR#,
+      CREATE_ON = #createDate:TIMESTAMP#,
+      UPDATE_ON = #updateDate:TIMESTAMP#,
+      UPDATE_BY = #updateUser:CHAR#
+    where PROTOCOL_ID = #protocolId:CHAR#
+  </update>
+</sqlMap>

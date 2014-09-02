@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptSaveValue" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SuptSaveValue" >
+    <result column="sava_id" property="savaId" jdbcType="VARCHAR" />
+    <result column="retn_appID" property="retnAppid" jdbcType="VARCHAR" />
+    <result column="subSheetId" property="subsheetid" jdbcType="VARCHAR" />
+    <result column="sheet_stream_no" property="sheetStreamNo" jdbcType="VARCHAR" />
+    <result column="CIRCUIT_NO" property="circuitNo" jdbcType="VARCHAR" />
+    <result column="LOCAL_KEY1" property="localKey1" jdbcType="VARCHAR" />
+    <result column="LOCAL_KEY2" property="localKey2" jdbcType="VARCHAR" />
+    <result column="workItemID" property="workitemid" jdbcType="VARCHAR" />
+    <result column="operUserID" property="operuserid" jdbcType="CLOB" javaType ="java.lang.String"/>
+    <result column="trunk_name" property="trunkName" jdbcType="VARCHAR" />
+    <result column="hire_from" property="hireFrom" jdbcType="VARCHAR" />
+    <result column="back1" property="back1" jdbcType="VARCHAR" />
+    <result column="back2" property="back2" jdbcType="VARCHAR" />
+    <result column="back3" property="back3" jdbcType="VARCHAR" />
+    <result column="back4" property="back4" jdbcType="VARCHAR" />
+    <result column="back5" property="back5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptSaveValueExample" >
+    select sava_id, retn_appID, subSheetId, sheet_stream_no, CIRCUIT_NO, LOCAL_KEY1, LOCAL_KEY2,
+      workItemID, operUserID, trunk_name, hire_from, back1, back2, back3, back4, back5
+    from t_supt_save_value
+    <isParameterPresent >
+      <include refid="SuptSaveValue.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SuptSaveValueKey" >
+    select sava_id, retn_appID, subSheetId, sheet_stream_no, CIRCUIT_NO, LOCAL_KEY1, LOCAL_KEY2,
+      workItemID, operUserID, trunk_name, hire_from, back1, back2, back3, back4, back5
+    from t_supt_save_value
+    where sava_id = #savaId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SuptSaveValueKey" >
+    delete from t_supt_save_value
+    where sava_id = #savaId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SuptSaveValueExample" >
+    delete from t_supt_save_value
+    <include refid="SuptSaveValue.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SuptSaveValue" >
+    <selectKey resultClass="java.lang.String" keyProperty="savaId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_save_value (sava_id, retn_appID, subSheetId, sheet_stream_no, CIRCUIT_NO,
+      LOCAL_KEY1, LOCAL_KEY2, workItemID, operUserID, trunk_name, hire_from, back1, back2, back3,
+      back4, back5)
+    values (#savaId:VARCHAR#, #retnAppid:VARCHAR#, #subsheetid:VARCHAR#, #sheetStreamNo:VARCHAR#,
+      #circuitNo:VARCHAR#, #localKey1:VARCHAR#, #localKey2:VARCHAR#, #workitemid:VARCHAR#,
+      #operuserid:CLOB#, #trunkName:VARCHAR#, #hireFrom:VARCHAR#, #back1:VARCHAR#, #back2:VARCHAR#,
+      #back3:VARCHAR#, #back4:VARCHAR#, #back5:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SuptSaveValue" >
+    <selectKey resultClass="java.lang.String" keyProperty="savaId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_supt_save_value
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="savaId" >
+        sava_id
+      </isNotNull>
+      <isNotNull prepend="," property="retnAppid" >
+        retn_appID
+      </isNotNull>
+      <isNotNull prepend="," property="subsheetid" >
+        subSheetId
+      </isNotNull>
+      <isNotNull prepend="," property="sheetStreamNo" >
+        sheet_stream_no
+      </isNotNull>
+      <isNotNull prepend="," property="circuitNo" >
+        CIRCUIT_NO
+      </isNotNull>
+      <isNotNull prepend="," property="localKey1" >
+        LOCAL_KEY1
+      </isNotNull>
+      <isNotNull prepend="," property="localKey2" >
+        LOCAL_KEY2
+      </isNotNull>
+      <isNotNull prepend="," property="workitemid" >
+        workItemID
+      </isNotNull>
+      <isNotNull prepend="," property="operuserid" >
+        operUserID
+      </isNotNull>
+      <isNotNull prepend="," property="trunkName" >
+        trunk_name
+      </isNotNull>
+      <isNotNull prepend="," property="hireFrom" >
+        hire_from
+      </isNotNull>
+      <isNotNull prepend="," property="back1" >
+        back1
+      </isNotNull>
+      <isNotNull prepend="," property="back2" >
+        back2
+      </isNotNull>
+      <isNotNull prepend="," property="back3" >
+        back3
+      </isNotNull>
+      <isNotNull prepend="," property="back4" >
+        back4
+      </isNotNull>
+      <isNotNull prepend="," property="back5" >
+        back5
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="savaId" >
+        #savaId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="retnAppid" >
+        #retnAppid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="subsheetid" >
+        #subsheetid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sheetStreamNo" >
+        #sheetStreamNo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="circuitNo" >
+        #circuitNo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="localKey1" >
+        #localKey1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="localKey2" >
+        #localKey2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="workitemid" >
+        #workitemid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operuserid" >
+        #operuserid:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="trunkName" >
+        #trunkName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="hireFrom" >
+        #hireFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back1" >
+        #back1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back2" >
+        #back2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back3" >
+        #back3:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back4" >
+        #back4:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back5" >
+        #back5:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SuptSaveValueExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_save_value
+    <include refid="SuptSaveValue.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_save_value
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.savaId" >
+        sava_id = #record.savaId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.retnAppid" >
+        retn_appID = #record.retnAppid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.subsheetid" >
+        subSheetId = #record.subsheetid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sheetStreamNo" >
+        sheet_stream_no = #record.sheetStreamNo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.circuitNo" >
+        CIRCUIT_NO = #record.circuitNo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.localKey1" >
+        LOCAL_KEY1 = #record.localKey1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.localKey2" >
+        LOCAL_KEY2 = #record.localKey2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.workitemid" >
+        workItemID = #record.workitemid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.operuserid" >
+        operUserID = #record.operuserid:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="record.trunkName" >
+        trunk_name = #record.trunkName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.hireFrom" >
+        hire_from = #record.hireFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.back1" >
+        back1 = #record.back1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.back2" >
+        back2 = #record.back2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.back3" >
+        back3 = #record.back3:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.back4" >
+        back4 = #record.back4:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.back5" >
+        back5 = #record.back5:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptSaveValue.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_save_value
+    set sava_id = #record.savaId:VARCHAR#,
+      retn_appID = #record.retnAppid:VARCHAR#,
+      subSheetId = #record.subsheetid:VARCHAR#,
+      sheet_stream_no = #record.sheetStreamNo:VARCHAR#,
+      CIRCUIT_NO = #record.circuitNo:VARCHAR#,
+      LOCAL_KEY1 = #record.localKey1:VARCHAR#,
+      LOCAL_KEY2 = #record.localKey2:VARCHAR#,
+      workItemID = #record.workitemid:VARCHAR#,
+      operUserID = #record.operuserid:CLOB#,
+      trunk_name = #record.trunkName:VARCHAR#,
+      hire_from = #record.hireFrom:VARCHAR#,
+      back1 = #record.back1:VARCHAR#,
+      back2 = #record.back2:VARCHAR#,
+      back3 = #record.back3:VARCHAR#,
+      back4 = #record.back4:VARCHAR#,
+      back5 = #record.back5:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptSaveValue.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SuptSaveValue" >
+    update t_supt_save_value
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="retnAppid" >
+        retn_appID = #retnAppid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="subsheetid" >
+        subSheetId = #subsheetid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sheetStreamNo" >
+        sheet_stream_no = #sheetStreamNo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="circuitNo" >
+        CIRCUIT_NO = #circuitNo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="localKey1" >
+        LOCAL_KEY1 = #localKey1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="localKey2" >
+        LOCAL_KEY2 = #localKey2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="workitemid" >
+        workItemID = #workitemid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="operuserid" >
+        operUserID = #operuserid:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="trunkName" >
+        trunk_name = #trunkName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="hireFrom" >
+        hire_from = #hireFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back1" >
+        back1 = #back1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back2" >
+        back2 = #back2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back3" >
+        back3 = #back3:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back4" >
+        back4 = #back4:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="back5" >
+        back5 = #back5:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where sava_id = #savaId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SuptSaveValue" >
+    update t_supt_save_value
+    set retn_appID = #retnAppid:VARCHAR#,
+      subSheetId = #subsheetid:VARCHAR#,
+      sheet_stream_no = #sheetStreamNo:VARCHAR#,
+      CIRCUIT_NO = #circuitNo:VARCHAR#,
+      LOCAL_KEY1 = #localKey1:VARCHAR#,
+      LOCAL_KEY2 = #localKey2:VARCHAR#,
+      workItemID = #workitemid:VARCHAR#,
+      operUserID = #operuserid:CLOB#,
+      trunk_name = #trunkName:VARCHAR#,
+      hire_from = #hireFrom:VARCHAR#,
+      back1 = #back1:VARCHAR#,
+      back2 = #back2:VARCHAR#,
+      back3 = #back3:VARCHAR#,
+      back4 = #back4:VARCHAR#,
+      back5 = #back5:VARCHAR#
+    where sava_id = #savaId:VARCHAR#
+  </update>
+</sqlMap>

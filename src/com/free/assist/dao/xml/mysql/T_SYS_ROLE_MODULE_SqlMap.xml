@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysRoleModule" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SysRoleModule" >
+    <result column="RightId" property="rightid" jdbcType="VARCHAR" />
+    <result column="RoleId" property="roleid" jdbcType="VARCHAR" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="RoleDesc" property="roledesc" jdbcType="VARCHAR" />
+    <result column="Is_Valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="Sort_Order" property="sortOrder" jdbcType="INTEGER" />   
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SysRoleModuleExample" >
+    select RightId, RoleId
+      ,( select RoleName from t_sys_role where t_sys_role.RoleId=t_sys_role_module.RoleId) RoleName 
+      ,( select RoleDesc from t_sys_role where t_sys_role.RoleId=t_sys_role_module.RoleId) RoleDesc 
+      ,( select Is_Valid from t_sys_role where t_sys_role.RoleId=t_sys_role_module.RoleId) Is_Valid
+      ,( select Sort_Order from t_sys_role where t_sys_role.RoleId=t_sys_role_module.RoleId) Sort_Order
+    from t_sys_role_module
+    <isParameterPresent >
+      <include refid="SysRoleModule.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SysRoleModule" >
+    delete from t_sys_role_module
+    where RightId = #rightid:VARCHAR#
+      and RoleId = #roleid:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SysRoleModuleExample" >
+    delete from t_sys_role_module
+    <include refid="SysRoleModule.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SysRoleModule" >
+    insert into t_sys_role_module (RightId, RoleId)
+    values (#rightid:VARCHAR#, #roleid:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SysRoleModule" >
+    insert into t_sys_role_module
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="rightid" >
+        RightId
+      </isNotNull>
+      <isNotNull prepend="," property="roleid" >
+        RoleId
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="rightid" >
+        #rightid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="roleid" >
+        #roleid:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SysRoleModuleExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_role_module
+    <include refid="SysRoleModule.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_role_module
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.rightid" >
+        RightId = #record.rightid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.roleid" >
+        RoleId = #record.roleid:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysRoleModule.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_role_module
+    set RightId = #record.rightid:VARCHAR#,
+      RoleId = #record.roleid:VARCHAR#
+    <isParameterPresent >
+      <include refid="SysRoleModule.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+</sqlMap>

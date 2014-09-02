@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysModule" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SysModule" >
+    <result column="Module_Id" property="moduleId" jdbcType="VARCHAR" />
+    <result column="Module_Name" property="moduleName" jdbcType="VARCHAR" />
+    <result column="Module_Desc" property="moduleDesc" jdbcType="VARCHAR" />
+    <result column="Parent_ModuleId" property="parentModuleid" jdbcType="VARCHAR" />
+    <result column="Is_Valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="Is_Leaf" property="isLeaf" jdbcType="VARCHAR" />
+    <result column="Sort_Order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="Module_Url" property="moduleUrl" jdbcType="VARCHAR" />
+    <result column="parentName" property="parentName" jdbcType="VARCHAR" />
+    <result column="isValidName" property="isValidName" jdbcType="VARCHAR" />
+    <result column="childCount" property="childCount" jdbcType="Number" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SysModuleExample" >
+    select Module_Id, Module_Name, Module_Desc, Parent_ModuleId, Is_Valid, Is_Leaf, Sort_Order,
+      Module_Url
+      , (select Module_Name from t_sys_module tsm2 WHERE tsm2.Module_Id = t_sys_module.Parent_ModuleId) parentName
+      , CASE WHEN is_valid='Y' THEN '有效' ELSE '无效' end isValidName
+      , (SELECT COUNT(*) FROM t_sys_module tsm1 WHERE tsm1.Parent_ModuleId = t_sys_module.Module_Id) childCount
+    from t_sys_module
+    <isParameterPresent >
+      <include refid="SysModule.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SysModuleKey" >
+    select Module_Id, Module_Name, Module_Desc, Parent_ModuleId, Is_Valid, Is_Leaf, Sort_Order,
+      Module_Url
+    , (select Module_Name from t_sys_module tsm2 WHERE tsm2.Module_Id = t_sys_module.Parent_ModuleId) parentName
+    , CASE WHEN is_valid='Y' THEN '有效' ELSE '无效' end isValidName
+    , (SELECT COUNT(*) FROM t_sys_module tsm1 WHERE tsm1.Parent_ModuleId = t_sys_module.Module_Id) childCount
+    from t_sys_module
+    where Module_Id = #moduleId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SysModuleKey" >
+    delete from t_sys_module
+    where Module_Id = #moduleId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SysModuleExample" >
+    delete from t_sys_module
+    <include refid="SysModule.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SysModule" >
+    <selectKey resultClass="java.lang.String" keyProperty="moduleId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_sys_module (Module_Id, Module_Name, Module_Desc, Parent_ModuleId, Is_Valid,
+      Is_Leaf, Sort_Order, Module_Url)
+    values (#moduleId:VARCHAR#, #moduleName:VARCHAR#, #moduleDesc:VARCHAR#,
+      #parentModuleid:VARCHAR#, #isValid:VARCHAR#, #isLeaf:VARCHAR#, #sortOrder:INTEGER#,
+      #moduleUrl:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SysModule" >
+    <selectKey resultClass="java.lang.String" keyProperty="moduleId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_sys_module
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="moduleId" >
+        Module_Id
+      </isNotNull>
+      <isNotNull prepend="," property="moduleName" >
+        Module_Name
+      </isNotNull>
+      <isNotNull prepend="," property="moduleDesc" >
+        Module_Desc
+      </isNotNull>
+      <isNotNull prepend="," property="parentModuleid" >
+        Parent_ModuleId
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        Is_Valid
+      </isNotNull>
+      <isNotNull prepend="," property="isLeaf" >
+        Is_Leaf
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        Sort_Order
+      </isNotNull>
+      <isNotNull prepend="," property="moduleUrl" >
+        Module_Url
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="moduleId" >
+        #moduleId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="moduleName" >
+        #moduleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="moduleDesc" >
+        #moduleDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parentModuleid" >
+        #parentModuleid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isLeaf" >
+        #isLeaf:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        #sortOrder:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="moduleUrl" >
+        #moduleUrl:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SysModuleExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_module
+    <include refid="SysModule.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_module
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.moduleId" >
+        Module_Id = #record.moduleId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.moduleName" >
+        Module_Name = #record.moduleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.moduleDesc" >
+        Module_Desc = #record.moduleDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.parentModuleid" >
+        Parent_ModuleId = #record.parentModuleid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isValid" >
+        Is_Valid = #record.isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isLeaf" >
+        Is_Leaf = #record.isLeaf:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sortOrder" >
+        Sort_Order = #record.sortOrder:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="record.moduleUrl" >
+        Module_Url = #record.moduleUrl:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysModule.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_module
+    set Module_Id = #record.moduleId:VARCHAR#,
+      Module_Name = #record.moduleName:VARCHAR#,
+      Module_Desc = #record.moduleDesc:VARCHAR#,
+      Parent_ModuleId = #record.parentModuleid:VARCHAR#,
+      Is_Valid = #record.isValid:VARCHAR#,
+      Is_Leaf = #record.isLeaf:VARCHAR#,
+      Sort_Order = #record.sortOrder:INTEGER#,
+      Module_Url = #record.moduleUrl:VARCHAR#
+    <isParameterPresent >
+      <include refid="SysModule.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SysModule" >
+    update t_sys_module
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="moduleName" >
+        Module_Name = #moduleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="moduleDesc" >
+        Module_Desc = #moduleDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parentModuleid" >
+        Parent_ModuleId = #parentModuleid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        Is_Valid = #isValid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isLeaf" >
+        Is_Leaf = #isLeaf:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sortOrder" >
+        Sort_Order = #sortOrder:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="moduleUrl" >
+        Module_Url = #moduleUrl:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where Module_Id = #moduleId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SysModule" >
+    update t_sys_module
+    set Module_Name = #moduleName:VARCHAR#,
+      Module_Desc = #moduleDesc:VARCHAR#,
+      Parent_ModuleId = #parentModuleid:VARCHAR#,
+      Is_Valid = #isValid:VARCHAR#,
+      Is_Leaf = #isLeaf:VARCHAR#,
+      Sort_Order = #sortOrder:INTEGER#,
+      Module_Url = #moduleUrl:VARCHAR#
+    where Module_Id = #moduleId:VARCHAR#
+  </update>
+</sqlMap>

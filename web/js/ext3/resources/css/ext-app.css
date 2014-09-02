@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+body {
+	background-color: #FFFFFF !important;
+	font-size: 12px;
+}
+a:link {
+	color: black;
+	text-decoration: none;
+}
+a:visited {
+	color: blue;
+	text-decoration: none;
+}
+a:hover {
+	color:red;
+	text-decoration: none;
+}
+a:active {
+	color:green;
+	text-decoration: none;
+}
+.fellow {
+	background: url("/images/main_01/ico_fellow.gif") left center no-repeat !important;
+}
+.tabs {
+    background: url("/images/icon/tabs.gif") left center no-repeat !important;
+}
+.plus {
+	background: url("/images/icon/add.png") left center no-repeat !important;
+}
+.minus {
+	background: url("/images/icon/delete.png") left center no-repeat !important;
+}
+.edit {
+	background: url("/images/icon/pencil.png") left center no-repeat !important;
+}
+.copy {
+	background: url("/images/icon/copy.png") left center no-repeat !important;
+}
+.find {
+	background: url("/images/icon/magnifier.png") left center no-repeat !important;
+}
+.zoom {
+	background: url("/images/icon/search.gif") left center no-repeat !important;
+}
+.note {
+	background: url("/images/icon/note.gif") left center no-repeat !important;
+}
+.text {
+	background: url("/images/icon/text.png") left center no-repeat !important;
+}
+.code {
+	background: url("/images/icon/code.png") left center no-repeat !important;
+}
+.insect {
+	background: url("/images/icon/insect.png") left center no-repeat !important;
+}
+.merge {
+	background: url("/images/icon/merge.png") left center no-repeat !important;
+}
+.store {
+	background: url("/images/icon/store.png") left center no-repeat !important;
+}
+.setup {
+	background: url("/images/icon/wrench.png") left center no-repeat !important;
+}

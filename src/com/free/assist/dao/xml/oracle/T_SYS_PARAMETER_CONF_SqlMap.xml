@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SysParameterConf" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.SysParameterConf" >
+    <result column="PAR_ID" property="parId" jdbcType="VARCHAR" />
+    <result column="PAR_NAME" property="parName" jdbcType="VARCHAR" />
+    <result column="PAR_VALUE" property="parValue" jdbcType="VARCHAR" />
+    <result column="PAR_DESC" property="parDesc" jdbcType="VARCHAR" />
+    <result column="IS_VALID" property="isValid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SysParameterConfExample" >
+    select PAR_ID, PAR_NAME, PAR_VALUE, PAR_DESC, IS_VALID
+    from t_sys_parameter_conf
+    <isParameterPresent >
+      <include refid="SysParameterConf.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.SysParameterConfKey" >
+    select PAR_ID, PAR_NAME, PAR_VALUE, PAR_DESC, IS_VALID
+    from t_sys_parameter_conf
+    where PAR_ID = #parId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.SysParameterConfKey" >
+    delete from t_sys_parameter_conf
+    where PAR_ID = #parId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.SysParameterConfExample" >
+    delete from t_sys_parameter_conf
+    <include refid="SysParameterConf.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SysParameterConf" >
+    <selectKey resultClass="java.lang.String" keyProperty="parId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_sys_parameter_conf (PAR_ID, PAR_NAME, PAR_VALUE, PAR_DESC, IS_VALID)
+    values (#parId:VARCHAR#, #parName:VARCHAR#, #parValue:VARCHAR#, #parDesc:VARCHAR#,
+      #isValid:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SysParameterConf" >
+    <selectKey resultClass="java.lang.String" keyProperty="parId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_sys_parameter_conf
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="parId" >
+        PAR_ID
+      </isNotNull>
+      <isNotNull prepend="," property="parName" >
+        PAR_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="parValue" >
+        PAR_VALUE
+      </isNotNull>
+      <isNotNull prepend="," property="parDesc" >
+        PAR_DESC
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        IS_VALID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="parId" >
+        #parId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parName" >
+        #parName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parValue" >
+        #parValue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parDesc" >
+        #parDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        #isValid:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.SysParameterConfExample" resultClass="java.lang.Integer" >
+    select count(*) from t_sys_parameter_conf
+    <include refid="SysParameterConf.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_sys_parameter_conf
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.parId" >
+        PAR_ID = #record.parId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.parName" >
+        PAR_NAME = #record.parName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.parValue" >
+        PAR_VALUE = #record.parValue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.parDesc" >
+        PAR_DESC = #record.parDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.isValid" >
+        IS_VALID = #record.isValid:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SysParameterConf.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_sys_parameter_conf
+    set PAR_ID = #record.parId:VARCHAR#,
+      PAR_NAME = #record.parName:VARCHAR#,
+      PAR_VALUE = #record.parValue:VARCHAR#,
+      PAR_DESC = #record.parDesc:VARCHAR#,
+      IS_VALID = #record.isValid:VARCHAR#
+    <isParameterPresent >
+      <include refid="SysParameterConf.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.SysParameterConf" >
+    update t_sys_parameter_conf
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="parName" >
+        PAR_NAME = #parName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parValue" >
+        PAR_VALUE = #parValue:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="parDesc" >
+        PAR_DESC = #parDesc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isValid" >
+        IS_VALID = #isValid:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where PAR_ID = #parId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.SysParameterConf" >
+    update t_sys_parameter_conf
+    set PAR_NAME = #parName:VARCHAR#,
+      PAR_VALUE = #parValue:VARCHAR#,
+      PAR_DESC = #parDesc:VARCHAR#,
+      IS_VALID = #isValid:VARCHAR#
+    where PAR_ID = #parId:VARCHAR#
+  </update>
+</sqlMap>

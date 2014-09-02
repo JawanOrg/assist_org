@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IfaceLogRepairWithBLOBs" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.IfaceLogRepair" >
+    <result column="REPAIR_ID" property="repairId" jdbcType="VARCHAR" />
+    <result column="REPOSITORY_ID" property="repositoryId" jdbcType="VARCHAR" />
+    <result column="FAULT_CAUSE" property="faultCause" jdbcType="VARCHAR" />
+    <result column="REPAIR_BY" property="repairUser" jdbcType="VARCHAR" />
+    <result column="REPAIR_ON" property="repairDate" jdbcType="TIMESTAMP" />
+    <result column="COMMIT_ON" property="commitDate" jdbcType="TIMESTAMP" />
+    <result column="COMMIT_BY" property="commitUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ibatorgenerated_ResultMapWithBLOBs" class="com.free.assist.domain.IfaceLogRepairWithBLOBs" extends="IfaceLogRepairWithBLOBs.ibatorgenerated_BaseResultMap" >
+    <result column="FAULT_DESCRIPTION" property="faultDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExampleWithBLOBs" resultMap="ibatorgenerated_ResultMapWithBLOBs" parameterClass="com.free.assist.domain.IfaceLogRepairExample" >
+    select REPAIR_ID, REPOSITORY_ID, FAULT_CAUSE, REPAIR_BY, REPAIR_ON, COMMIT_ON, COMMIT_BY,
+      FAULT_DESCRIPTION
+    from t_iface_log_repair
+    <isParameterPresent >
+      <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.IfaceLogRepairExample" >
+    select REPAIR_ID, REPOSITORY_ID, FAULT_CAUSE, REPAIR_BY, REPAIR_ON, COMMIT_ON, COMMIT_BY
+    from t_iface_log_repair
+    <isParameterPresent >
+      <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_ResultMapWithBLOBs" parameterClass="com.free.assist.domain.IfaceLogRepairKey" >
+    select REPAIR_ID, REPOSITORY_ID, FAULT_CAUSE, REPAIR_BY, REPAIR_ON, COMMIT_ON, COMMIT_BY,
+      FAULT_DESCRIPTION
+    from t_iface_log_repair
+    where REPAIR_ID = #repairId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.IfaceLogRepairKey" >
+    delete from t_iface_log_repair
+    where REPAIR_ID = #repairId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.IfaceLogRepairExample" >
+    delete from t_iface_log_repair
+    <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.IfaceLogRepairWithBLOBs" >
+    <selectKey resultClass="java.lang.String" keyProperty="repairId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_log_repair (REPAIR_ID, REPOSITORY_ID, FAULT_CAUSE, REPAIR_BY, REPAIR_ON,
+      COMMIT_ON, COMMIT_BY, FAULT_DESCRIPTION)
+    values (#repairId:VARCHAR#, #repositoryId:VARCHAR#, #faultCause:VARCHAR#, #repairUser:VARCHAR#,
+      #repairDate:TIMESTAMP#, #commitDate:TIMESTAMP#, #commitUser:VARCHAR#,
+      #faultDescription:LONGVARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.IfaceLogRepairWithBLOBs" >
+    <selectKey resultClass="java.lang.String" keyProperty="repairId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into t_iface_log_repair
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="repairId" >
+        REPAIR_ID
+      </isNotNull>
+      <isNotNull prepend="," property="repositoryId" >
+        REPOSITORY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="faultCause" >
+        FAULT_CAUSE
+      </isNotNull>
+      <isNotNull prepend="," property="repairUser" >
+        REPAIR_BY
+      </isNotNull>
+      <isNotNull prepend="," property="repairDate" >
+        REPAIR_ON
+      </isNotNull>
+      <isNotNull prepend="," property="commitDate" >
+        COMMIT_ON
+      </isNotNull>
+      <isNotNull prepend="," property="commitUser" >
+        COMMIT_BY
+      </isNotNull>
+      <isNotNull prepend="," property="faultDescription" >
+        FAULT_DESCRIPTION
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="repairId" >
+        #repairId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="repositoryId" >
+        #repositoryId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="faultCause" >
+        #faultCause:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="repairUser" >
+        #repairUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="repairDate" >
+        #repairDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="commitDate" >
+        #commitDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="commitUser" >
+        #commitUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="faultDescription" >
+        #faultDescription:LONGVARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.IfaceLogRepairExample" resultClass="java.lang.Integer" >
+    select count(*) from t_iface_log_repair
+    <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_iface_log_repair
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.repairId" >
+        REPAIR_ID = #record.repairId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.repositoryId" >
+        REPOSITORY_ID = #record.repositoryId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.faultCause" >
+        FAULT_CAUSE = #record.faultCause:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.repairUser" >
+        REPAIR_BY = #record.repairUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.repairDate" >
+        REPAIR_ON = #record.repairDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.commitDate" >
+        COMMIT_ON = #record.commitDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.commitUser" >
+        COMMIT_BY = #record.commitUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.faultDescription" >
+        FAULT_DESCRIPTION = #record.faultDescription:LONGVARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExampleWithBLOBs" >
+    update t_iface_log_repair
+    set REPAIR_ID = #record.repairId:VARCHAR#,
+      REPOSITORY_ID = #record.repositoryId:VARCHAR#,
+      FAULT_CAUSE = #record.faultCause:VARCHAR#,
+      REPAIR_BY = #record.repairUser:VARCHAR#,
+      REPAIR_ON = #record.repairDate:TIMESTAMP#,
+      COMMIT_ON = #record.commitDate:TIMESTAMP#,
+      COMMIT_BY = #record.commitUser:VARCHAR#,
+      FAULT_DESCRIPTION = #record.faultDescription:LONGVARCHAR#
+    <isParameterPresent >
+      <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_iface_log_repair
+    set REPAIR_ID = #record.repairId:VARCHAR#,
+      REPOSITORY_ID = #record.repositoryId:VARCHAR#,
+      FAULT_CAUSE = #record.faultCause:VARCHAR#,
+      REPAIR_BY = #record.repairUser:VARCHAR#,
+      REPAIR_ON = #record.repairDate:TIMESTAMP#,
+      COMMIT_ON = #record.commitDate:TIMESTAMP#,
+      COMMIT_BY = #record.commitUser:VARCHAR#
+    <isParameterPresent >
+      <include refid="IfaceLogRepairWithBLOBs.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.IfaceLogRepairWithBLOBs" >
+    update t_iface_log_repair
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="repositoryId" >
+        REPOSITORY_ID = #repositoryId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="faultCause" >
+        FAULT_CAUSE = #faultCause:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="repairUser" >
+        REPAIR_BY = #repairUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="repairDate" >
+        REPAIR_ON = #repairDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="commitDate" >
+        COMMIT_ON = #commitDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="commitUser" >
+        COMMIT_BY = #commitUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="faultDescription" >
+        FAULT_DESCRIPTION = #faultDescription:LONGVARCHAR#
+      </isNotNull>
+    </dynamic>
+    where REPAIR_ID = #repairId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeyWithBLOBs" parameterClass="com.free.assist.domain.IfaceLogRepairWithBLOBs" >
+    update t_iface_log_repair
+    set REPOSITORY_ID = #repositoryId:VARCHAR#,
+      FAULT_CAUSE = #faultCause:VARCHAR#,
+      REPAIR_BY = #repairUser:VARCHAR#,
+      REPAIR_ON = #repairDate:TIMESTAMP#,
+      COMMIT_ON = #commitDate:TIMESTAMP#,
+      COMMIT_BY = #commitUser:VARCHAR#,
+      FAULT_DESCRIPTION = #faultDescription:LONGVARCHAR#
+    where REPAIR_ID = #repairId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.IfaceLogRepair" >
+    update t_iface_log_repair
+    set REPOSITORY_ID = #repositoryId:VARCHAR#,
+      FAULT_CAUSE = #faultCause:VARCHAR#,
+      REPAIR_BY = #repairUser:VARCHAR#,
+      REPAIR_ON = #repairDate:TIMESTAMP#,
+      COMMIT_ON = #commitDate:TIMESTAMP#,
+      COMMIT_BY = #commitUser:VARCHAR#
+    where REPAIR_ID = #repairId:VARCHAR#
+  </update>
+</sqlMap>

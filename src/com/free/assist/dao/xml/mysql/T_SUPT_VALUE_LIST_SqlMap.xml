@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SuptValueList" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.regaltec.blocimp.domain.SuptValueList" >
+    <result column="sv_order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="sv_bill_id" property="billId" jdbcType="VARCHAR" />
+    <result column="sv_depen_node" property="depenNode" jdbcType="VARCHAR" />
+    <result column="sv_values" property="values" jdbcType="VARCHAR" />
+    <result column="sv_create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="sv_create_user" property="createUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SuptValueListExample" >
+    select sv.order_id as sv_order_id, sv.bill_id as sv_bill_id, sv.depen_node as sv_depen_node,
+      sv.values as sv_values, sv.create_date as sv_create_date, sv.create_user as sv_create_user
+    from t_supt_value_list sv
+    <isParameterPresent >
+      <include refid="SuptValueList.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.regaltec.blocimp.domain.SuptValueListKey" >
+    select sv.order_id as sv_order_id, sv.bill_id as sv_bill_id, sv.depen_node as sv_depen_node,
+      sv.values as sv_values, sv.create_date as sv_create_date, sv.create_user as sv_create_user
+    from t_supt_value_list sv
+    where sv.order_id = #orderId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptValueListKey" >
+    delete from t_supt_value_list
+    where order_id = #orderId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.regaltec.blocimp.domain.SuptValueListExample" >
+    delete from t_supt_value_list sv
+    <include refid="SuptValueList.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.regaltec.blocimp.domain.SuptValueList" >
+    <selectKey resultClass="java.lang.String" keyProperty="orderId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_supt_value_list (order_id, bill_id, depen_node, values, create_date, create_user)
+    values (#orderId:VARCHAR#, #billId:VARCHAR#, #depenNode:VARCHAR#, #values:VARCHAR#,
+      #createDate:TIMESTAMP#, #createUser:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.regaltec.blocimp.domain.SuptValueList" >
+    <selectKey resultClass="java.lang.String" keyProperty="orderId" >
+      select replace(uuid(), '-', '') from dual
+    </selectKey>
+    insert into t_supt_value_list
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="orderId" >
+        order_id
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        bill_id
+      </isNotNull>
+      <isNotNull prepend="," property="depenNode" >
+        depen_node
+      </isNotNull>
+      <isNotNull prepend="," property="values" >
+        values
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        create_date
+      </isNotNull>
+      <isNotNull prepend="," property="createUser" >
+        create_user
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="orderId" >
+        #orderId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="billId" >
+        #billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="depenNode" >
+        #depenNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="values" >
+        #values:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        #createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="createUser" >
+        #createUser:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.regaltec.blocimp.domain.SuptValueListExample" resultClass="java.lang.Integer" >
+    select count(*) from t_supt_value_list sv
+    <include refid="SuptValueList.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update t_supt_value_list sv
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.orderId" >
+        sv.order_id = #record.orderId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.billId" >
+        sv.bill_id = #record.billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.depenNode" >
+        sv.depen_node = #record.depenNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.values" >
+        sv.values = #record.values:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createDate" >
+        sv.create_date = #record.createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createUser" >
+        sv.create_user = #record.createUser:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="SuptValueList.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update t_supt_value_list sv
+    set sv.order_id = #record.orderId:VARCHAR#,
+      sv.bill_id = #record.billId:VARCHAR#,
+      sv.depen_node = #record.depenNode:VARCHAR#,
+      sv.values = #record.values:VARCHAR#,
+      sv.create_date = #record.createDate:TIMESTAMP#,
+      sv.create_user = #record.createUser:VARCHAR#
+    <isParameterPresent >
+      <include refid="SuptValueList.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.regaltec.blocimp.domain.SuptValueList" >
+    update t_supt_value_list
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="billId" >
+        bill_id = #billId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="depenNode" >
+        depen_node = #depenNode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="values" >
+        values = #values:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createDate" >
+        create_date = #createDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="createUser" >
+        create_user = #createUser:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where order_id = #orderId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.regaltec.blocimp.domain.SuptValueList" >
+    update t_supt_value_list
+    set bill_id = #billId:VARCHAR#,
+      depen_node = #depenNode:VARCHAR#,
+      values = #values:VARCHAR#,
+      create_date = #createDate:TIMESTAMP#,
+      create_user = #createUser:VARCHAR#
+    where order_id = #orderId:VARCHAR#
+  </update>
+</sqlMap>
