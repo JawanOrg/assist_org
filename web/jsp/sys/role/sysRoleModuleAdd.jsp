@@ -58,7 +58,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 </head>
 <body onload="load();">
-	<form name="formAdd">
+	<form name="formAdd" id="formAdd">
 		<table border="0" width="100%" cellpadding="0" cellspacing="0">
 			<tr>
 				<table  border="0" cellspacing="0" cellpadding="0" style="font-size:13px" >

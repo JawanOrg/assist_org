@@ -248,4 +248,11 @@
       Remark = #remark:VARCHAR#
     where Unit_Id = #unitId:VARCHAR#
   </update>
+  <select id="selectByUserId" resultMap="ibatorgenerated_BaseResultMap" parameterClass="String" >
+	  Select u.unit_id, u.unit_name, u.unit_type, u.unit_des,u.parent_unitid,u.phone,u.is_valid,u.sort_order,u.remark, level
+	  From t_sys_unit u
+	 Start With u.unit_id =
+	            (select uu.unit_id from t_sys_user_unit uu where uu.user_id = #userId#)
+	Connect By Prior u.parent_unitid = u.unit_id
+  </select>
 </sqlMap>

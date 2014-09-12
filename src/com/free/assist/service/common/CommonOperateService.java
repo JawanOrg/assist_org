@@ -26,4 +26,6 @@ public interface CommonOperateService extends BaseService {
     List<SuptAction> queryActions(SuptActionExample example);
     
     String uploadFile(SuptAttach attach);
+    
+    String queryNextDealObject(String userId);
 }

@@ -13,6 +13,7 @@ import com.free.assist.domain.BusReleaseTrendsKey;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptTask;
 import com.free.assist.service.BaseServiceImpl;
+import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.util.Constant;
 import com.free.assist.util.Helper;
 
@@ -21,6 +22,9 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
     private BusReleaseTrendsDAO busReleaseTrendsDAO;
     private SuptActionDAO suptActionDAO;
     private SuptTaskDAO suptTaskDAO;
+    
+    @Autowired
+    private CommonOperateService commonOperateService;
 
     @Autowired
     public void setBusReleaseTrendsDAO(BusReleaseTrendsDAO busReleaseDAO) {
@@ -56,7 +60,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
         task.setCreator(action.getUserVO().getUserId());
         task.setIsFinish(Constant.FLAG_NO);
         task.setIsRedo(Constant.FLAG_NO);
-        task.setDealObjectId(action.getUserVO().getUserId());// TODO
+        task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId()));
         task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
         task.setDealObjectGroup(action.getUserVO().getUnitId());
         task.setTaskIdParent("0");

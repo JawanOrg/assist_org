@@ -1,5 +1,7 @@
 package com.free.assist.service.sys;
 
+import java.util.List;
+
 import com.free.assist.domain.SysUnit;
 import com.free.assist.domain.SysUser;
 import com.free.assist.domain.SysUserUnit;
