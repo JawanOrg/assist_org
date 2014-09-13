@@ -249,7 +249,9 @@
     where Unit_Id = #unitId:VARCHAR#
   </update>
   <select id="selectByUserId" resultMap="ibatorgenerated_BaseResultMap" parameterClass="String" >
-	  Select u.unit_id, u.unit_name, u.unit_type, u.unit_des,u.parent_unitid,u.phone,u.is_valid,u.sort_order,u.remark, level
+	  Select u.unit_id, u.unit_name, u.unit_type, u.unit_des,u.parent_unitid,u.phone,u.is_valid,u.sort_order,u.remark, level,
+	  0 childCount,'' parentName,CASE WHEN is_valid='Y' THEN '有效' ELSE '无效' end isValidName,
+      CASE WHEN Unit_type='P' THEN '岗位' ELSE '部门' end unitTypeName
 	  From t_sys_unit u
 	 Start With u.unit_id =
 	            (select uu.unit_id from t_sys_user_unit uu where uu.user_id = #userId#)
