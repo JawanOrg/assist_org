@@ -86,6 +86,10 @@
 		<create creator="spring" javascript="mapOperateAction">
             <param name="beanName" value="/map/mapOperateAction"/>
         </create>
+        
+		<create creator="spring" javascript="newsAction">
+            <param name="beanName" value="/business/newsAction"/>
+        </create>
 
         <convert converter="bean" match="java.util.*"/>
         <convert converter="bean" match="com.free.assist.web.iface.*"/>

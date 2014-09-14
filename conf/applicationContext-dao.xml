@@ -101,5 +101,6 @@
     <bean id="suptTaskDAO" class="com.free.assist.dao.SuptTaskDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
     <bean id="suptAttachDAO" class="com.free.assist.dao.SuptAttachDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
     <bean id="suptPointInfoDAO" class="com.free.assist.dao.SuptPointInfoDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    <bean id="busReleaseNewsDAO" class="com.free.assist.dao.BusReleaseNewsDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
 
 </beans>

@@ -2,11 +2,15 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
 <struts-config>
 	<form-beans>
-		<form-bean name="dynamicForm" type="com.free.assist.web.business.DynamicForm" />  
+		<form-bean name="dynamicForm" type="com.free.assist.web.business.DynamicForm" /> 
+		<form-bean name="newsForm" type="com.free.assist.web.business.newsForm" />  
 	</form-beans>
 	<action-mappings>
 		<action path="/business/dynamicAction" name="dynamicForm" scope="request" parameter="method" validate="false">
 			<description>施工动态</description>
+		</action>
+		<action path="/business/newsAction" name="newsForm" scope="request" parameter="method" validate="false">
+			<description>新闻动态</description>
 		</action>
 	</action-mappings>
 </struts-config>
