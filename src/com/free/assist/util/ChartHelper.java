@@ -55,6 +55,7 @@ public class ChartHelper {
 			sb.append(userVO.getMobilePhone());
 			sb.append("</creator_phone><onclick>showDetail('").append(project.getBillId()).append("','").append(translateItemCodeToCh("release_status", project.getBillStatus())).append("')</onclick><tips></tips></start>");
 			for (SuptTask item : itemList) {
+				ex = new SysUserExample();
 				ex.createCriteria().andUserIdEqualTo(item.getDealObjectId());
 				list = sysLoginService.selectByExample(ex);
 				if (list != null && list.size() != 0) {

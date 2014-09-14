@@ -168,7 +168,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_WORK);
-			task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId()));
+			task.setDealObjectId(action.getUserVO().getUserId());
 		} else if (Constant.OP_RELEASE_NOTAGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_AUDIT);
 			SuptTaskKey taskkey = new SuptTaskKey();

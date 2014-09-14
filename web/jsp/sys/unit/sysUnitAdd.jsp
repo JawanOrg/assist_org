@@ -154,7 +154,7 @@
 													<tr>
 														<td noWrap bgcolor="#F4F4F4">
 															<div align="right">
-																组织说明:
+																管理员:
 															</div>
 														</td>
 														<td align="left">

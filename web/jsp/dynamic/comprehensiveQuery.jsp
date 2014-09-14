@@ -135,7 +135,7 @@
 		function initQueryResultList() {
 			DWRUtil.useLoadingMessage('数据读取中...');
 			var formObj = $('queryForm').serialize(true);
-			dynamicAction.queryRemind(formObj, showResultList);
+			dynamicAction.queryComprehensive(formObj, showResultList);
 		}
 
 		function showResultList(str) {

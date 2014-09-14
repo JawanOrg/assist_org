@@ -84,7 +84,7 @@ public class CommonOperateServiceImpl extends BaseServiceImpl implements CommonO
 		List<SysUnit> sysUnitList = this.mySysUnitDAO.selectByUserId(userId);
 		if (sysUnitList != null && sysUnitList.size() > 0) {
 			for (SysUnit unit : sysUnitList) {
-				if (unit.getUnitDes() != null && unit.getUnitDes().trim().length() > 0) {
+				if (unit.getUnitDes() != null && unit.getUnitDes().trim().length() > 0 && !unit.getUnitDes().equals(userId)) {
 					return unit.getUnitDes();
 				}
 			}
