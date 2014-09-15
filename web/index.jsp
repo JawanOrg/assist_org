@@ -136,7 +136,7 @@ body {
 												</tr>
 												<tr>
 													<td height="80" align="right" valign="top"><img
-														src="/images/normal/logo.png---" width="279" height="68"></td>
+														src="/images/normal/logo.png--" width="279" height="68"></td>
 												</tr>
 												<tr>
 													<td height="198" align="right" valign="top"><table
