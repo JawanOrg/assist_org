@@ -112,7 +112,7 @@
 													<tr>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">пбнедзхщё╨</td>
 														<td bgcolor="#f2f2f2" colspan="3"><textarea rows="3"
-																cols="83" class="form-control" name="repairContent"></textarea></td>
+																cols="83" class="form-control" name="newsContent"></textarea></td>
 														<td bgcolor="#f2f2f2" colspan="2"></td>
 													</tr>
 													<tr>

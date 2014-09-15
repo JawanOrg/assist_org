@@ -14,9 +14,9 @@ import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 import org.springframework.stereotype.Controller;
 
-import com.free.assist.domain.BusReleaseTrends;
-import com.free.assist.domain.BusReleaseTrendsExample;
-import com.free.assist.domain.BusReleaseTrendsKey;
+import com.free.assist.domain.BusReleaseNews;
+import com.free.assist.domain.BusReleaseNewsExample;
+import com.free.assist.domain.BusReleaseNewsKey;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptActionExample;
 import com.free.assist.domain.SuptAttach;
@@ -44,31 +44,17 @@ public class NewsAction extends BaseAction {
 	}
 
 	public String accept(NewsForm form) throws Exception {
-		if (Constant.REPAIR_TYPE_EMERGENCY.equals(form.getRepairType())) {
-			form.setIsNeedGovernment(null);
-		}
 		SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
-		BusReleaseTrends busRelease = new BusReleaseTrends();
+		BusReleaseNews busRelease = new BusReleaseNews();
 		ObjectUtil.copyObjectToObject(form, busRelease);
 		SuptAction action = new SuptAction(currentUser);
 		return newsOperateService.create(busRelease, action);
 	}
 
 	public String querySimilarly(NewsForm form) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
-		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
-		if (StringUtils.isNotBlank(form.getRoad()) && StringUtils.isNotBlank(form.getTheTitle())) {
-			cr.andRoadLike("%" + form.getRoad() + "%");
-		} else if (StringUtils.isBlank(form.getRoad()) && StringUtils.isNotBlank(form.getTheTitle())) {
-			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
-		}
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
-		if (StringUtils.isNotBlank(form.getCommunity())) {
-			cr.andCommunityEqualTo(form.getCommunity());
-		}
-		List<BusReleaseTrends> trendsList = commonOperateService.query(ex);
+		BusReleaseNewsExample ex = new BusReleaseNewsExample();
+		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();		
+		List<BusReleaseNews> trendsList = commonOperateService.query(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);
@@ -76,25 +62,14 @@ public class NewsAction extends BaseAction {
 	}
 
 	public String queryRemind(NewsForm form) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
-		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
+		BusReleaseNewsExample ex = new BusReleaseNewsExample();
+		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
 		if (StringUtils.isNotBlank(form.getBillStatus())) {
 			cr.andBillStatusEqualTo(form.getBillStatus());
-		}
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
-		if (StringUtils.isNotBlank(form.getCommunity())) {
-			cr.andCommunityEqualTo(form.getCommunity());
-		}
-		if (StringUtils.isNotBlank(form.getRoad())) {
-			cr.andRoadLike("%" + form.getRoad() + "%");
 		}
 		cr.andTaskDealObjectIdEqualTo(((SysUser) super.getSessionByDWR().getAttribute("currentUser")).getUserId());
 
@@ -102,7 +77,7 @@ public class NewsAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseTrends> trendsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseNews> trendsList = commonOperateService.selectPageByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);
@@ -111,9 +86,9 @@ public class NewsAction extends BaseAction {
 
 	public ActionForward detail(ActionMapping mapping, ActionForm actionform, HttpServletRequest request, HttpServletResponse response) {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
-		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
+		BusReleaseNewsKey key = new BusReleaseNewsKey();
 		key.setBillId(billId);
-		BusReleaseTrends trends = commonOperateService.queryByKey(key);
+		BusReleaseNews trends = commonOperateService.queryByKey(key);
 		request.setAttribute("trends", trends);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
@@ -186,25 +161,14 @@ public class NewsAction extends BaseAction {
 	}
 
 	public String queryComprehensive(NewsForm form) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
-		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
+		BusReleaseNewsExample ex = new BusReleaseNewsExample();
+		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
 		if (StringUtils.isNotBlank(form.getBillStatus())) {
 			cr.andBillStatusEqualTo(form.getBillStatus());
-		}
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
-		if (StringUtils.isNotBlank(form.getCommunity())) {
-			cr.andCommunityEqualTo(form.getCommunity());
-		}
-		if (StringUtils.isNotBlank(form.getRoad())) {
-			cr.andRoadLike("%" + form.getRoad() + "%");
 		}
 		cr.andTaskDealObjectIdExists(((SysUser) super.getSessionByDWR().getAttribute("currentUser")).getUserId());
 
@@ -212,7 +176,7 @@ public class NewsAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseTrends> trendsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseNews> trendsList = commonOperateService.selectPageByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);

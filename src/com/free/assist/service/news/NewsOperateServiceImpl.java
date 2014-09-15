@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.free.assist.dao.BusReleaseTrendsDAO;
+import com.free.assist.dao.BusReleaseNewsDAO;
 import com.free.assist.dao.SuptActionDAO;
 import com.free.assist.dao.SuptTaskDAO;
-import com.free.assist.domain.BusReleaseTrends;
-import com.free.assist.domain.BusReleaseTrendsKey;
+import com.free.assist.domain.BusReleaseNews;
+import com.free.assist.domain.BusReleaseNewsKey;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptTask;
 import com.free.assist.domain.SuptTaskKey;
@@ -20,7 +20,7 @@ import com.free.assist.util.Helper;
 
 @Service("newsOperateService")
 public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOperateService {
-	private BusReleaseTrendsDAO busReleaseTrendsDAO;
+	private BusReleaseNewsDAO busReleaseTrendsDAO;
 	private SuptActionDAO suptActionDAO;
 	private SuptTaskDAO suptTaskDAO;
 
@@ -28,7 +28,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 	private CommonOperateService commonOperateService;
 
 	@Autowired
-	public void setBusReleaseTrendsDAO(BusReleaseTrendsDAO busReleaseDAO) {
+	public void setBusReleaseNewsDAO(BusReleaseNewsDAO busReleaseDAO) {
 		this.busReleaseTrendsDAO = busReleaseDAO;
 	}
 
@@ -44,7 +44,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
-	public String create(BusReleaseTrends relsease, SuptAction action) {
+	public String create(BusReleaseNews relsease, SuptAction action) {
 		String billSn = Helper.getCurrentTimeStr() + this.buildSequence();
 		relsease.setBillSn(billSn);
 		relsease.setCreator(action.getUserVO().getUserId());
@@ -80,14 +80,14 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public String audit(SuptAction action) {
-		BusReleaseTrendsKey trendsKey = new BusReleaseTrendsKey();
+		BusReleaseNewsKey trendsKey = new BusReleaseNewsKey();
 		trendsKey.setBillId(action.getBillId());
-		BusReleaseTrends oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
+		BusReleaseNews oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
 		if (oldRelsease != null && !Constant.S_AUDIT.equals(oldRelsease.getBillStatus())) {
 			return "动态信息已审核！";
 		}
 
-		BusReleaseTrends relsease = new BusReleaseTrends();
+		BusReleaseNews relsease = new BusReleaseNews();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_RELEASE);
@@ -133,14 +133,14 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public String release(SuptAction action) {
-		BusReleaseTrendsKey trendsKey = new BusReleaseTrendsKey();
+		BusReleaseNewsKey trendsKey = new BusReleaseNewsKey();
 		trendsKey.setBillId(action.getBillId());
-		BusReleaseTrends oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
+		BusReleaseNews oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
 		if (oldRelsease != null && !Constant.S_RELEASE.equals(oldRelsease.getBillStatus())) {
 			return "动态信息已发布！";
 		}
 
-		BusReleaseTrends relsease = new BusReleaseTrends();
+		BusReleaseNews relsease = new BusReleaseNews();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_WORK);
