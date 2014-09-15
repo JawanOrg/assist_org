@@ -115,9 +115,7 @@
 	}
 
 	function toSysDicItemRelateList(obj) {
-		createNewTab('tabView1', '字典条目列表&nbsp;', '',
-				'/sys/sysDicConfigAction.do?method=showSysDicItemByDictionaryId&dictionaryId='
-						+ obj, true);
+		createNewTab('tabView1', '字典条目列表&nbsp;', '', '/sys/sysDicConfigAction.do?method=showSysDicItemByDictionaryId&dictionaryId=' + obj, true);
 	}
 
 	function showAllData() {
@@ -232,16 +230,14 @@
 		}
 	}
 
-	function initLoad() {
-		alert("11");
-		var dictionaryId = "${param.dictionaryId}";
-		//alert(dictionaryId);
+	var initDictionaryId;
+	function initLoad(dictionaryId) {
+		initDictionaryId=dictionaryId;
 		initQueryResultList2(dictionaryId);
 	}
 	function initQueryResultList2(dictionaryId) {
 		DWRUtil.useLoadingMessage('数据读取中...');
-		sysDicItemAction.getDataSysDicItemByDictionaryId(dictionaryId,
-				showResultList2);
+		sysDicItemAction.getDataSysDicItemByDictionaryId(dictionaryId,showResultList2);
 		disableForm();
 	}
 
@@ -266,7 +262,7 @@
 	function delCallback() {
 		enableForm();
 		alert("删除成功!");
-		initQueryResultList2();
+		initQueryResultList2(initDictionaryId);
 	}
 
 	function toSysDicItemAdd() {
@@ -276,7 +272,7 @@
 						dictionaryId,
 						"dialogWidth=400px;dialogHeight=400px;center=yes;status=no;scroll=no");
 		if (addSysDicConfigObj != -1) {
-			initQueryResultList2();
+			initQueryResultList2(initDictionaryId);
 		}
 	}
 
@@ -294,7 +290,7 @@
 				.showModalDialog("/jsp/sys/dic/sysDicItemEdit.jsp", objData,
 						"dialogWidth=400px;dialogHeight=400px;center=yes;status=no;scroll=no");
 		if (editSysDicConfigObj != -1) {
-			initQueryResultList2();
+			initQueryResultList2(initDictionaryId);
 		}
 	}
 </script>

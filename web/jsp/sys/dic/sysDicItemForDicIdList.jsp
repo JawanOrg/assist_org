@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=GBK" language="java"%>
-<script type='text/javascript' src='/js/commonjs.js'></script>
-<%@ include file='/jsp/common/allTag.jsp' %>
+<%@ include file='/jsp/taglib.jsp'%>
 <html>
 <body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0" marginheight="0" topmargin="4" >
 
-<form name="allForm3" id="allForm3">
 <table class=table id=powergrid style="FONT-SIZE: 13px"
             cellspacing=0 bordercolordark=#ffffff cellpadding=1 width=100% bordercolorlight=#D7D7D7 border=1 frame=box
             pcolor="#BCC8F5">
@@ -49,6 +47,5 @@
 							</c:forEach>
                     </tbody>
                   </table>
-               </form>
 </body>
 </html>

@@ -5,7 +5,7 @@
 </head>
 
 <body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0" marginheight="0"
-	topmargin="0" onload="initLoad()">
+	topmargin="0">
 	<table width="100%" border="0" cellpadding="5" cellspacing="0"
 		bgcolor="#FFFFFF" height="100%">
 		<tr>
@@ -34,4 +34,9 @@
 		</tr>
 	</table>
 </body>
+<script>
+var dictionaryId = "${param.dictionaryId}";
+initLoad(dictionaryId);
+
+</script>
 </html>
