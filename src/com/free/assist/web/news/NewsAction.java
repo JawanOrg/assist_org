@@ -53,8 +53,8 @@ public class NewsAction extends BaseAction {
 
 	public String querySimilarly(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
-		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();		
-		List<BusReleaseNews> trendsList = commonOperateService.query(ex);
+		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		List<BusReleaseNews> trendsList = (List<BusReleaseNews>) commonOperateService.selectByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);
@@ -64,7 +64,7 @@ public class NewsAction extends BaseAction {
 	public String queryRemind(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
 		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
-		
+
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
@@ -88,7 +88,7 @@ public class NewsAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseNewsKey key = new BusReleaseNewsKey();
 		key.setBillId(billId);
-		BusReleaseNews trends = commonOperateService.queryByKey(key);
+		BusReleaseNews trends = (BusReleaseNews) commonOperateService.selectByPrimaryKey(key);
 		request.setAttribute("trends", trends);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
@@ -163,7 +163,7 @@ public class NewsAction extends BaseAction {
 	public String queryComprehensive(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
 		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
-		
+
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
