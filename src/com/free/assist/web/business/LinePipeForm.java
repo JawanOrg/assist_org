@@ -1,11 +1,11 @@
-package com.free.assist.web.news;
+package com.free.assist.web.business;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 import com.free.assist.web.BaseForm;
 
-public class NewsForm extends BaseForm {
+public class LinePipeForm extends BaseForm {
     private static final long serialVersionUID = 5736557871593793428L;
 
     private String billId;

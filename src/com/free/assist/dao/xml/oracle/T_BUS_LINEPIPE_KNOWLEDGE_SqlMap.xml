@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BusLinePipeKnowledge" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.BusLinePipeKnowledge" >
+    <result column="CONTENT_ID" property="contentId" jdbcType="VARCHAR" />
+    <result column="THE_TITLE" property="theTitle" jdbcType="VARCHAR" />
+    <result column="KNOWLEDGE_CONTENT" property="knowledgeContent" jdbcType="VARCHAR" />
+    <result column="CREATOR" property="creator" jdbcType="VARCHAR" />
+    <result column="CREATE_DEPT" property="createDept" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="BILL_STATUS" property="billStatus" jdbcType="VARCHAR" />
+    <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
+    <result column="AUDITOR" property="auditor" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeExample" >
+    select CONTENT_ID, THE_TITLE, KNOWLEDGE_CONTENT, CREATOR, CREATE_DEPT, CREATE_TIME, BILL_STATUS,
+      PUBLISHER, AUDITOR
+    from T_BUS_LINEPIPE_KNOWLEDGE
+    <isParameterPresent >
+      <include refid="BusLinePipeKnowledge.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeKey" >
+    select CONTENT_ID, THE_TITLE, KNOWLEDGE_CONTENT, CREATOR, CREATE_DEPT, CREATE_TIME, BILL_STATUS,
+      PUBLISHER, AUDITOR
+    from T_BUS_LINEPIPE_KNOWLEDGE
+    where CONTENT_ID = #contentId:VARCHAR#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeKey" >
+    delete from T_BUS_LINEPIPE_KNOWLEDGE
+    where CONTENT_ID = #contentId:VARCHAR#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeExample" >
+    delete from T_BUS_LINEPIPE_KNOWLEDGE
+    <include refid="BusLinePipeKnowledge.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.BusLinePipeKnowledge" >
+    <selectKey resultClass="java.lang.String" keyProperty="contentId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into T_BUS_LINEPIPE_KNOWLEDGE (CONTENT_ID, THE_TITLE, KNOWLEDGE_CONTENT, CREATOR,
+      CREATE_DEPT, CREATE_TIME, BILL_STATUS, PUBLISHER, AUDITOR)
+    values (#contentId:VARCHAR#, #theTitle:VARCHAR#, #knowledgeContent:VARCHAR#, #creator:VARCHAR#,
+      #createDept:VARCHAR#, #createTime:TIMESTAMP#, #billStatus:VARCHAR#, #publisher:VARCHAR#,
+      #auditor:VARCHAR#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.BusLinePipeKnowledge" >
+    <selectKey resultClass="java.lang.String" keyProperty="contentId" >
+      select sys_guid() from dual
+    </selectKey>
+    insert into T_BUS_LINEPIPE_KNOWLEDGE
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="contentId" >
+        CONTENT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="theTitle" >
+        THE_TITLE
+      </isNotNull>
+      <isNotNull prepend="," property="knowledgeContent" >
+        KNOWLEDGE_CONTENT
+      </isNotNull>
+      <isNotNull prepend="," property="creator" >
+        CREATOR
+      </isNotNull>
+      <isNotNull prepend="," property="createDept" >
+        CREATE_DEPT
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        CREATE_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="billStatus" >
+        BILL_STATUS
+      </isNotNull>
+      <isNotNull prepend="," property="publisher" >
+        PUBLISHER
+      </isNotNull>
+      <isNotNull prepend="," property="auditor" >
+        AUDITOR
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="contentId" >
+        #contentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="theTitle" >
+        #theTitle:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="knowledgeContent" >
+        #knowledgeContent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="creator" >
+        #creator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createDept" >
+        #createDept:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        #createTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="billStatus" >
+        #billStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="publisher" >
+        #publisher:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditor" >
+        #auditor:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeExample" resultClass="java.lang.Integer" >
+    select count(*) from T_BUS_LINEPIPE_KNOWLEDGE
+    <include refid="BusLinePipeKnowledge.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update T_BUS_LINEPIPE_KNOWLEDGE
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.contentId" >
+        CONTENT_ID = #record.contentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.theTitle" >
+        THE_TITLE = #record.theTitle:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.knowledgeContent" >
+        KNOWLEDGE_CONTENT = #record.knowledgeContent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.creator" >
+        CREATOR = #record.creator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createDept" >
+        CREATE_DEPT = #record.createDept:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.createTime" >
+        CREATE_TIME = #record.createTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.billStatus" >
+        BILL_STATUS = #record.billStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.publisher" >
+        PUBLISHER = #record.publisher:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.auditor" >
+        AUDITOR = #record.auditor:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="BusLinePipeKnowledge.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update T_BUS_LINEPIPE_KNOWLEDGE
+    set CONTENT_ID = #record.contentId:VARCHAR#,
+      THE_TITLE = #record.theTitle:VARCHAR#,
+      KNOWLEDGE_CONTENT = #record.knowledgeContent:VARCHAR#,
+      CREATOR = #record.creator:VARCHAR#,
+      CREATE_DEPT = #record.createDept:VARCHAR#,
+      CREATE_TIME = #record.createTime:TIMESTAMP#,
+      BILL_STATUS = #record.billStatus:VARCHAR#,
+      PUBLISHER = #record.publisher:VARCHAR#,
+      AUDITOR = #record.auditor:VARCHAR#
+    <isParameterPresent >
+      <include refid="BusLinePipeKnowledge.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.BusLinePipeKnowledge" >
+    update T_BUS_LINEPIPE_KNOWLEDGE
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="theTitle" >
+        THE_TITLE = #theTitle:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="knowledgeContent" >
+        KNOWLEDGE_CONTENT = #knowledgeContent:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="creator" >
+        CREATOR = #creator:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createDept" >
+        CREATE_DEPT = #createDept:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        CREATE_TIME = #createTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="billStatus" >
+        BILL_STATUS = #billStatus:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="publisher" >
+        PUBLISHER = #publisher:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditor" >
+        AUDITOR = #auditor:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where CONTENT_ID = #contentId:VARCHAR#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.BusLinePipeKnowledge" >
+    update T_BUS_LINEPIPE_KNOWLEDGE
+    set THE_TITLE = #theTitle:VARCHAR#,
+      KNOWLEDGE_CONTENT = #knowledgeContent:VARCHAR#,
+      CREATOR = #creator:VARCHAR#,
+      CREATE_DEPT = #createDept:VARCHAR#,
+      CREATE_TIME = #createTime:TIMESTAMP#,
+      BILL_STATUS = #billStatus:VARCHAR#,
+      PUBLISHER = #publisher:VARCHAR#,
+      AUDITOR = #auditor:VARCHAR#
+    where CONTENT_ID = #contentId:VARCHAR#
+  </update>
+</sqlMap>

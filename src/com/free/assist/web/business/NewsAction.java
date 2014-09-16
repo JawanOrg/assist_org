@@ -1,4 +1,4 @@
-package com.free.assist.web.news;
+package com.free.assist.web.business;
 
 import java.util.List;
 

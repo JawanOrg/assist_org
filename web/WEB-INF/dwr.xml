@@ -94,6 +94,10 @@
 		<create creator="spring" javascript="homePageAction">
             <param name="beanName" value="/business/homePageAction"/>
         </create>
+                
+		<create creator="spring" javascript="linePipeAction">
+            <param name="beanName" value="/business/linePipeAction"/>
+        </create>
 
         <convert converter="bean" match="java.util.*"/>
         <convert converter="bean" match="com.free.assist.web.iface.*"/>
