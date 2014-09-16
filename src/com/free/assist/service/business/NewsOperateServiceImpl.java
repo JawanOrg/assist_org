@@ -1,4 +1,4 @@
-package com.free.assist.service.news;
+package com.free.assist.service.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

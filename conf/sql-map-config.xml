@@ -56,4 +56,8 @@
   <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_TASK_SqlMap.xml" />
   <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_ATTACH_SqlMap.xml" />
   <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_POINT_INFO_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_RELEASE_NEWS_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_LINEPIPE_KNOWLEDGE_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_LINEPIPE_KNOW_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_LINEPIPE_RULE_SqlMap.xml" />
 </sqlMapConfig>

@@ -5,7 +5,7 @@
 <script type='text/javascript' src='/js/validator.js'></script>
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
-<script type='text/javascript' src='/dwr/interface/dynamicAction.js'></script>
+<script type='text/javascript' src='/dwr/interface/newsAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css"
 	type="text/css">
@@ -65,26 +65,13 @@
 										<td align="right">标题：</td>
 										<td><input type="text" name="theTitle"
 											class="form-control"></td>
-										<td align="right">编号：</td>
-										<td><input type="text" name="billSn"
+										<td align="right">内容：</td>
+										<td><input type="text" name="newsContent"
 											class="form-control"></td>
 										<td align="right">状态：</td>
 										<td><assist:sysDicDis iddValue="release_status"
 												value="billStatus" stylename="form-control" dicItemIn=""
 												hasNull="true"></assist:sysDicDis></td>
-										<td colspan="2" align="right"></td>
-									</tr>
-									<tr style="display:display">
-										<td align="right">城区：</td>
-										<td><assist:sysDicDis iddValue="release_city"
-												value="city" stylename="form-control" dicItemIn=""
-												hasNull="true"></assist:sysDicDis></td>
-										<td align="right">社区：</td>
-										<td><assist:sysDicDis iddValue="release_community"
-												value="community" stylename="form-control" dicItemIn=""
-												hasNull="true"></assist:sysDicDis></td>
-										<td align="right">道路：</td>
-										<td><input type="text" name="road" class="form-control"></td>
 										<td colspan="2" align="right"><input type="button"
 											class="btn btn-default" value="查询(Q)" accesskey="Q"
 											onclick="initQueryResultList()" /> <input type="button"
@@ -127,7 +114,7 @@
 					'tabView1',
 					'[' + billSn + ']&nbsp;',
 					'',
-					'/business/dynamicAction.do?method=detail&billId=' + billId,
+					'/business/newsAction.do?method=detail&billId=' + billId,
 					true);
 		}
 
@@ -135,7 +122,7 @@
 		function initQueryResultList() {
 			DWRUtil.useLoadingMessage('数据读取中...');
 			var formObj = $('queryForm').serialize(true);
-			dynamicAction.queryRemind(formObj, showResultList);
+			newsAction.queryRemind(formObj, showResultList);
 		}
 
 		function showResultList(str) {
@@ -152,7 +139,7 @@
 		}
 		function audit(billId, taskId, billSn) {
 			ymPrompt.win({
-				message : '/business/dynamicAction.do?method=auditInit&billId='
+				message : '/business/newsAction.do?method=auditInit&billId='
 						+ billId + '&taskId=' + taskId + '&billSn=' + billSn,
 				width : 500,
 				height : 300,
@@ -169,7 +156,7 @@
 		function release(billId, taskId, billSn) {
 			ymPrompt
 					.win({
-						message : '/business/dynamicAction.do?method=releaseInit&billId='
+						message : '/business/newsAction.do?method=releaseInit&billId='
 								+ billId
 								+ '&taskId='
 								+ taskId
@@ -190,7 +177,7 @@
 		function writeSuggestion(billId, taskId, billSn) {
 			ymPrompt
 					.win({
-						message : '/business/dynamicAction.do?method=writeSuggestionInit&billId='
+						message : '/business/newsAction.do?method=writeSuggestionInit&billId='
 								+ billId
 								+ '&taskId='
 								+ taskId
@@ -211,7 +198,7 @@
 		function finishWork(billId, taskId, billSn) {
 			ymPrompt
 					.win({
-						message : '/business/dynamicAction.do?method=finishWorkInit&billId='
+						message : '/business/newsAction.do?method=finishWorkInit&billId='
 								+ billId
 								+ '&taskId='
 								+ taskId
@@ -228,28 +215,6 @@
 							id : 'myId'
 						}
 					});
-		}
-		function showChart(billId) {
-			ymPrompt.win({
-				message : '/business/dynamicAction.do?method=showChart&billId='
-						+ billId,
-				width : 700,
-				height : 500,
-				title : '',
-				minBtn : false,
-				maxBtn : false,
-				useSlide : true,
-				slideCfg : {
-					increment : 0.2,
-					interval : 100
-				},
-				minBtn : true,
-				maxBtn : true,
-				showShadow : true,
-				iframe : {
-					id : 'myId'
-				}
-			});
 		}
 		function refreshDetail(billId, billSn) {
 			getDetail(billId, billSn);

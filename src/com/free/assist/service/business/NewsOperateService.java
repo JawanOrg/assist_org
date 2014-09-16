@@ -1,4 +1,4 @@
-package com.free.assist.service.news;
+package com.free.assist.service.business;
 
 import com.free.assist.domain.BusReleaseNews;
 import com.free.assist.domain.SuptAction;

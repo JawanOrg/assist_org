@@ -833,12 +833,12 @@ public class BusReleaseNewsExample extends BaseExample {
         }
 
 		public Criteria andTaskDealObjectIdEqualTo(String dealObjectId) {
-			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_trends.bill_id and ta.deal_object_id='" + dealObjectId + "' and ta.is_finish='N')");
+			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_news.bill_id and ta.deal_object_id='" + dealObjectId + "' and ta.is_finish='N')");
 			return this;
 		}
 
 		public Criteria andTaskDealObjectIdExists(String dealObjectId) {
-			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_trends.bill_id and ta.deal_object_id='" + dealObjectId + "')");
+			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_news.bill_id and ta.deal_object_id='" + dealObjectId + "')");
 			return this;
 		}
     }

@@ -6,7 +6,7 @@
 <script type='text/javascript' src='/js/validator.js'></script>
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
-<script type='text/javascript' src='/dwr/interface/dynamicAction.js'></script>
+<script type='text/javascript' src='/dwr/interface/newsAction.js'></script>
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -266,7 +266,7 @@
 	<script type="text/javascript">
 		function querySimilarly() {
 			var formObj = $('inputForm').serialize(true);
-			dynamicAction.querySimilarly(formObj, refreshListPage);
+			newsAction.querySimilarly(formObj, refreshListPage);
 		}
 		function refreshListPage(str) {
 			$('list_page').innerHTML = str;

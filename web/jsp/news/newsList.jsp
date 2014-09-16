@@ -9,30 +9,20 @@
 		<tr class="titletr">
 			<td style="word-break: keep-all;">编号</td>
 			<td style="word-break: keep-all;">状态</td>
-			<td style="word-break: keep-all;">标题</td>
-			<td style="word-break: keep-all;">城区</td>
-			<td style="word-break: keep-all;">社区</td>
-			<td style="word-break: keep-all;">道路</td>
-			<td style="word-break: keep-all;">现场联系人</td>
-			<td style="word-break: keep-all;">现场联系人电话</td>
+			<td style="word-break: keep-all;">新闻标题</td>
+			<td style="word-break: keep-all;">新闻内容</td>
 			<td style="word-break: keep-all;">创建时间</td>
 		</tr>
-		<c:forEach items="${requestScope.trendsList}" var="obj" varStatus="n">
+		<c:forEach items="${requestScope.newsList}" var="obj" varStatus="n">
 			<tr align="center" bgcolor="" style="cursor: 'hand'">
-				<td align="center" width="6%"><a href="#"
+				<td align="center" width="10%"><a href="#"
 					onclick="getDetail('${obj.billId}','${obj.billSn}')"><span
 						style="color:blue;">${obj.billSn}</span></a></td>
-				<td align="center" width="4%"><assist:sysDicDisName
+				<td align="center" width="10%"><assist:sysDicDisName
 						itemCodeIn="${obj.billStatus}" dictionaryCodeIn="release_status" /></td>
 				<td align="center" width="15%">${obj.theTitle}</td>
-				<td align="center" width="10%"><assist:sysDicDisName
-						itemCodeIn="${obj.city}" dictionaryCodeIn="release_city" /></td>
-				<td align="center" width="10%"><assist:sysDicDisName
-						itemCodeIn="${obj.community}" dictionaryCodeIn="release_community" /></td>
-				<td align="center" width="10%">${obj.road}</td>
-				<td align="center" width="8%">${obj.scenePersonName}</td>
-				<td align="center" width="8%">${obj.scenePersonPhone}</td>
-				<td align="center" width="14%"><fmt:formatDate
+				<td align="center" width="50%">${obj.newsContent}</td>
+				<td align="center" width="15%"><fmt:formatDate
 						value="${obj.createTime}" type="both"
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			</tr>
@@ -40,4 +30,4 @@
 	</tbody>
 </table>
 <assist:pageControl formId="queryForm" jsFunction="initQueryResultList"
-	declareName="trendsList" />
+	declareName="newsList" />

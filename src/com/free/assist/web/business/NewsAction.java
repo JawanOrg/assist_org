@@ -24,8 +24,8 @@ import com.free.assist.domain.SuptAttachExample;
 import com.free.assist.domain.SuptTask;
 import com.free.assist.domain.SuptTaskExample;
 import com.free.assist.domain.SysUser;
+import com.free.assist.service.business.NewsOperateService;
 import com.free.assist.service.common.CommonOperateService;
-import com.free.assist.service.news.NewsOperateService;
 import com.free.assist.util.Constant;
 import com.free.assist.util.ObjectUtil;
 import com.free.assist.util.StringUtil;
@@ -54,10 +54,10 @@ public class NewsAction extends BaseAction {
 	public String querySimilarly(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
 		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
-		List<BusReleaseNews> trendsList = (List<BusReleaseNews>) commonOperateService.selectByExample(ex);
+		List<BusReleaseNews> newsList = (List<BusReleaseNews>) commonOperateService.selectByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
-		request.setAttribute("trendsList", trendsList);
+		request.setAttribute("newsList", newsList);
 		return wctx.forwardToString("/jsp/news/similarlyList.jsp");
 	}
 
@@ -77,10 +77,10 @@ public class NewsAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseNews> trendsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseNews> newsList = commonOperateService.selectPageByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
-		request.setAttribute("trendsList", trendsList);
+		request.setAttribute("newsList", newsList);
 		return wctx.forwardToString("/jsp/news/newsList.jsp");
 	}
 
@@ -88,8 +88,8 @@ public class NewsAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseNewsKey key = new BusReleaseNewsKey();
 		key.setBillId(billId);
-		BusReleaseNews trends = (BusReleaseNews) commonOperateService.selectByPrimaryKey(key);
-		request.setAttribute("trends", trends);
+		BusReleaseNews news = (BusReleaseNews) commonOperateService.selectByPrimaryKey(key);
+		request.setAttribute("news", news);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
 		taskEx.createCriteria().andBillIdEqualTo(billId).andIsFinishEqualTo(Constant.FLAG_NO);
@@ -176,10 +176,10 @@ public class NewsAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseNews> trendsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseNews> newsList = commonOperateService.selectPageByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
-		request.setAttribute("trendsList", trendsList);
+		request.setAttribute("newsList", newsList);
 		return wctx.forwardToString("/jsp/news/newsList.jsp");
 	}
 }
