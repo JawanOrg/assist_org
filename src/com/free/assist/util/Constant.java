@@ -18,6 +18,7 @@ public class Constant {
     public static String S_FINISH = "finish";
 
     public static String BUSINESS_TYPE_TRENDS = "trends";
+    public static String BUSINESS_TYPE_NEWS = "news";
 
     public static String FLAG_NO = "N";
     public static String FLAG_YES = "Y";

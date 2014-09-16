@@ -192,15 +192,6 @@
 					'/business/newsAction.do?method=detail&billId=' + billId,
 					true);
 		}
-		function showIsNeedGovernMent() {
-			if ($('repairType').value == 'emergency') {
-				$('isNeedGovernmentDiv1').style.visibility = "hidden";
-				$('isNeedGovernmentDiv2').style.visibility = "hidden";
-			} else if ($('repairType').value == 'plan') {
-				$('isNeedGovernmentDiv1').style.visibility = "visible";
-				$('isNeedGovernmentDiv2').style.visibility = "visible";
-			}
-		}
 		function uploadFile(){
 			ymPrompt.win({message:'/jsp/common/uploadFile.jsp?shareTypeWrite=private&billId='+$('billId').value+'&businessType=trends',width:500,height:350,title:'',minBtn:false,maxBtn:false,useSlide:true,showShadow:true,handler:changeBtnName,iframe:{id:'myId'}});
 		}
@@ -208,10 +199,6 @@
 			if (returnStr == "ok" || returnStr == "close") {
 				$('btnFile').value = '¸½  ¼þ *';
 			}
-		}
-		function showMap(){
-			ymPrompt.win({message:'/jsp/map/mapMain.jsp',width:500,height:350,title:'',minBtn:true,maxBtn:true,useSlide:true,showShadow:true,iframe:{id:'myId'}});
-			ymPrompt.max();
 		}
 
 	</script>

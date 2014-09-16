@@ -20,7 +20,7 @@ import com.free.assist.util.Helper;
 
 @Service("newsOperateService")
 public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOperateService {
-	private BusReleaseNewsDAO busReleaseTrendsDAO;
+	private BusReleaseNewsDAO busReleaseNewsDAO;
 	private SuptActionDAO suptActionDAO;
 	private SuptTaskDAO suptTaskDAO;
 
@@ -29,7 +29,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 
 	@Autowired
 	public void setBusReleaseNewsDAO(BusReleaseNewsDAO busReleaseDAO) {
-		this.busReleaseTrendsDAO = busReleaseDAO;
+		this.busReleaseNewsDAO = busReleaseDAO;
 	}
 
 	@Autowired
@@ -51,11 +51,11 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		relsease.setCreateDept(action.getUserVO().getUserId());
 		relsease.setCreateTime(this.getSysDate());
 		relsease.setBillStatus(Constant.S_AUDIT);
-		busReleaseTrendsDAO.insertSelective(relsease);
+		busReleaseNewsDAO.insertSelective(relsease);
 
 		SuptTask task = new SuptTask();
 		task.setBillId(relsease.getBillId());
-		task.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
+		task.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
 		task.setTaskStatus(Constant.S_AUDIT);
 		task.setCreator(action.getUserVO().getUserId());
@@ -67,7 +67,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setTaskIdParent("0");
 		suptTaskDAO.insertSelective(task);
 
-		action.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
+		action.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		action.setBillId(relsease.getBillId());
 		action.setBillStatus(relsease.getBillStatus());
 		action.setActionType(Constant.OP_CREATE);
@@ -80,11 +80,11 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public String audit(SuptAction action) {
-		BusReleaseNewsKey trendsKey = new BusReleaseNewsKey();
-		trendsKey.setBillId(action.getBillId());
-		BusReleaseNews oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
+		BusReleaseNewsKey newsKey = new BusReleaseNewsKey();
+		newsKey.setBillId(action.getBillId());
+		BusReleaseNews oldRelsease = busReleaseNewsDAO.selectByPrimaryKey(newsKey);
 		if (oldRelsease != null && !Constant.S_AUDIT.equals(oldRelsease.getBillStatus())) {
-			return "动态信息已审核！";
+			return "新闻信息已审核！";
 		}
 
 		BusReleaseNews relsease = new BusReleaseNews();
@@ -94,7 +94,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		} else if (Constant.OP_AUDIT_NOTAGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_CREATE);
 		}
-		busReleaseTrendsDAO.updateByPrimaryKeySelective(relsease);
+		busReleaseNewsDAO.updateByPrimaryKeySelective(relsease);
 
 		SuptTask updateTask = new SuptTask();
 		updateTask.setTaskId(action.getTaskId());
@@ -104,7 +104,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 
 		SuptTask task = new SuptTask();
 		task.setBillId(relsease.getBillId());
-		task.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
+		task.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
 		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO 取正确的部门
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
@@ -121,7 +121,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setTaskIdParent(action.getTaskId());
 		suptTaskDAO.insertSelective(task);
 
-		action.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
+		action.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		action.setBillId(relsease.getBillId());
 		action.setBillStatus(relsease.getBillStatus());
 		action.setOperator(action.getUserVO().getUserId());
@@ -133,21 +133,21 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public String release(SuptAction action) {
-		BusReleaseNewsKey trendsKey = new BusReleaseNewsKey();
-		trendsKey.setBillId(action.getBillId());
-		BusReleaseNews oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
+		BusReleaseNewsKey newsKey = new BusReleaseNewsKey();
+		newsKey.setBillId(action.getBillId());
+		BusReleaseNews oldRelsease = busReleaseNewsDAO.selectByPrimaryKey(newsKey);
 		if (oldRelsease != null && !Constant.S_RELEASE.equals(oldRelsease.getBillStatus())) {
-			return "动态信息已发布！";
+			return "新闻信息已发布！";
 		}
 
 		BusReleaseNews relsease = new BusReleaseNews();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
-			relsease.setBillStatus(Constant.S_WORK);
+			relsease.setBillStatus(Constant.S_FINISH);
 		} else if (Constant.OP_RELEASE_NOTAGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_AUDIT);
 		}
-		busReleaseTrendsDAO.updateByPrimaryKeySelective(relsease);
+		busReleaseNewsDAO.updateByPrimaryKeySelective(relsease);
 
 		SuptTaskKey updateTaskkey = new SuptTaskKey();
 		updateTaskkey.setTaskId(action.getTaskId());
@@ -158,7 +158,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 
 		SuptTask task = new SuptTask();
 		task.setBillId(relsease.getBillId());
-		task.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
+		task.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
 		task.setCreator(action.getUserVO().getUserId());
 		task.setIsFinish(Constant.FLAG_NO);
@@ -166,7 +166,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO 取正确的部门
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
-			task.setTaskStatus(Constant.S_WORK);
+			task.setTaskStatus(Constant.S_FINISH);
 			task.setDealObjectId(action.getUserVO().getUserId());
 		} else if (Constant.OP_RELEASE_NOTAGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_AUDIT);
@@ -179,7 +179,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setTaskIdParent(action.getTaskId());
 		suptTaskDAO.insertSelective(task);
 
-		action.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
+		action.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		action.setBillId(relsease.getBillId());
 		action.setBillStatus(relsease.getBillStatus());
 		action.setOperator(action.getUserVO().getUserId());
