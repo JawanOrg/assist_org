@@ -4,6 +4,7 @@
 	<form-beans>
 		<form-bean name="dynamicForm" type="com.free.assist.web.business.DynamicForm" /> 
 		<form-bean name="newsForm" type="com.free.assist.web.business.newsForm" />  
+		<form-bean name="homePageForm" type="com.free.assist.web.business.HomePageForm" />  
 	</form-beans>
 	<action-mappings>
 		<action path="/business/dynamicAction" name="dynamicForm" scope="request" parameter="method" validate="false">
@@ -11,6 +12,9 @@
 		</action>
 		<action path="/business/newsAction" name="newsForm" scope="request" parameter="method" validate="false">
 			<description>新闻动态</description>
+		</action>
+		<action path="/business/homePageAction" name="homePageForm" scope="request" parameter="method" validate="false">
+			<description>首页信息</description>
 		</action>
 	</action-mappings>
 </struts-config>

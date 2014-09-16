@@ -90,6 +90,10 @@
 		<create creator="spring" javascript="newsAction">
             <param name="beanName" value="/business/newsAction"/>
         </create>
+        
+		<create creator="spring" javascript="homePageAction">
+            <param name="beanName" value="/business/homePageAction"/>
+        </create>
 
         <convert converter="bean" match="java.util.*"/>
         <convert converter="bean" match="com.free.assist.web.iface.*"/>
