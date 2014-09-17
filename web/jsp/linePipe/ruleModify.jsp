@@ -18,7 +18,7 @@
 
 	function handler(errors) {
 		alert(errors);
-		enableForm("addForm");
+		enableForm("modifyForm");
 		return false;
 	}
 	function closeWindow() {
@@ -26,15 +26,15 @@
 		parent.initQueryResultList();
 	}
 
-	function addKnowledge() {
-		if (!validateForm(addForm, 1)) {
+	function modifyRule() {
+		if (!validateForm(modifyForm, 1)) {
 			return false;
 		}
-		var formObj = $('addForm').serialize(true);
-		linePipeAction.addKnowledge(formObj, addBack);
+		var formObj = $('modifyForm').serialize(true);
+		linePipeAction.modifyRule(formObj, modifyBack);
 	}
 
-	function addBack(str) {
+	function modifyBack(str) {
 		if (str == "success") {
 			parent.ymPrompt.alert({message:'操作成功！',title:''});
 			closeWindow();
@@ -45,9 +45,10 @@
 	}
 </script>
 <body>
-	<form id="addForm" name="addForm">
+	<form id="modifyForm" name="modifyForm">
+		<input type="hidden" id="contentId" name="contentId" value="${requestScope.contentId}">
 		<div class="panel panel-default">
-			<div class="panel-heading">新增</div>
+			<div class="panel-heading">修改</div>
 			<div class="panel-body">
 				<table width="100%" border="0" ellpadding="2" cellspacing="1">
 					<tr>
@@ -63,17 +64,17 @@
 									<td align="left" colspan="2"><input
 															name="theTitle" type="text" id="theTitle"
 															class="form-control"
-															dataType="Require" msg="'标题'必填" /></td>
+															dataType="Require" msg="'标题'必填" value="${requestScope.theTitle}"/></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<td noWrap>
-										<div align="right">常识内容<span style="color:Red">*</span>：</div>
+										<div align="right">管线法规<span style="color:Red">*</span>：</div>
 									</td>
-									<td align="left" colspan="2"><textarea
-											name="linePipeContent" class="form-control" rows="3" dataType="Require" msg="'常识内容'必填" ></textarea></td>
+									<td align="left" colspan="2"><textarea id="linePipeContent"
+											name="linePipeContent" class="form-control" rows="3" dataType="Require" msg="'管线法规'必填" >${requestScope.roleContent}</textarea></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
@@ -81,7 +82,7 @@
 								<tr>
 									<td colspan="3" align="center"><input name="auditBtn"
 										type="button" class="btn btn-default btn-sm" id="auditBtn"
-										value="确定" onclick="addKnowledge(this)"> &nbsp;&nbsp; <input
+										value="确定" onclick="modifyRule(this)"> &nbsp;&nbsp; <input
 										type="button" class="btn btn-default btn-sm"
 										onClick="closeWindow()" value="取消"></td>
 								</tr>

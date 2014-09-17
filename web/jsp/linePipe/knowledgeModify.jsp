@@ -23,7 +23,7 @@
 	}
 	function closeWindow() {
 		parent.ymPrompt.doHandler('close');
-		parent.refreshDetail($('billId').value,$('billSn').value);
+		parent.initQueryResultList();
 	}
 
 	function modifyKnowledge() {

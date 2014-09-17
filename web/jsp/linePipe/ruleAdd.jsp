@@ -26,12 +26,12 @@
 		parent.initQueryResultList();
 	}
 
-	function addKnowledge() {
+	function addRule() {
 		if (!validateForm(addForm, 1)) {
 			return false;
 		}
 		var formObj = $('addForm').serialize(true);
-		linePipeAction.addKnowledge(formObj, addBack);
+		linePipeAction.addRule(formObj, addBack);
 	}
 
 	function addBack(str) {
@@ -70,10 +70,10 @@
 								</tr>
 								<tr>
 									<td noWrap>
-										<div align="right">常识内容<span style="color:Red">*</span>：</div>
+										<div align="right">管线法规<span style="color:Red">*</span>：</div>
 									</td>
 									<td align="left" colspan="2"><textarea
-											name="linePipeContent" class="form-control" rows="3" dataType="Require" msg="'常识内容'必填" ></textarea></td>
+											name="linePipeContent" class="form-control" rows="3" dataType="Require" msg="'管线法规'必填" ></textarea></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
@@ -81,7 +81,7 @@
 								<tr>
 									<td colspan="3" align="center"><input name="auditBtn"
 										type="button" class="btn btn-default btn-sm" id="auditBtn"
-										value="确定" onclick="addKnowledge(this)"> &nbsp;&nbsp; <input
+										value="确定" onclick="addRule(this)"> &nbsp;&nbsp; <input
 										type="button" class="btn btn-default btn-sm"
 										onClick="closeWindow()" value="取消"></td>
 								</tr>

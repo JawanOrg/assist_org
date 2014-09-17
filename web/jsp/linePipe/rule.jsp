@@ -65,14 +65,14 @@
 										<td align="right">标题：</td>
 										<td><input type="text" name="theTitle"
 											class="form-control"></td>
-										<td align="right">常识内容：</td>
+										<td align="right">管线法规：</td>
 										<td><input type="text" name="newsContent"
 											class="form-control"></td>
 										<td colspan="4" align="right"><input type="button"
 											class="btn btn-default" value="查询(Q)" accesskey="Q"
 											onclick="initQueryResultList()" /> <input type="button"
 											class="btn btn-default" value="新增(A)" accesskey="A"
-											onclick="addKnowledge()" /></td>
+											onclick="addRule()" /></td>
 									</tr>
 								</table>
 						</td>
@@ -87,7 +87,7 @@
 										<td class="tabpaneleft2"></td>
 										<td class="tabpanebg2" width="120"><img
 											src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif"
-											width="18" height="15"> <span>&nbsp;常识列表</span></td>
+											width="18" height="15"> <span>&nbsp;法规列表</span></td>
 										<td class="tabpaneright2"></td>
 									</tr>
 								</table>
@@ -104,12 +104,12 @@
 		</table>
 	</form>
 	<script>
-		initTabs('tabView1', Array('常识列表'), 0, '100%', '90%');
+		initTabs('tabView1', Array('法规列表'), 0, '100%', '90%');
 		initQueryResultList();
 		function initQueryResultList() {
 			DWRUtil.useLoadingMessage('数据读取中...');
 			var formObj = $('queryForm').serialize(true);
-			linePipeAction.queryKnowledge(formObj, showResultList);
+			linePipeAction.queryRule(formObj, showResultList);
 		}
 
 		function showResultList(str) {
@@ -124,9 +124,9 @@
 				alert(s);
 			}
 		}
-		function addKnowledge() {
+		function addRule() {
 			ymPrompt.win({
-				message : '/business/linePipeAction.do?method=addKnowledgeInit',
+				message : '/business/linePipeAction.do?method=addRuleInit',
 				width : 500,
 				height : 300,
 				title : '',
@@ -139,9 +139,9 @@
 				}
 			});
 		}
-		function modifyKnowledge(contentId) {
+		function modifyRule(contentId) {
 			ymPrompt.win({
-				message : '/business/linePipeAction.do?method=modifyKnowledgeInit&contentId=' + contentId,
+				message : '/business/linePipeAction.do?method=modifyRuleInit&contentId=' + contentId,
 				width : 500,
 				height : 300,
 				title : '',
@@ -154,10 +154,10 @@
 				}
 			});
 		}
-		function deleteKnowledge(contentId) {
-			ymPrompt.confirmInfo({message:'确定要删除此管线常识信息？',handler:function(tp){ 
+		function deleteRule(contentId) {
+			ymPrompt.confirmInfo({message:'确定要删除此管线法规信息？',handler:function(tp){ 
 					if(tp=='ok'){
-						linePipeAction.deleteKnowledge(contentId,function goBack(s) {
+						linePipeAction.deleteRule(contentId,function goBack(s) {
 							if (s == "success") {
 								ymPrompt.alert({message:'操作成功！',title:''});
 								initQueryResultList();
