@@ -81,7 +81,7 @@ public class LoginAction extends BaseAction {
         HttpSession session = request.getSession();
         SysUser user = (SysUser) session.getAttribute("currentUser");
         if (user != null) {
-            return new ActionForward("/jsp/common/home.jsp");
+            return new ActionForward("/jsp/common/homePage.jsp");
         } else {
             return new ActionForward("/index.jsp");
         }
