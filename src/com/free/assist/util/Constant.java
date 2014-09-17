@@ -33,4 +33,7 @@ public class Constant {
     public static String POINT_TYPE_DYNAMIC = "dynamic";
 
     public static String IMAGE_TYPE_NORMAL = "normal";
+
+    public static String S_LINEPIPE_NORMAL = "normal";
+    public static String S_LINEPIPE_DELETED = "deleted";
 }
