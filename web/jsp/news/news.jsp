@@ -62,10 +62,10 @@
 									cellspacing=0 bordercolordark=#ffffff cellpadding=1 width=100%
 									bordercolorlight=#D7D7D7 border=0 frame=box pcolor="#BCC8F5">
 									<tr style="display:display">
-										<td align="right">标题：</td>
+										<td align="right">新闻标题：</td>
 										<td><input type="text" name="theTitle"
 											class="form-control"></td>
-										<td align="right">内容：</td>
+										<td align="right">新闻内容：</td>
 										<td><input type="text" name="newsContent"
 											class="form-control"></td>
 										<td align="right">状态：</td>
@@ -91,7 +91,7 @@
 										<td class="tabpaneleft2"></td>
 										<td class="tabpanebg2" width="120"><img
 											src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif"
-											width="18" height="15"> <span>&nbsp;动态列表</span></td>
+											width="18" height="15"> <span>&nbsp;新闻列表</span></td>
 										<td class="tabpaneright2"></td>
 									</tr>
 								</table>
@@ -108,7 +108,7 @@
 		</table>
 	</form>
 	<script>
-		initTabs('tabView1', Array('动态列表'), 0, '100%', '90%');
+		initTabs('tabView1', Array('新闻列表'), 0, '100%', '90%');
 		function getDetail(billId, billSn) {
 			createNewTab(
 					'tabView1',
@@ -157,48 +157,6 @@
 			ymPrompt
 					.win({
 						message : '/business/newsAction.do?method=releaseInit&billId='
-								+ billId
-								+ '&taskId='
-								+ taskId
-								+ '&billSn='
-								+ billSn,
-						width : 500,
-						height : 300,
-						title : '',
-						minBtn : false,
-						maxBtn : false,
-						useSlide : true,
-						showShadow : true,
-						iframe : {
-							id : 'myId'
-						}
-					});
-		}
-		function writeSuggestion(billId, taskId, billSn) {
-			ymPrompt
-					.win({
-						message : '/business/newsAction.do?method=writeSuggestionInit&billId='
-								+ billId
-								+ '&taskId='
-								+ taskId
-								+ '&billSn='
-								+ billSn,
-						width : 500,
-						height : 300,
-						title : '',
-						minBtn : false,
-						maxBtn : false,
-						useSlide : true,
-						showShadow : true,
-						iframe : {
-							id : 'myId'
-						}
-					});
-		}
-		function finishWork(billId, taskId, billSn) {
-			ymPrompt
-					.win({
-						message : '/business/newsAction.do?method=finishWorkInit&billId='
 								+ billId
 								+ '&taskId='
 								+ taskId

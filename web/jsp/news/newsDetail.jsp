@@ -67,7 +67,7 @@
 	topmargin="0">
 	<form id="inputForm" name="inputForm">
 		<input type="hidden" name="billId"
-			value="${requestScope.trends.billId}">
+			value="${requestScope.news.billId}">
 		<table border="0" style="FONT-SIZE: 13px" cellpadding="5"
 			cellspacing="0" bgcolor="#FFFFFF" height="100%" width="100%">
 			<tr>
@@ -81,80 +81,26 @@
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
 										class="table">
 										<tr>
-											<td height="30" align="right" class="left_txt2">编号：</td>
-											<td height="30">${requestScope.trends.billSn}</td>
+											<td height="30" align="right" class="left_txt2" width="10%">编号：</td>
+											<td height="30">${requestScope.news.billSn}</td>
 											<td height="30" align="right" class="left_txt2">创建人：</td>
 											<td height="30"><assist:sysOrganization
-													objectId='${requestScope.trends.creator}' /></td>
+													objectId='${requestScope.news.creator}' /></td>
 											<td height="30" align="right" class="left_txt2">创建时间：</td>
 											<td height="30"><fmt:formatDate
-													value="${requestScope.trends.createTime}" type="both"
+													value="${requestScope.news.createTime}" type="both"
 													pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										</tr>
 										<tr>
 											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2">标题：</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="3">${requestScope.trends.theTitle}</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="2"></td>
+												class="left_txt2">新闻标题：</td>
+											<td height="30" bgcolor="#f2f2f2" colspan="5">${requestScope.news.theTitle}</td>
 										</tr>
 										<tr>
-											<td height="30" align="right" class="left_txt2">城区：</td>
-											<td height="30"><assist:sysDicDisName
-													itemCodeIn="${requestScope.trends.city}"
-													dictionaryCodeIn="release_city" /></td>
-											<td height="30" align="right" class="left_txt2">社区：</td>
-											<td height="30"><assist:sysDicDisName
-													itemCodeIn="${requestScope.trends.community}"
-													dictionaryCodeIn="release_community" /></td>
-											<td height="30" align="right" class="left_txt2">道路：</td>
-											<td height="30">${requestScope.trends.road}</td>
-										</tr>
-										<tr>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2">门牌：</td>
-											<td height="30" bgcolor="#f2f2f2">
-												${requestScope.trends.numberPlate}</td>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2">施工时间：</td>
-											<td height="30" bgcolor="#f2f2f2"><fmt:formatDate
-													value="${requestScope.trends.repairTime}" type="both"
-													pattern="yyyy-MM-dd HH:mm:ss" /></td>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2"></td>
-											<td height="30" bgcolor="#f2f2f2"></td>
-										</tr>
-										<tr>
-											<td height="30" align="right" class="left_txt2">现场联系人：</td>
-											<td height="30">${requestScope.trends.scenePersonName}</td>
-											<td height="30" align="right" class="left_txt2">现场联系人电话：</td>
-											<td height="30">${requestScope.trends.scenePersonPhone}
-											</td>
-											<td height="30" align="right" class="left_txt2"></td>
-											<td height="30"></td>
-										</tr>
-										<tr>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2">测试计划说明：</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="3">${requestScope.trends.testPlanRemark}
-											</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="2"></td>
-										</tr>
-										<tr>
-											<td height="30" align="right" class="left_txt2">施工类别：</td>
-											<td height="30"><assist:sysDicDisName
-													itemCodeIn="${requestScope.trends.repairType}"
-													dictionaryCodeIn="release_repair_type" /></td>
-											<td height="30" align="right" class="left_txt2"></td>
-											<td height="30"></td>
-											<td height="30" align="right" class="left_txt2"></td>
-											<td height="30"></td>
-										</tr>
-										<tr>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2">施工内容：</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="3">
-												${requestScope.trends.repairContent}</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="2"></td>
+											<td height="30" align="right"
+												class="left_txt2">新闻内容：</td>
+											<td height="30" colspan="5">
+												${requestScope.news.newsContent}</td>
 										</tr>
 									</table>
 
@@ -163,7 +109,7 @@
 										<c:forEach items="${requestScope.taskList}" var="task"
 											varStatus="m">
 											<tr>
-												<td height="30" align="right" class="left_txt2">动态进展：</td>
+												<td height="30" align="right" class="left_txt2">审核进展：</td>
 												<td height="30"><assist:sysDicDisName
 														itemCodeIn="${task.taskStatus}"
 														dictionaryCodeIn="release_status" /></td>
@@ -180,28 +126,19 @@
 														test="${task.taskStatus=='audit'}">
 														<input name="btnSubmit" type="button"
 															class="btn btn-default btn-sm" id="auditBtn" value="审核"
-															onclick="audit('${task.billId}','${task.taskId}','${requestScope.trends.billSn}')">
+															onclick="audit('${task.billId}','${task.taskId}','${requestScope.news.billSn}')">
 													</c:if> <c:if test="${task.taskStatus=='release'}">
 														<input name="btnSubmit" type="button"
 															class="btn btn-default btn-sm" id="auditBtn" value="发布"
-															onclick="release('${task.billId}','${task.taskId}','${requestScope.trends.billSn}')">
-													</c:if> <c:if test="${task.taskStatus=='work'}">
-														<input name="btnSubmit" type="button"
-															class="btn btn-default btn-sm" id="auditBtn" value="填写意见"
-															onclick="writeSuggestion('${task.billId}','${task.taskId}','${requestScope.trends.billSn}')">
-														<input name="btnSubmit" type="button"
-															class="btn btn-default btn-sm" id="auditBtn" value="完成施工"
-															onclick="finishWork('${task.billId}','${task.taskId}','${requestScope.trends.billSn}')">
-													</c:if> <input name="btnProgress" type="button"
-													class="btn btn-default btn-sm" id="btnProgress" value="历程"
-													onclick="showChart('${task.billId}')">&nbsp;<input
+															onclick="release('${task.billId}','${task.taskId}','${requestScope.news.billSn}')">
+													</c:if><input
 													name="btnAttach" type="button"
 													class="btn btn-default btn-sm" id="btnAttach" value="附件"
 													onclick="uploadFile('${task.billId}')">&nbsp;<input
 													name="btnRefreshDetail" type="button"
 													class="btn btn-default btn-sm" id="btnRefreshDetail"
 													value="刷新"
-													onclick="refreshDetail('${task.billId}','${requestScope.trends.billSn}')"></td>
+													onclick="refreshDetail('${task.billId}','${requestScope.news.billSn}')"></td>
 											</tr>
 										</c:forEach>
 									</table>

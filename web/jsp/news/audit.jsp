@@ -4,7 +4,7 @@
 <script type='text/javascript' src='/js/validator.js'></script>
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
-<script type='text/javascript' src='/dwr/interface/dynamicAction.js'></script>
+<script type='text/javascript' src='/dwr/interface/newsAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -31,7 +31,7 @@
 			return false;
 		}
 		var formObj = $('auditForm').serialize(true);
-		dynamicAction.audit(formObj, auditBack);
+		newsAction.audit(formObj, auditBack);
 	}
 
 	function auditBack(str) {

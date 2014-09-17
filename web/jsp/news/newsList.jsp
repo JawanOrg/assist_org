@@ -18,10 +18,10 @@
 				<td align="center" width="10%"><a href="#"
 					onclick="getDetail('${obj.billId}','${obj.billSn}')"><span
 						style="color:blue;">${obj.billSn}</span></a></td>
-				<td align="center" width="10%"><assist:sysDicDisName
+				<td align="center" width="6%"><assist:sysDicDisName
 						itemCodeIn="${obj.billStatus}" dictionaryCodeIn="release_status" /></td>
 				<td align="center" width="15%">${obj.theTitle}</td>
-				<td align="center" width="50%">${obj.newsContent}</td>
+				<td align="left" width="54%">${obj.newsContent}</td>
 				<td align="center" width="15%"><fmt:formatDate
 						value="${obj.createTime}" type="both"
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>

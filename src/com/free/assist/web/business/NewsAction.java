@@ -54,6 +54,7 @@ public class NewsAction extends BaseAction {
 	public String querySimilarly(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
 		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		cr.andTheTitleLike("%" + form.getTheTitle() + "%");
 		List<BusReleaseNews> newsList = (List<BusReleaseNews>) commonOperateService.selectByExample(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
@@ -64,9 +65,11 @@ public class NewsAction extends BaseAction {
 	public String queryRemind(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
 		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
-
-		if (StringUtils.isNotBlank(form.getBillSn())) {
-			cr.andBillSnLike("%" + form.getBillSn() + "%");
+		if (StringUtils.isNotBlank(form.getTheTitle())) {
+			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
+		}
+		if (StringUtils.isNotBlank(form.getNewsContent())) {
+			cr.andNewsContentLike("%" + form.getNewsContent() + "%");
 		}
 		if (StringUtils.isNotBlank(form.getBillStatus())) {
 			cr.andBillStatusEqualTo(form.getBillStatus());
@@ -88,7 +91,7 @@ public class NewsAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseNewsKey key = new BusReleaseNewsKey();
 		key.setBillId(billId);
-		BusReleaseNews news = (BusReleaseNews) commonOperateService.selectByPrimaryKey(key);
+		BusReleaseNews news = (BusReleaseNews) newsOperateService.selectByPrimaryKey(key);
 		request.setAttribute("news", news);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
@@ -163,9 +166,11 @@ public class NewsAction extends BaseAction {
 	public String queryComprehensive(NewsForm form) throws Exception {
 		BusReleaseNewsExample ex = new BusReleaseNewsExample();
 		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
-
-		if (StringUtils.isNotBlank(form.getBillSn())) {
-			cr.andBillSnLike("%" + form.getBillSn() + "%");
+		if (StringUtils.isNotBlank(form.getTheTitle())) {
+			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
+		}
+		if (StringUtils.isNotBlank(form.getNewsContent())) {
+			cr.andNewsContentLike("%" + form.getNewsContent() + "%");
 		}
 		if (StringUtils.isNotBlank(form.getBillStatus())) {
 			cr.andBillStatusEqualTo(form.getBillStatus());

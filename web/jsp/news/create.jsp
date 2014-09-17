@@ -171,9 +171,9 @@
 			newsAction.accept(formObj, callback);
 		}
 		function querySimilarly() {
-			if ($('theTitle').value == '' && $('road').value == ''){
+			if ($('theTitle').value == ''){
 				return;
-			}else if($('road').value == '' && $('theTitle').value != undefined && $('theTitle').value.length < 2){
+			}else if($('theTitle').value != undefined && $('theTitle').value.length < 2){
 				return
 			}
 			var formObj = $('inputForm').serialize(true);
