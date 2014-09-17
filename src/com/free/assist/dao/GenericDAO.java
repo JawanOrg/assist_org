@@ -42,7 +42,7 @@ public class GenericDAO extends SqlMapClientDaoSupport {
 		}
 		return super.getSqlMapClientTemplate().queryForList(className + ".ibatorgenerated_selectByExample", example);
 	}
-	
+
 	public Pager selectPageByExample(BaseExample example) {
 		String className = example.getClass().getSimpleName();
 		int i = className.lastIndexOf("Example");
@@ -50,17 +50,21 @@ public class GenericDAO extends SqlMapClientDaoSupport {
 			className = className.substring(0, i);
 		}
 		int skipResults = example.getSkipResults();
-    	int maxResults = example.getMaxResults();
-    	int totalRecords = selectCountByExample(example);
-    	if (skipResults > totalRecords) {
-    		skipResults = totalRecords - example.getMaxResults();
-    	}
+		int maxResults = example.getMaxResults();
+		int totalRecords = selectCountByExample(example);
+		if (skipResults > totalRecords) {
+			skipResults = totalRecords - example.getMaxResults();
+		}
 		List result = getSqlMapClientTemplate().queryForList(className + ".ibatorgenerated_selectByExample", example, skipResults, maxResults);
 		return new Pager(skipResults, maxResults, result, totalRecords);
 	}
 
 	public Object selectByPrimaryKey(Object object) {
-		return super.getSqlMapClientTemplate().queryForObject(object.getClass().getSimpleName() + ".ibatorgenerated_selectByPrimaryKey", object);
+		String namespace = object.getClass().getSimpleName();
+		if (namespace != null && namespace.endsWith("Key")) {
+			namespace = namespace.substring(0, namespace.length() - 3);
+		}
+		return super.getSqlMapClientTemplate().queryForObject(namespace + ".ibatorgenerated_selectByPrimaryKey", object);
 	}
 
 	public Integer selectCountByExample(Object example) {
