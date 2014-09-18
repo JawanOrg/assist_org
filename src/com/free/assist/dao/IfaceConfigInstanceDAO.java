@@ -14,10 +14,10 @@ import com.free.assist.domain.IfaceConfigInstanceKey;
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
  * <p>继承了泛类，泛类能改名重复的代码，提高开发及维护的效率，同时一些不通用的接口方法，可以在该接口里定义。</p>
- * @see: com.regaltec.blocimp.dao.IfaceConfigInstanceDAOImpl
- * @see：com.regaltec.blocimp.domain.IfaceConfigInstanceKey
- * @see：com.regaltec.blocimp.domain.IfaceConfigInstance
- * @see：com.regaltec.blocimp.domain.IfaceConfigInstanceExample
+ * @see: com.free.assist.dao.IfaceConfigInstanceDAOImpl
+ * @see：com.free.assist.domain.IfaceConfigInstanceKey
+ * @see：com.free.assist.domain.IfaceConfigInstance
+ * @see：com.free.assist.domain.IfaceConfigInstanceExample
  * @autor ibator
  * @version 1.2.1
  * @date 2009-09-27 14:10:08 

@@ -13,10 +13,10 @@ import com.free.assist.domain.IfaceConfigDeclareKey;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
- * <p>SQL映射文件路径为：com.regaltec.blocimp.dao.xml.T_IFACE_CONF_DECLARE_SqlMap.xml。</p>
- * @see：com.regaltec.blocimp.domain.IfaceConfigDeclareKey
- * @see：com.regaltec.blocimp.domain.IfaceConfigDeclare
- * @see：com.regaltec.blocimp.domain.IfaceConfigDeclareExample
+ * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_IFACE_CONF_DECLARE_SqlMap.xml。</p>
+ * @see：com.free.assist.domain.IfaceConfigDeclareKey
+ * @see：com.free.assist.domain.IfaceConfigDeclare
+ * @see：com.free.assist.domain.IfaceConfigDeclareExample
  * @autor ibator
  * @version 1.2.1
  * @date 2009-09-27 14:10:08 
