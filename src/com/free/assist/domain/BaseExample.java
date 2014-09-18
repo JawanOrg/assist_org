@@ -7,16 +7,17 @@
  */
 package com.free.assist.domain;
 
-
 /**
  * @author ภ๎รอ
  * @version 1
  * @date 2009-10-09 12:16:19
  */
 public abstract class BaseExample {
+	private Integer fromNumber;
+	private Integer toNumber;
 
 	protected int skipResults;
-	
+
 	protected int maxResults;
 
 	public BaseExample() {
@@ -40,5 +41,21 @@ public abstract class BaseExample {
 	public BaseExample setMaxResults(int maxResults) {
 		this.maxResults = maxResults;
 		return this;
+	}
+
+	public Integer getFromNumber() {
+		return fromNumber;
+	}
+
+	public void setFromNumber(Integer fromNumber) {
+		this.fromNumber = fromNumber;
+	}
+
+	public Integer getToNumber() {
+		return toNumber;
+	}
+
+	public void setToNumber(Integer toNumber) {
+		this.toNumber = toNumber;
 	}
 }

@@ -39,7 +39,27 @@
       </isEqual>
     </iterate>
   </sql>
+  
+  <sql id="Pagination_Head_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[select * from ( select t.*, ROWNUM ROWNUM_ from ( ]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
+  <sql id="Pagination_Tail_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[) t where rownum <= #toNumber# ) where rownum_ > #fromNumber#]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
   <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusReleaseNewsExample" >
+  	<include refid="Pagination_Head_Clause" />
     select BILL_ID, BILL_SN, THE_TITLE, NEWS_CONTENT, CREATOR, CREATE_DEPT, CREATE_TIME,
       BILL_STATUS, PUBLISHER, AUDITOR
     from T_BUS_RELEASE_NEWS
@@ -49,6 +69,7 @@
         order by $orderByClause$
       </isNotNull>
     </isParameterPresent>
+    <include refid="Pagination_Tail_Clause" />
   </select>
   <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusReleaseNewsKey" >
     select BILL_ID, BILL_SN, THE_TITLE, NEWS_CONTENT, CREATOR, CREATE_DEPT, CREATE_TIME,

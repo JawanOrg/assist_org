@@ -25,6 +25,24 @@
     <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
     <result column="AUDITOR" property="auditor" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Pagination_Head_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[select * from ( select t.*, ROWNUM ROWNUM_ from ( ]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
+  <sql id="Pagination_Tail_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[) t where rownum <= #toNumber# ) where rownum_ > #fromNumber#]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
   <sql id="ibatorgenerated_Example_Where_Clause" >
     <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
       <isEqual property="oredCriteria[].valid" compareValue="true" >
@@ -52,6 +70,7 @@
     </iterate>
   </sql>
   <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusReleaseTrendsExample" >
+  	<include refid="Pagination_Head_Clause" />
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
       SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK, REPAIR_TYPE, REPAIR_CONTENT, CREATOR,
       CREATE_DEPT, CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER,
@@ -63,6 +82,7 @@
         order by $orderByClause$
       </isNotNull>
     </isParameterPresent>
+    <include refid="Pagination_Tail_Clause" />
   </select>
   <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusReleaseTrendsKey" >
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
