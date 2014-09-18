@@ -6,13 +6,13 @@ img{margin:0px; padding:0px;}
 ul{margin:0px; padding:0px;}
 a{ text-decoration:none; color:#09C;}
 a:hover{ text-decoration:none; color:#F90;}
-.gx-top-bg{ background-image:url(../images/top-bg.png); background-repeat:repeat-x; background-position:center bottom;}
+.gx-top-bg{ background-image:url(../images/homepage/top-bg.png); background-repeat:repeat-x; background-position:center bottom;}
 .gx-top-link{text-align:right; color:#09F; margin-top:30px;}
 .gx-top-link a{ color:#FFF; text-decoration:none;}
 .gx-top-link a:hover{ color:#FF6;}
-.gx-focus-wrap{ background-image:url(../images/focus-bg.png);background-repeat:repeat-x; overflow:hidden;}
+.gx-focus-wrap{ background-image:url(../images/homepage/focus-bg.png);background-repeat:repeat-x; overflow:hidden;}
 .gx-interlayer-top{ height:20px;}
-.gx-box-top{ background-image:url(../images/box-topbg.png); background-repeat:no-repeat; background-position:left bottom; padding:5px 0px;}
+.gx-box-top{ background-image:url(../images/homepage/box-topbg.png); background-repeat:no-repeat; background-position:left bottom; padding:5px 0px;}
 .gx-box-top .titleName{ font-size:18px; font-family:"微软雅黑"; display:inline-block; padding-left:10px; float:left;}
 .gx-more{display:inline-block; float:right;padding-right:10px;}
 .gx-list1-wrap{ padding:10px; border-bottom:1px solid #efecec;}
@@ -21,8 +21,8 @@ a:hover{ text-decoration:none; color:#F90;}
 .gx-list1-wrap .des{ margin-top:5px; color:#999;}
 .gx-list2-wrap {margin:10px 0px; padding:0px; list-style:none;}
 .gx-list2-wrap li{ padding:5px 10px; border-bottom:1px dotted #efecec;}
-.gx-list2-wrap li a{ font-size:14px;}
-.gx-list2-wrap li span{ float:right;color:#999}
+.gx-list2-wrap li a{ font-size:14px;float:left;width:80%;}
+.gx-list2-wrap li span{ float:left;color:#999;width:20%;text-align:right;}
 .gx-bbs-wrap td {border-bottom:1px solid #efecec;}
 .gx-bbs-wrap td span{ color:#999;}
 .gx-bbs-wrap td a{ font-size:14px;}
@@ -32,3 +32,6 @@ a:hover{ text-decoration:none; color:#F90;}
 .gx-list3-wrap{padding:10px; list-style:none}
 .gx-list3-wrap li{list-style:disc; padding:2px;}
 .gx-foot-wrap{ padding:20px 0px; text-align:center;border-top:1px solid #dde9fd; }
+
+.titleleft{width:70%;float:left;}
+.titleright{width:30%;float:left;text-align:right;}
