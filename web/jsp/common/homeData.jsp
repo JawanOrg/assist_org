@@ -149,7 +149,7 @@
 					<ul class="gx-list3-wrap">
 					<c:forEach items="${requestScope.knowledgeList}" var="objData"
 					varStatus="n">
-							<li><a href="#">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,25):objData.theTitle}</a></li>
+							<li><a href="#">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 					</c:forEach>
 					</ul>
 				</div>
@@ -163,7 +163,7 @@
 					<ul class="gx-list3-wrap">
 					<c:forEach items="${requestScope.knowList}" var="objData"
 					varStatus="n">
-						<li><a href="#">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,25):objData.theTitle}</a></li>
+						<li><a href="#">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 					</c:forEach>
 					</ul>
 				</div>
@@ -177,7 +177,7 @@
 					<ul class="gx-list3-wrap">
 					<c:forEach items="${requestScope.ruleList}" var="objData"
 					varStatus="n">
-						<li><a href="#">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,25):objData.theTitle}</a></li>
+						<li><a href="#">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 					</c:forEach>
 					</ul>
 				</div>

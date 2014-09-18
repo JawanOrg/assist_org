@@ -62,6 +62,8 @@ public class HomePageAction extends BaseAction {
         // 取得施工动态
         BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
         ex.setOrderByClause(" create_time desc");
+        ex.setFromNumber(0);
+        ex.setToNumber(6);
         List<BusReleaseTrends> trendsList = dynamicOperateService.selectByExample(ex);
         request.setAttribute("trendsList", trendsList);
         
@@ -69,6 +71,8 @@ public class HomePageAction extends BaseAction {
         // 取得管道常识
         BusLinePipeKnowledgeExample exKnowledge = new BusLinePipeKnowledgeExample();;
         exKnowledge.setOrderByClause(" create_time desc");
+        exKnowledge.setFromNumber(0);
+        exKnowledge.setToNumber(5);
         List<BusLinePipeKnowledge> knowledgeList = dynamicOperateService.selectByExample(exKnowledge);
         request.setAttribute("knowledgeList", knowledgeList);
 
@@ -76,6 +80,8 @@ public class HomePageAction extends BaseAction {
         // 取得管线识别
         BusLinePipeKnowExample exKnow = new BusLinePipeKnowExample();
         exKnow.setOrderByClause(" create_time desc");
+        exKnow.setFromNumber(0);
+        exKnow.setToNumber(5);
         List<BusLinePipeKnow> knowList = dynamicOperateService.selectByExample(exKnow);
         request.setAttribute("knowList", knowList);
         
@@ -83,6 +89,8 @@ public class HomePageAction extends BaseAction {
         // 取得管线法规
         BusLinePipeRuleExample exRule = new BusLinePipeRuleExample();
         exRule.setOrderByClause(" create_time desc");
+        exRule.setFromNumber(0);
+        exRule.setToNumber(5);
         List<BusLinePipeRule> ruleList = dynamicOperateService.selectByExample(exRule);
         request.setAttribute("ruleList", ruleList);
 
@@ -90,6 +98,8 @@ public class HomePageAction extends BaseAction {
         // 取得新闻动态
         BusReleaseNewsExample exNews = new BusReleaseNewsExample();
         exNews.setOrderByClause(" create_time desc");
+        exNews.setFromNumber(0);
+        exNews.setToNumber(10);
         List<BusReleaseNews> newsList = dynamicOperateService.selectByExample(exNews);
         request.setAttribute("newsList", newsList);
         
