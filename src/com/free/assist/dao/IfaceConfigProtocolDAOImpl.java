@@ -13,10 +13,10 @@ import com.free.assist.domain.IfaceConfigProtocolKey;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
- * <p>SQL映射文件路径为：com.regaltec.blocimp.dao.xml.T_IFACE_CONF_PROTOCOL_SqlMap.xml。</p>
- * @see：com.regaltec.blocimp.domain.IfaceConfigProtocolKey
- * @see：com.regaltec.blocimp.domain.IfaceConfigProtocol
- * @see：com.regaltec.blocimp.domain.IfaceConfigProtocolExample
+ * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_IFACE_CONF_PROTOCOL_SqlMap.xml。</p>
+ * @see：com.free.assist.domain.IfaceConfigProtocolKey
+ * @see：com.free.assist.domain.IfaceConfigProtocol
+ * @see：com.free.assist.domain.IfaceConfigProtocolExample
  * @autor ibator
  * @version 1.2.1
  * @date 2009-11-04 22:01:28 
