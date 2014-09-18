@@ -13,8 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.free.assist.domain.BusReleaseTrendsExample.Criteria;
-
 public class BusReleaseNewsExample extends BaseExample {
     protected String orderByClause;
 

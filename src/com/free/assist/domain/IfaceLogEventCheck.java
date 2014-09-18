@@ -8,13 +8,16 @@
 package com.free.assist.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @javax.persistence.Entity
 @javax.persistence.Table(name="t_iface_log_event")
 public class IfaceLogEventCheck implements Serializable {
 	
-    private String strNowTime;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9113529810329303026L;
+	private String strNowTime;
     private int logEventCount;
     
 	public String getStrNowTime() {

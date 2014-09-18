@@ -8,7 +8,6 @@
 package com.free.assist.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
@@ -27,7 +26,12 @@ import java.util.Date;
 @javax.persistence.Table(name="t_iface_log_repository")
 public class IfaceMonitor implements Serializable {
 
-    private String applicationId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6141764374135052487L;
+
+	private String applicationId;
 
     private String applicationSn;
 

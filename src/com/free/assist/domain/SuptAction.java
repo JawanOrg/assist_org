@@ -27,7 +27,8 @@ import java.util.Date;
 @javax.persistence.Table(name = "T_SUPT_ACTION")
 public class SuptAction extends SuptActionKey implements Serializable {
 
-    @Deprecated
+    @SuppressWarnings("unused")
+	@Deprecated
     private SuptAction() {
 
     }

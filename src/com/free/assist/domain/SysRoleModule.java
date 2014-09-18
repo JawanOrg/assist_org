@@ -8,9 +8,13 @@
 package com.free.assist.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 
 @javax.persistence.Entity
 //@javax.persistence.Table(name="t_sys_role")
-public class SysRoleModule extends SysRoleModuleKey implements Serializable {}
+public class SysRoleModule extends SysRoleModuleKey implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6827894849248590751L;}

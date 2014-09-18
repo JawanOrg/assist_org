@@ -14,7 +14,12 @@ import java.util.Date;
 @javax.persistence.Table(name="t_iface_log_event")
 public class IfaceLogEventMonitor implements Serializable {
 
-    private String applicationId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7026706191473720640L;
+
+	private String applicationId;
 
     private String applicationSn;
 

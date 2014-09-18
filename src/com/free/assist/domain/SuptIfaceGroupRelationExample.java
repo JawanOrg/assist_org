@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.free.assist.domain.SuptTaticGroupExample.Criteria;
-
 public class SuptIfaceGroupRelationExample extends BaseExample {
 	protected String orderByClause;
 
