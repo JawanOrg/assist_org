@@ -20,8 +20,8 @@
 						<td width="320"><img src="/images/homepage/logo.png"
 							width="320" height="75"></td>
 						<td><div class="gx-top-link">
-								<a href="#" target="_blank">论坛</a> | <a
-									href="/jsp/common/home.jsp" target="_self">数据维护</a>
+								<a href="/jforum" target="_blank">论坛</a> | <a
+									href="/jsp/common/home.jsp" target="_blank">数据维护</a>
 							</div></td>
 					</tr>
 				</table>
@@ -78,8 +78,7 @@
 
 				<div class="gx-interlayer-top"></div>
 				<div class="gx-box-top">
-					<span class="titleName">最新帖子</span> <span class="gx-more"><a
-						href="#">更多 》</a></span>
+					<span class="titleName">最新帖子</span> <span class="gx-more"><a href="/jforum" target="_blank">更多 》</a></span>
 				</div>
 				<table class="gx-bbs-wrap" width="100%" border="0" cellspacing="0"
 					cellpadding="5">
