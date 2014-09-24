@@ -175,4 +175,11 @@ public class LoginAction extends BaseAction {
 		}
 		return msg;
 	}
+
+	public ActionForward logout(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Cookie cookie = new Cookie("jforumSSOCookieNameUser", "");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		return new ActionForward("/index.jsp");
+	}
 }

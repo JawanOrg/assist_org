@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ForumTopics" >
+  <resultMap id="ibatorgenerated_BaseResultMap" class="com.free.assist.domain.ForumTopics" >
+    <result column="TOPIC_ID" property="topicId" jdbcType="DECIMAL" />
+    <result column="FORUM_ID" property="forumId" jdbcType="DECIMAL" />
+    <result column="TOPIC_TITLE" property="topicTitle" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="TOPIC_TIME" property="topicTime" jdbcType="TIMESTAMP" />
+    <result column="TOPIC_VIEWS" property="topicViews" jdbcType="DECIMAL" />
+    <result column="TOPIC_REPLIES" property="topicReplies" jdbcType="DECIMAL" />
+    <result column="TOPIC_STATUS" property="topicStatus" jdbcType="DECIMAL" />
+    <result column="TOPIC_VOTE_ID" property="topicVoteId" jdbcType="DECIMAL" />
+    <result column="TOPIC_TYPE" property="topicType" jdbcType="DECIMAL" />
+    <result column="TOPIC_FIRST_POST_ID" property="topicFirstPostId" jdbcType="DECIMAL" />
+    <result column="TOPIC_LAST_POST_ID" property="topicLastPostId" jdbcType="DECIMAL" />
+    <result column="TOPIC_MOVED_ID" property="topicMovedId" jdbcType="DECIMAL" />
+    <result column="MODERATED" property="moderated" jdbcType="DECIMAL" />
+    <result column="createUserName" property="createUserName" jdbcType="VARCHAR" />
+    <result column="replyUserName" property="replyUserName" jdbcType="VARCHAR" />
+    <result column="replyTime" property="replyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="ibatorgenerated_Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$
+            #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql> 
+  <sql id="Pagination_Head_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[select * from ( select t.*, ROWNUM ROWNUM_ from ( ]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
+  <sql id="Pagination_Tail_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[) t where rownum <= #toNumber# ) where rownum_ > #fromNumber#]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
+  <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.ForumTopicsExample" >
+  	<include refid="Pagination_Head_Clause" />
+    select TOPIC_ID,
+       FORUM_ID,
+       TOPIC_TITLE,
+       USER_ID,
+       TOPIC_TIME,
+       TOPIC_VIEWS,
+       TOPIC_REPLIES,
+       TOPIC_STATUS,
+       TOPIC_VOTE_ID,
+       TOPIC_TYPE,
+       TOPIC_FIRST_POST_ID,
+       TOPIC_LAST_POST_ID,
+       TOPIC_MOVED_ID,
+       MODERATED,
+       (select u.username
+          from jforum_users u
+         where u.user_id = TOPICS.user_id) createUserName,
+       (select ju.username
+          from Jforum_Posts po, jforum_users ju
+         where po.post_id =
+               (select max(p.post_id)
+                  from Jforum_Posts p
+                 where p.topic_id = TOPICS.Topic_Id
+                   and p.forum_id = TOPICS.Forum_Id)
+           and ju.user_id = po.user_id) replyUserName,
+       (select po.post_time
+          from Jforum_Posts po
+         where po.post_id =
+               (select max(p.post_id)
+                  from Jforum_Posts p
+                 where p.topic_id = TOPICS.Topic_Id
+                   and p.forum_id = TOPICS.Forum_Id)) replyTime
+  from JFORUM_TOPICS TOPICS
+    <isParameterPresent >
+      <include refid="ForumTopics.ibatorgenerated_Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+    <include refid="Pagination_Tail_Clause" />
+  </select>
+  <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.ForumTopicsKey" >
+    select TOPIC_ID, FORUM_ID, TOPIC_TITLE, USER_ID, TOPIC_TIME, TOPIC_VIEWS, TOPIC_REPLIES,
+      TOPIC_STATUS, TOPIC_VOTE_ID, TOPIC_TYPE, TOPIC_FIRST_POST_ID, TOPIC_LAST_POST_ID,
+      TOPIC_MOVED_ID, MODERATED
+    from JFORUM_TOPICS
+    where TOPIC_ID = #topicId:DECIMAL#
+  </select>
+  <delete id="ibatorgenerated_deleteByPrimaryKey" parameterClass="com.free.assist.domain.ForumTopicsKey" >
+    delete from JFORUM_TOPICS
+    where TOPIC_ID = #topicId:DECIMAL#
+  </delete>
+  <delete id="ibatorgenerated_deleteByExample" parameterClass="com.free.assist.domain.ForumTopicsExample" >
+    delete from JFORUM_TOPICS
+    <include refid="ForumTopics.ibatorgenerated_Example_Where_Clause" />
+  </delete>
+  <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.ForumTopics" >
+    insert into JFORUM_TOPICS (TOPIC_ID, FORUM_ID, TOPIC_TITLE, USER_ID, TOPIC_TIME, TOPIC_VIEWS,
+      TOPIC_REPLIES, TOPIC_STATUS, TOPIC_VOTE_ID, TOPIC_TYPE, TOPIC_FIRST_POST_ID,
+      TOPIC_LAST_POST_ID, TOPIC_MOVED_ID, MODERATED)
+    values (#topicId:DECIMAL#, #forumId:DECIMAL#, #topicTitle:VARCHAR#, #userId:DECIMAL#,
+      #topicTime:TIMESTAMP#, #topicViews:DECIMAL#, #topicReplies:DECIMAL#, #topicStatus:DECIMAL#,
+      #topicVoteId:DECIMAL#, #topicType:DECIMAL#, #topicFirstPostId:DECIMAL#,
+      #topicLastPostId:DECIMAL#, #topicMovedId:DECIMAL#, #moderated:DECIMAL#)
+  </insert>
+  <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.ForumTopics" >
+    insert into JFORUM_TOPICS
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="topicId" >
+        TOPIC_ID
+      </isNotNull>
+      <isNotNull prepend="," property="forumId" >
+        FORUM_ID
+      </isNotNull>
+      <isNotNull prepend="," property="topicTitle" >
+        TOPIC_TITLE
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        USER_ID
+      </isNotNull>
+      <isNotNull prepend="," property="topicTime" >
+        TOPIC_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="topicViews" >
+        TOPIC_VIEWS
+      </isNotNull>
+      <isNotNull prepend="," property="topicReplies" >
+        TOPIC_REPLIES
+      </isNotNull>
+      <isNotNull prepend="," property="topicStatus" >
+        TOPIC_STATUS
+      </isNotNull>
+      <isNotNull prepend="," property="topicVoteId" >
+        TOPIC_VOTE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="topicType" >
+        TOPIC_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="topicFirstPostId" >
+        TOPIC_FIRST_POST_ID
+      </isNotNull>
+      <isNotNull prepend="," property="topicLastPostId" >
+        TOPIC_LAST_POST_ID
+      </isNotNull>
+      <isNotNull prepend="," property="topicMovedId" >
+        TOPIC_MOVED_ID
+      </isNotNull>
+      <isNotNull prepend="," property="moderated" >
+        MODERATED
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="topicId" >
+        #topicId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="forumId" >
+        #forumId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicTitle" >
+        #topicTitle:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        #userId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicTime" >
+        #topicTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="topicViews" >
+        #topicViews:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicReplies" >
+        #topicReplies:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicStatus" >
+        #topicStatus:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicVoteId" >
+        #topicVoteId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicType" >
+        #topicType:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicFirstPostId" >
+        #topicFirstPostId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicLastPostId" >
+        #topicLastPostId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicMovedId" >
+        #topicMovedId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="moderated" >
+        #moderated:DECIMAL#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="ibatorgenerated_countByExample" parameterClass="com.free.assist.domain.ForumTopicsExample" resultClass="java.lang.Integer" >
+    select count(*) from JFORUM_TOPICS
+    <include refid="ForumTopics.ibatorgenerated_Example_Where_Clause" />
+  </select>
+  <update id="ibatorgenerated_updateByExampleSelective" >
+    update JFORUM_TOPICS
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.topicId" >
+        TOPIC_ID = #record.topicId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.forumId" >
+        FORUM_ID = #record.forumId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicTitle" >
+        TOPIC_TITLE = #record.topicTitle:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.userId" >
+        USER_ID = #record.userId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicTime" >
+        TOPIC_TIME = #record.topicTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicViews" >
+        TOPIC_VIEWS = #record.topicViews:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicReplies" >
+        TOPIC_REPLIES = #record.topicReplies:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicStatus" >
+        TOPIC_STATUS = #record.topicStatus:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicVoteId" >
+        TOPIC_VOTE_ID = #record.topicVoteId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicType" >
+        TOPIC_TYPE = #record.topicType:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicFirstPostId" >
+        TOPIC_FIRST_POST_ID = #record.topicFirstPostId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicLastPostId" >
+        TOPIC_LAST_POST_ID = #record.topicLastPostId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.topicMovedId" >
+        TOPIC_MOVED_ID = #record.topicMovedId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.moderated" >
+        MODERATED = #record.moderated:DECIMAL#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="ForumTopics.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByExample" >
+    update JFORUM_TOPICS
+    set TOPIC_ID = #record.topicId:DECIMAL#,
+      FORUM_ID = #record.forumId:DECIMAL#,
+      TOPIC_TITLE = #record.topicTitle:VARCHAR#,
+      USER_ID = #record.userId:DECIMAL#,
+      TOPIC_TIME = #record.topicTime:TIMESTAMP#,
+      TOPIC_VIEWS = #record.topicViews:DECIMAL#,
+      TOPIC_REPLIES = #record.topicReplies:DECIMAL#,
+      TOPIC_STATUS = #record.topicStatus:DECIMAL#,
+      TOPIC_VOTE_ID = #record.topicVoteId:DECIMAL#,
+      TOPIC_TYPE = #record.topicType:DECIMAL#,
+      TOPIC_FIRST_POST_ID = #record.topicFirstPostId:DECIMAL#,
+      TOPIC_LAST_POST_ID = #record.topicLastPostId:DECIMAL#,
+      TOPIC_MOVED_ID = #record.topicMovedId:DECIMAL#,
+      MODERATED = #record.moderated:DECIMAL#
+    <isParameterPresent >
+      <include refid="ForumTopics.ibatorgenerated_Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKeySelective" parameterClass="com.free.assist.domain.ForumTopics" >
+    update JFORUM_TOPICS
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="forumId" >
+        FORUM_ID = #forumId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicTitle" >
+        TOPIC_TITLE = #topicTitle:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        USER_ID = #userId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicTime" >
+        TOPIC_TIME = #topicTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="topicViews" >
+        TOPIC_VIEWS = #topicViews:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicReplies" >
+        TOPIC_REPLIES = #topicReplies:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicStatus" >
+        TOPIC_STATUS = #topicStatus:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicVoteId" >
+        TOPIC_VOTE_ID = #topicVoteId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicType" >
+        TOPIC_TYPE = #topicType:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicFirstPostId" >
+        TOPIC_FIRST_POST_ID = #topicFirstPostId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicLastPostId" >
+        TOPIC_LAST_POST_ID = #topicLastPostId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="topicMovedId" >
+        TOPIC_MOVED_ID = #topicMovedId:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="moderated" >
+        MODERATED = #moderated:DECIMAL#
+      </isNotNull>
+    </dynamic>
+    where TOPIC_ID = #topicId:DECIMAL#
+  </update>
+  <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.ForumTopics" >
+    update JFORUM_TOPICS
+    set FORUM_ID = #forumId:DECIMAL#,
+      TOPIC_TITLE = #topicTitle:VARCHAR#,
+      USER_ID = #userId:DECIMAL#,
+      TOPIC_TIME = #topicTime:TIMESTAMP#,
+      TOPIC_VIEWS = #topicViews:DECIMAL#,
+      TOPIC_REPLIES = #topicReplies:DECIMAL#,
+      TOPIC_STATUS = #topicStatus:DECIMAL#,
+      TOPIC_VOTE_ID = #topicVoteId:DECIMAL#,
+      TOPIC_TYPE = #topicType:DECIMAL#,
+      TOPIC_FIRST_POST_ID = #topicFirstPostId:DECIMAL#,
+      TOPIC_LAST_POST_ID = #topicLastPostId:DECIMAL#,
+      TOPIC_MOVED_ID = #topicMovedId:DECIMAL#,
+      MODERATED = #moderated:DECIMAL#
+    where TOPIC_ID = #topicId:DECIMAL#
+  </update>
+</sqlMap>

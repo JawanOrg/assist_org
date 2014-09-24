@@ -8,7 +8,7 @@
 </head>
 
 <body style="over-flow:hidden;">
-	<iframe width="100%" height="1350px" frameborder="0" scrolling="no" noresize="noresize" marginwidth="0" marginheight="0" src="<%=request.getContextPath()%>/business/homePageAction.do?method=getData">
+	<iframe width="100%" height="1350px" frameborder="0" scrolling="no" noresize="noresize" marginwidth="0" marginheight="0" src="<%=request.getContextPath()%>/homepage/homePageAction.do?method=getData">
 		
 	</iframe>
 </body>

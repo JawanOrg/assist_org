@@ -20,8 +20,9 @@
 						<td width="320"><img src="/images/homepage/logo.png"
 							width="320" height="75"></td>
 						<td><div class="gx-top-link">
-								<a href="/jforum" target="_blank">论坛</a> | <a
-									href="/jsp/common/home.jsp" target="_blank">数据维护</a>
+								<a href="/jforum" target="_self">论坛</a> | <a
+									href="/jsp/common/home.jsp" target="_self">数据维护</a> | <a
+									href="/sys/loginAction.do?method=logout" target="_self">注销</a>
 							</div></td>
 					</tr>
 				</table>

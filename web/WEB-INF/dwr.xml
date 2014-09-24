@@ -92,7 +92,7 @@
         </create>
         
 		<create creator="spring" javascript="homePageAction">
-            <param name="beanName" value="/business/homePageAction"/>
+            <param name="beanName" value="/homepage/homePageAction"/>
         </create>
                 
 		<create creator="spring" javascript="linePipeAction">
