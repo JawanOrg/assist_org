@@ -90,51 +90,16 @@
 						<td width="80">回复/查看</td>
 						<td width="100">最后发表</td>
 					</tr>
-					<tr>
-						<td width="20"><img src="/images/homepage/folder_new.gif"
-							width="17" height="17"></td>
-						<td><a href="#">5小时的UPS为什么只能管50分钟？</a></td>
-						<td width="100">纳粹<br> <span class="span">2010-7-2</span></td>
-						<td>91<br> <span class="span">11100</span></td>
-						<td width="100">泥巴团子<br> <span class="span">2014-9-3
-								10:45</span></td>
-					</tr>
-					<tr>
-						<td width="20"><img src="/images/homepage/folder_new.gif"
-							width="17" height="17"></td>
-						<td><a href="#">5小时的UPS为什么只能管50分钟？</a></td>
-						<td width="100">纳粹<br> <span class="span">2010-7-2</span></td>
-						<td>91<br> <span class="span">11100</span></td>
-						<td width="100">泥巴团子<br> <span class="span">2014-9-3
-								10:45</span></td>
-					</tr>
-					<tr>
-						<td width="20"><img src="/images/homepage/folder_new.gif"
-							width="17" height="17"></td>
-						<td><a href="#">5小时的UPS为什么只能管50分钟？</a></td>
-						<td width="100">纳粹<br> <span class="span">2010-7-2</span></td>
-						<td>91<br> <span class="span">11100</span></td>
-						<td width="100">泥巴团子<br> <span class="span">2014-9-3
-								10:45</span></td>
-					</tr>
-					<tr>
-						<td width="20"><img src="/images/homepage/folder_new.gif"
-							width="17" height="17"></td>
-						<td><a href="#">5小时的UPS为什么只能管50分钟？</a></td>
-						<td width="100">纳粹<br> <span class="span">2010-7-2</span></td>
-						<td>91<br> <span class="span">11100</span></td>
-						<td width="100">泥巴团子<br> <span class="span">2014-9-3
-								10:45</span></td>
-					</tr>
-					<tr>
-						<td width="20"><img src="/images/homepage/folder_new.gif"
-							width="17" height="17"></td>
-						<td><a href="#">5小时的UPS为什么只能管50分钟？</a></td>
-						<td width="100">纳粹<br> <span class="span">2010-7-2</span></td>
-						<td>91<br> <span class="span">11100</span></td>
-						<td width="100">泥巴团子<br> <span class="span">2014-9-3
-								10:45</span></td>
-					</tr>
+					<c:forEach items="${requestScope.topicList}" var="topic" varStatus="n">
+						<tr>
+							<td width="20"><img src="/images/homepage/folder_new.gif"
+								width="17" height="17"></td>
+							<td><a href="/jforum/posts/list/${topic.topicId}.page#latest">${topic.topicTitle}</a></td>
+							<td width="100">${topic.createUserName}<br> <span class="span"><fmt:formatDate value="${topic.topicTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></td>
+							<td>${topic.topicReplies}<br> <span class="span">${topic.topicViews}</span></td>
+							<td width="100">${topic.replyUserName}<br> <span class="span"><fmt:formatDate value="${topic.replyTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></td>
+						</tr>
+					</c:forEach>
 				</table>
 
 			</td>
