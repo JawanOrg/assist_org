@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" language="java"%>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <%@ include file='/jsp/common/calendar.jsp'%>
@@ -22,6 +23,7 @@
 	type="text/css" media="screen">
 <link href="/css/time.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/css/ymPrompt/vista/ymPrompt.css">
+<link rel="stylesheet" href="/css/areaselect.css">
 <style type="text/css">
 .box {
 	width: 600px;
@@ -55,7 +57,7 @@
 <title>协作管理系统</title>
 </head>
 
-<script type="text/javascript">
+<script type="text/javascript">	
 	DWREngine.setErrorHandler(handler);
 	function handler(errors) {
 		alert(errors);
@@ -101,8 +103,8 @@
 												<table width="100%" border="0" cellspacing="0"
 													cellpadding="0" class="table">
 													<tr>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">标题：<span
-															style="color:Red">*</span></td>
+														<td align="right" bgcolor="#f2f2f2" class="left_txt2">标题<span
+															style="color:Red">*</span>:</td>
 														<td bgcolor="#f2f2f2" colspan="3"><input
 															name="theTitle" type="text" id="theTitle"
 															class="form-control" oninput="querySimilarly()"
@@ -110,16 +112,16 @@
 														<td bgcolor="#f2f2f2" colspan="2"></td>
 													</tr>
 													<tr>
-														<td align="right" class="left_txt2">城区：</td>
-														<td><assist:sysDicDis iddValue="release_city"
-																value="city" stylename="form-control" dicItemIn=""
-																hasNull="false"></assist:sysDicDis></td>
-														<td align="right" class="left_txt2">社区：</td>
-														<td><assist:sysDicDis iddValue="release_community"
-																value="community" stylename="form-control" dicItemIn=""
-																hasNull="false"></assist:sysDicDis></td>
-														<td align="right" class="left_txt2">道路：<span
-															style="color:Red">*</span></td>
+														<td align="right" class="left_txt2">城区<span
+															style="color:Red">*</span>:</td>
+														<td><input name="city" type="text" id="city"
+															class="form-control" dataType="Require" msg="'城区'必选" /></td>
+														<td align="right" class="left_txt2">社区<span
+															style="color:Red">*</span>:</td>
+														<td><input name="community" type="text" id="community"
+															class="form-control" dataType="Require" msg="'社区'必选" /></td>
+														<td align="right" class="left_txt2">道路<span
+															style="color:Red">*</span>:</td>
 														<td><input type="text" name="road" id="road"
 															class="form-control" oninput="querySimilarly()"
 															dataType="Require" msg="'道路'必填" /></td>
@@ -128,8 +130,8 @@
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">门牌：</td>
 														<td bgcolor="#f2f2f2"><input type="text"
 															name="numberPlate" size="25" class="form-control" /></td>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">施工时间：<span
-															style="color:Red">*</span></td>
+														<td align="right" bgcolor="#f2f2f2" class="left_txt2">施工时间<span
+															style="color:Red">*</span>:</td>
 														<td bgcolor="#f2f2f2"><input id="repairTime"
 															name="repairTime" type="text" class="form-control"
 															dataType="Require" msg="'施工时间'必填"
@@ -140,13 +142,13 @@
 														<td bgcolor="#f2f2f2"></td>
 													</tr>
 													<tr>
-														<td align="right" class="left_txt2">现场联系人：<span
-															style="color:Red">*</span></td>
+														<td align="right" class="left_txt2">现场联系人<span
+															style="color:Red">*</span>:</td>
 														<td><input type="text" name="scenePersonName"
 															size="25" class="form-control" dataType="Require"
 															msg="'现场联系人'必填" /></td>
-														<td align="right" class="left_txt2">现场联系人电话：<span
-															style="color:Red">*</span></td>
+														<td align="right" class="left_txt2">联系人电话<span
+															style="color:Red">*</span>:</td>
 														<td><input type="text" name="scenePersonPhone"
 															size="25" class="form-control" dataType="Require"
 															msg="'现场联系人电话'必填" /></td>
@@ -164,19 +166,18 @@
 														<td><assist:sysDicDis iddValue="release_repair_type"
 																value="repairType" stylename="form-control" dicItemIn=""
 																hasNull="false" onClick="showIsNeedGovernMent()"></assist:sysDicDis></td>
-														<td>&nbsp;</td>
-														<td class="radio"><div id="isNeedGovernmentDiv1">
+														<td class="left_txt2">&nbsp;</td>
+														<td class="left_txt2"><div id="isNeedGovernmentDiv1">
 																<label> <input type="radio"
 																	name="isNeedGovernment" id="optionsRadios1" value="Y">需要行政审批
 																</label>
 															</div></td>
-														<td class="radio"><div id="isNeedGovernmentDiv2">
+														<td class="left_txt2" colspan="2"><div id="isNeedGovernmentDiv2">
 																<label> <input type="radio"
 																	name="isNeedGovernment" id="optionsRadios2" value="N"
 																	checked>不需要行政审批
 																</label>
 															</div></td>
-														<td></td>
 													</tr>
 													<tr>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">施工内容：</td>
@@ -285,6 +286,17 @@
 			ymPrompt.max();
 		}
 
+
 	</script>
+	
+<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/js/areadata.js"></script>
+<script type="text/javascript" src="/js/areaselect.js"></script>	
+<script type="text/javascript">
+	var jq = jQuery.noConflict();
+	new locationCard({
+	    ids: ['city', 'community', 'road']
+	}).init();
+</script>
 </body>
 </html>
