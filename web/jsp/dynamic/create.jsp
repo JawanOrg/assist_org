@@ -116,17 +116,22 @@
 															style="color:Red">*</span>:</td>
 														<td><input name="city" type="text" id="city"
 															class="form-control" dataType="Require" msg="'城区'必选" /></td>
+														<td align="right" class="left_txt2">街道<span
+															style="color:Red">*</span>:</td>
+														<td><input type="text" name="street" id="street"
+															class="form-control"
+															dataType="Require" msg="'街道'必填" /></td>
 														<td align="right" class="left_txt2">社区<span
 															style="color:Red">*</span>:</td>
 														<td><input name="community" type="text" id="community"
 															class="form-control" dataType="Require" msg="'社区'必选" /></td>
-														<td align="right" class="left_txt2">道路<span
-															style="color:Red">*</span>:</td>
-														<td><input type="text" name="road" id="road"
-															class="form-control" oninput="querySimilarly()"
-															dataType="Require" msg="'道路'必填" /></td>
 													</tr>
 													<tr>
+														<td align="right" bgcolor="#f2f2f2" class="left_txt2">道路<span
+															style="color:Red">*</span>:</td>
+														<td bgcolor="#f2f2f2"><input type="text" name="road" id="road"
+															class="form-control" oninput="querySimilarly()"
+															dataType="Require" msg="'道路'必填" /></td>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">门牌：</td>
 														<td bgcolor="#f2f2f2"><input type="text"
 															name="numberPlate" size="25" class="form-control" /></td>
@@ -138,8 +143,6 @@
 															onclick="showcalendar(event, this, true);"
 															onfocus="showcalendar(event, this, true);if(this.value=='0000-00-00') this.value=''" />
 														</td>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2"></td>
-														<td bgcolor="#f2f2f2"></td>
 													</tr>
 													<tr>
 														<td align="right" class="left_txt2">现场联系人<span
@@ -295,7 +298,7 @@
 <script type="text/javascript">
 	var jq = jQuery.noConflict();
 	new locationCard({
-	    ids: ['city', 'community', 'road']
+	    ids: ['city', 'street', 'community']
 	}).init();
 </script>
 </body>

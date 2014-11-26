@@ -22,6 +22,7 @@ import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.lang.ClassUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.struts.action.ActionForm;
+import org.dom4j.Document;
 
 @SuppressWarnings("unchecked")
 public class Helper {
@@ -363,6 +364,16 @@ public class Helper {
         Matcher m = p.matcher(str);
         String after = m.replaceAll("");
         return after;
+    }
+    
+    public static String getNodeText(Document document,String path){
+    	if(document==null){
+    		return "输入的xml为空";
+    	}else if( document.selectSingleNode(path)==null){
+    		return "指定的节点不存在";
+    	}else{
+    		return document.selectSingleNode(path).getText();        	 
+    	}
     }
 
 }

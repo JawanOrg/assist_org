@@ -97,5 +97,9 @@
 			<jee:jndi-lookup jndi-name="mail/warn" />
 		</property>
 	</bean-->
+	
+	<bean id="externalInterfaceWebservice"
+		class="com.free.assist.service.common.ExternalInterfaceServiceImpl">
+	</bean>
 
 </beans>

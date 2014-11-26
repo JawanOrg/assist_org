@@ -6,8 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -30,7 +28,6 @@ import com.free.assist.service.business.DynamicOperateService;
 import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.util.ChartHelper;
 import com.free.assist.util.Constant;
-import com.free.assist.util.MapUtil;
 import com.free.assist.util.ObjectUtil;
 import com.free.assist.util.StringUtil;
 import com.free.assist.web.BaseAction;
@@ -63,11 +60,14 @@ public class DynamicAction extends BaseAction {
 		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getRoad()) && StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andRoadLike("%" + form.getRoad() + "%");
-		} else if (StringUtils.isBlank(form.getRoad()) && StringUtils.isNotBlank(form.getTheTitle())) {
+		} else if (StringUtils.isBlank(form.getTheTitle()) && StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
 		}
 		if (StringUtils.isNotBlank(form.getCity())) {
 			cr.andCityEqualTo(form.getCity());
+		}
+		if (StringUtils.isNotBlank(form.getStreet())) {
+			cr.andStreetEqualTo(form.getStreet());
 		}
 		if (StringUtils.isNotBlank(form.getCommunity())) {
 			cr.andCommunityEqualTo(form.getCommunity());
@@ -82,9 +82,6 @@ public class DynamicAction extends BaseAction {
 	public String queryRemind(DynamicForm form) throws Exception {
 		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
 		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
@@ -93,6 +90,9 @@ public class DynamicAction extends BaseAction {
 		}
 		if (StringUtils.isNotBlank(form.getCity())) {
 			cr.andCityEqualTo(form.getCity());
+		}
+		if (StringUtils.isNotBlank(form.getStreet())) {
+			cr.andStreetEqualTo(form.getStreet());
 		}
 		if (StringUtils.isNotBlank(form.getCommunity())) {
 			cr.andCommunityEqualTo(form.getCommunity());
@@ -246,9 +246,6 @@ public class DynamicAction extends BaseAction {
 	public String queryComprehensive(DynamicForm form) throws Exception {
 		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
 		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
-		if (StringUtils.isNotBlank(form.getCity())) {
-			cr.andCityEqualTo(form.getCity());
-		}
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
@@ -257,6 +254,9 @@ public class DynamicAction extends BaseAction {
 		}
 		if (StringUtils.isNotBlank(form.getCity())) {
 			cr.andCityEqualTo(form.getCity());
+		}
+		if (StringUtils.isNotBlank(form.getStreet())) {
+			cr.andStreetEqualTo(form.getStreet());
 		}
 		if (StringUtils.isNotBlank(form.getCommunity())) {
 			cr.andCommunityEqualTo(form.getCommunity());

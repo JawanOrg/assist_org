@@ -1,8 +1,8 @@
 /*
- * <p>标题: 中国电信OSS公共接口平台</p>
+ * <p>标题: 协作管理系统</p>
  * <p>描述: ...</p>
  * <p>版权: Copyright (c) 2009</p>
- * <p>公司: 天讯瑞达通信技术有限公司</p>
+ * <p>公司: 公司</p>
  * <p>网址：http://www.free.cn/
  */
 package com.free.assist.domain;
@@ -10,6 +10,7 @@ package com.free.assist.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
@@ -22,7 +23,7 @@ import java.util.Date;
  * @see：com.free.assist.dao.BusReleaseTrendsDAOImpl
  * @autor ibator
  * @version 1.2.1
- * @date 2014-01-06 15:26:42 
+ * @date 2014-10-11 11:14:17 
  */
 @javax.persistence.Entity
 @javax.persistence.Table(name="T_BUS_RELEASE_TRENDS")
@@ -68,6 +69,10 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
     private String publisher;
 
     private String auditor;
+
+    private String street;
+
+    private String nativeNet;
 
     private static final long serialVersionUID = 1L;
 
@@ -258,5 +263,23 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
 
     public void setAuditor(String auditor) {
         this.auditor = auditor;
+    }
+
+    @javax.persistence.Column(name="STREET", nullable=true, length=50)
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    @javax.persistence.Column(name="NATIVE_NET", nullable=true, length=50)
+    public String getNativeNet() {
+        return nativeNet;
+    }
+
+    public void setNativeNet(String nativeNet) {
+        this.nativeNet = nativeNet;
     }
 }

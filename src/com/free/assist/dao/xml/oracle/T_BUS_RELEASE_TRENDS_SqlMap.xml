@@ -24,6 +24,8 @@
     <result column="IS_NEED_GOVERNMENT" property="isNeedGovernment" jdbcType="VARCHAR" />
     <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
     <result column="AUDITOR" property="auditor" jdbcType="VARCHAR" />
+    <result column="STREET" property="street" jdbcType="VARCHAR" />
+    <result column="NATIVE_NET" property="nativeNet" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Pagination_Head_Clause" >
     <dynamic >
@@ -74,7 +76,7 @@
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
       SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK, REPAIR_TYPE, REPAIR_CONTENT, CREATOR,
       CREATE_DEPT, CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER,
-      AUDITOR
+      AUDITOR, STREET, NATIVE_NET
     from T_BUS_RELEASE_TRENDS
     <isParameterPresent >
       <include refid="BusReleaseTrends.ibatorgenerated_Example_Where_Clause" />
@@ -88,7 +90,7 @@
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
       SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK, REPAIR_TYPE, REPAIR_CONTENT, CREATOR,
       CREATE_DEPT, CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER,
-      AUDITOR
+      AUDITOR, STREET, NATIVE_NET
     from T_BUS_RELEASE_TRENDS
     where BILL_ID = #billId:VARCHAR#
   </select>
@@ -104,13 +106,14 @@
     insert into T_BUS_RELEASE_TRENDS (BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD,
       NUMBER_PLATE, REPAIR_TIME, SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK,
       REPAIR_TYPE, REPAIR_CONTENT, CREATOR, CREATE_DEPT, CREATE_TIME, LONGITUDE, LATITUDE,
-      BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER, AUDITOR)
+      BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER, AUDITOR, STREET, NATIVE_NET)
     values (#billId:VARCHAR#, #billSn:VARCHAR#, #theTitle:VARCHAR#, #city:VARCHAR#,
       #community:VARCHAR#, #road:VARCHAR#, #numberPlate:VARCHAR#, #repairTime:TIMESTAMP#,
       #scenePersonName:VARCHAR#, #scenePersonPhone:VARCHAR#, #testPlanRemark:VARCHAR#,
       #repairType:VARCHAR#, #repairContent:VARCHAR#, #creator:VARCHAR#, #createDept:VARCHAR#,
       #createTime:TIMESTAMP#, #longitude:DECIMAL#, #latitude:DECIMAL#, #billStatus:VARCHAR#,
-      #isNeedGovernment:VARCHAR#, #publisher:VARCHAR#, #auditor:VARCHAR#)
+      #isNeedGovernment:VARCHAR#, #publisher:VARCHAR#, #auditor:VARCHAR#, #street:VARCHAR#,
+      #nativeNet:VARCHAR#)
   </insert>
   <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.BusReleaseTrends" >
     insert into T_BUS_RELEASE_TRENDS
@@ -181,6 +184,12 @@
       <isNotNull prepend="," property="auditor" >
         AUDITOR
       </isNotNull>
+      <isNotNull prepend="," property="street" >
+        STREET
+      </isNotNull>
+      <isNotNull prepend="," property="nativeNet" >
+        NATIVE_NET
+      </isNotNull>
       )
     </dynamic>
     values
@@ -250,6 +259,12 @@
       </isNotNull>
       <isNotNull prepend="," property="auditor" >
         #auditor:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="street" >
+        #street:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="nativeNet" >
+        #nativeNet:VARCHAR#
       </isNotNull>
       )
     </dynamic>
@@ -327,6 +342,12 @@
       <isNotNull prepend="," property="record.auditor" >
         AUDITOR = #record.auditor:VARCHAR#
       </isNotNull>
+      <isNotNull prepend="," property="record.street" >
+        STREET = #record.street:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.nativeNet" >
+        NATIVE_NET = #record.nativeNet:VARCHAR#
+      </isNotNull>
     </dynamic>
     <isParameterPresent >
       <include refid="BusReleaseTrends.ibatorgenerated_Example_Where_Clause" />
@@ -355,7 +376,9 @@
       BILL_STATUS = #record.billStatus:VARCHAR#,
       IS_NEED_GOVERNMENT = #record.isNeedGovernment:VARCHAR#,
       PUBLISHER = #record.publisher:VARCHAR#,
-      AUDITOR = #record.auditor:VARCHAR#
+      AUDITOR = #record.auditor:VARCHAR#,
+      STREET = #record.street:VARCHAR#,
+      NATIVE_NET = #record.nativeNet:VARCHAR#
     <isParameterPresent >
       <include refid="BusReleaseTrends.ibatorgenerated_Example_Where_Clause" />
     </isParameterPresent>
@@ -426,6 +449,12 @@
       <isNotNull prepend="," property="auditor" >
         AUDITOR = #auditor:VARCHAR#
       </isNotNull>
+      <isNotNull prepend="," property="street" >
+        STREET = #street:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="nativeNet" >
+        NATIVE_NET = #nativeNet:VARCHAR#
+      </isNotNull>
     </dynamic>
     where BILL_ID = #billId:VARCHAR#
   </update>
@@ -451,7 +480,9 @@
       BILL_STATUS = #billStatus:VARCHAR#,
       IS_NEED_GOVERNMENT = #isNeedGovernment:VARCHAR#,
       PUBLISHER = #publisher:VARCHAR#,
-      AUDITOR = #auditor:VARCHAR#
+      AUDITOR = #auditor:VARCHAR#,
+      STREET = #street:VARCHAR#,
+      NATIVE_NET = #nativeNet:VARCHAR#
     where BILL_ID = #billId:VARCHAR#
   </update>
 </sqlMap>

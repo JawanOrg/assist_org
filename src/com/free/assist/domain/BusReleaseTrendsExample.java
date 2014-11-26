@@ -1638,6 +1638,146 @@ public class BusReleaseTrendsExample extends BaseExample {
 			return this;
 		}
 
+        public Criteria andStreetIsNull() {
+            addCriterion("STREET is null");
+            return this;
+        }
+
+        public Criteria andStreetIsNotNull() {
+            addCriterion("STREET is not null");
+            return this;
+        }
+
+        public Criteria andStreetEqualTo(String value) {
+            addCriterion("STREET =", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetNotEqualTo(String value) {
+            addCriterion("STREET <>", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetGreaterThan(String value) {
+            addCriterion("STREET >", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetGreaterThanOrEqualTo(String value) {
+            addCriterion("STREET >=", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetLessThan(String value) {
+            addCriterion("STREET <", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetLessThanOrEqualTo(String value) {
+            addCriterion("STREET <=", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetLike(String value) {
+            addCriterion("STREET like", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetNotLike(String value) {
+            addCriterion("STREET not like", value, "street");
+            return this;
+        }
+
+        public Criteria andStreetIn(List<String> values) {
+            addCriterion("STREET in", values, "street");
+            return this;
+        }
+
+        public Criteria andStreetNotIn(List<String> values) {
+            addCriterion("STREET not in", values, "street");
+            return this;
+        }
+
+        public Criteria andStreetBetween(String value1, String value2) {
+            addCriterion("STREET between", value1, value2, "street");
+            return this;
+        }
+
+        public Criteria andStreetNotBetween(String value1, String value2) {
+            addCriterion("STREET not between", value1, value2, "street");
+            return this;
+        }
+
+        public Criteria andNativeNetIsNull() {
+            addCriterion("NATIVE_NET is null");
+            return this;
+        }
+
+        public Criteria andNativeNetIsNotNull() {
+            addCriterion("NATIVE_NET is not null");
+            return this;
+        }
+
+        public Criteria andNativeNetEqualTo(String value) {
+            addCriterion("NATIVE_NET =", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetNotEqualTo(String value) {
+            addCriterion("NATIVE_NET <>", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetGreaterThan(String value) {
+            addCriterion("NATIVE_NET >", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetGreaterThanOrEqualTo(String value) {
+            addCriterion("NATIVE_NET >=", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetLessThan(String value) {
+            addCriterion("NATIVE_NET <", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetLessThanOrEqualTo(String value) {
+            addCriterion("NATIVE_NET <=", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetLike(String value) {
+            addCriterion("NATIVE_NET like", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetNotLike(String value) {
+            addCriterion("NATIVE_NET not like", value, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetIn(List<String> values) {
+            addCriterion("NATIVE_NET in", values, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetNotIn(List<String> values) {
+            addCriterion("NATIVE_NET not in", values, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetBetween(String value1, String value2) {
+            addCriterion("NATIVE_NET between", value1, value2, "nativeNet");
+            return this;
+        }
+
+        public Criteria andNativeNetNotBetween(String value1, String value2) {
+            addCriterion("NATIVE_NET not between", value1, value2, "nativeNet");
+            return this;
+        }
+
 		public Criteria andTaskDealObjectIdEqualTo(String dealObjectId) {
 			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_trends.bill_id and ta.deal_object_id='" + dealObjectId + "' and ta.is_finish='N')");
 			return this;

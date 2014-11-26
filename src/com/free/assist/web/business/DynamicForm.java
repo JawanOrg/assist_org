@@ -1,7 +1,6 @@
 package com.free.assist.web.business;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import com.free.assist.web.BaseForm;
 
@@ -51,6 +50,10 @@ public class DynamicForm extends BaseForm {
     private String publisher;
 
     private String auditor;
+
+    private String street;
+
+    private String nativeNet;
     
     private String auditResult;
     private String auditSuggestion;
@@ -255,4 +258,20 @@ public class DynamicForm extends BaseForm {
     public void setTaskId(String taskId) {
         this.taskId = taskId;
     }
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getNativeNet() {
+		return nativeNet;
+	}
+
+	public void setNativeNet(String nativeNet) {
+		this.nativeNet = nativeNet;
+	}
 }

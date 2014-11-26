@@ -79,7 +79,7 @@
   </delete>
   <insert id="ibatorgenerated_insert" parameterClass="com.free.assist.domain.SysUser" >
     <selectKey resultClass="java.lang.String" keyProperty="userId" >
-      select sys_guid() from dual
+      select seq_user_id.nextval from dual
     </selectKey>
     insert into t_sys_user (User_Id, Login_Name, login_Password, User_Name, Mobile_Phone, Is_Valid,
       Create_date, Creator_Id, Remark)
@@ -89,7 +89,7 @@
   </insert>
   <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.SysUser" >
     <selectKey resultClass="java.lang.String" keyProperty="userId" >
-      select SEQ_USER_ID.Nextval from dual
+      select seq_user_id.nextval from dual
     </selectKey>
     insert into t_sys_user
     <dynamic prepend="(" >
