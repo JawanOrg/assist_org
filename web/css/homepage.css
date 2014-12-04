@@ -13,7 +13,7 @@ a:hover{ text-decoration:none; color:#F90;}
 .gx-focus-wrap{ background-image:url(../images/homepage/focus-bg.png);background-repeat:repeat-x; overflow:hidden;}
 .gx-interlayer-top{ height:20px;}
 .gx-box-top{ background-image:url(../images/homepage/box-topbg.png); background-repeat:no-repeat; background-position:left bottom; padding:5px 0px;}
-.gx-box-top .titleName{ font-size:18px; font-family:"å¾®è½¯é›…é»‘"; display:inline-block; padding-left:10px; float:left;}
+.gx-box-top .titleName{ font-size:18px; font-family:"Î¢ÈíÑÅºÚ"; display:inline-block; padding-left:10px; float:left;}
 .gx-more{display:inline-block; float:right;padding-right:10px;}
 .gx-list1-wrap{ padding:10px; border-bottom:1px solid #efecec;}
 .gx-list1-wrap .titleName a{ font-size:14px;}
@@ -28,10 +28,21 @@ a:hover{ text-decoration:none; color:#F90;}
 .gx-bbs-wrap td a{ font-size:14px;}
 .gx-box2-wrap{ border:1px solid #dde9fd; border-top:2px solid #06C; padding:10px;}
 .gx-box2-wrap .box-top{ padding-bottom:5px;border-bottom:1px solid #dde9fd; }
-.gx-box2-wrap .box-top .titleName{font-size:16px; font-family:"å¾®è½¯é›…é»‘";}
+.gx-box2-wrap .box-top .titleName{font-size:16px; font-family:"Î¢ÈíÑÅºÚ";}
 .gx-list3-wrap{padding:10px; list-style:none}
 .gx-list3-wrap li{list-style:disc; padding:2px;}
 .gx-foot-wrap{ padding:20px 0px; text-align:center;border-top:1px solid #dde9fd; }
 
 .titleleft{width:70%;float:left;}
 .titleright{width:30%;float:left;text-align:right;}
+
+
+.gx-list-page span{ color:#f00;font-size:14px;}
+.gx-list-page input{ width:50px; border:1px solid #CCC;}
+.gx-list-page a{ border:1px solid #91C8EC; background-color:#E4F7FC; padding:2px 5px;font-size:14px;}
+
+.gx-show-wrap{border:1px solid #d4e2e5;}
+.gx-show-path{ padding:10px;border-bottom:1px solid #f5f2f2;}
+.gx-show-titleName{ text-align:center; font-size:18px; font-family:"Microsoft YaHei", "Î¢ÈíÑÅºÚ"}
+.gx-show-info{ color:#999; text-align:center;}
+.gx-show-content{ font-size:14px; line-height:150%;}

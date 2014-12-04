@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB2312"?>
+<esb>
+	<route>
+		<sender>app</sender>
+		<receiver>server</receiver>
+		<time>2014-11-20 12:50:43</time>
+		<service_name>dynamic_list</service_name>
+		<msg_type>request</msg_type>
+		<msg_id>1</msg_id>
+	</route>
+	<msg>
+		<theTitle>标题</theTitle>
+		<city>城区</city>
+		<street>街道</street>
+		<community>社区</community>
+		<road>道路</road>
+	</msg>
+</esb>

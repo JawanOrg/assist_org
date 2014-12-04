@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GB2312"?>
+<esb>
+	<route>
+		<sender>server</sender>
+		<receiver>app</receiver>
+		<time>2014-11-20 12:50:43</time>
+		<service_name>dynamic_detail</service_name>
+		<msg_type>response</msg_type>
+		<msg_id>1</msg_id>
+	</route>
+	<msg>
+		<dynamic>
+			<billSn>施工编号</billSn>
+			<theTitle>标题</theTitle>
+			<city>城区</city>
+			<street>街道</street>
+			<community>社区</community>
+			<road>道路</road>
+			<numberPlate>门牌号</numberPlate>
+			<scenePersonName>现场联系人</scenePersonName>
+			<scenePersonPhone>现场联系电话</scenePersonPhone>
+			<creator>申请人名称</creator>
+			<longitude>经度</longitude>
+			<latitude>纬度</latitude>
+		</dynamic>
+	</msg>
+</esb>

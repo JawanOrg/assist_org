@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GB2312"?>
+<esb>
+	<route>
+		<sender>app</sender>
+		<receiver>server</receiver>
+		<time>2014-11-20 12:50:43</time>
+		<service_name>login</service_name>
+		<msg_type>request</msg_type>
+		<msg_id>1</msg_id>
+	</route>
+	<msg>
+		<login_name></login_name>
+		<pass_word></pass_word>
+	</msg>
+</esb>

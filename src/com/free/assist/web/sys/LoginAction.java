@@ -81,7 +81,7 @@ public class LoginAction extends BaseAction {
 			cookie.setMaxAge(-1);
 			cookie.setPath("/");
 			response.addCookie(cookie);
-			return new ActionForward("/jsp/common/homePage.jsp");
+			return new ActionForward("/homepage/homePageAction.do?method=queryAllPortalData");
 		} else {
 			return new ActionForward("/index.jsp");
 		}
