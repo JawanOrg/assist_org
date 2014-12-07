@@ -15,8 +15,9 @@ import org.directwebremoting.WebContextFactory;
 import org.springframework.stereotype.Controller;
 
 import com.free.assist.domain.BusReleaseNews;
-import com.free.assist.domain.BusReleaseNewsExample;
+import com.free.assist.domain.BusReleaseNewsWithBLOBsExample;
 import com.free.assist.domain.BusReleaseNewsKey;
+import com.free.assist.domain.BusReleaseNewsWithBLOBs;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptActionExample;
 import com.free.assist.domain.SuptAttach;
@@ -45,17 +46,17 @@ public class NewsAction extends BaseAction {
 
 	public String accept(NewsForm form) throws Exception {
 		SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
-		BusReleaseNews busRelease = new BusReleaseNews();
+		BusReleaseNewsWithBLOBs busRelease = new BusReleaseNewsWithBLOBs();
 		ObjectUtil.copyObjectToObject(form, busRelease);
 		SuptAction action = new SuptAction(currentUser);
 		return newsOperateService.create(busRelease, action);
 	}
 
 	public String querySimilarly(NewsForm form) throws Exception {
-		BusReleaseNewsExample ex = new BusReleaseNewsExample();
-		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		BusReleaseNewsWithBLOBsExample ex = new BusReleaseNewsWithBLOBsExample();
+		com.free.assist.domain.BusReleaseNewsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		cr.andTheTitleLike("%" + form.getTheTitle() + "%");
-		List<BusReleaseNews> newsList = (List<BusReleaseNews>) commonOperateService.selectByExample(ex);
+		List<BusReleaseNewsWithBLOBs> newsList = (List<BusReleaseNewsWithBLOBs>) commonOperateService.selectByExampleWithBLOBs(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("newsList", newsList);
@@ -63,8 +64,8 @@ public class NewsAction extends BaseAction {
 	}
 
 	public String queryRemind(NewsForm form) throws Exception {
-		BusReleaseNewsExample ex = new BusReleaseNewsExample();
-		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		BusReleaseNewsWithBLOBsExample ex = new BusReleaseNewsWithBLOBsExample();
+		com.free.assist.domain.BusReleaseNewsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
 		}
@@ -80,7 +81,7 @@ public class NewsAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseNews> newsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseNews> newsList = commonOperateService.selectPageByExampleWithBLOBs(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("newsList", newsList);
@@ -91,7 +92,7 @@ public class NewsAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseNewsKey key = new BusReleaseNewsKey();
 		key.setBillId(billId);
-		BusReleaseNews news = (BusReleaseNews) newsOperateService.selectByPrimaryKey(key);
+		BusReleaseNewsWithBLOBs news = (BusReleaseNewsWithBLOBs) newsOperateService.selectByPrimaryKeyWithBLOBs(key);
 		request.setAttribute("news", news);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
@@ -164,8 +165,8 @@ public class NewsAction extends BaseAction {
 	}
 
 	public String queryComprehensive(NewsForm form) throws Exception {
-		BusReleaseNewsExample ex = new BusReleaseNewsExample();
-		com.free.assist.domain.BusReleaseNewsExample.Criteria cr = ex.createCriteria();
+		BusReleaseNewsWithBLOBsExample ex = new BusReleaseNewsWithBLOBsExample();
+		com.free.assist.domain.BusReleaseNewsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
 		}
@@ -181,7 +182,7 @@ public class NewsAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseNews> newsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseNewsWithBLOBs> newsList = commonOperateService.selectPageByExampleWithBLOBs(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("newsList", newsList);

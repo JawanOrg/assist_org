@@ -40,8 +40,8 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.deleteByExample(example);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -49,8 +49,8 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.deleteByPrimaryKey(object);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -59,18 +59,26 @@ public class BaseServiceImpl implements BaseService {
 			genericDAO.insert(object);
 
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public List selectByExample(Object example) throws RuntimeException {
 		try {
 			return genericDAO.selectByExample(example);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+		}
+	}
+
+	public List selectByExampleWithBLOBs(Object example) throws RuntimeException{
+		try {
+			return genericDAO.selectByExampleWithBLOBs(example);
+		} catch (RuntimeException e) {
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -78,8 +86,17 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.selectByPrimaryKey(object);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+		}
+	}
+
+	public Object selectByPrimaryKeyWithBLOBs(Object object) throws RuntimeException {
+		try {
+			return genericDAO.selectByPrimaryKeyWithBLOBs(object);
+		} catch (RuntimeException e) {
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -87,8 +104,8 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.selectCountByExample(example);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -96,8 +113,8 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.updateByPrimaryKey(object);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -105,8 +122,8 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.updateByPrimaryKeySelective(object);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
 	}
 
@@ -130,8 +147,18 @@ public class BaseServiceImpl implements BaseService {
 		try {
 			return genericDAO.selectPageByExample(example);
 		} catch (RuntimeException e) {
-			logger.info("ÔÚ" + this.getClass().getSimpleName() + "·¢ÉúÊý¾ÝÒì³£:" + e.getMessage());
-			throw new RuntimeException("Êý¾ÝÒì³£:" + e.getMessage());
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
 		}
+	}
+	
+	public Pager selectPageByExampleWithBLOBs(BaseExample example) throws RuntimeException{
+		try {
+			return genericDAO.selectPageByExampleWithBLOBs(example);
+		} catch (RuntimeException e) {
+			logger.info("ï¿½ï¿½" + this.getClass().getSimpleName() + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+			throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ì³£:" + e.getMessage());
+		}
+		
 	}
 }

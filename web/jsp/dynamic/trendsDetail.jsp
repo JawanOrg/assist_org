@@ -81,13 +81,13 @@
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
 										class="table">
 										<tr>
-											<td height="30" align="right" class="left_txt2">编号：</td>
-											<td height="30">${requestScope.trends.billSn}</td>
-											<td height="30" align="right" class="left_txt2">创建人：</td>
-											<td height="30"><assist:sysOrganization
+											<td width="13%" height="30" align="right" class="left_txt2">编号：</td>
+											<td width="20%" height="30">${requestScope.trends.billSn}</td>
+											<td width="13%" height="30" align="right" class="left_txt2">创建人：</td>
+											<td width="20%" height="30"><assist:sysOrganization
 													objectId='${requestScope.trends.creator}' /></td>
-											<td height="30" align="right" class="left_txt2">创建时间：</td>
-											<td height="30"><fmt:formatDate
+											<td width="12%" height="30" align="right" class="left_txt2">创建时间：</td>
+											<td width="20%" height="30"><fmt:formatDate
 													value="${requestScope.trends.createTime}" type="both"
 													pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										</tr>
@@ -152,9 +152,8 @@
 										<tr>
 											<td height="30" align="right" bgcolor="#f2f2f2"
 												class="left_txt2">施工内容：</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="3">
+											<td height="30" bgcolor="#f2f2f2" colspan="5">
 												${requestScope.trends.repairContent}</td>
-											<td height="30" bgcolor="#f2f2f2" colspan="2"></td>
 										</tr>
 									</table>
 

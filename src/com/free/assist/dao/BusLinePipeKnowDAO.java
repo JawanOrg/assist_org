@@ -7,9 +7,9 @@
  */
 package com.free.assist.dao;
 
-import com.free.assist.domain.BusLinePipeKnow;
-import com.free.assist.domain.BusLinePipeKnowExample;
+import com.free.assist.domain.BusLinePipeKnowWithBLOBsExample;
 import com.free.assist.domain.BusLinePipeKnowKey;
+import com.free.assist.domain.BusLinePipeKnowWithBLOBs;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
@@ -17,10 +17,11 @@ import com.free.assist.domain.BusLinePipeKnowKey;
  * @see: com.free.assist.dao.BusLinePipeKnowDAOImpl
  * @see：com.free.assist.domain.BusLinePipeKnowKey
  * @see：com.free.assist.domain.BusLinePipeKnow
+ * @see：com.free.assist.domain.BusLinePipeKnowWithBLOBs
  * @see：com.free.assist.domain.BusLinePipeKnowExample
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-16 13:57:20 
+ * @date 2014-12-08 15:25:15 
  */
-public interface BusLinePipeKnowDAO extends BaseDAO<BusLinePipeKnowKey, BusLinePipeKnow, BusLinePipeKnowExample> {
+public interface BusLinePipeKnowDAO extends BaseDAO<BusLinePipeKnowKey, BusLinePipeKnowWithBLOBs, BusLinePipeKnowWithBLOBsExample> {
 }

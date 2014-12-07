@@ -127,8 +127,8 @@
 		function addRule() {
 			ymPrompt.win({
 				message : '/business/linePipeAction.do?method=addRuleInit',
-				width : 500,
-				height : 300,
+				width : 800,
+				height : 500,
 				title : '',
 				minBtn : false,
 				maxBtn : false,
@@ -142,8 +142,8 @@
 		function modifyRule(contentId) {
 			ymPrompt.win({
 				message : '/business/linePipeAction.do?method=modifyRuleInit&contentId=' + contentId,
-				width : 500,
-				height : 300,
+				width : 800,
+				height : 500,
 				title : '',
 				minBtn : false,
 				maxBtn : false,

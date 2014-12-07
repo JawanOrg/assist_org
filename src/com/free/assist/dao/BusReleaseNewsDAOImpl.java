@@ -7,42 +7,43 @@
  */
 package com.free.assist.dao;
 
-import com.free.assist.domain.BusReleaseNews;
-import com.free.assist.domain.BusReleaseNewsExample;
+import com.free.assist.domain.BusReleaseNewsWithBLOBsExample;
 import com.free.assist.domain.BusReleaseNewsKey;
+import com.free.assist.domain.BusReleaseNewsWithBLOBs;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_RELEASE_NEWS_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusReleaseNewsKey
  * @see：com.free.assist.domain.BusReleaseNews
+ * @see：com.free.assist.domain.BusReleaseNewsWithBLOBs
  * @see：com.free.assist.domain.BusReleaseNewsExample
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-14 22:17:58 
+ * @date 2014-12-07 11:28:01 
  */
-public class BusReleaseNewsDAOImpl extends SpringBaseDAO<BusReleaseNewsKey, BusReleaseNews, BusReleaseNewsExample> implements BusReleaseNewsDAO {
+public class BusReleaseNewsDAOImpl extends SpringBaseDAO<BusReleaseNewsKey, BusReleaseNewsWithBLOBs, BusReleaseNewsWithBLOBsExample> implements BusReleaseNewsDAO {
 
     public BusReleaseNewsDAOImpl() {
         super();
     }
 
-    public int updateByExampleSelective(BusReleaseNews record, BusReleaseNewsExample example) {
+    public int updateByExampleSelective(BusReleaseNewsWithBLOBs record, BusReleaseNewsWithBLOBsExample example) {
         UpdateByExampleParms parms = new UpdateByExampleParms(record, example);
-        int rows = getSqlMapClientTemplate().update("BusReleaseNews.ibatorgenerated_updateByExampleSelective", parms);
+        int rows = getSqlMapClientTemplate().update("BusReleaseNewsWithBLOBs.ibatorgenerated_updateByExampleSelective", parms);
         return rows;
     }
 
-    public int updateByExample(BusReleaseNews record, BusReleaseNewsExample example) {
+    public int updateByExample(BusReleaseNewsWithBLOBs record, BusReleaseNewsWithBLOBsExample example) {
         UpdateByExampleParms parms = new UpdateByExampleParms(record, example);
-        int rows = getSqlMapClientTemplate().update("BusReleaseNews.ibatorgenerated_updateByExample", parms);
+        int rows = getSqlMapClientTemplate().update("BusReleaseNewsWithBLOBs.ibatorgenerated_updateByExampleWithBLOBs", parms);
         return rows;
     }
 
-    private static class UpdateByExampleParms extends BusReleaseNewsExample {
+    private static class UpdateByExampleParms extends BusReleaseNewsWithBLOBsExample {
         private Object record;
 
-        public UpdateByExampleParms(Object record, BusReleaseNewsExample example) {
+        public UpdateByExampleParms(Object record, BusReleaseNewsWithBLOBsExample example) {
             super(example);
             this.record = record;
         }

@@ -16,19 +16,16 @@ import java.util.Date;
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_LINEPIPE_KNOWLEDGE_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusLinePipeKnowledgeKey
  * @see：com.free.assist.domain.BusLinePipeKnowledge
+ * @see：com.free.assist.domain.BusLinePipeKnowledgeWithBLOBs
  * @see：com.free.assist.domain.BusLinePipeKnowledgeExample
  * @see：com.free.assist.dao.BusLinePipeKnowledgeDAO
  * @see：com.free.assist.dao.BusLinePipeKnowledgeDAOImpl
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-16 13:57:20 
+ * @date 2014-12-08 15:25:15 
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name="T_BUS_LINEPIPE_KNOWLEDGE")
 public class BusLinePipeKnowledge extends BusLinePipeKnowledgeKey implements Serializable {
     private String theTitle;
-
-    private String knowledgeContent;
 
     private String creator;
 
@@ -51,15 +48,6 @@ public class BusLinePipeKnowledge extends BusLinePipeKnowledgeKey implements Ser
 
     public void setTheTitle(String theTitle) {
         this.theTitle = theTitle;
-    }
-
-    @javax.persistence.Column(name="KNOWLEDGE_CONTENT", nullable=false, length=4000)
-    public String getKnowledgeContent() {
-        return knowledgeContent;
-    }
-
-    public void setKnowledgeContent(String knowledgeContent) {
-        this.knowledgeContent = knowledgeContent;
     }
 
     @javax.persistence.Column(name="CREATOR", nullable=false, length=32)

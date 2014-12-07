@@ -10,9 +10,9 @@ import com.free.assist.dao.SuptActionDAO;
 import com.free.assist.dao.SuptTaskDAO;
 import com.free.assist.domain.BusReleaseTrends;
 import com.free.assist.domain.BusReleaseTrendsKey;
+import com.free.assist.domain.BusReleaseTrendsWithBLOBs;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptTask;
-import com.free.assist.domain.SuptTaskExample;
 import com.free.assist.domain.SuptTaskKey;
 import com.free.assist.service.BaseServiceImpl;
 import com.free.assist.service.common.CommonOperateService;
@@ -45,7 +45,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
-	public String create(BusReleaseTrends relsease, SuptAction action) {
+	public String create(BusReleaseTrendsWithBLOBs relsease, SuptAction action) {
 		String billSn = Helper.getCurrentTimeStr() + this.buildSequence();
 		relsease.setBillSn(billSn);
 		relsease.setCreator(action.getUserVO().getUserId());
@@ -85,10 +85,10 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		trendsKey.setBillId(action.getBillId());
 		BusReleaseTrends oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
 		if (oldRelsease != null && !Constant.S_AUDIT.equals(oldRelsease.getBillStatus())) {
-			return "¶¯Ì¬ÐÅÏ¢ÒÑÉóºË£¡";
+			return "ï¿½ï¿½Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ë£ï¿½";
 		}
 
-		BusReleaseTrends relsease = new BusReleaseTrends();
+		BusReleaseTrendsWithBLOBs relsease = new BusReleaseTrendsWithBLOBs();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_RELEASE);
@@ -107,7 +107,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setBillId(relsease.getBillId());
 		task.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
-		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO È¡ÕýÈ·µÄ²¿ÃÅ
+		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO È¡ï¿½ï¿½È·ï¿½Ä²ï¿½ï¿½ï¿½
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_RELEASE);
@@ -138,10 +138,10 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		trendsKey.setBillId(action.getBillId());
 		BusReleaseTrends oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
 		if (oldRelsease != null && !Constant.S_RELEASE.equals(oldRelsease.getBillStatus())) {
-			return "¶¯Ì¬ÐÅÏ¢ÒÑ·¢²¼£¡";
+			return "ï¿½ï¿½Ì¬ï¿½ï¿½Ï¢ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½";
 		}
 
-		BusReleaseTrends relsease = new BusReleaseTrends();
+		BusReleaseTrendsWithBLOBs relsease = new BusReleaseTrendsWithBLOBs();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_WORK);
@@ -164,7 +164,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setCreator(action.getUserVO().getUserId());
 		task.setIsFinish(Constant.FLAG_NO);
 		task.setIsRedo(Constant.FLAG_NO);
-		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO È¡ÕýÈ·µÄ²¿ÃÅ
+		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO È¡ï¿½ï¿½È·ï¿½Ä²ï¿½ï¿½ï¿½
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_WORK);
@@ -211,12 +211,12 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		trendsKey.setBillId(action.getBillId());
 		BusReleaseTrends oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
 		if (oldRelsease != null && !Constant.S_WORK.equals(oldRelsease.getBillStatus())) {
-			return "¶¯Ì¬ÐÅÏ¢ÒÑÍê¹¤£¡";
+			return "ï¿½ï¿½Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ê¹¤ï¿½ï¿½";
 		}
 
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(action.getBillId());
-		BusReleaseTrends trends = busReleaseTrendsDAO.selectByPrimaryKey(key);
+		BusReleaseTrendsWithBLOBs trends = busReleaseTrendsDAO.selectByPrimaryKey(key);
 
 		trends.setBillStatus(Constant.S_FINISH);
 		busReleaseTrendsDAO.updateByPrimaryKeySelective(trends);

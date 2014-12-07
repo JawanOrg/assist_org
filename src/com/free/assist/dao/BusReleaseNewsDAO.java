@@ -7,9 +7,9 @@
  */
 package com.free.assist.dao;
 
-import com.free.assist.domain.BusReleaseNews;
-import com.free.assist.domain.BusReleaseNewsExample;
+import com.free.assist.domain.BusReleaseNewsWithBLOBsExample;
 import com.free.assist.domain.BusReleaseNewsKey;
+import com.free.assist.domain.BusReleaseNewsWithBLOBs;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
@@ -17,10 +17,11 @@ import com.free.assist.domain.BusReleaseNewsKey;
  * @see: com.free.assist.dao.BusReleaseNewsDAOImpl
  * @see：com.free.assist.domain.BusReleaseNewsKey
  * @see：com.free.assist.domain.BusReleaseNews
+ * @see：com.free.assist.domain.BusReleaseNewsWithBLOBs
  * @see：com.free.assist.domain.BusReleaseNewsExample
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-14 22:17:58 
+ * @date 2014-12-07 11:28:01 
  */
-public interface BusReleaseNewsDAO extends BaseDAO<BusReleaseNewsKey, BusReleaseNews, BusReleaseNewsExample> {
+public interface BusReleaseNewsDAO extends BaseDAO<BusReleaseNewsKey, BusReleaseNewsWithBLOBs, BusReleaseNewsWithBLOBsExample> {
 }

@@ -52,7 +52,7 @@ function showsubmenu(sid) {
 	<table width="100%" height="64" border="0" cellpadding="0"
 		cellspacing="0" class="admin_topbg">
 		<tr>
-			<td width="61%" height="64"><img src="/images/normal/logotop.png--"
+			<td width="61%" height="64"><img src="/images/normal/logotop.png"
 				width="262" height="38"></td>
 			<td width="39%" valign="top"><table width="100%" border="0"
 					cellspacing="0" cellpadding="0">
@@ -61,6 +61,10 @@ function showsubmenu(sid) {
 							<table width="100%" border="0" cellspacing="1" cellpadding="3">
 								<tr align="left" width="100%">
 									<td align="right" style="font-size: 13px"><img
+										src="<%=request.getContextPath()%>/images/main/icon_change_un01.gif"
+										width="18" height="14"> <a target="_top" href="/homepage/homePageAction.do?method=queryAllPortalData"><font face="楷体"
+											size="2" color="#ffffff">首页</font></a>
+											<img
 										src="<%=request.getContextPath()%>/images/main/ico_fellow.gif"
 										width="18" height="14"> <a href="#"><font face="楷体"
 											size="2" color="#ffffff">当前处理人：</font><font face="楷体"
@@ -68,7 +72,7 @@ function showsubmenu(sid) {
 										<img
 										src="<%=request.getContextPath()%>/images/main/ico_cipher.gif"
 										width="13" height="15" border="0"><a
-										href="/jsp/common/chgPassword.jsp" target="workarea"><font
+										href="/jsp/common/chgPassword.jsp" target="worktable"><font
 											face="楷体" size="2" color="#ffffff">密码修改</font></a> <img
 										src="<%=request.getContextPath()%>/images/main/ico_fellow02.gif"
 										width="13" height="14" border="0"> <a

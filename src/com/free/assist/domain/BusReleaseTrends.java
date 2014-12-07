@@ -11,22 +11,20 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
  * <p>该实体对应数据库的表名为：T_BUS_RELEASE_TRENDS。
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_RELEASE_TRENDS_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusReleaseTrendsKey
  * @see：com.free.assist.domain.BusReleaseTrends
+ * @see：com.free.assist.domain.BusReleaseTrendsWithBLOBs
  * @see：com.free.assist.domain.BusReleaseTrendsExample
  * @see：com.free.assist.dao.BusReleaseTrendsDAO
  * @see：com.free.assist.dao.BusReleaseTrendsDAOImpl
  * @autor ibator
  * @version 1.2.1
- * @date 2014-10-11 11:14:17 
+ * @date 2014-12-07 23:26:34 
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name="T_BUS_RELEASE_TRENDS")
 public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializable {
     private String billSn;
 
@@ -49,8 +47,6 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
     private String testPlanRemark;
 
     private String repairType;
-
-    private String repairContent;
 
     private String creator;
 
@@ -94,7 +90,7 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
         this.theTitle = theTitle;
     }
 
-    @javax.persistence.Column(name="CITY", nullable=true, length=32)
+    @javax.persistence.Column(name="CITY", nullable=true, length=100)
     public String getCity() {
         return city;
     }
@@ -103,7 +99,7 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
         this.city = city;
     }
 
-    @javax.persistence.Column(name="COMMUNITY", nullable=true, length=32)
+    @javax.persistence.Column(name="COMMUNITY", nullable=true, length=100)
     public String getCommunity() {
         return community;
     }
@@ -175,15 +171,6 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
         this.repairType = repairType;
     }
 
-    @javax.persistence.Column(name="REPAIR_CONTENT", nullable=true, length=4000)
-    public String getRepairContent() {
-        return repairContent;
-    }
-
-    public void setRepairContent(String repairContent) {
-        this.repairContent = repairContent;
-    }
-
     @javax.persistence.Column(name="CREATOR", nullable=false, length=32)
     public String getCreator() {
         return creator;
@@ -229,7 +216,7 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
         this.latitude = latitude;
     }
 
-    @javax.persistence.Column(name="BILL_STATUS", nullable=true, length=32)
+    @javax.persistence.Column(name="BILL_STATUS", nullable=false, length=32)
     public String getBillStatus() {
         return billStatus;
     }

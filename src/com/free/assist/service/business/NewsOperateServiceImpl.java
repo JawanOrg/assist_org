@@ -10,6 +10,7 @@ import com.free.assist.dao.SuptActionDAO;
 import com.free.assist.dao.SuptTaskDAO;
 import com.free.assist.domain.BusReleaseNews;
 import com.free.assist.domain.BusReleaseNewsKey;
+import com.free.assist.domain.BusReleaseNewsWithBLOBs;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptTask;
 import com.free.assist.domain.SuptTaskKey;
@@ -44,7 +45,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
-	public String create(BusReleaseNews relsease, SuptAction action) {
+	public String create(BusReleaseNewsWithBLOBs relsease, SuptAction action) {
 		String billSn = Helper.getCurrentTimeStr() + this.buildSequence();
 		relsease.setBillSn(billSn);
 		relsease.setCreator(action.getUserVO().getUserId());
@@ -87,7 +88,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 			return "新闻信息已审核！";
 		}
 
-		BusReleaseNews relsease = new BusReleaseNews();
+		BusReleaseNewsWithBLOBs relsease = new BusReleaseNewsWithBLOBs();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_RELEASE);
@@ -140,7 +141,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 			return "新闻信息已发布！";
 		}
 
-		BusReleaseNews relsease = new BusReleaseNews();
+		BusReleaseNewsWithBLOBs relsease = new BusReleaseNewsWithBLOBs();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_FINISH);

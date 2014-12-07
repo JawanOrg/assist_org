@@ -33,7 +33,6 @@ public class GenericDAO extends SqlMapClientDaoSupport {
 		return super.getSqlMapClientTemplate().delete(object.getClass().getSimpleName() + ".ibatorgenerated_deleteByPrimaryKey", object);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List selectByExample(Object example) {
 		String className = example.getClass().getSimpleName();
 		int i = className.lastIndexOf("Example");
@@ -41,6 +40,15 @@ public class GenericDAO extends SqlMapClientDaoSupport {
 			className = className.substring(0, i);
 		}
 		return super.getSqlMapClientTemplate().queryForList(className + ".ibatorgenerated_selectByExample", example);
+	}
+	
+	public List selectByExampleWithBLOBs(Object example) {
+		String className = example.getClass().getSimpleName();
+		int i = className.lastIndexOf("Example");
+		if (i > -1) {
+			className = className.substring(0, i);
+		}
+		return super.getSqlMapClientTemplate().queryForList(className + ".ibatorgenerated_selectByExampleWithBLOBs", example);
 	}
 
 	public Pager selectPageByExample(BaseExample example) {
@@ -59,12 +67,36 @@ public class GenericDAO extends SqlMapClientDaoSupport {
 		return new Pager(skipResults, maxResults, result, totalRecords);
 	}
 
+	public Pager selectPageByExampleWithBLOBs(BaseExample example) {
+		String className = example.getClass().getSimpleName();
+		int i = className.lastIndexOf("Example");
+		if (i > -1) {
+			className = className.substring(0, i);
+		}
+		int skipResults = example.getSkipResults();
+		int maxResults = example.getMaxResults();
+		int totalRecords = selectCountByExample(example);
+		if (skipResults > totalRecords) {
+			skipResults = totalRecords - example.getMaxResults();
+		}
+		List result = getSqlMapClientTemplate().queryForList(className + ".ibatorgenerated_selectByExampleWithBLOBs", example, skipResults, maxResults);
+		return new Pager(skipResults, maxResults, result, totalRecords);
+	}
+
 	public Object selectByPrimaryKey(Object object) {
 		String namespace = object.getClass().getSimpleName();
 		if (namespace != null && namespace.endsWith("Key")) {
 			namespace = namespace.substring(0, namespace.length() - 3);
 		}
 		return super.getSqlMapClientTemplate().queryForObject(namespace + ".ibatorgenerated_selectByPrimaryKey", object);
+	}
+
+	public Object selectByPrimaryKeyWithBLOBs(Object object) {
+		String namespace = object.getClass().getSimpleName();
+		if (namespace != null && namespace.endsWith("Key")) {
+			namespace = namespace.substring(0, namespace.length() - 3);
+		}
+		return super.getSqlMapClientTemplate().queryForObject(namespace + "WithBLOBs.ibatorgenerated_selectByPrimaryKey", object);
 	}
 
 	public Integer selectCountByExample(Object example) {

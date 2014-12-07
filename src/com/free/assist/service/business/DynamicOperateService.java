@@ -1,11 +1,11 @@
 package com.free.assist.service.business;
 
-import com.free.assist.domain.BusReleaseTrends;
+import com.free.assist.domain.BusReleaseTrendsWithBLOBs;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.service.BaseService;
 
 public interface DynamicOperateService extends BaseService {
-    String create(BusReleaseTrends relsease, SuptAction action);
+    String create(BusReleaseTrendsWithBLOBs relsease, SuptAction action);
 
     String audit(SuptAction action);
 

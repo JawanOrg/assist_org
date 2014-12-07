@@ -127,8 +127,8 @@
 		function addKnowledge() {
 			ymPrompt.win({
 				message : '/business/linePipeAction.do?method=addKnowledgeInit',
-				width : 500,
-				height : 300,
+				width : 800,
+				height : 500,
 				title : '',
 				minBtn : false,
 				maxBtn : false,
@@ -142,8 +142,8 @@
 		function modifyKnowledge(contentId) {
 			ymPrompt.win({
 				message : '/business/linePipeAction.do?method=modifyKnowledgeInit&contentId=' + contentId,
-				width : 500,
-				height : 300,
+				width : 800,
+				height : 500,
 				title : '',
 				minBtn : false,
 				maxBtn : false,

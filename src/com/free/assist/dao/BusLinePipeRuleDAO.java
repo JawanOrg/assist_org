@@ -7,9 +7,9 @@
  */
 package com.free.assist.dao;
 
-import com.free.assist.domain.BusLinePipeRule;
-import com.free.assist.domain.BusLinePipeRuleExample;
+import com.free.assist.domain.BusLinePipeRuleWithBLOBsExample;
 import com.free.assist.domain.BusLinePipeRuleKey;
+import com.free.assist.domain.BusLinePipeRuleWithBLOBs;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
@@ -17,10 +17,11 @@ import com.free.assist.domain.BusLinePipeRuleKey;
  * @see: com.free.assist.dao.BusLinePipeRuleDAOImpl
  * @see：com.free.assist.domain.BusLinePipeRuleKey
  * @see：com.free.assist.domain.BusLinePipeRule
+ * @see：com.free.assist.domain.BusLinePipeRuleWithBLOBs
  * @see：com.free.assist.domain.BusLinePipeRuleExample
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-16 13:57:20 
+ * @date 2014-12-08 15:25:15 
  */
-public interface BusLinePipeRuleDAO extends BaseDAO<BusLinePipeRuleKey, BusLinePipeRule, BusLinePipeRuleExample> {
+public interface BusLinePipeRuleDAO extends BaseDAO<BusLinePipeRuleKey, BusLinePipeRuleWithBLOBs, BusLinePipeRuleWithBLOBsExample> {
 }

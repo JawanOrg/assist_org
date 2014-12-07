@@ -7,42 +7,43 @@
  */
 package com.free.assist.dao;
 
-import com.free.assist.domain.BusLinePipeRule;
-import com.free.assist.domain.BusLinePipeRuleExample;
+import com.free.assist.domain.BusLinePipeRuleWithBLOBsExample;
 import com.free.assist.domain.BusLinePipeRuleKey;
+import com.free.assist.domain.BusLinePipeRuleWithBLOBs;
 
 /**
  * <p>该文件使用ibator工具生成，ibator使用方法可浏览<a href="http://ibatis.apache.org">Ibator Documentation</a>。<p>
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_LINEPIPE_RULE_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusLinePipeRuleKey
  * @see：com.free.assist.domain.BusLinePipeRule
+ * @see：com.free.assist.domain.BusLinePipeRuleWithBLOBs
  * @see：com.free.assist.domain.BusLinePipeRuleExample
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-16 13:57:20 
+ * @date 2014-12-08 15:25:15 
  */
-public class BusLinePipeRuleDAOImpl extends SpringBaseDAO<BusLinePipeRuleKey, BusLinePipeRule, BusLinePipeRuleExample> implements BusLinePipeRuleDAO {
+public class BusLinePipeRuleDAOImpl extends SpringBaseDAO<BusLinePipeRuleKey, BusLinePipeRuleWithBLOBs, BusLinePipeRuleWithBLOBsExample> implements BusLinePipeRuleDAO {
 
     public BusLinePipeRuleDAOImpl() {
         super();
     }
 
-    public int updateByExampleSelective(BusLinePipeRule record, BusLinePipeRuleExample example) {
+    public int updateByExampleSelective(BusLinePipeRuleWithBLOBs record, BusLinePipeRuleWithBLOBsExample example) {
         UpdateByExampleParms parms = new UpdateByExampleParms(record, example);
         int rows = getSqlMapClientTemplate().update("BusLinePipeRule.ibatorgenerated_updateByExampleSelective", parms);
         return rows;
     }
 
-    public int updateByExample(BusLinePipeRule record, BusLinePipeRuleExample example) {
+    public int updateByExample(BusLinePipeRuleWithBLOBs record, BusLinePipeRuleWithBLOBsExample example) {
         UpdateByExampleParms parms = new UpdateByExampleParms(record, example);
-        int rows = getSqlMapClientTemplate().update("BusLinePipeRule.ibatorgenerated_updateByExample", parms);
+        int rows = getSqlMapClientTemplate().update("BusLinePipeRule.ibatorgenerated_updateByExampleWithBLOBs", parms);
         return rows;
     }
 
-    private static class UpdateByExampleParms extends BusLinePipeRuleExample {
+    private static class UpdateByExampleParms extends BusLinePipeRuleWithBLOBsExample {
         private Object record;
 
-        public UpdateByExampleParms(Object record, BusLinePipeRuleExample example) {
+        public UpdateByExampleParms(Object record, BusLinePipeRuleWithBLOBsExample example) {
             super(example);
             this.record = record;
         }

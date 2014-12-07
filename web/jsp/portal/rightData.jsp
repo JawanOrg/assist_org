@@ -22,7 +22,7 @@
 	<div class="gx-box2-wrap">
 		<div class="box-top">
 			<apsn class="titleName">管线识别</span> <span class="gx-more"><a
-				href="/homepage/homePageAction.do?method=queryMorePipeKnowledge">更多
+				href="/homepage/homePageAction.do?method=queryMorePipeKnow">更多
 					》</a></span>
 		</div>
 
@@ -30,7 +30,7 @@
 			<c:forEach items="${requestScope.knowList}" var="objData"
 				varStatus="n">
 				<li><a
-					href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge&billId=${objData.contentId}">
+					href="/homepage/homePageAction.do?method=queryDetailPipeKnow&billId=${objData.contentId}">
 						${fn:length(objData.theTitle)>50?fn:substring(objData.theTitle,0,50):objData.theTitle}</a></li>
 			</c:forEach>
 		</ul>
@@ -39,7 +39,7 @@
 	<div class="gx-box2-wrap">
 		<div class="box-top">
 			<apsn class="titleName">管线法规</span> <span class="gx-more"><a
-				href="/homepage/homePageAction.do?method=queryMorePipeKnowledge">更多
+				href="/homepage/homePageAction.do?method=queryMorePipeRule">更多
 					》</a></span>
 		</div>
 
@@ -47,7 +47,7 @@
 			<c:forEach items="${requestScope.ruleList}" var="objData"
 				varStatus="n">
 				<li><a
-					href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge&billId=${objData.contentId}">
+					href="/homepage/homePageAction.do?method=queryDetailPipeRule&billId=${objData.contentId}">
 						${fn:length(objData.theTitle)>50?fn:substring(objData.theTitle,0,50):objData.theTitle}</a></li>
 			</c:forEach>
 		</ul>

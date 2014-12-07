@@ -15,12 +15,13 @@ import java.io.Serializable;
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_LINEPIPE_RULE_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusLinePipeRuleKey
  * @see：com.free.assist.domain.BusLinePipeRule
+ * @see：com.free.assist.domain.BusLinePipeRuleWithBLOBs
  * @see：com.free.assist.domain.BusLinePipeRuleExample
  * @see：com.free.assist.dao.BusLinePipeRuleDAO
  * @see：com.free.assist.dao.BusLinePipeRuleDAOImpl
  * @autor ibator1
  * @version 1.2.1
- * @date 2014-09-16 13:57:20 
+ * @date 2014-12-08 15:25:15 
  */
 public class BusLinePipeRuleKey implements Serializable {
     private String contentId;

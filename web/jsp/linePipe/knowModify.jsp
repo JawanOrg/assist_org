@@ -5,6 +5,7 @@
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/linePipeAction.js'></script>
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -31,6 +32,8 @@
 			return false;
 		}
 		var formObj = $('modifyForm').serialize(true);
+		var editor_data = CKEDITOR.instances.linePipeContent.getData();
+		formObj.linePipeContent=editor_data;
 		linePipeAction.modifyKnow(formObj, modifyBack);
 	}
 
@@ -42,6 +45,15 @@
 			handler(str);
 		}
 
+	}
+	
+	window.onload = function()
+   {
+      CKEDITOR.replace( 'linePipeContent',
+     {
+      skin : 'moono',
+      language : 'zh-cn'
+     });
 	}
 </script>
 <body>

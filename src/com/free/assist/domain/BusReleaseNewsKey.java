@@ -15,12 +15,13 @@ import java.io.Serializable;
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_RELEASE_NEWS_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusReleaseNewsKey
  * @see：com.free.assist.domain.BusReleaseNews
+ * @see：com.free.assist.domain.BusReleaseNewsWithBLOBs
  * @see：com.free.assist.domain.BusReleaseNewsExample
  * @see：com.free.assist.dao.BusReleaseNewsDAO
  * @see：com.free.assist.dao.BusReleaseNewsDAOImpl
  * @autor ibator1
  * @version 1.2.1
- * @date 2014-09-14 22:17:58 
+ * @date 2014-12-07 11:28:01 
  */
 public class BusReleaseNewsKey implements Serializable {
     private String billId;

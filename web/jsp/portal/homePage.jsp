@@ -41,7 +41,7 @@
 								<a href="/homepage/homePageAction.do?method=queryDetailDynamic&billId=${objData.billId}">${fn:length(objData.theTitle)>50?fn:substring(objData.theTitle,0,50):objData.theTitle}</a>
 							</div>
 							<div class="titleright">
-								<span>${objData.city}-${objData.community}-${objData.road}</span>
+								<span>${objData.city}-${objData.community}-${objData.street}</span>
 							</div>
 						</div>
 						<div class="des">${fn:length(objData.repairContent)>70?fn:substring(objData.repairContent,0,70):objData.repairContent}</div>
@@ -50,13 +50,13 @@
 				<div class="gx-interlayer-top"></div>
 				<div class="gx-box-top">
 					<span class="titleName">新闻动态</span> <span class="gx-more"><a
-						href="#">更多 》</a></span>
+						href="/homepage/homePageAction.do?method=queryMoreNews">更多 》</a></span>
 				</div>
 				<ul class="gx-list2-wrap">
 					<c:forEach items="${requestScope.newsList}" var="objData"
 						varStatus="n">
-						<li><a href="#">${fn:length(objData.newsContent)>50?fn:substring(objData.newsContent,0,50):objData.newsContent}</a><span><fmt:formatDate
-									value="${objData.createTime }" pattern="yyyy-MM-dd" /> </span></li>
+						<li><a href="/homepage/homePageAction.do?method=queryDetailNews&billId=${objData.billId}">${fn:length(objData.theTitle)>50?fn:substring(objData.theTitle,0,50):objData.theTitle}</a><span>
+						<fmt:formatDate value="${objData.createTime }" pattern="yyyy-MM-dd" /> </span></li>
 					</c:forEach>
 				</ul>
 
@@ -104,7 +104,7 @@
 					<ul class="gx-list3-wrap">
 						<c:forEach items="${requestScope.knowledgeList}" var="objData"
 							varStatus="n">
-							<li><a href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
+							<li><a href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge&billId=${objData.contentId}">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -118,7 +118,7 @@
 					<ul class="gx-list3-wrap">
 						<c:forEach items="${requestScope.knowList}" var="objData"
 							varStatus="n">
-							<li><a href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
+							<li><a href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge&billId=${objData.contentId}">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -126,13 +126,13 @@
 				<div class="gx-box2-wrap">
 					<div class="box-top">
 						<apsn class="titleName">管线法规</span> <span class="gx-more"><a
-							href="/homepage/homePageAction.do?method=queryMorePipeKnowledge">更多 》</a></span>
+							href="/homepage/homePageAction.do?method=queryMorePipeRule">更多 》</a></span>
 					</div>
 
 					<ul class="gx-list3-wrap">
 						<c:forEach items="${requestScope.ruleList}" var="objData"
 							varStatus="n">
-							<li><a href="/homepage/homePageAction.do?method=queryDetailPipeKnowledge">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
+							<li><a href="/homepage/homePageAction.do?method=queryDetailPipeRule&billId=${objData.contentId}">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 						</c:forEach>
 					</ul>
 				</div>

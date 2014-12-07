@@ -7,32 +7,37 @@ import com.free.assist.domain.BaseExample;
 import com.free.assist.util.Pager;
 
 /**
- * @author ÀîÃÍ
+ * @author ï¿½ï¿½ï¿½ï¿½
  * @date 2009-09-23 15:57:34
  */
 public interface BaseService {
-	public int deleteByExample(Object example) throws RuntimeException;
+	int deleteByExample(Object example) throws RuntimeException;
 
-	public int deleteByPrimaryKey(Object object) throws RuntimeException;
+	int deleteByPrimaryKey(Object object) throws RuntimeException;
 
-	public void insert(Object object) throws RuntimeException;
+	void insert(Object object) throws RuntimeException;
 
-	@SuppressWarnings("unchecked")
-	public List selectByExample(Object example) throws RuntimeException;
-	
-	public Pager selectPageByExample(BaseExample example) throws RuntimeException;
+	List selectByExample(Object example) throws RuntimeException;
 
-	public Object selectByPrimaryKey(Object object) throws RuntimeException;
+	List selectByExampleWithBLOBs(Object example) throws RuntimeException;
 
-	public Integer selectCountByExample(Object example) throws RuntimeException;
+	Pager selectPageByExample(BaseExample example) throws RuntimeException;
 
-	public int updateByPrimaryKey(Object object) throws RuntimeException;
+	Pager selectPageByExampleWithBLOBs(BaseExample example) throws RuntimeException;
 
-	public int updateByPrimaryKeySelective(Object object) throws RuntimeException;
+	Object selectByPrimaryKey(Object object) throws RuntimeException;
 
-	public Date getSysDate() throws RuntimeException;
+	Object selectByPrimaryKeyWithBLOBs(Object object) throws RuntimeException;
 
-	public String buildGUID() throws RuntimeException;
+	Integer selectCountByExample(Object example) throws RuntimeException;
 
-	public String buildSequence() throws RuntimeException;
+	int updateByPrimaryKey(Object object) throws RuntimeException;
+
+	int updateByPrimaryKeySelective(Object object) throws RuntimeException;
+
+	Date getSysDate() throws RuntimeException;
+
+	String buildGUID() throws RuntimeException;
+
+	String buildSequence() throws RuntimeException;
 }

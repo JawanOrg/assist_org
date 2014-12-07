@@ -11,6 +11,7 @@
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 <script type="text/javascript" src="/js/ymPrompt.js"></script>
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"
@@ -243,6 +244,8 @@
 				return false;
 			}
 			var formObj = $('inputForm').serialize(true);
+			var editor_data = CKEDITOR.instances.repairContent.getData();
+			formObj.repairContent=editor_data;
 			dynamicAction.accept(formObj, callback);
 		}
 		function querySimilarly() {
@@ -287,6 +290,15 @@
 		function showMap(){
 			ymPrompt.win({message:'/jsp/map/mapMain.jsp',width:500,height:350,title:'',minBtn:true,maxBtn:true,useSlide:true,showShadow:true,iframe:{id:'myId'}});
 			ymPrompt.max();
+		}
+		
+		window.onload = function()
+	   {
+	      CKEDITOR.replace( 'repairContent',
+  		     {
+  		      skin : 'moono',
+  		      language : 'zh-cn'
+  		     });
 		}
 
 

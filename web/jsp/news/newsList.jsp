@@ -21,7 +21,7 @@
 				<td align="center" width="6%"><assist:sysDicDisName
 						itemCodeIn="${obj.billStatus}" dictionaryCodeIn="release_status" /></td>
 				<td align="center" width="15%">${obj.theTitle}</td>
-				<td align="left" width="54%">${obj.newsContent}</td>
+				<td align="left" width="54%">${fn:length(obj.newsContent)>50?fn:substring(obj.newsContent,0,50):obj.newsContent}</td>
 				<td align="center" width="15%"><fmt:formatDate
 						value="${obj.createTime}" type="both"
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>

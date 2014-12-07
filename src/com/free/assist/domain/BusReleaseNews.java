@@ -16,21 +16,18 @@ import java.util.Date;
  * <p>SQL映射文件路径为：com.free.assist.dao.xml.T_BUS_RELEASE_NEWS_SqlMap.xml。</p>
  * @see：com.free.assist.domain.BusReleaseNewsKey
  * @see：com.free.assist.domain.BusReleaseNews
+ * @see：com.free.assist.domain.BusReleaseNewsWithBLOBs
  * @see：com.free.assist.domain.BusReleaseNewsExample
  * @see：com.free.assist.dao.BusReleaseNewsDAO
  * @see：com.free.assist.dao.BusReleaseNewsDAOImpl
  * @autor ibator
  * @version 1.2.1
- * @date 2014-09-14 22:17:58 
+ * @date 2014-12-07 11:28:01 
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name="T_BUS_RELEASE_NEWS")
 public class BusReleaseNews extends BusReleaseNewsKey implements Serializable {
     private String billSn;
 
     private String theTitle;
-
-    private String newsContent;
 
     private String creator;
 
@@ -62,15 +59,6 @@ public class BusReleaseNews extends BusReleaseNewsKey implements Serializable {
 
     public void setTheTitle(String theTitle) {
         this.theTitle = theTitle;
-    }
-
-    @javax.persistence.Column(name="NEWS_CONTENT", nullable=false, length=4000)
-    public String getNewsContent() {
-        return newsContent;
-    }
-
-    public void setNewsContent(String newsContent) {
-        this.newsContent = newsContent;
     }
 
     @javax.persistence.Column(name="CREATOR", nullable=false, length=32)

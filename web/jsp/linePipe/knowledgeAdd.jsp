@@ -5,6 +5,7 @@
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/linePipeAction.js'></script>
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -31,6 +32,8 @@
 			return false;
 		}
 		var formObj = $('addForm').serialize(true);
+		var editor_data = CKEDITOR.instances.linePipeContent.getData();
+		formObj.linePipeContent=editor_data;
 		linePipeAction.addKnowledge(formObj, addBack);
 	}
 
@@ -42,6 +45,15 @@
 			handler(str);
 		}
 
+	}
+	
+	window.onload = function()
+   {
+      CKEDITOR.replace( 'linePipeContent',
+     {
+      skin : 'moono',
+      language : 'zh-cn'
+     });
 	}
 </script>
 <body>
@@ -73,7 +85,7 @@
 										<div align="right">常识内容<span style="color:Red">*</span>：</div>
 									</td>
 									<td align="left" colspan="2"><textarea
-											name="linePipeContent" class="form-control" rows="3" dataType="Require" msg="'常识内容'必填" ></textarea></td>
+											name="linePipeContent" class="form-control" rows="3"></textarea></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>

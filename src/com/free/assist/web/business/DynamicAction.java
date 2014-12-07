@@ -14,8 +14,8 @@ import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 import org.springframework.stereotype.Controller;
 
-import com.free.assist.domain.BusReleaseTrends;
-import com.free.assist.domain.BusReleaseTrendsExample;
+import com.free.assist.domain.BusReleaseTrendsWithBLOBs;
+import com.free.assist.domain.BusReleaseTrendsWithBLOBsExample;
 import com.free.assist.domain.BusReleaseTrendsKey;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptActionExample;
@@ -49,15 +49,15 @@ public class DynamicAction extends BaseAction {
 			form.setIsNeedGovernment(null);
 		}
 		SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
-		BusReleaseTrends busRelease = new BusReleaseTrends();
+		BusReleaseTrendsWithBLOBs busRelease = new BusReleaseTrendsWithBLOBs();
 		ObjectUtil.copyObjectToObject(form, busRelease);
 		SuptAction action = new SuptAction(currentUser);
 		return dynamicOperateService.create(busRelease, action);
 	}
 
 	public String querySimilarly(DynamicForm form) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
-		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
+		BusReleaseTrendsWithBLOBsExample ex = new BusReleaseTrendsWithBLOBsExample();
+		com.free.assist.domain.BusReleaseTrendsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getRoad()) && StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andRoadLike("%" + form.getRoad() + "%");
 		} else if (StringUtils.isBlank(form.getTheTitle()) && StringUtils.isNotBlank(form.getTheTitle())) {
@@ -72,7 +72,7 @@ public class DynamicAction extends BaseAction {
 		if (StringUtils.isNotBlank(form.getCommunity())) {
 			cr.andCommunityEqualTo(form.getCommunity());
 		}
-		List<BusReleaseTrends> trendsList = commonOperateService.query(ex);
+		List<BusReleaseTrendsWithBLOBs> trendsList = commonOperateService.selectByExampleWithBLOBs(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);
@@ -80,8 +80,8 @@ public class DynamicAction extends BaseAction {
 	}
 
 	public String queryRemind(DynamicForm form) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
-		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
+		BusReleaseTrendsWithBLOBsExample ex = new BusReleaseTrendsWithBLOBsExample();
+		com.free.assist.domain.BusReleaseTrendsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
@@ -106,7 +106,7 @@ public class DynamicAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseTrends> trendsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseTrendsWithBLOBs> trendsList = commonOperateService.selectPageByExampleWithBLOBs(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);
@@ -117,7 +117,7 @@ public class DynamicAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(billId);
-		BusReleaseTrends trends = commonOperateService.queryByKey(key);
+		BusReleaseTrendsWithBLOBs trends = (BusReleaseTrendsWithBLOBs) commonOperateService.selectByPrimaryKeyWithBLOBs(key);
 		request.setAttribute("trends", trends);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
@@ -231,7 +231,7 @@ public class DynamicAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(billId);
-		BusReleaseTrends trends = commonOperateService.queryByKey(key);
+		BusReleaseTrendsWithBLOBs trends = (BusReleaseTrendsWithBLOBs) commonOperateService.selectByPrimaryKeyWithBLOBs(key);
 
 		SuptTaskExample taskEx = new SuptTaskExample();
 		taskEx.createCriteria().andBillIdEqualTo(billId);
@@ -244,8 +244,8 @@ public class DynamicAction extends BaseAction {
 	}
 
 	public String queryComprehensive(DynamicForm form) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
-		com.free.assist.domain.BusReleaseTrendsExample.Criteria cr = ex.createCriteria();
+		BusReleaseTrendsWithBLOBsExample ex = new BusReleaseTrendsWithBLOBsExample();
+		com.free.assist.domain.BusReleaseTrendsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getBillSn())) {
 			cr.andBillSnLike("%" + form.getBillSn() + "%");
 		}
@@ -270,7 +270,7 @@ public class DynamicAction extends BaseAction {
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
-		List<BusReleaseTrends> trendsList = commonOperateService.selectPageByExample(ex);
+		List<BusReleaseTrendsWithBLOBs> trendsList = commonOperateService.selectPageByExampleWithBLOBs(ex);
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);

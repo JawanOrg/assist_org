@@ -17,7 +17,7 @@
 			<tr align="center" bgcolor="" style="cursor: 'hand'">
 				<td align="center" width="5%">${n.index + 1}</td>
 				<td align="center" width="15%">${obj.theTitle}</td>
-				<td align="left" width="52%">${obj.roleContent}</td>
+				<td align="left" width="52%">${fn:length(obj.roleContent)>50?fn:substring(obj.roleContent,0,50):obj.roleContent}</td>
 				<td align="center" width="15%"><fmt:formatDate
 						value="${obj.createTime}" type="both"
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>

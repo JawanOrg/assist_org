@@ -97,80 +97,24 @@
 			<name>onClick</name>
 		</attribute>
 	</tag>
-	<!-- tag>
-		<name>ifaceSelectTag</name>
-		<tagclass>com.free.assist.web.tag.IfaceSelectTag</tagclass>
-		<bodycontent>IfaceSelectTag</bodycontent>
-		<attribute>
-			<name>applicationId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>iddValue</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>value</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>hasNull</name>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>selectValue</name>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>dataType</name>
-		</attribute>
-		<attribute>
-			<name>msg</name>
-		</attribute>
-		<attribute>
-			<name>stylename</name>
-		</attribute>
-		<attribute>
-			<name>reLoad</name>
-		</attribute>
-		<attribute>
-			<name>except</name>
-		</attribute>
-		<attribute>
-			<name>onChange</name>
-		</attribute>
-		<attribute>
-			<name>nullText</name>
-		</attribute>
-		<attribute>
-			<name>style</name>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
 
-	<tag>
-		<name>ifaceSelectDesc</name>
-		<tagclass>
-			com.free.assist.web.tag.IfaceSelectDesc
-		</tagclass>
-		<bodycontent>IfaceSelectView</bodycontent>
-		<attribute>
-			<name>applicationId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>iddValue</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>value</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag-->
+     <function>   
+         <description>calculate string length</description><!-- 对这个EL方法的描述   -->   
+         <name>getLen</name><!-- 调用EL方法的名称 -->   
+         <function-class>com.free.assist.web.tag.SubString</function-class>   
+         <function-signature>   
+            int getLen(java.lang.String)   
+         </function-signature>   
+         <example>${len:getLen(str)}</example><!-- 例如 -->   
+     </function>   
+  
+     <function>   
+         <description>subString</description>   
+         <name>subString</name>   
+         <function-class>com.free.assist.web.tag.SubString</function-class>   
+         <function-signature>   
+             java.lang.String substr(java.lang.String,int,int)   
+         </function-signature>   
+     </function>   
+
 </taglib>

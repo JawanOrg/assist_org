@@ -10,6 +10,7 @@
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 <script type="text/javascript" src="/js/ymPrompt.js"></script>
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"
@@ -112,11 +113,11 @@
 													<tr>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">新闻内容：</td>
 														<td bgcolor="#f2f2f2" colspan="3"><textarea rows="3"
-																cols="83" class="form-control" name="newsContent"></textarea></td>
+																cols="83" name="newsContent"></textarea></td>
 														<td bgcolor="#f2f2f2" colspan="2"></td>
 													</tr>
 													<tr>
-														<td colspan="6" align="center"> <input name="btnFile"
+														<td colspan="6" align="center"><input name="btnFile"
 															type="button" class="btn btn-default" id="btnFile"
 															value="附  件" onclick="uploadFile()"> <input
 															name="btnSubmit" type="button" class="btn btn-default"
@@ -168,6 +169,12 @@
 				return false;
 			}
 			var formObj = $('inputForm').serialize(true);
+			var editor_data = CKEDITOR.instances.newsContent.getData(); 
+			if(editor_data==null||editor_data==""){  
+	            alert("数据为空不能提交");  
+		    }
+			formObj.newsContent=editor_data;
+
 			newsAction.accept(formObj, callback);
 		}
 		function querySimilarly() {
@@ -199,7 +206,17 @@
 			if (returnStr == "ok" || returnStr == "close") {
 				$('btnFile').value = '附  件 *';
 			}
+		}		
+
+	   window.onload = function()
+	   {
+	      CKEDITOR.replace( 'newsContent',
+  		     {
+  		      skin : 'moono',
+  		      language : 'zh-cn'
+  		     });
 		}
+
 
 	</script>
 </body>

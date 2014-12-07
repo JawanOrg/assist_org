@@ -11,18 +11,22 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.springframework.stereotype.Controller;
 
-import com.free.assist.domain.BusLinePipeKnow;
-import com.free.assist.domain.BusLinePipeKnowExample;
-import com.free.assist.domain.BusLinePipeKnowledge;
-import com.free.assist.domain.BusLinePipeKnowledgeExample;
+import com.free.assist.domain.BusLinePipeKnowKey;
+import com.free.assist.domain.BusLinePipeKnowWithBLOBs;
+import com.free.assist.domain.BusLinePipeKnowWithBLOBsExample;
 import com.free.assist.domain.BusLinePipeKnowledgeKey;
-import com.free.assist.domain.BusLinePipeRule;
-import com.free.assist.domain.BusLinePipeRuleExample;
-import com.free.assist.domain.BusReleaseNews;
-import com.free.assist.domain.BusReleaseNewsExample;
+import com.free.assist.domain.BusLinePipeKnowledgeWithBLOBs;
+import com.free.assist.domain.BusLinePipeKnowledgeWithBLOBsExample;
+import com.free.assist.domain.BusLinePipeRuleKey;
+import com.free.assist.domain.BusLinePipeRuleWithBLOBs;
+import com.free.assist.domain.BusLinePipeRuleWithBLOBsExample;
+import com.free.assist.domain.BusReleaseNewsKey;
+import com.free.assist.domain.BusReleaseNewsWithBLOBs;
+import com.free.assist.domain.BusReleaseNewsWithBLOBsExample;
 import com.free.assist.domain.BusReleaseTrends;
-import com.free.assist.domain.BusReleaseTrendsExample;
 import com.free.assist.domain.BusReleaseTrendsKey;
+import com.free.assist.domain.BusReleaseTrendsWithBLOBs;
+import com.free.assist.domain.BusReleaseTrendsWithBLOBsExample;
 import com.free.assist.domain.ForumTopics;
 import com.free.assist.domain.ForumTopicsExample;
 import com.free.assist.service.business.DynamicOperateService;
@@ -34,7 +38,7 @@ public class HomePageAction extends BaseAction {
 	private DynamicOperateService dynamicOperateService;
 
 	/**
-	 * »ñÈ¡Ê×Ò³Õ¹Ê¾Êý¾Ý
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ò³Õ¹Ê¾ï¿½ï¿½ï¿½
 	 * 
 	 * @param form
 	 * @return
@@ -42,47 +46,47 @@ public class HomePageAction extends BaseAction {
 	 */
 	public ActionForward queryAllPortalData(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		// È¡µÃÊ©¹¤¶¯Ì¬
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
+		// È¡ï¿½ï¿½Ê©ï¿½ï¿½ï¿½ï¿½Ì¬
+		BusReleaseTrendsWithBLOBsExample ex = new BusReleaseTrendsWithBLOBsExample();
 		ex.setOrderByClause(" create_time desc");
 		ex.setFromNumber(0);
 		ex.setToNumber(6);
-		List<BusReleaseTrends> trendsList = dynamicOperateService.selectByExample(ex);
+		List<BusReleaseTrends> trendsList = dynamicOperateService.selectByExampleWithBLOBs(ex);
 		request.setAttribute("trendsList", trendsList);
 
-		// È¡µÃ¹ÜµÀ³£Ê¶
-		BusLinePipeKnowledgeExample exKnowledge = new BusLinePipeKnowledgeExample();
+		// È¡ï¿½Ã¹Üµï¿½ï¿½ï¿½Ê¶
+		BusLinePipeKnowledgeWithBLOBsExample exKnowledge = new BusLinePipeKnowledgeWithBLOBsExample();
 		exKnowledge.setOrderByClause(" create_time desc");
 		exKnowledge.setFromNumber(0);
 		exKnowledge.setToNumber(5);
-		List<BusLinePipeKnowledge> knowledgeList = dynamicOperateService.selectByExample(exKnowledge);
+		List<BusLinePipeKnowledgeWithBLOBs> knowledgeList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
 		request.setAttribute("knowledgeList", knowledgeList);
 
-		// È¡µÃ¹ÜÏßÊ¶±ð
-		BusLinePipeKnowExample exKnow = new BusLinePipeKnowExample();
+		// È¡ï¿½Ã¹ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½
+		BusLinePipeKnowWithBLOBsExample exKnow = new BusLinePipeKnowWithBLOBsExample();
 		exKnow.setOrderByClause(" create_time desc");
 		exKnow.setFromNumber(0);
 		exKnow.setToNumber(5);
-		List<BusLinePipeKnow> knowList = dynamicOperateService.selectByExample(exKnow);
+		List<BusLinePipeKnowWithBLOBs> knowList = dynamicOperateService.selectByExampleWithBLOBs(exKnow);
 		request.setAttribute("knowList", knowList);
 
-		// È¡µÃ¹ÜÏß·¨¹æ
-		BusLinePipeRuleExample exRule = new BusLinePipeRuleExample();
+		// È¡ï¿½Ã¹ï¿½ï¿½ß·ï¿½ï¿½ï¿½
+		BusLinePipeRuleWithBLOBsExample exRule = new BusLinePipeRuleWithBLOBsExample();
 		exRule.setOrderByClause(" create_time desc");
 		exRule.setFromNumber(0);
 		exRule.setToNumber(5);
-		List<BusLinePipeRule> ruleList = dynamicOperateService.selectByExample(exRule);
+		List<BusLinePipeRuleWithBLOBs> ruleList = dynamicOperateService.selectByExampleWithBLOBs(exRule);
 		request.setAttribute("ruleList", ruleList);
 
-		// È¡µÃÐÂÎÅ¶¯Ì¬
-		BusReleaseNewsExample exNews = new BusReleaseNewsExample();
+		// È¡ï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½Ì¬
+		BusReleaseNewsWithBLOBsExample exNews = new BusReleaseNewsWithBLOBsExample();
 		exNews.setOrderByClause(" create_time desc");
 		exNews.setFromNumber(0);
 		exNews.setToNumber(10);
-		List<BusReleaseNews> newsList = dynamicOperateService.selectByExample(exNews);
+		List<BusReleaseNewsWithBLOBs> newsList = dynamicOperateService.selectByExampleWithBLOBs(exNews);
 		request.setAttribute("newsList", newsList);
 
-		// È¡µÃÂÛÌ³ÁÐ±í
+		// È¡ï¿½ï¿½ï¿½ï¿½Ì³ï¿½Ð±ï¿½
 		ForumTopicsExample exForum = new ForumTopicsExample();
 		exForum.setOrderByClause(" TOPIC_TIME desc ");
 		exForum.setFromNumber(0);
@@ -94,16 +98,16 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * »ñÈ¡Ê×Ò³Ê©¹¤¶¯Ì¬
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ò³Ê©ï¿½ï¿½ï¿½ï¿½Ì¬
 	 * 
 	 * @param form
 	 * @return
 	 * @throws Exception
 	 */
 	public ActionForward queryMoreDynamic(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		BusReleaseTrendsExample ex = new BusReleaseTrendsExample();
+		BusReleaseTrendsWithBLOBsExample ex = new BusReleaseTrendsWithBLOBsExample();
 		ex.setOrderByClause(" create_time desc");
-		List<BusReleaseTrends> trendsList = dynamicOperateService.selectByExample(ex);
+		List<BusReleaseTrendsWithBLOBs> trendsList = dynamicOperateService.selectByExampleWithBLOBs(ex);
 		request.setAttribute("trendsList", trendsList);
 
 		this.queryRightData(request);
@@ -111,7 +115,7 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * »ñÈ¡Ê×Ò³Ê©¹¤¶¯Ì¬ÏêÇé
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ò³Ê©ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param form
 	 * @return
@@ -120,7 +124,7 @@ public class HomePageAction extends BaseAction {
 	public ActionForward queryDetailDynamic(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(request.getParameter("billId"));
-		BusReleaseTrends trends = (BusReleaseTrends) dynamicOperateService.selectByPrimaryKey(key);
+		BusReleaseTrendsWithBLOBs trends = (BusReleaseTrendsWithBLOBs) dynamicOperateService.selectByPrimaryKeyWithBLOBs(key);
 		request.setAttribute("trends", trends);
 
 		this.queryRightData(request);
@@ -128,7 +132,7 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * »ñÈ¡Ê×Ò³¹ÜµÀ³£Ê¶
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ò³ï¿½Üµï¿½ï¿½ï¿½Ê¶
 	 * 
 	 * @param form
 	 * @return
@@ -136,9 +140,9 @@ public class HomePageAction extends BaseAction {
 	 */
 	public ActionForward queryMorePipeKnowledge(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		BusLinePipeKnowledgeExample exKnowledge = new BusLinePipeKnowledgeExample();
+		BusLinePipeKnowledgeWithBLOBsExample exKnowledge = new BusLinePipeKnowledgeWithBLOBsExample();
 		exKnowledge.setOrderByClause(" create_time desc");
-		List<BusLinePipeKnowledge> knowledgeList = dynamicOperateService.selectByExample(exKnowledge);
+		List<BusLinePipeKnowledgeWithBLOBs> knowledgeList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
 		request.setAttribute("knowledgeList", knowledgeList);
 
 		this.queryRightData(request);
@@ -146,7 +150,7 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * »ñÈ¡Ê×Ò³Ê©¹¤¹ÜµÀ³£Ê¶
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ò³Ê©ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½Ê¶
 	 * 
 	 * @param form
 	 * @return
@@ -155,7 +159,7 @@ public class HomePageAction extends BaseAction {
 	public ActionForward queryDetailPipeKnowledge(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BusLinePipeKnowledgeKey key = new BusLinePipeKnowledgeKey();
 		key.setContentId(request.getParameter("billId"));
-		BusLinePipeKnowledge pipeKnowledge = (BusLinePipeKnowledge) dynamicOperateService.selectByPrimaryKey(key);
+		BusLinePipeKnowledgeWithBLOBs pipeKnowledge = (BusLinePipeKnowledgeWithBLOBs) dynamicOperateService.selectByPrimaryKeyWithBLOBs(key);
 		request.setAttribute("pipeKnowledge", pipeKnowledge);
 
 		this.queryRightData(request);
@@ -163,29 +167,92 @@ public class HomePageAction extends BaseAction {
 	}
 
 	private void queryRightData(HttpServletRequest request) {
-		// È¡µÃ¹ÜµÀ³£Ê¶
-		BusLinePipeKnowledgeExample exKnowledge = new BusLinePipeKnowledgeExample();
+		// È¡ï¿½Ã¹Üµï¿½ï¿½ï¿½Ê¶
+		BusLinePipeKnowledgeWithBLOBsExample exKnowledge = new BusLinePipeKnowledgeWithBLOBsExample();
 		exKnowledge.setOrderByClause(" create_time desc");
 		exKnowledge.setFromNumber(0);
 		exKnowledge.setToNumber(5);
-		List<BusLinePipeKnowledge> knowledgeList = dynamicOperateService.selectByExample(exKnowledge);
+		List<BusLinePipeKnowledgeWithBLOBs> knowledgeList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
 		request.setAttribute("knowledgeList", knowledgeList);
 
-		// È¡µÃ¹ÜÏßÊ¶±ð
-		BusLinePipeKnowExample exKnow = new BusLinePipeKnowExample();
+		// È¡ï¿½Ã¹ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½
+		BusLinePipeKnowWithBLOBsExample exKnow = new BusLinePipeKnowWithBLOBsExample();
 		exKnow.setOrderByClause(" create_time desc");
 		exKnow.setFromNumber(0);
 		exKnow.setToNumber(5);
-		List<BusLinePipeKnow> knowList = dynamicOperateService.selectByExample(exKnow);
+		List<BusLinePipeKnowWithBLOBs> knowList = dynamicOperateService.selectByExampleWithBLOBs(exKnow);
 		request.setAttribute("knowList", knowList);
 
-		// È¡µÃ¹ÜÏß·¨¹æ
-		BusLinePipeRuleExample exRule = new BusLinePipeRuleExample();
+		// È¡ï¿½Ã¹ï¿½ï¿½ß·ï¿½ï¿½ï¿½
+		BusLinePipeRuleWithBLOBsExample exRule = new BusLinePipeRuleWithBLOBsExample();
 		exRule.setOrderByClause(" create_time desc");
 		exRule.setFromNumber(0);
 		exRule.setToNumber(5);
-		List<BusLinePipeRule> ruleList = dynamicOperateService.selectByExample(exRule);
+		List<BusLinePipeRuleWithBLOBs> ruleList = dynamicOperateService.selectByExampleWithBLOBs(exRule);
 		request.setAttribute("ruleList", ruleList);
+	}
+
+	public ActionForward queryMorePipeKnow(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		BusLinePipeKnowWithBLOBsExample exKnowledge = new BusLinePipeKnowWithBLOBsExample();
+		exKnowledge.setOrderByClause(" create_time desc");
+		List<BusLinePipeKnowWithBLOBs> knowList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
+		request.setAttribute("knowList", knowList);
+
+		this.queryRightData(request);
+		return new ActionForward("/jsp/portal/morePipeKnow.jsp");
+	}
+
+	public ActionForward queryDetailPipeKnow(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		BusLinePipeKnowKey key = new BusLinePipeKnowKey();
+		key.setContentId(request.getParameter("billId"));
+		BusLinePipeKnowWithBLOBs pipeKnow = (BusLinePipeKnowWithBLOBs) dynamicOperateService.selectByPrimaryKeyWithBLOBs(key);
+		request.setAttribute("pipeKnow", pipeKnow);
+
+		this.queryRightData(request);
+		return new ActionForward("/jsp/portal/detailPipeKnow.jsp");
+	}
+
+	public ActionForward queryMorePipeRule(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		BusLinePipeRuleWithBLOBsExample exKnowledge = new BusLinePipeRuleWithBLOBsExample();
+		exKnowledge.setOrderByClause(" create_time desc");
+		List<BusLinePipeRuleWithBLOBs> ruleList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
+		request.setAttribute("ruleList", ruleList);
+
+		this.queryRightData(request);
+		return new ActionForward("/jsp/portal/morePipeRule.jsp");
+	}
+
+	public ActionForward queryDetailPipeRule(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		BusLinePipeRuleKey key = new BusLinePipeRuleKey();
+		key.setContentId(request.getParameter("billId"));
+		BusLinePipeRuleWithBLOBs pipeRule = (BusLinePipeRuleWithBLOBs) dynamicOperateService.selectByPrimaryKeyWithBLOBs(key);
+		request.setAttribute("pipeRule", pipeRule);
+
+		this.queryRightData(request);
+		return new ActionForward("/jsp/portal/detailPipeRule.jsp");
+	}
+
+	public ActionForward queryMoreNews(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		BusReleaseNewsWithBLOBsExample exKnowledge = new BusReleaseNewsWithBLOBsExample();
+		exKnowledge.setOrderByClause(" create_time desc");
+		List<BusReleaseNewsWithBLOBs> newsList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
+		request.setAttribute("newsList", newsList);
+
+		this.queryRightData(request);
+		return new ActionForward("/jsp/portal/moreNews.jsp");
+	}
+
+	public ActionForward queryDetailNews(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		BusReleaseNewsKey key = new BusReleaseNewsKey();
+		key.setBillId(request.getParameter("billId"));
+		BusReleaseNewsWithBLOBs news = (BusReleaseNewsWithBLOBs) dynamicOperateService.selectByPrimaryKeyWithBLOBs(key);
+		request.setAttribute("news", news);
+
+		this.queryRightData(request);
+		return new ActionForward("/jsp/portal/detailNews.jsp");
 	}
 
 }
