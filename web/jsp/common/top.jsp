@@ -1,21 +1,17 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <html>
 <head>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css"
+<link rel="stylesheet" href="/css/main.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/imgurl.css" type="text/css" />
+	href="/css/imgurl.css" type="text/css" />
 <title>管理页面</title>
 <script language=JavaScript>
 	function logout() {
 		if (confirm("您确定要退出控制面板吗？"))
 			top.location = "/index.jsp";
 		return false;
-	}
-</script>
-<script language=JavaScript1.2>
-	
-	
+	}	
 function showsubmenu(sid) {
 	var whichEl = eval("submenu" + sid);
 	var menuTitle = eval("menuTitle" + sid);
@@ -30,21 +26,6 @@ function showsubmenu(sid) {
 </script>
 <meta http-equiv=Content-Type content=text/html;charset=utf-8>
 <meta http-equiv="refresh" content="60">
-<script language=JavaScript1.2>
-	
-	
-function showsubmenu(sid) {
-	var whichEl = eval("submenu" + sid);
-	var menuTitle = eval("menuTitle" + sid);
-	if (whichEl.style.display == "none"){
-		eval("submenu" + sid + ".style.display=\"\";");
-	}else{
-		eval("submenu" + sid + ".style.display=\"none\";");
-	}
-}
-
-
-</script>
 <base target="main">
 <link href="/images/normal/skin.css" rel="stylesheet" type="text/css">
 </head>
@@ -52,9 +33,10 @@ function showsubmenu(sid) {
 	<table width="100%" height="64" border="0" cellpadding="0"
 		cellspacing="0" class="admin_topbg">
 		<tr>
-			<td width="61%" height="64"><img src="/images/normal/logotop.png"
-				width="262" height="38"></td>
-			<td width="39%" valign="top"><table width="100%" border="0"
+			<td width="55%" height="64"  valign="top">
+			<img src="/images/normal/logotop.png" width="262" height="38">
+			</td>
+			<td width="45%" valign="top"><table width="100%" border="0"
 					cellspacing="0" cellpadding="0">
 					<tr>
 						<td>

@@ -56,7 +56,7 @@ body,html,#allmap {
 			var button = document.createElement("button");
 			button.style.cursor = "pointer";
 			button.className = "btn btn-info";
-			button.innerHTML = "信息录入 <span class='glyphicon glyphicon-arrow-right' style='cursor:pointer'></span>";
+			button.innerHTML = "施工动态录入 <span class='glyphicon glyphicon-arrow-right' style='cursor:pointer'></span>";
 			button.onclick = function(e) {
 				jumpToCreate();
 			}

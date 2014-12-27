@@ -121,7 +121,7 @@ public class MapUtil {
 
             HttpResponse response = httpclient.execute(httppost);
             if (response.getStatusLine().getStatusCode() == 200) {
-                String conResult = EntityUtils.toString(response.getEntity());
+                String conResult = EntityUtils.toString(response.getEntity(), "UTF-8");
                 JSONObject sobj = JSONObject.fromObject(conResult);
                 String status = sobj.getString("status");
                 String message = sobj.getString("message");

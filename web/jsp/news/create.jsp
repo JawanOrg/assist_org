@@ -213,7 +213,15 @@
 	      CKEDITOR.replace( 'newsContent',
   		     {
   		      skin : 'moono',
-  		      language : 'zh-cn'
+  		      language : 'zh-cn',
+  		      toolbar :
+    		        [
+  					['Preview'],
+    		            ['Styles', 'Format'],
+    		          	['Cut','Copy','Paste','PasteText','PasteFromWord','-','Scayt'],
+    		            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],
+    		            ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link']
+    		        ]
   		     });
 		}
 

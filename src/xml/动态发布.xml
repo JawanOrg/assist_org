@@ -9,16 +9,17 @@
 		<msg_id>1</msg_id>
 	</route>
 	<msg>
-		<theTitle>标题</theTitle>
+		<theTitle>app标题</theTitle>
 		<city>城区</city>
 		<street>街道</street>
 		<community>社区</community>
 		<road>道路</road>
 		<numberPlate>门牌号</numberPlate>
 		<scenePersonName>现场联系人</scenePersonName>
-		<scenePersonPhone>现场联系电话</scenePersonPhone>
-		<creator>申请人id</creator>
-		<longitude>经度</longitude>
-		<latitude>纬度</latitude>
+		<scenePersonPhone>18022885528</scenePersonPhone>
+		<creator>3</creator>
+		<longitude>11</longitude>
+		<latitude>22</latitude>
+		<position_address></position_address>
 	</msg>
 </esb>

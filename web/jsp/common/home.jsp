@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>平台</title>
+<title>管线协作管理系统</title>
 </head>
 <frameset border="0" id="index" frameSpacing="0" rows="64,*,0,18">
   <frame name="top" id="topFrame" src="/jsp/common/top.jsp" frameborder="0" noresize="noresize" scrolling="no" />

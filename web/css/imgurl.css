@@ -70,17 +70,17 @@ background-image: url("../images/main/line_pic03.gif");
 background-image: url("../images/main/mian_arrow01.gif");
 }
 /*屏蔽左边菜单区域的按钮操作样式*/
-.variety {   
+.variety {
  cursor:hand;
  star:expression(
    onclick = function(){ 
      if(window.parent.document.all.main.cols == "0,*"){
-	    this.src = this.src="../images/main/left_arrow03.gif";
+	    this.src = "/images/main/left_arrow03.gif";
 	      
 	    window.parent.document.all.main.cols = "165,*";
 	 }else{
 	    window.parent.document.all.main.cols = "0,*";
-	    this.src = this.src="../images/main/left_arrow04.gif";
+	    this.src = "/images/main/left_arrow04.gif";
 	    
 	 }
 
@@ -93,12 +93,12 @@ background-image: url("../images/main/mian_arrow01.gif");
  star:expression(
    onclick = function(){ 
      if(window.parent.document.all.main.cols == "0,8,*"){
-	    this.src = this.src="../images/main/left_arrow03.gif";
+	    this.src = "/images/main/left_arrow03.gif";
 	      
 	    window.parent.document.all.main.cols = "165,8,*";
 	 }else{
 	    window.parent.document.all.main.cols = "0,8,*";
-	    this.src = this.src="../images/main/left_arrow04.gif";
+	    this.src = "/images/main/left_arrow04.gif";
 	    
 	 }
 

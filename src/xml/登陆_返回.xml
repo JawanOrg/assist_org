@@ -11,5 +11,9 @@
 	<msg>
 		<is_success>Y</is_success>
 		<remark></remark>
+		<login_name>sa</login_name>
+		<user_id></user_id>
+		<user_name></user_name>
+		<unit_name></unit_name>
 	</msg>
 </esb>

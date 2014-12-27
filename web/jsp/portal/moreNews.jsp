@@ -30,7 +30,7 @@
 		<tr>
 			<td width="690" valign="top">
 				<div class="gx-box-top">
-					<span class="titleName">管线常识</span>
+					<span class="titleName">新闻动态</span>
 				</div>
 				<ul class="gx-list2-wrap">
 					<c:forEach items="${requestScope.newsList}" var="objData"

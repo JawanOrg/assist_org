@@ -9,7 +9,7 @@
 		<msg_id>1</msg_id>
 	</route>
 	<msg>
-		<login_name></login_name>
-		<pass_word></pass_word>
+		<login_name>sa</login_name>
+		<pass_word>p</pass_word>
 	</msg>
 </esb>

@@ -106,17 +106,16 @@
 													<tr>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">标题<span
 															style="color:Red">*</span>:</td>
-														<td bgcolor="#f2f2f2" colspan="3"><input
+														<td bgcolor="#f2f2f2" colspan="5"><input
 															name="theTitle" type="text" id="theTitle"
 															class="form-control" oninput="querySimilarly()"
 															dataType="Require" msg="'标题'必填" /></td>
-														<td bgcolor="#f2f2f2" colspan="2"></td>
 													</tr>
 													<tr>
 														<td align="right" class="left_txt2">城区<span
 															style="color:Red">*</span>:</td>
 														<td><input name="city" type="text" id="city"
-															class="form-control" dataType="Require" msg="'城区'必选" /></td>
+															class="form-control" dataType="Require" msg="'城区'必选"/></td>
 														<td align="right" class="left_txt2">街道<span
 															style="color:Red">*</span>:</td>
 														<td><input type="text" name="street" id="street"
@@ -161,9 +160,8 @@
 													</tr>
 													<tr>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">测试计划说明：</td>
-														<td bgcolor="#f2f2f2" colspan="3"><textarea rows="3"
+														<td bgcolor="#f2f2f2" colspan="5"><textarea rows="5"
 																cols="83" class="form-control" name="testPlanRemark"></textarea></td>
-														<td bgcolor="#f2f2f2" colspan="2"></td>
 													</tr>
 													<tr>
 														<td align="right" class="left_txt2">施工类别：</td>
@@ -185,9 +183,8 @@
 													</tr>
 													<tr>
 														<td align="right" bgcolor="#f2f2f2" class="left_txt2">施工内容：</td>
-														<td bgcolor="#f2f2f2" colspan="3"><textarea rows="3"
+														<td bgcolor="#f2f2f2" colspan="5"><textarea rows="3"
 																cols="83" class="form-control" name="repairContent"></textarea></td>
-														<td bgcolor="#f2f2f2" colspan="2"></td>
 													</tr>
 													<tr>
 														<td colspan="6" align="center"><input name="btnMap"
@@ -297,7 +294,16 @@
 	      CKEDITOR.replace( 'repairContent',
   		     {
   		      skin : 'moono',
-  		      language : 'zh-cn'
+  		      language : 'zh-cn',
+  		      toolbar :
+  		        [
+					['Preview'],
+  		            ['Styles', 'Format'],
+  		          	['Cut','Copy','Paste','PasteText','PasteFromWord','-','Scayt'],
+  		            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],
+  		            ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link']
+  		        ]
+  	          //uiColor : '#9AB8F3'
   		     });
 		}
 

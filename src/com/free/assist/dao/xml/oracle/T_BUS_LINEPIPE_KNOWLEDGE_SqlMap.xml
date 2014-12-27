@@ -11,6 +11,24 @@
     <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
     <result column="AUDITOR" property="auditor" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Pagination_Head_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[select * from ( select t.*, ROWNUM ROWNUM_ from ( ]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
+  <sql id="Pagination_Tail_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[) t where rownum <= #toNumber# ) where rownum_ > #fromNumber#]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
   <resultMap id="ibatorgenerated_ResultMapWithBLOBs" class="com.free.assist.domain.BusLinePipeKnowledgeWithBLOBs" extends="BusLinePipeKnowledgeWithBLOBs.ibatorgenerated_BaseResultMap" >
     <result column="KNOWLEDGE_CONTENT" property="knowledgeContent" jdbcType="CLOB" />
   </resultMap>
@@ -41,6 +59,7 @@
     </iterate>
   </sql>
   <select id="ibatorgenerated_selectByExampleWithBLOBs" resultMap="ibatorgenerated_ResultMapWithBLOBs" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeWithBLOBsExample" >
+    <include refid="Pagination_Head_Clause" />
     select CONTENT_ID, THE_TITLE, CREATOR, CREATE_DEPT, CREATE_TIME, BILL_STATUS, PUBLISHER,
       AUDITOR, KNOWLEDGE_CONTENT
     from T_BUS_LINEPIPE_KNOWLEDGE
@@ -50,8 +69,10 @@
         order by $orderByClause$
       </isNotNull>
     </isParameterPresent>
+    <include refid="Pagination_Tail_Clause" />
   </select>
   <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeWithBLOBsExample" >
+    <include refid="Pagination_Head_Clause" />
     select CONTENT_ID, THE_TITLE, CREATOR, CREATE_DEPT, CREATE_TIME, BILL_STATUS, PUBLISHER, AUDITOR
     from T_BUS_LINEPIPE_KNOWLEDGE
     <isParameterPresent >
@@ -60,6 +81,7 @@
         order by $orderByClause$
       </isNotNull>
     </isParameterPresent>
+    <include refid="Pagination_Tail_Clause" />
   </select>
   <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_ResultMapWithBLOBs" parameterClass="com.free.assist.domain.BusLinePipeKnowledgeKey" >
     select CONTENT_ID, THE_TITLE, CREATOR, CREATE_DEPT, CREATE_TIME, BILL_STATUS, PUBLISHER,

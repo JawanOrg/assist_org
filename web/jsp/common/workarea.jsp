@@ -7,6 +7,7 @@
 </head>
 <frameset id ="workframe" border="0" frameborder="no" id="index" framespacing="0" rows="0,*" cols="*">
   <frame name='toolbar'  id="toolbar" src="toolbar.jsp" frameborder="0" noresize="noresize" scrolling="no" />
-  <frame name='workarea' id="workarea" src="<%=request.getContextPath()%>/sys/alarmAction.do?method=init" />
+  <!-- frame name='workarea' id="workarea" src="/sys/alarmAction.do?method=init" /> -->
+  <frame name='workarea' id="workarea" src="/jsp/map/mapMain.jsp" />
 </frameset>
 </html>

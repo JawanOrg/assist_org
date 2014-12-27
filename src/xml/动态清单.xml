@@ -10,9 +10,9 @@
 	</route>
 	<msg>
 		<theTitle>标题</theTitle>
-		<city>城区</city>
-		<street>街道</street>
-		<community>社区</community>
-		<road>道路</road>
+		<city></city>
+		<street></street>
+		<community></community>
+		<road></road>
 	</msg>
 </esb>

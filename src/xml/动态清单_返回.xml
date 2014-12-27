@@ -23,6 +23,10 @@
 				<creator>申请人id</creator>
 				<longitude>经度</longitude>
 				<latitude>纬度</latitude>
+				<repairTime>施工时间（yyyy-mm-dd）</repairTime>
+				<createTime>创建时间（yyyy-mm-dd）</createTime>
+				<position_address></position_address>
+				<repair_type></repair_type>
 			</dynamic>
 		</list>
 	</msg>

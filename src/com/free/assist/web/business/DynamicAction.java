@@ -60,7 +60,7 @@ public class DynamicAction extends BaseAction {
 		com.free.assist.domain.BusReleaseTrendsWithBLOBsExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getRoad()) && StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andRoadLike("%" + form.getRoad() + "%");
-		} else if (StringUtils.isBlank(form.getTheTitle()) && StringUtils.isNotBlank(form.getTheTitle())) {
+		} else if (StringUtils.isNotBlank(form.getTheTitle())) {
 			cr.andTheTitleLike("%" + form.getTheTitle() + "%");
 		}
 		if (StringUtils.isNotBlank(form.getCity())) {

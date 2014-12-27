@@ -107,7 +107,8 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setBillId(relsease.getBillId());
 		task.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
-		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO ȡ��ȷ�Ĳ���
+		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO
+																// ȡ��ȷ�Ĳ���
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_RELEASE);
@@ -164,7 +165,8 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setCreator(action.getUserVO().getUserId());
 		task.setIsFinish(Constant.FLAG_NO);
 		task.setIsRedo(Constant.FLAG_NO);
-		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO ȡ��ȷ�Ĳ���
+		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO
+																// ȡ��ȷ�Ĳ���
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_WORK);

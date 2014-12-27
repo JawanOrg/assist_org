@@ -31,7 +31,7 @@
 				<table class="gx-show-wrap" width="100%" border="0" cellspacing="0"
 					cellpadding="0">
 					<tr>
-						<td class="gx-show-path">首页 》<strong>热点新闻</strong></td>
+						<td class="gx-show-path">首页 》<strong>新闻动态</strong></td>
 					</tr>
 					<tr>
 						<td valign="top">

@@ -76,17 +76,19 @@ function submitHandler() {
 	if ($F("validatecode").blank()) {
 		alert("请输入验证码");
 		$("validatecode").focus();
+		refresh($("validateCodePic"));
 		return false;
 	}
 	loginAction.checkin($("loginForm").serialize(true), function(result){
 		if(result.blank()) {
 			window.location.href="<%=request.getContextPath()%>/sys/loginAction.do?method=checkLogin";
-							} else {
-								alert(result);
-								$("loginPassword").select();
-							}
-						});
-	}
+		} else {
+			alert(result);
+			$("loginPassword").select();
+			refresh($("validateCodePic"));
+		}
+	});
+}
 </script>
 <style type="text/css">
 <!--
@@ -214,7 +216,7 @@ body {
 																		class=wenbenkuang name="validatecode"
 																		id="validatecode" type=text value="" maxLength=4
 																		size=10><img height="21" title="看不清楚,换一张？"
-																		style="cursor: pointer;" align="bottom"
+																		style="cursor: pointer;" align="bottom" id="validateCodePic" name="validateCodePic"
 																		onclick="javascript:refresh(this);" src="/LoginImageServlet">
 																	</td>
 																</tr>
