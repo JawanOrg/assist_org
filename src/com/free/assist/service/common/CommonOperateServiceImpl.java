@@ -11,12 +11,15 @@ import com.free.assist.dao.SuptActionDAO;
 import com.free.assist.dao.SuptAttachDAO;
 import com.free.assist.dao.SuptTaskDAO;
 import com.free.assist.dao.SysUnitDAO;
+import com.free.assist.dao.SysUserDAO;
 import com.free.assist.domain.SuptAction;
 import com.free.assist.domain.SuptActionExample;
 import com.free.assist.domain.SuptAttach;
 import com.free.assist.domain.SuptTask;
 import com.free.assist.domain.SuptTaskExample;
 import com.free.assist.domain.SysUnit;
+import com.free.assist.domain.SysUser;
+import com.free.assist.domain.SysUserKey;
 import com.free.assist.service.BaseServiceImpl;
 import com.free.assist.util.Constant;
 
@@ -27,6 +30,8 @@ public class CommonOperateServiceImpl extends BaseServiceImpl implements CommonO
 	private SuptAttachDAO suptAttachDAO;
 	@Autowired
 	private SysUnitDAO mySysUnitDAO;
+	@Autowired
+	private SysUserDAO sysUserDAO;
 
 	@Autowired
 	public void setSuptActionDAO(SuptActionDAO suptActionDAO) {
@@ -72,9 +77,19 @@ public class CommonOperateServiceImpl extends BaseServiceImpl implements CommonO
 		return null;
 	}
 
+	public String queryUserName(String userId) {
+		SysUserKey userKey = new SysUserKey();
+		userKey.setUserId(userId);
+		SysUser user = sysUserDAO.selectByPrimaryKey(userKey);
+		if (user != null) {
+			return user.getUserName();
+		}
+		return "";
+	}
+
 	public String queryNextStep(String userId, String actionType) {
-		if(Constant.OP_CREATE.equals(actionType)){
-			
+		if (Constant.OP_CREATE.equals(actionType)) {
+
 		}
 		List<SysUnit> sysUnitList = this.mySysUnitDAO.selectByUserId(userId);
 		if (sysUnitList != null && sysUnitList.size() > 0) {

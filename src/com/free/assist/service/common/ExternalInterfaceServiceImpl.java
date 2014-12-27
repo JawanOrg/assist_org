@@ -22,6 +22,7 @@ import com.free.assist.util.Constant;
 import com.free.assist.util.Helper;
 import com.free.assist.util.MD5;
 import com.free.assist.util.SpringContextUtil;
+import com.free.assist.util.StringUtil;
 
 /**
  * 通用外部webservice接口
@@ -60,13 +61,13 @@ public class ExternalInterfaceServiceImpl extends BaseServiceImpl implements Ext
 		ISysLoginService sysLoginService = SpringContextUtil.getBean("sysLoginService", ISysLoginService.class);
 		SysUserExample ex = new SysUserExample();
 		ex.createCriteria().andLoginPasswordEqualTo(MD5.encode(Helper.getNodeText(document, "/esb/msg/pass_word"))).andLoginNameEqualTo(Helper.getNodeText(document, "/esb/msg/login_name"));
-		List list = sysLoginService.selectByExample(ex);
+		List<SysUser> list = sysLoginService.selectByExample(ex);
 		StringBuilder sb = new StringBuilder(256);
 		if (list == null || list.size() == 0) {
-			sb.append("<is_success>").append(Constant.FLAG_NO).append("</is_success><remark>").append("用户名密码错误，请重新输入！").append("</remark>");
+			sb.append("<is_success>").append(Constant.FLAG_NO).append("</is_success><remark>").append("用户名密码错误，请重新输入！").append("</remark><login_name>").append(Helper.getNodeText(document, "/esb/msg/login_name")).append("</login_name><user_id></user_id><user_name></user_name><unit_name></unit_name>");
 			return buildXmlBegin("login") + sb.toString() + buildXmlEnd();
 		} else {
-			sb.append("<is_success>").append(Constant.FLAG_YES).append("</is_success><remark>").append("登陆成功").append("</remark>");
+			sb.append("<is_success>").append(Constant.FLAG_YES).append("</is_success><remark>").append("登陆成功").append("</remark><login_name>").append(list.get(0).getLoginName()).append("</login_name><user_id>").append(list.get(0).getUserId()).append("</user_id><user_name>").append(list.get(0).getUserName()).append("</user_name><unit_name>").append(list.get(0).getUnitName()).append("</unit_name>");
 			return buildXmlBegin("login") + sb.toString() + buildXmlEnd();
 		}
 	}
@@ -88,6 +89,7 @@ public class ExternalInterfaceServiceImpl extends BaseServiceImpl implements Ext
 		busRelease.setScenePersonPhone(Helper.getNodeText(document, "/esb/msg/scenePersonPhone"));
 		busRelease.setLongitude(Helper.stringToBigDecimal(Helper.getNodeText(document, "/esb/msg/longitude")));
 		busRelease.setLatitude(Helper.stringToBigDecimal(Helper.getNodeText(document, "/esb/msg/latitude")));
+		busRelease.setPositionAddress(Helper.getNodeText(document, "/esb/msg/position_address"));
 		SuptAction action = new SuptAction(user);
 		StringBuilder sb = new StringBuilder(256);
 		try {
@@ -96,10 +98,11 @@ public class ExternalInterfaceServiceImpl extends BaseServiceImpl implements Ext
 			}
 			busRelease.setRepairTime(dynamicOperateService.getSysDate());
 			busRelease.setRepairType(Constant.REPAIR_TYPE_EMERGENCY);
+			busRelease.setComeFrom(Constant.COME_FROM_ANDROID);
 			dynamicOperateService.create(busRelease, action);
-			sb.append("<is_success>").append(Constant.FLAG_YES).append("</is_success><remark>").append("动态登记成功！");
+			sb.append("<is_success>").append(Constant.FLAG_YES).append("</is_success><remark>").append("动态登记成功！").append("</remark>");
 		} catch (Exception e) {
-			sb.append("<is_success>").append(Constant.FLAG_NO).append("</is_success><remark>").append("动态登记失败");
+			sb.append("<is_success>").append(Constant.FLAG_NO).append("</is_success><remark>").append("动态登记失败").append("</remark>");
 			logger.error("动态登记失败:\n" + e);
 		}
 		return buildXmlBegin("dynamic_create") + sb.toString() + buildXmlEnd();
@@ -132,18 +135,24 @@ public class ExternalInterfaceServiceImpl extends BaseServiceImpl implements Ext
 				sb.append("<dynamic>");
 				sb.append("<billSn>").append(trends.getBillSn()).append("</billSn>");
 				sb.append("<theTitle>").append(trends.getTheTitle()).append("</theTitle>");
-				sb.append("<city>").append(trends.getCity()).append("</city>");
-				sb.append("<street>").append(trends.getStreet()).append("</street>");
-				sb.append("<community>").append(trends.getCommunity()).append("</community>");
-				sb.append("<road>").append(trends.getRoad()).append("</road>");
-				sb.append("<numberPlate>").append(trends.getNumberPlate()).append("</numberPlate>");
-				sb.append("<scenePersonName>").append(trends.getScenePersonName()).append("</scenePersonName>");
-				sb.append("<scenePersonPhone>").append(trends.getScenePersonPhone()).append("</scenePersonPhone>");
-				sb.append("<creator>").append(trends.getCreator()).append("</creator>");
-				sb.append("<longitude>").append(trends.getLongitude()).append("</longitude>");
-				sb.append("<latitude>").append(trends.getLatitude()).append("</latitude>");
+				sb.append("<city>").append(StringUtil.nullToEmptyOfStr(trends.getCity())).append("</city>");
+				sb.append("<street>").append(StringUtil.nullToEmptyOfStr(trends.getStreet())).append("</street>");
+				sb.append("<community>").append(StringUtil.nullToEmptyOfStr(trends.getCommunity())).append("</community>");
+				sb.append("<road>").append(StringUtil.nullToEmptyOfStr(trends.getRoad())).append("</road>");
+				sb.append("<numberPlate>").append(StringUtil.nullToEmptyOfStr(trends.getNumberPlate())).append("</numberPlate>");
+				sb.append("<scenePersonName>").append(StringUtil.nullToEmptyOfStr(trends.getScenePersonName())).append("</scenePersonName>");
+				sb.append("<scenePersonPhone>").append(StringUtil.nullToEmptyOfStr(trends.getScenePersonPhone())).append("</scenePersonPhone>");
+				sb.append("<creator>").append(commonOperateService.queryUserName(trends.getCreator())).append("</creator>");
+				sb.append("<longitude>").append(StringUtil.nullToEmptyOfObject(trends.getLongitude())).append("</longitude>");
+				sb.append("<latitude>").append(StringUtil.nullToEmptyOfObject(trends.getLatitude())).append("</latitude>");
 				sb.append("<repairTime>").append(Helper.formateDate(trends.getRepairTime(), "yyyy-MM-dd")).append("</repairTime>");
 				sb.append("<createTime>").append(Helper.formateDate(trends.getCreateTime(), "yyyy-MM-dd")).append("</createTime>");
+				String positionAddress = trends.getPositionAddress();
+				if (positionAddress == null || positionAddress.trim().length() == 0) {
+					positionAddress = StringUtil.nullToEmptyOfStr(trends.getCity()) + StringUtil.nullToEmptyOfStr(trends.getStreet()) + StringUtil.nullToEmptyOfStr(trends.getCommunity()) + StringUtil.nullToEmptyOfStr(trends.getRoad());
+				}
+				sb.append("<position_address>").append(positionAddress).append("</position_address>");
+				sb.append("<repair_type>").append(Constant.REPAIR_TYPE_PLAN.equals(trends.getRepairType()) ? "计划施工" : "应急抢修").append("</repair_type>");
 				sb.append("</dynamic>");
 			}
 			sb.append("</list>");
@@ -166,18 +175,24 @@ public class ExternalInterfaceServiceImpl extends BaseServiceImpl implements Ext
 					sb.append("<dynamic>");
 					sb.append("<billSn>").append(trends.getBillSn()).append("</billSn>");
 					sb.append("<theTitle>").append(trends.getTheTitle()).append("</theTitle>");
-					sb.append("<city>").append(trends.getCity()).append("</city>");
-					sb.append("<street>").append(trends.getStreet()).append("</street>");
-					sb.append("<community>").append(trends.getCommunity()).append("</community>");
-					sb.append("<road>").append(trends.getRoad()).append("</road>");
-					sb.append("<numberPlate>").append(trends.getNumberPlate()).append("</numberPlate>");
-					sb.append("<scenePersonName>").append(trends.getScenePersonName()).append("</scenePersonName>");
-					sb.append("<scenePersonPhone>").append(trends.getScenePersonPhone()).append("</scenePersonPhone>");
-					sb.append("<creator>").append(trends.getCreator()).append("</creator>");
-					sb.append("<longitude>").append(trends.getLongitude()).append("</longitude>");
-					sb.append("<latitude>").append(trends.getLatitude()).append("</latitude>");
+					sb.append("<city>").append(StringUtil.nullToEmptyOfStr(trends.getCity())).append("</city>");
+					sb.append("<street>").append(StringUtil.nullToEmptyOfStr(trends.getStreet())).append("</street>");
+					sb.append("<community>").append(StringUtil.nullToEmptyOfStr(trends.getCommunity())).append("</community>");
+					sb.append("<road>").append(StringUtil.nullToEmptyOfStr(trends.getRoad())).append("</road>");
+					sb.append("<numberPlate>").append(StringUtil.nullToEmptyOfStr(trends.getNumberPlate())).append("</numberPlate>");
+					sb.append("<scenePersonName>").append(StringUtil.nullToEmptyOfStr(trends.getScenePersonName())).append("</scenePersonName>");
+					sb.append("<scenePersonPhone>").append(StringUtil.nullToEmptyOfStr(trends.getScenePersonPhone())).append("</scenePersonPhone>");
+					sb.append("<creator>").append(commonOperateService.queryUserName(trends.getCreator())).append("</creator>");
+					sb.append("<longitude>").append(StringUtil.nullToEmptyOfObject(trends.getLongitude())).append("</longitude>");
+					sb.append("<latitude>").append(StringUtil.nullToEmptyOfObject(trends.getLatitude())).append("</latitude>");
 					sb.append("<repairTime>").append(Helper.formateDate(trends.getRepairTime(), "yyyy-MM-dd")).append("</repairTime>");
 					sb.append("<createTime>").append(Helper.formateDate(trends.getCreateTime(), "yyyy-MM-dd")).append("</createTime>");
+					String positionAddress = trends.getPositionAddress();
+					if (positionAddress == null || positionAddress.trim().length() == 0) {
+						positionAddress = StringUtil.nullToEmptyOfStr(trends.getCity()) + StringUtil.nullToEmptyOfStr(trends.getStreet()) + StringUtil.nullToEmptyOfStr(trends.getCommunity()) + StringUtil.nullToEmptyOfStr(trends.getRoad());
+					}
+					sb.append("<position_address>").append(positionAddress).append("</position_address>");
+					sb.append("<repair_type>").append(Constant.REPAIR_TYPE_PLAN.equals(trends.getRepairType()) ? "计划施工" : "应急抢修").append("</repair_type>");
 					sb.append("</dynamic>");
 				}
 			} catch (Exception e) {

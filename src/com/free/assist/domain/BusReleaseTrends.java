@@ -70,6 +70,16 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
 
     private String nativeNet;
 
+    private Date repairEndTime;
+
+    private Date realRepairBeginTime;
+
+    private Date realRepairEndTime;
+
+    private String positionAddress;
+
+    private String comeFrom;
+
     private static final long serialVersionUID = 1L;
 
     @javax.persistence.Column(name="BILL_SN", nullable=false, length=32)
@@ -269,4 +279,44 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
     public void setNativeNet(String nativeNet) {
         this.nativeNet = nativeNet;
     }
+
+	public Date getRepairEndTime() {
+		return repairEndTime;
+	}
+
+	public void setRepairEndTime(Date repairEndTime) {
+		this.repairEndTime = repairEndTime;
+	}
+
+	public Date getRealRepairBeginTime() {
+		return realRepairBeginTime;
+	}
+
+	public void setRealRepairBeginTime(Date realRepairBeginTime) {
+		this.realRepairBeginTime = realRepairBeginTime;
+	}
+
+	public Date getRealRepairEndTime() {
+		return realRepairEndTime;
+	}
+
+	public void setRealRepairEndTime(Date realRepairEndTime) {
+		this.realRepairEndTime = realRepairEndTime;
+	}
+
+	public String getPositionAddress() {
+		return positionAddress;
+	}
+
+	public void setPositionAddress(String positionAddress) {
+		this.positionAddress = positionAddress;
+	}
+
+	public String getComeFrom() {
+		return comeFrom;
+	}
+
+	public void setComeFrom(String comeFrom) {
+		this.comeFrom = comeFrom;
+	}
 }

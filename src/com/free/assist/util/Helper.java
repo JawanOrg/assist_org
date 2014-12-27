@@ -366,11 +366,16 @@ public class Helper {
 	}
 
 	public static BigDecimal stringToBigDecimal(String bigDecimalStr) {
+		BigDecimal bd = new BigDecimal(0);
 		if (bigDecimalStr == null || bigDecimalStr.trim().length() == 0) {
-			return new BigDecimal(0);
+			return bd;
 		}
-		BigDecimal bd = new BigDecimal(bigDecimalStr);
-		bd = bd.setScale(4, BigDecimal.ROUND_UNNECESSARY);
+		try {
+			bd = new BigDecimal(bigDecimalStr);
+			bd = bd.setScale(4, BigDecimal.ROUND_UNNECESSARY);
+		} catch (Exception e) {
+			return new BigDecimal(-1);
+		}
 		return bd;
 	}
 
@@ -380,8 +385,11 @@ public class Helper {
 	 * @return yyyy-MM-dd
 	 */
 	public static String formateDate(Date date, String format) {
-		SimpleDateFormat sdf = new SimpleDateFormat(format);
-		String tmpStr = sdf.format(date);
+		String tmpStr = "";
+		if (date != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			tmpStr = sdf.format(date);
+		}
 		return tmpStr;
 	}
 

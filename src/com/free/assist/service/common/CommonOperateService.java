@@ -21,4 +21,6 @@ public interface CommonOperateService extends BaseService {
     String uploadFile(SuptAttach attach);
     
     String queryNextDealObject(String userId);
+    
+    String queryUserName(String userId);
 }

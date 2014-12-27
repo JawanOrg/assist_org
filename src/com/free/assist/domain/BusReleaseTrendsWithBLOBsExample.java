@@ -1781,6 +1781,326 @@ public class BusReleaseTrendsWithBLOBsExample  extends BaseExample{
 			return this;
 		}
 
+        public Criteria andRepairEndTimeIsNull() {
+            addCriterion("REPAIR_END_TIME is null");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeIsNotNull() {
+            addCriterion("REPAIR_END_TIME is not null");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeEqualTo(Date value) {
+            addCriterion("REPAIR_END_TIME =", value, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeNotEqualTo(Date value) {
+            addCriterion("REPAIR_END_TIME <>", value, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeGreaterThan(Date value) {
+            addCriterion("REPAIR_END_TIME >", value, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("REPAIR_END_TIME >=", value, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeLessThan(Date value) {
+            addCriterion("REPAIR_END_TIME <", value, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("REPAIR_END_TIME <=", value, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeIn(List<Date> values) {
+            addCriterion("REPAIR_END_TIME in", values, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeNotIn(List<Date> values) {
+            addCriterion("REPAIR_END_TIME not in", values, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeBetween(Date value1, Date value2) {
+            addCriterion("REPAIR_END_TIME between", value1, value2, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRepairEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("REPAIR_END_TIME not between", value1, value2, "repairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeIsNull() {
+            addCriterion("REAL_REPAIR_BEGIN_TIME is null");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeIsNotNull() {
+            addCriterion("REAL_REPAIR_BEGIN_TIME is not null");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME =", value, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeNotEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME <>", value, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeGreaterThan(Date value) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME >", value, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME >=", value, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeLessThan(Date value) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME <", value, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeLessThanOrEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME <=", value, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeIn(List<Date> values) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME in", values, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeNotIn(List<Date> values) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME not in", values, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeBetween(Date value1, Date value2) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME between", value1, value2, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairBeginTimeNotBetween(Date value1, Date value2) {
+            addCriterion("REAL_REPAIR_BEGIN_TIME not between", value1, value2, "realRepairBeginTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeIsNull() {
+            addCriterion("REAL_REPAIR_END_TIME is null");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeIsNotNull() {
+            addCriterion("REAL_REPAIR_END_TIME is not null");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_END_TIME =", value, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeNotEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_END_TIME <>", value, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeGreaterThan(Date value) {
+            addCriterion("REAL_REPAIR_END_TIME >", value, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_END_TIME >=", value, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeLessThan(Date value) {
+            addCriterion("REAL_REPAIR_END_TIME <", value, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("REAL_REPAIR_END_TIME <=", value, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeIn(List<Date> values) {
+            addCriterion("REAL_REPAIR_END_TIME in", values, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeNotIn(List<Date> values) {
+            addCriterion("REAL_REPAIR_END_TIME not in", values, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeBetween(Date value1, Date value2) {
+            addCriterion("REAL_REPAIR_END_TIME between", value1, value2, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andRealRepairEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("REAL_REPAIR_END_TIME not between", value1, value2, "realRepairEndTime");
+            return this;
+        }
+
+        public Criteria andPositionAddressIsNull() {
+            addCriterion("POSITION_ADDRESS is null");
+            return this;
+        }
+
+        public Criteria andPositionAddressIsNotNull() {
+            addCriterion("POSITION_ADDRESS is not null");
+            return this;
+        }
+
+        public Criteria andPositionAddressEqualTo(String value) {
+            addCriterion("POSITION_ADDRESS =", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressNotEqualTo(String value) {
+            addCriterion("POSITION_ADDRESS <>", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressGreaterThan(String value) {
+            addCriterion("POSITION_ADDRESS >", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("POSITION_ADDRESS >=", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressLessThan(String value) {
+            addCriterion("POSITION_ADDRESS <", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressLessThanOrEqualTo(String value) {
+            addCriterion("POSITION_ADDRESS <=", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressLike(String value) {
+            addCriterion("POSITION_ADDRESS like", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressNotLike(String value) {
+            addCriterion("POSITION_ADDRESS not like", value, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressIn(List<String> values) {
+            addCriterion("POSITION_ADDRESS in", values, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressNotIn(List<String> values) {
+            addCriterion("POSITION_ADDRESS not in", values, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressBetween(String value1, String value2) {
+            addCriterion("POSITION_ADDRESS between", value1, value2, "positionAddress");
+            return this;
+        }
+
+        public Criteria andPositionAddressNotBetween(String value1, String value2) {
+            addCriterion("POSITION_ADDRESS not between", value1, value2, "positionAddress");
+            return this;
+        }
+
+        public Criteria andComeFromIsNull() {
+            addCriterion("COME_FROM is null");
+            return this;
+        }
+
+        public Criteria andComeFromIsNotNull() {
+            addCriterion("COME_FROM is not null");
+            return this;
+        }
+
+        public Criteria andComeFromEqualTo(String value) {
+            addCriterion("COME_FROM =", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromNotEqualTo(String value) {
+            addCriterion("COME_FROM <>", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromGreaterThan(String value) {
+            addCriterion("COME_FROM >", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromGreaterThanOrEqualTo(String value) {
+            addCriterion("COME_FROM >=", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromLessThan(String value) {
+            addCriterion("COME_FROM <", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromLessThanOrEqualTo(String value) {
+            addCriterion("COME_FROM <=", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromLike(String value) {
+            addCriterion("COME_FROM like", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromNotLike(String value) {
+            addCriterion("COME_FROM not like", value, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromIn(List<String> values) {
+            addCriterion("COME_FROM in", values, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromNotIn(List<String> values) {
+            addCriterion("COME_FROM not in", values, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromBetween(String value1, String value2) {
+            addCriterion("COME_FROM between", value1, value2, "comeFrom");
+            return this;
+        }
+
+        public Criteria andComeFromNotBetween(String value1, String value2) {
+            addCriterion("COME_FROM not between", value1, value2, "comeFrom");
+            return this;
+        }
+
 		public Criteria andTaskDealObjectIdEqualTo(String dealObjectId) {
 			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_trends.bill_id and ta.deal_object_id='" + dealObjectId + "' and ta.is_finish='N')");
 			return this;

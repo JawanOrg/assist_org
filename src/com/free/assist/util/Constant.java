@@ -27,6 +27,9 @@ public class Constant {
 
     public static String REPAIR_TYPE_PLAN = "plan";
     public static String REPAIR_TYPE_EMERGENCY = "emergency";
+    
+    public static String COME_FROM_WEB = "web";
+    public static String COME_FROM_ANDROID = "android";
 
     public static String PAGE_SIZE = "12";
 
