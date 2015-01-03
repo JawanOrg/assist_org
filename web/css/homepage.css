@@ -46,3 +46,36 @@ a:hover{ text-decoration:none; color:#F90;}
 .gx-show-titleName{ text-align:center; font-size:18px; font-family:"Microsoft YaHei", "Œ¢»Ì—≈∫⁄"}
 .gx-show-info{ color:#999; text-align:center;}
 .gx-show-content{ font-size:14px; line-height:150%;}
+
+.fullSlide{ width:100%;  position:relative;  height:180px;}
+.fullSlide .bd{ margin:0 auto; position:relative; z-index:0; overflow:hidden;  }
+.fullSlide .bd ul{ width:100% !important;  }
+.fullSlide .bd li{ width:100% !important;  height:180px; overflow:hidden; text-align:center;  }
+.fullSlide .bd li a{ display:block; height:180px; }
+
+.fullSlide .hd{ width:100%;  position:absolute; z-index:1; bottom:0; left:0; height:30px; line-height:30px; background:url(../images/homepage/touming.png) repeat-x; text-align:center;
+	 _background:#000; _filter:alpha(opacity=60); 
+}
+.fullSlide .hd ul{ text-align:center;  padding-top:5px;  }
+.fullSlide .hd ul li{ cursor:pointer; display:inline-block; *display:inline; zoom:1; width:8px; height:8px; margin:5px; background:url(../images/homepage/tg_flash_p.png) -18px 0; overflow:hidden; 
+	line-height:9999px; 
+}
+.fullSlide .hd ul .on{ background-position:0 0; }
+/* Tab«–ªª */
+.slideTxtBox{overflow:hidden;}
+.slideTxtBox .hd{ height:28px; line-height:28px; padding:0 15px;font-size:14px; }
+.slideTxtBox .hd .titleName{ display:inline-block; float:left;font-size:18px; font-family:"Œ¢»Ì—≈∫⁄"; display:inline-block;}
+.slideTxtBox .hd ul{ overflow:hidden; zoom:1; float:right; margin:0px; padding:0px; list-style:none;border-left:1px solid #c5c2c2;}
+.slideTxtBox .hd ul li{ float:left; border-top:1px solid #c5c2c2;border-right:1px solid #c5c2c2; padding:5px 8px;
+ height:18px; cursor:pointer;
+ background-image:url(../images/homepage/statistics_tabs.png); background-repeat:repeat-x;
+ 
+}
+.slideTxtBox .hd ul li span{ display:inline-block;vertical-align:middle; height:18px; float:left; line-height:18px;}
+.slideTxtBox .hd ul li.on { background:#d4d2d1; color:#366; background-image: none;}
+.slideTxtBox .bd{ padding:10px;border:1px solid #c5c2c2; background-color:#f6f4f4; padding:3px;}
+.slideTxtBox .bd li{ height:24px; line-height:24px;   }
+.slideTxtBox .bd li .date{ float:right; color:#999;  }
+
+.statistics_icon01{ margin-right:3px; width:18px; height:18px; float:left; display:inline-block; background-image:url(../images/homepage/statistics_icon01.png); background-repeat:no-repeat; vertical-align:middle;}
+.statistics_icon02{ margin-right:3px; width:18px; height:18px; float:left; display:inline-block; background-image:url(../images/homepage/statistics_icon02.png); background-repeat:no-repeat; vertical-align:middle;}

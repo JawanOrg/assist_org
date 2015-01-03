@@ -11,15 +11,14 @@
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 <script type="text/javascript" src="/js/ymPrompt.js"></script>
+<script type='text/javascript' src='/js/json2.js'></script>
 <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"
 	media="screen">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+<link rel="stylesheet" href="/css/cb2.css" type="text/css">
+<link rel="stylesheet" href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css"
 	type="text/css" media="screen">
 <link href="/css/time.css" rel="stylesheet" type="text/css" />
@@ -71,7 +70,9 @@
 	topmargin="0" onload="setTimeValue()">
 	<form id="inputForm" name="inputForm">
 		<input type="hidden" id="billId" name="billId"
-			value="${requestScope.billId}">
+			value="${requestScope.billId}"> <input type="hidden"
+			id="longitude" name="longitude"> <input type="hidden"
+			id="latitude" name="latitude">
 		<table border="0" style="FONT-SIZE: 13px" cellpadding="5"
 			cellspacing="0" bgcolor="#FFFFFF" height="100%" width="100%">
 			<tr>
@@ -84,8 +85,8 @@
 									<tr>
 										<td class="tabpaneleft2"></td>
 										<td class="tabpanebg2" width="120"><img
-											src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif"
-											width="18" height="15"> <span>&nbsp;动态信息录入</span></td>
+											src="/images/main_01/ico_fellow.gif" width="18" height="15">
+											<span>&nbsp;动态信息录入</span></td>
 										<td class="tabpaneright2"></td>
 									</tr>
 								</table>
@@ -103,55 +104,70 @@
 												style="width: 100%; height: 100%; overflow: hidden; border: 0px solid Silver;">
 												<table width="100%" border="0" cellspacing="0"
 													cellpadding="0" class="table">
-													<tr>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">标题<span
-															style="color:Red">*</span>:</td>
-														<td bgcolor="#f2f2f2" colspan="5"><input
-															name="theTitle" type="text" id="theTitle"
-															class="form-control" oninput="querySimilarly()"
-															dataType="Require" msg="'标题'必填" /></td>
+													<tr bgcolor="#f2f2f2">
+														<td align="right" class="left_txt2">标题<span
+															style="color:Red">*</span></td>
+														<td colspan="5"><input name="theTitle" type="text"
+															id="theTitle" class="form-control"
+															oninput="querySimilarly()" dataType="Require"
+															msg="'标题'必填" /></td>
 													</tr>
 													<tr>
 														<td align="right" class="left_txt2">城区<span
-															style="color:Red">*</span>:</td>
+															style="color:Red">*</span></td>
 														<td><input name="city" type="text" id="city"
-															class="form-control" dataType="Require" msg="'城区'必选"/></td>
+															class="form-control" dataType="Require" msg="'城区'必选" /></td>
 														<td align="right" class="left_txt2">街道<span
-															style="color:Red">*</span>:</td>
+															style="color:Red">*</span></td>
 														<td><input type="text" name="street" id="street"
-															class="form-control"
-															dataType="Require" msg="'街道'必填" /></td>
+															class="form-control" dataType="Require" msg="'街道'必填" /></td>
 														<td align="right" class="left_txt2">社区<span
-															style="color:Red">*</span>:</td>
-														<td><input name="community" type="text" id="community"
-															class="form-control" dataType="Require" msg="'社区'必选" /></td>
+															style="color:Red">*</span></td>
+														<td><input name="community" type="text"
+															id="community" class="form-control" dataType="Require"
+															msg="'社区'必选" /></td>
 													</tr>
-													<tr>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">道路<span
-															style="color:Red">*</span>:</td>
-														<td bgcolor="#f2f2f2"><input type="text" name="road" id="road"
+													<tr bgcolor="#f2f2f2">
+														<td align="right" class="left_txt2">道路<span
+															style="color:Red">*</span></td>
+														<td><input type="text" name="road" id="road"
 															class="form-control" oninput="querySimilarly()"
 															dataType="Require" msg="'道路'必填" /></td>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">门牌：</td>
-														<td bgcolor="#f2f2f2"><input type="text"
-															name="numberPlate" size="25" class="form-control" /></td>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">施工时间<span
-															style="color:Red">*</span>:</td>
-														<td bgcolor="#f2f2f2"><input id="repairTime"
-															name="repairTime" type="text" class="form-control"
-															dataType="Require" msg="'施工时间'必填"
+														<td align="right" class="left_txt2">门牌号</td>
+														<td><input type="text" name="numberPlate" size="25"
+															class="form-control" /></td>
+														<td align="right" class="left_txt2">计划开始时间<span
+															style="color:Red">*</span></td>
+														<td><input id="repairTime" name="repairTime"
+															type="text" class="form-control" dataType="Require"
+															msg="'计划开始时间'必填"
 															onclick="showcalendar(event, this, true);"
 															onfocus="showcalendar(event, this, true);if(this.value=='0000-00-00') this.value=''" />
 														</td>
 													</tr>
 													<tr>
+														<td align="right" class="left_txt2">详细地址</td>
+														<td colspan="3"><input type="text" id="positionAddress"
+															name="positionAddress" class="form-control"/><img
+															src="/images/normal/position.png" style="cursor:pointer"
+															onclick="showMap()" title="在弹出地图中右键可以获取施工点位置" /></td>
+														<td align="right" class="left_txt2">计划结束时间<span
+															style="color:Red">*</span></td>
+														<td><input id="repairEndTime" name="repairEndTime"
+															type="text" class="form-control" dataType="Require"
+															msg="'计划结束时间'必填"
+															onclick="showcalendar(event, this, true);"
+															onfocus="showcalendar(event, this, true);if(this.value=='0000-00-00') this.value=''" />
+														</td>
+													</tr>
+													<tr bgcolor="#f2f2f2">
 														<td align="right" class="left_txt2">现场联系人<span
-															style="color:Red">*</span>:</td>
+															style="color:Red">*</span></td>
 														<td><input type="text" name="scenePersonName"
 															size="25" class="form-control" dataType="Require"
 															msg="'现场联系人'必填" /></td>
 														<td align="right" class="left_txt2">联系人电话<span
-															style="color:Red">*</span>:</td>
+															style="color:Red">*</span></td>
 														<td><input type="text" name="scenePersonPhone"
 															size="25" class="form-control" dataType="Require"
 															msg="'现场联系人电话'必填" /></td>
@@ -159,11 +175,11 @@
 														<td></td>
 													</tr>
 													<tr>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">测试计划说明：</td>
-														<td bgcolor="#f2f2f2" colspan="5"><textarea rows="5"
-																cols="83" class="form-control" name="testPlanRemark"></textarea></td>
+														<td align="right" class="left_txt2">测试计划说明：</td>
+														<td colspan="5"><textarea rows="4" cols="83"
+																class="form-control" name="testPlanRemark"></textarea></td>
 													</tr>
-													<tr>
+													<tr bgcolor="#f2f2f2">
 														<td align="right" class="left_txt2">施工类别：</td>
 														<td><assist:sysDicDis iddValue="release_repair_type"
 																value="repairType" stylename="form-control" dicItemIn=""
@@ -174,7 +190,8 @@
 																	name="isNeedGovernment" id="optionsRadios1" value="Y">需要行政审批
 																</label>
 															</div></td>
-														<td class="left_txt2" colspan="2"><div id="isNeedGovernmentDiv2">
+														<td class="left_txt2" colspan="2"><div
+																id="isNeedGovernmentDiv2">
 																<label> <input type="radio"
 																	name="isNeedGovernment" id="optionsRadios2" value="N"
 																	checked>不需要行政审批
@@ -182,20 +199,21 @@
 															</div></td>
 													</tr>
 													<tr>
-														<td align="right" bgcolor="#f2f2f2" class="left_txt2">施工内容：</td>
-														<td bgcolor="#f2f2f2" colspan="5"><textarea rows="3"
-																cols="83" class="form-control" name="repairContent"></textarea></td>
+														<td align="right" class="left_txt2">施工内容：</td>
+														<td colspan="5"><textarea rows="3" cols="83"
+																class="form-control" name="repairContent"></textarea></td>
 													</tr>
 													<tr>
 														<td colspan="6" align="center"><input name="btnMap"
 															type="button" class="btn btn-default" id="btnMap"
-															value="地图定位" onclick="showMap()"> <input name="btnFile"
-															type="button" class="btn btn-default" id="btnFile"
-															value="附  件" onclick="uploadFile()"> <input
-															name="btnSubmit" type="button" class="btn btn-default"
-															id="btnSubmit" value="提  交" onclick="submitContent(this)">
-															<input name="cs" type="button" class="btn btn-default"
-															id="cs" value="取 消" onClick="refreshWindow('ok')"></td>
+															value="地图定位" onclick="showMap()"> <input
+															name="btnFile" type="button" class="btn btn-default"
+															id="btnFile" value="附  件" onclick="uploadFile()">
+															<input name="btnSubmit" type="button"
+															class="btn btn-default" id="btnSubmit" value="提  交"
+															onclick="submitContent(this)"> <input name="cs"
+															type="button" class="btn btn-default" id="cs" value="取 消"
+															onClick="refreshWindow('ok')"></td>
 													</tr>
 
 												</table>
@@ -285,8 +303,16 @@
 			}
 		}
 		function showMap(){
-			ymPrompt.win({message:'/jsp/map/mapMain.jsp',width:500,height:350,title:'',minBtn:true,maxBtn:true,useSlide:true,showShadow:true,iframe:{id:'myId'}});
+			ymPrompt.win({message:'/jsp/map/getPosition.jsp?city='+$('city').value+'&street='+$('street').value+'&road='+$('road').value+'&positionAddress='+$('positionAddress').value+'&longitude='+$('longitude').value+'&latitude='+$('latitude').value,width:500,height:350,title:'',minBtn:true,maxBtn:true,useSlide:true,showShadow:true,handler:getPositionInfo,iframe:{id:'myId'}});
 			ymPrompt.max();
+		}
+		function getPositionInfo(returnStr) {
+			if(returnStr!='close'){
+				var data = JSON.parse(returnStr);
+				$('positionAddress').value=data.address.replace(new RegExp(/(;)/g),"");
+				$('longitude').value=data.lng;
+				$('latitude').value=data.lat;
+			}
 		}
 		
 		window.onload = function()
@@ -309,11 +335,11 @@
 
 
 	</script>
-	
-<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/js/areadata.js"></script>
-<script type="text/javascript" src="/js/areaselect.js"></script>	
-<script type="text/javascript">
+
+	<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/js/areadata.js"></script>
+	<script type="text/javascript" src="/js/areaselect.js"></script>
+	<script type="text/javascript">
 	var jq = jQuery.noConflict();
 	new locationCard({
 	    ids: ['city', 'street', 'community']

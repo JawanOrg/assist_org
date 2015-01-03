@@ -38,23 +38,18 @@ public class HomePageAction extends BaseAction {
 	private DynamicOperateService dynamicOperateService;
 
 	/**
-	 * ��ȡ��ҳչʾ���
-	 * 
 	 * @param form
 	 * @return
 	 * @throws Exception
 	 */
 	public ActionForward queryAllPortalData(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		// ȡ��ʩ����̬
 		BusReleaseTrendsWithBLOBsExample ex = new BusReleaseTrendsWithBLOBsExample();
 		ex.setOrderByClause(" create_time desc");
 		ex.setFromNumber(0);
-		ex.setToNumber(6);
+		ex.setToNumber(3);
 		List<BusReleaseTrends> trendsList = dynamicOperateService.selectByExampleWithBLOBs(ex);
 		request.setAttribute("trendsList", trendsList);
 
-		// ȡ�ùܵ���ʶ
 		BusLinePipeKnowledgeWithBLOBsExample exKnowledge = new BusLinePipeKnowledgeWithBLOBsExample();
 		exKnowledge.setOrderByClause(" create_time desc");
 		exKnowledge.setFromNumber(0);
@@ -62,7 +57,6 @@ public class HomePageAction extends BaseAction {
 		List<BusLinePipeKnowledgeWithBLOBs> knowledgeList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
 		request.setAttribute("knowledgeList", knowledgeList);
 
-		// ȡ�ù���ʶ��
 		BusLinePipeKnowWithBLOBsExample exKnow = new BusLinePipeKnowWithBLOBsExample();
 		exKnow.setOrderByClause(" create_time desc");
 		exKnow.setFromNumber(0);
@@ -70,7 +64,6 @@ public class HomePageAction extends BaseAction {
 		List<BusLinePipeKnowWithBLOBs> knowList = dynamicOperateService.selectByExampleWithBLOBs(exKnow);
 		request.setAttribute("knowList", knowList);
 
-		// ȡ�ù��߷���
 		BusLinePipeRuleWithBLOBsExample exRule = new BusLinePipeRuleWithBLOBsExample();
 		exRule.setOrderByClause(" create_time desc");
 		exRule.setFromNumber(0);
@@ -78,7 +71,6 @@ public class HomePageAction extends BaseAction {
 		List<BusLinePipeRuleWithBLOBs> ruleList = dynamicOperateService.selectByExampleWithBLOBs(exRule);
 		request.setAttribute("ruleList", ruleList);
 
-		// ȡ�����Ŷ�̬
 		BusReleaseNewsWithBLOBsExample exNews = new BusReleaseNewsWithBLOBsExample();
 		exNews.setOrderByClause(" create_time desc");
 		exNews.setFromNumber(0);
@@ -86,7 +78,6 @@ public class HomePageAction extends BaseAction {
 		List<BusReleaseNewsWithBLOBs> newsList = dynamicOperateService.selectByExampleWithBLOBs(exNews);
 		request.setAttribute("newsList", newsList);
 
-		// ȡ����̳�б�
 		ForumTopicsExample exForum = new ForumTopicsExample();
 		exForum.setOrderByClause(" TOPIC_TIME desc ");
 		exForum.setFromNumber(0);
@@ -98,7 +89,6 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * ��ȡ��ҳʩ����̬
 	 * 
 	 * @param form
 	 * @return
@@ -115,7 +105,6 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * ��ȡ��ҳʩ����̬����
 	 * 
 	 * @param form
 	 * @return
@@ -132,8 +121,6 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * ��ȡ��ҳ�ܵ���ʶ
-	 * 
 	 * @param form
 	 * @return
 	 * @throws Exception
@@ -150,7 +137,6 @@ public class HomePageAction extends BaseAction {
 	}
 
 	/**
-	 * ��ȡ��ҳʩ���ܵ���ʶ
 	 * 
 	 * @param form
 	 * @return
@@ -167,7 +153,6 @@ public class HomePageAction extends BaseAction {
 	}
 
 	private void queryRightData(HttpServletRequest request) {
-		// ȡ�ùܵ���ʶ
 		BusLinePipeKnowledgeWithBLOBsExample exKnowledge = new BusLinePipeKnowledgeWithBLOBsExample();
 		exKnowledge.setOrderByClause(" create_time desc");
 		exKnowledge.setFromNumber(0);
@@ -175,7 +160,6 @@ public class HomePageAction extends BaseAction {
 		List<BusLinePipeKnowledgeWithBLOBs> knowledgeList = dynamicOperateService.selectByExampleWithBLOBs(exKnowledge);
 		request.setAttribute("knowledgeList", knowledgeList);
 
-		// ȡ�ù���ʶ��
 		BusLinePipeKnowWithBLOBsExample exKnow = new BusLinePipeKnowWithBLOBsExample();
 		exKnow.setOrderByClause(" create_time desc");
 		exKnow.setFromNumber(0);
@@ -183,7 +167,6 @@ public class HomePageAction extends BaseAction {
 		List<BusLinePipeKnowWithBLOBs> knowList = dynamicOperateService.selectByExampleWithBLOBs(exKnow);
 		request.setAttribute("knowList", knowList);
 
-		// ȡ�ù��߷���
 		BusLinePipeRuleWithBLOBsExample exRule = new BusLinePipeRuleWithBLOBsExample();
 		exRule.setOrderByClause(" create_time desc");
 		exRule.setFromNumber(0);

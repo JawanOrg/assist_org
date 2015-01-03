@@ -46,12 +46,17 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public String create(BusReleaseNewsWithBLOBs relsease, SuptAction action) {
+		String userRoleName = commonOperateService.queryUserRoleName(action.getUserVO().getUserId());
+		if (userRoleName == null || userRoleName.trim().length() == 0) {
+			return "鎮ㄦ病鏈夋柊闂诲垱寤烘潈闄愶紒";
+		}
+		String billStatus = commonOperateService.queryNextStatus(userRoleName, Constant.OP_CREATE);
 		String billSn = Helper.getCurrentTimeStr() + this.buildSequence();
 		relsease.setBillSn(billSn);
 		relsease.setCreator(action.getUserVO().getUserId());
 		relsease.setCreateDept(action.getUserVO().getUserId());
 		relsease.setCreateTime(this.getSysDate());
-		relsease.setBillStatus(Constant.S_AUDIT);
+		relsease.setBillStatus(billStatus);
 		busReleaseNewsDAO.insertSelective(relsease);
 
 		SuptTask task = new SuptTask();
@@ -62,9 +67,9 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setCreator(action.getUserVO().getUserId());
 		task.setIsFinish(Constant.FLAG_NO);
 		task.setIsRedo(Constant.FLAG_NO);
-		task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId()));
+		task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId(), userRoleName, billStatus));
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
-		task.setDealObjectGroup(action.getUserVO().getUnitId());
+		task.setDealObjectGroup(commonOperateService.queryUserUnitName(task.getDealObjectId()));
 		task.setTaskIdParent("0");
 		suptTaskDAO.insertSelective(task);
 
@@ -85,7 +90,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		newsKey.setBillId(action.getBillId());
 		BusReleaseNews oldRelsease = busReleaseNewsDAO.selectByPrimaryKey(newsKey);
 		if (oldRelsease != null && !Constant.S_AUDIT.equals(oldRelsease.getBillStatus())) {
-			return "新闻信息已审核！";
+			return "姝ゆ柊闂诲凡缁忚鍏朵粬浜哄鏍革紒";
 		}
 
 		BusReleaseNewsWithBLOBs relsease = new BusReleaseNewsWithBLOBs();
@@ -107,11 +112,12 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setBillId(relsease.getBillId());
 		task.setBusinessType(Constant.BUSINESS_TYPE_NEWS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
-		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO 取正确的部门
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_RELEASE);
-			task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId()));
+			String userRoleName = commonOperateService.queryUserRoleName(action.getUserVO().getUserId());
+			task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId(), userRoleName, relsease.getBillStatus()));
+			task.setDealObjectGroup(commonOperateService.queryUserUnitName(task.getDealObjectId()));
 		} else if (Constant.OP_AUDIT_NOTAGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_CREATE);
 			task.setDealObjectId(oldRelsease.getCreator());
@@ -138,7 +144,7 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		newsKey.setBillId(action.getBillId());
 		BusReleaseNews oldRelsease = busReleaseNewsDAO.selectByPrimaryKey(newsKey);
 		if (oldRelsease != null && !Constant.S_RELEASE.equals(oldRelsease.getBillStatus())) {
-			return "新闻信息已发布！";
+			return "姝ゆ柊闂诲凡缁忓彂甯冿紒";
 		}
 
 		BusReleaseNewsWithBLOBs relsease = new BusReleaseNewsWithBLOBs();
@@ -164,11 +170,11 @@ public class NewsOperateServiceImpl extends BaseServiceImpl implements NewsOpera
 		task.setCreator(action.getUserVO().getUserId());
 		task.setIsFinish(Constant.FLAG_NO);
 		task.setIsRedo(Constant.FLAG_NO);
-		task.setDealObjectGroup(action.getUserVO().getUnitId());// TODO 取正确的部门
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_RELEASE_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_FINISH);
 			task.setDealObjectId(action.getUserVO().getUserId());
+			task.setDealObjectGroup(action.getUserVO().getUnitId());
 		} else if (Constant.OP_RELEASE_NOTAGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_AUDIT);
 			SuptTaskKey taskkey = new SuptTaskKey();

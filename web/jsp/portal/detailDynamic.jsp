@@ -5,7 +5,16 @@
 <head>
 <meta charset="utf-8">
 <title>管线协作管理系统</title>
+<script type="text/javascript" src="/js/ymPrompt.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+<script type="text/javascript">
+function showMap(lng,lat){
+	ymPrompt.win({message:'/jsp/map/getPosition.jsp?longitude='+lng+'&latitude='+lat,width:800,height:600,title:'施工动态地点查看',minBtn:true,maxBtn:true,closeBtn:true,showShadow:true,iframe:{id:'myIds'}});
+
+}
+</script>
 </head>
 
 <body>
@@ -37,7 +46,9 @@
 						<td valign="top">
 							<table width="100%" border="0" cellspacing="0" cellpadding="10">
 								<tr>
-									<td class="gx-show-titleName">${requestScope.trends.theTitle}</td>
+									<td class="gx-show-titleName">${requestScope.trends.theTitle}<img title="点击查看施工地点"
+															src="/images/normal/position.png" style="cursor:pointer"
+															onclick="showMap('${requestScope.trends.longitude}','${requestScope.trends.latitude}')"/></td>
 								</tr>
 								<tr>
 									<td class="gx-show-info">来自： &nbsp;&nbsp;作者：<assist:sysOrganization

@@ -1,0 +1,35 @@
+/* CSS Document */
+
+.map-btn-wrap{ width:62px; position:absolute; z-index:10;top:10px; right:10px;}
+.map-btn-title{ border:1px solid #004986; background-color:#1a81a3; color:#FFF; text-align:center; font-weight:bold; padding:3px;}
+.map-btn{ 
+	border:1px solid #004986;border-top:0px; 
+	background-color:#004986;padding:3px; 
+	background-image:url(../images/homepage/map-btn.png);
+	cursor:pointer;
+}
+.map-btn-on{ 
+	border:1px solid #004986;border-top:0px; 
+	background-color:#004986;padding:3px;
+	color:#FFF; 
+	cursor:pointer;
+}
+.map-btn2{ 
+	border:1px solid #004986;
+	background-color:#004986;padding:3px; 
+	background-image:url(../images/homepage/map-btn.png);
+	cursor:pointer;
+	margin-top:2px;
+}
+.map-btn2-on{ 
+	border:1px solid #004986;
+	background-color:#004986;padding:3px;
+	color:#FFF; 
+	cursor:pointer;
+	margin-top:2px;
+}
+.map-btn i,.map-btn-on i{width:12px;height:12px;display:inline-block; background-repeat:no-repeat; background-position:center center; vertical-align:middle;}
+.map-btn2 i,.map-btn2-on i{width:12px;height:12px;display:inline-block; background-repeat:no-repeat; background-position:center center; vertical-align:middle;}
+.map-btnIcon-01{background-image:url(../images/homepage/map-btn01.png);}
+.map-btnIcon-02{background-image:url(../images/homepage/map-btn02.png);}
+.map-btnIcon-03{background-image:url(../images/homepage/map-btn03.png);}

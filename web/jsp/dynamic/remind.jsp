@@ -46,7 +46,7 @@
 									<tr>
 										<td class="tabpaneleft2"></td>
 										<td class="tabpanebg2" width="120"><img
-											src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif"
+											src="/images/main_01/ico_fellow.gif"
 											width="18" height="15"> ²éÑ¯Ìõ¼þ&nbsp;<span
 											id="conditionHandStautsSpan" value="up"
 											class="glyphicon glyphicon-hand-up" style="cursor:pointer"

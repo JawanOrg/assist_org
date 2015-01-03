@@ -1,6 +1,7 @@
 package com.free.assist.web.business;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import com.free.assist.web.BaseForm;
 
@@ -54,6 +55,14 @@ public class DynamicForm extends BaseForm {
     private String street;
 
     private String nativeNet;
+
+    private String repairEndTime;
+
+    private String realRepairBeginTime;
+
+    private String realRepairEndTime;
+
+    private String positionAddress;
     
     private String auditResult;
     private String auditSuggestion;
@@ -273,5 +282,37 @@ public class DynamicForm extends BaseForm {
 
 	public void setNativeNet(String nativeNet) {
 		this.nativeNet = nativeNet;
+	}
+
+	public String getRepairEndTime() {
+		return repairEndTime;
+	}
+
+	public void setRepairEndTime(String repairEndTime) {
+		this.repairEndTime = repairEndTime;
+	}
+
+	public String getRealRepairBeginTime() {
+		return realRepairBeginTime;
+	}
+
+	public void setRealRepairBeginTime(String realRepairBeginTime) {
+		this.realRepairBeginTime = realRepairBeginTime;
+	}
+
+	public String getRealRepairEndTime() {
+		return realRepairEndTime;
+	}
+
+	public void setRealRepairEndTime(String realRepairEndTime) {
+		this.realRepairEndTime = realRepairEndTime;
+	}
+
+	public String getPositionAddress() {
+		return positionAddress;
+	}
+
+	public void setPositionAddress(String positionAddress) {
+		this.positionAddress = positionAddress;
 	}
 }

@@ -14,13 +14,19 @@ import com.free.assist.service.BaseService;
 @WebService
 public interface CommonOperateService extends BaseService {
 
-    List<SuptTask> queryTask(SuptTaskExample example);
+	List<SuptTask> queryTask(SuptTaskExample example);
 
-    List<SuptAction> queryActions(SuptActionExample example);
-    
-    String uploadFile(SuptAttach attach);
-    
-    String queryNextDealObject(String userId);
-    
-    String queryUserName(String userId);
+	List<SuptAction> queryActions(SuptActionExample example);
+
+	String uploadFile(SuptAttach attach);
+
+	String queryNextDealObject(String userId, String userRoleName, String nextStatus);
+
+	String queryUserName(String userId);
+
+	String queryNextStatus(String userRoleName, String actionType);
+
+	String queryUserRoleName(String userId);
+	
+	String queryUserUnitName(String userId);
 }
