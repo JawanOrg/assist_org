@@ -62,14 +62,14 @@
 			<td width="690" valign="top">
 				<div class="slideTxtBox">
 					<div class="hd">
-						<span class="titleName">施工图式</span>
+						<span class="titleName">施工动态</span>
 						<ul>
 							<li><i class="statistics_icon01"></i><span>地图模式</span></li>
 							<li><i class="statistics_icon02"></i><span>图表模式</span></li>
 						</ul>
 					</div>
 					<div class="bd">
-						<div style="height:300px; position:relative;">
+						<div style="height:400px; position:relative;">
 							<iframe id="mapiframe" frameborder="no" border="0"
 								marginwidth="0" marginheight="0" width="100%" height="100%"
 								allowTransparency="true"
@@ -90,11 +90,11 @@
 							</div>
 							地图模式
 						</div>
-						<div style="height:300px">
-							<iframe id="mapiframedd" frameborder="no" border="0"
+						<div style="height:400px">
+							<iframe id="chart" frameborder="no" border="0"
 								marginwidth="0" marginheight="0" width="100%" height="100%"
 								allowTransparency="true"
-								src="/jsp/map/queryPositionHomePage.jsp"></iframe>
+								src="/jsp/portal/chart.jsp"></iframe>
 							图表模式
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 								<span>${objData.city}-${objData.community}-${objData.street}</span>
 							</div>
 						</div>
-						<div class="des">${fn:length(objData.repairContent)>70?fn:substring(objData.repairContent,0,70):objData.repairContent}</div>
+						<div class="des">${fn:length(objData.repairContent)>70?fn:substring(objData.repairContent,0,70):objData.repairContent}...</div>
 					</div>
 				</c:forEach>
 

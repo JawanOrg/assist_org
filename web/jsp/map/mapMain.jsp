@@ -92,93 +92,40 @@ body,html,#allmap {
 		});
 
 		var contextMenu = new BMap.ContextMenu();
-		var txtMenuItem = [
-				{
-					text : '放大',
-					callback : function() {
-						map.zoomIn();
-					}
-				},
-				{
-					text : '缩小',
-					callback : function() {
-						map.zoomOut();
-					}
-				},
-				{
-					text : '放置最大',
-					callback : function() {
-						map.setZoom(18);
-					}
-				},
-				{
-					text : '默认大小',
-					callback : function() {
-						map.setZoom(12);
-					}
-				},
-				{
-					text : '<font size="2" color="red" style="font-weight:bold;font-style:italic;">添加施工点</font>',
-					callback : function(p) {
-						var marker = new BMap.Marker(p);
-						map.addOverlay(marker);
-						var pt = marker.getPosition();
-						var address = null;
-						var gc = new BMap.Geocoder();
-						gc.getLocation(pt, function(rs) {
-							var addComp = rs.addressComponents;
-							address = addComp.province + ";" + addComp.city
-									+ ";" + addComp.district + ";"
-									+ addComp.street + ";"
-									+ addComp.streetNumber;
-							savePoint(address, pt.lng, pt.lat);
-
-							var infoWindow1 = new BMap.InfoWindow(address);
-							marker.addEventListener("click", function() {
-								this.openInfoWindow(infoWindow1);
-							});
-						});
-
-						marker.enableDragging();
-
-						var markerContextMenu = new BMap.ContextMenu();
-						var markerMenuItem = [ {
-							text : '最大化',
-							callback : function() {
-								var p = marker.getPosition();
-								var markerPoint = new BMap.Point(p.lng, p.lat);
-								map.centerAndZoom(markerPoint, 18);
-							}
-						}, {
-							text : '移除施工点',
-							callback : function() {
-								map.removeOverlay(marker);
-							}
-						} ];
-						for ( var i = 0; i < markerMenuItem.length; i++) {
-							markerContextMenu.addItem(new BMap.MenuItem(
-									markerMenuItem[i].text,
-									markerMenuItem[i].callback, 100));
-							if (i == 1 || i == 3) {
-								markerContextMenu.addSeparator();
-							}
-						}
-						marker.addContextMenu(markerContextMenu);
-					}
-				} /*, {
-											text : '显示所有施工点',
-											callback : function() {
-												addCustomLayer(map);
-											}
-										}, {
-											text : '隐藏所有施工点',
-											callback : function() {
-												if (customLayer) {
-													map.removeTileLayer(customLayer);
-												}
-											}
-										}*/];
-		for ( var i = 0; i < txtMenuItem.length; i++) {
+		var txtMenuItem = [ {
+			text : '放大',
+			callback : function() {
+				map.zoomIn();
+			}
+		}, {
+			text : '缩小',
+			callback : function() {
+				map.zoomOut();
+			}
+		}, {
+			text : '放置最大',
+			callback : function() {
+				map.setZoom(18);
+			}
+		}, {
+			text : '默认大小',
+			callback : function() {
+				map.setZoom(12);
+			}
+		}, {
+			text : '显示所有施工点',
+			callback : function() {
+				addCustomLayer(map);
+			}
+		}, {
+			text : '隐藏所有施工点',
+			callback : function() {
+				if (customLayer) {
+					map.removeTileLayer(customLayer);
+				}
+			}
+		} ];
+		for (var i = 0; i < txtMenuItem.length; i++) {
 			contextMenu.addItem(new BMap.MenuItem(txtMenuItem[i].text,
 					txtMenuItem[i].callback, 100));
 			if (i == 1 || i == 3) {
@@ -189,7 +136,8 @@ body,html,#allmap {
 		map.addControl(new BMap.NavigationControl());
 		addCustomLayer(map);
 
-		mapOperateAction.queryByPointTypeAndGrade('dynamic',10,getPoint);
+		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10, 'doing',
+				getPoint);
 	}
 
 	function addMarker(point, imageType) {
@@ -201,7 +149,7 @@ body,html,#allmap {
 	}
 	function getPoint(str) {
 		var myobj = eval(str);
-		for ( var i = 0; i < myobj.length; i++) {
+		for (var i = 0; i < myobj.length; i++) {
 			var point = new BMap.Point(myobj[i].longitude, myobj[i].latitude);
 			addMarker(point, myobj[i].imageType);
 
@@ -262,7 +210,7 @@ body,html,#allmap {
 		var data = JSON.parse(str);
 		var allTitle = "";
 		if (data.contents != undefined && data.contents.length > 0) {
-			for ( var i = 0; i < data.contents.length; i++) {
+			for (var i = 0; i < data.contents.length; i++) {
 				allTitle += (i + 1) + "：" + data.contents[i].title + "<br>";
 			}
 			ymPrompt.alert({

@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" pageEncoding="GBK"
 	language="java"%>
+<%@page import="com.free.assist.util.Constant"%>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <script type='text/javascript' src='/js/prototype.js'></script>
 <script type='text/javascript' src='/js/commonjs.js'></script>
@@ -13,10 +15,10 @@
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"
 	media="screen">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css"
+<link rel="stylesheet" href="/css/cb2.css"
 	type="text/css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+	href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css"
 	type="text/css" media="screen">
 <link href="/css/time.css" rel="stylesheet" type="text/css" />
@@ -176,7 +178,7 @@
 											</tr>
 											<tr>
 												<td height="30" bgcolor="#f2f2f2" colspan="6" align="right"><c:if
-														test="${task.taskStatus=='audit'}">
+														test="${task.taskStatus=='audit' && requestScope.userRoleName=='<%=Constant.ROLE_NAME_ADMIN_UNIT%>'}">
 														<input name="btnSubmit" type="button"
 															class="btn btn-default btn-sm" id="auditBtn" value="ÉóºË"
 															onclick="audit('${task.billId}','${task.taskId}','${requestScope.trends.billSn}')">

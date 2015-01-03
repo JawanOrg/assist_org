@@ -25,10 +25,8 @@
 				<td align="center" width="4%"><assist:sysDicDisName
 						itemCodeIn="${obj.billStatus}" dictionaryCodeIn="release_status" /></td>
 				<td align="center" width="15%">${obj.theTitle}</td>
-				<td align="center" width="10%"><assist:sysDicDisName
-						itemCodeIn="${obj.city}" dictionaryCodeIn="release_city" /></td>
-				<td align="center" width="10%"><assist:sysDicDisName
-						itemCodeIn="${obj.community}" dictionaryCodeIn="release_community" /></td>
+				<td align="center" width="10%">${obj.city}</td>
+				<td align="center" width="10%">${obj.community}</td>
 				<td align="center" width="10%">${obj.road}</td>
 				<td align="center" width="8%">${obj.scenePersonName}</td>
 				<td align="center" width="8%">${obj.scenePersonPhone}</td>

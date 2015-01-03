@@ -7,7 +7,7 @@
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>平台</title>
+<title>管线协作管理系统</title>
 <script type="text/javascript" src="/js/prototype.js"></script>
 <script type="text/javascript" src="/dwr/engine.js"></script>
 <script type="text/javascript" src="/dwr/interface/loginAction.js"></script>
@@ -249,8 +249,9 @@ body {
 				<td height="20"><table width="100%" border="0" cellspacing="0"
 						cellpadding="0" class="login-buttom-bg">
 						<tr>
-							<td align="center"><span class="login-buttom-txt">Copyright
-									&copy; 2003-2014 中国电信</span></td>
+							<td align="center"><span class="login-buttom-txt">关于我们  联系我们  主办单位：中国电信  技术支持：400 <br>技术要求：建议使用IE9及以上浏览器，分辨率为1360×768
+			总机：0—8822492 邮箱：@163.com 地址：112号<br>邮编：527300，Copyright 2014 All
+			Rights Reserved</span></td>
 						</tr>
 					</table></td>
 			</tr>

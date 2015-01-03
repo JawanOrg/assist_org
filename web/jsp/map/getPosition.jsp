@@ -212,7 +212,7 @@ body,html,#allmap {
 		map.addControl(new BMap.NavigationControl());
 		addCustomLayer(map);
 
-		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10, getPoint);
+		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10,'doing', getPoint);
 	}
 
 	function addMarker(point, imageType) {
@@ -229,7 +229,7 @@ body,html,#allmap {
 			addMarker(point, myobj[i].imageType);
 
 			map.addHotspot(new BMap.Hotspot(point, {
-				text : myobj[i].name + "<br>" + myobj[i].address
+				text : myobj[i].address
 			}));
 		}
 	}

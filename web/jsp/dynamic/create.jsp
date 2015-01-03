@@ -234,6 +234,7 @@
 		</table>
 	</form>
 	<script type="text/javascript">
+		$('list_page').innerHTML = "<TABLE align=center border=0><TBODY><TR><TD style=\"FILTER: mask(color=#000000)\" align=middle><FONT style=\"FONT-SIZE: 24pt\" face=隶书 color=#336699><B title='此处会根据您录入的信息智能分析近似或相关的施工清单，点击可查看相应施工详情'>附近施工清单</B></FONT></TD></TR></TBODY></TABLE> ";
 		function setTimeValue() {
 			$('repairTime').value = getNowDate();
 			//setTimeout('setTimeValue()',1000);

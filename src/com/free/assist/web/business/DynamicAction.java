@@ -138,6 +138,9 @@ public class DynamicAction extends BaseAction {
 		@SuppressWarnings("unchecked")
 		List<SuptAttach> attachList = commonOperateService.selectByExample(attachEx);
 		request.setAttribute("attachList", attachList);
+
+		SysUser currentUser = new SysUser();currentUser.setUserId("");//(SysUser) super.getSessionByDWR().getAttribute("currentUser");
+		request.setAttribute("userRoleName", commonOperateService.queryUserRoleName(currentUser.getUserId()));
 		return new ActionForward("/jsp/dynamic/trendsDetail.jsp");
 	}
 
