@@ -20,7 +20,7 @@
 		<c:forEach items="${requestScope.trendsList}" var="obj" varStatus="n">
 			<tr align="center" bgcolor="" style="cursor: 'hand'">
 				<td align="center" width="6%"><a href="#"
-					onclick="getDetail('${obj.billId}','${obj.billSn}')"><span
+					onclick="getDetail('${obj.billId}','${obj.billSn}','${sessionScope.currentUser.userId}')"><span
 						style="color:blue;">${obj.billSn}</span></a></td>
 				<td align="center" width="4%"><assist:sysDicDisName
 						itemCodeIn="${obj.billStatus}" dictionaryCodeIn="release_status" /></td>

@@ -43,22 +43,22 @@ function showsubmenu(sid) {
 							<table width="100%" border="0" cellspacing="1" cellpadding="3">
 								<tr align="left" width="100%">
 									<td align="right" style="font-size: 13px"><img
-										src="<%=request.getContextPath()%>/images/main/icon_change_un01.gif"
+										src="/images/main/home.png"
 										width="18" height="14"> <a target="_top" href="/homepage/homePageAction.do?method=queryAllPortalData"><font face="楷体"
 											size="2" color="#ffffff">首页</font></a>
 											<img
-										src="<%=request.getContextPath()%>/images/main/ico_fellow.gif"
+										src="/images/main/user.png"
 										width="18" height="14"> <a href="#"><font face="楷体"
 											size="2" color="#ffffff">当前处理人：</font><font face="楷体"
 											size="3" color="#ffffff">${sessionScope.currentUser.userName}</font></a>
 										<img
-										src="<%=request.getContextPath()%>/images/main/ico_cipher.gif"
-										width="13" height="15" border="0"><a
+										src="/images/main/password.png"
+										width="18" height="14" border="0"><a
 										href="/jsp/common/chgPassword.jsp" target="worktable"><font
 											face="楷体" size="2" color="#ffffff">密码修改</font></a> <img
-										src="<%=request.getContextPath()%>/images/main/ico_fellow02.gif"
-										width="13" height="14" border="0"> <a
-										href="<%=request.getContextPath()%>/index.jsp" target="_blank"
+										src="/images/main/logout.png"
+										width="18" height="14" border="0"> <a
+										href="/index.jsp" target="_blank"
 										class="admin_txt"
 										onclick="if (confirm('是否要注销当前登录用户？') == false) return false; window.top.opener = 'anyone'; window.top.close();" />
 										<font face="楷体" size="2" color="#ffffff">注销</font></a></td>

@@ -122,12 +122,12 @@
 	</form>
 	<script>
 		initTabs('tabView1', Array('¶¯Ì¬ÁÐ±í'), 0, '100%', '90%');
-		function getDetail(billId, billSn) {
+		function getDetail(billId, billSn, userId) {
 			createNewTab(
 					'tabView1',
 					'[' + billSn + ']&nbsp;',
 					'',
-					'/business/dynamicAction.do?method=detail&billId=' + billId,
+					'/business/dynamicAction.do?method=detail&billId=' + billId + '&userId=' + userId,
 					true);
 		}
 
@@ -251,8 +251,8 @@
 				}
 			});
 		}
-		function refreshDetail(billId, billSn) {
-			getDetail(billId, billSn);
+		function refreshDetail(billId, billSn, userId) {
+			getDetail(billId, billSn, userId);
 		}
 		function uploadFile(billId) {
 			ymPrompt

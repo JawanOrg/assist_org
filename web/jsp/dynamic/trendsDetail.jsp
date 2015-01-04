@@ -178,7 +178,7 @@
 											</tr>
 											<tr>
 												<td height="30" bgcolor="#f2f2f2" colspan="6" align="right"><c:if
-														test="${task.taskStatus=='audit' && requestScope.userRoleName=='<%=Constant.ROLE_NAME_ADMIN_UNIT%>'}">
+														test="${task.taskStatus=='audit'}">
 														<input name="btnSubmit" type="button"
 															class="btn btn-default btn-sm" id="auditBtn" value="ÉóºË"
 															onclick="audit('${task.billId}','${task.taskId}','${requestScope.trends.billSn}')">
@@ -202,7 +202,7 @@
 													name="btnRefreshDetail" type="button"
 													class="btn btn-default btn-sm" id="btnRefreshDetail"
 													value="Ë¢ÐÂ"
-													onclick="refreshDetail('${task.billId}','${requestScope.trends.billSn}')"></td>
+													onclick="refreshDetail('${task.billId}','${requestScope.trends.billSn}','${sessionScope.currentUser.userId}')"></td>
 											</tr>
 										</c:forEach>
 									</table>

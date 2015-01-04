@@ -114,6 +114,9 @@ public class DynamicAction extends BaseAction {
 	}
 
 	public ActionForward detail(ActionMapping mapping, ActionForm actionform, HttpServletRequest request, HttpServletResponse response) {
+		String userId = StringUtil.nullToEmptyOfObject(request.getParameter("userId"));
+		request.setAttribute("userRoleName", commonOperateService.queryUserRoleName(userId));
+		
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(billId);
@@ -139,8 +142,6 @@ public class DynamicAction extends BaseAction {
 		List<SuptAttach> attachList = commonOperateService.selectByExample(attachEx);
 		request.setAttribute("attachList", attachList);
 
-		SysUser currentUser = new SysUser();currentUser.setUserId("");//(SysUser) super.getSessionByDWR().getAttribute("currentUser");
-		request.setAttribute("userRoleName", commonOperateService.queryUserRoleName(currentUser.getUserId()));
 		return new ActionForward("/jsp/dynamic/trendsDetail.jsp");
 	}
 
