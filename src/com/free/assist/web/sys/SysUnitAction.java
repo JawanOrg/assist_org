@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 
 import com.free.assist.domain.SysUnit;
 import com.free.assist.domain.SysUnitExample;
+import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.service.sys.ISysUnitService;
 import com.free.assist.util.ObjectUtil;
 import com.free.assist.util.StringUtil;
@@ -26,6 +27,8 @@ import com.free.assist.web.BaseAction;
 @Controller("/sys/sysUnitAction")
 public class SysUnitAction extends BaseAction {
 	@Autowired private ISysUnitService sysUnitService;
+	@Autowired
+	private CommonOperateService commonOperateService;
 
 	/**
 	 * 根据父节点取得子节点列表 并构成DHTML TREE的XML 
@@ -192,6 +195,7 @@ public class SysUnitAction extends BaseAction {
 			request.setAttribute("unitId", hma.getUnitId());
 			
 			request.setAttribute("unitDes", hma.getUnitDes());
+			request.setAttribute("unitDesName", commonOperateService.queryUserName(hma.getUnitDes()));
 			request.setAttribute("phone", hma.getPhone());
 			request.setAttribute("isValid", hma.getIsValid());
 			request.setAttribute("isValidName", hma.getIsValidName());
@@ -230,6 +234,7 @@ public class SysUnitAction extends BaseAction {
 			request.setAttribute("unitId", hma.getUnitId());
 			
 			request.setAttribute("unitDes", hma.getUnitDes());
+			request.setAttribute("unitDesName", commonOperateService.queryUserName(hma.getUnitDes()));
 			request.setAttribute("phone", hma.getPhone());
 			request.setAttribute("isValid", hma.getIsValid());
 			request.setAttribute("sortOrder", hma.getSortOrder());

@@ -127,6 +127,17 @@
 
 		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10,
 				homePageStatus, getPoint);
+
+		var webcamFun = function(marker){
+			alert('摄像头接口暂未提供');
+		}
+		var pt = new BMap.Point(120.2511, 30.2445);
+		var myIcon = new BMap.Icon("/images/normal/webcam.png", new BMap.Size(24,24));
+		var webcam = new BMap.Marker(pt,{icon:myIcon});
+		map.addOverlay(webcam);
+		var webcamMenu=new BMap.ContextMenu();
+		webcamMenu.addItem(new BMap.MenuItem('查看',webcamFun.bind(webcam)));
+		webcam.addContextMenu(webcamMenu);		
 	}
 
 	function addMarker(point, imageType) {

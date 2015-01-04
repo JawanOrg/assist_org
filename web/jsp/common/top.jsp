@@ -52,12 +52,12 @@ function showsubmenu(sid) {
 											size="2" color="#ffffff">当前处理人：</font><font face="楷体"
 											size="3" color="#ffffff">${sessionScope.currentUser.userName}</font></a>
 										<img
-										src="/images/main/password.png"
+										src="/images/main/key.png"
 										width="18" height="14" border="0"><a
 										href="/jsp/common/chgPassword.jsp" target="worktable"><font
 											face="楷体" size="2" color="#ffffff">密码修改</font></a> <img
 										src="/images/main/logout.png"
-										width="18" height="14" border="0"> <a
+										width="16" height="16" border="0"> <a
 										href="/index.jsp" target="_blank"
 										class="admin_txt"
 										onclick="if (confirm('是否要注销当前登录用户？') == false) return false; window.top.opener = 'anyone'; window.top.close();" />

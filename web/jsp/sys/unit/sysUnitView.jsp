@@ -99,7 +99,8 @@
 															</div>
 														</td>
 														<td align="left">
-															<input type="text" class="inputtext01" name="unitDes" maxlength="100" size="50" disabled  />
+															<input type="text" class="inputtext01" name="unitDesName" maxlength="100" size="50" disabled  />
+															<input type="hidden" id="unitDes" name="unitDes"/>
 														</td>
 													</tr>
 													<tr>
@@ -159,6 +160,7 @@
 			$("unitType").innerText="¸ÚÎ»";
 		}
 		document.forms[0].unitDes.value ="${requestScope.unitDes}";
+		document.forms[0].unitDesName.value ="${requestScope.unitDesName}";
 		document.forms[0].phone.value ="${requestScope.phone}";
 		if("Y"=="${requestScope.isValid}") {
 			$("isValid_Y").checked=true;

@@ -63,7 +63,7 @@
 					<tr>
 						<td  class="tabpaneleft2"></td>
 						<td class="tabpanebg2"   width="120">
-							<img src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif" width="18" height="15">
+							<img src="/images/main_01/ico_fellow.gif" width="18" height="15">
 							<span>组织修改</span>
 						</td>
 						<td class="tabpaneright2"></td>
@@ -130,7 +130,8 @@
 															</div>
 														</td>
 														<td align="left">
-															<input type="text" class="inputtext01" name="unitDes" maxlength="100" size="50"   />
+															<input type="text" readOnly class="inputtext01" id="unitDesName" name="unitDesName" maxlength="100" size="50" onclick="return showDialogSelectPostUser();"/>
+															<input type="hidden" id="unitDes" name="unitDes"/>
 														</td>
 													</tr>
 													<tr>
@@ -190,6 +191,7 @@
 			$("unitType").innerText="岗位";
 		}
 		document.forms[0].unitDes.value ="${requestScope.unitDes}";
+		document.forms[0].unitDesName.value ="${requestScope.unitDesName}";
 		document.forms[0].phone.value ="${requestScope.phone}";
 		if("Y"=="${requestScope.isValid}") {
 			$("isValid_Y").checked=true;
@@ -201,5 +203,25 @@
 		trimForm();
 	}
 	initData();
+	    
+    function showDialogSelectPostUser() {
+		var roleId='';//$('roleid').value;
+	   	var returnValue= window.showModalDialog("/jsp/sys/role/sysUnitRoleEdit.jsp?roleId="+roleId,"scroll:yes;status:no;help:0;resizable:0;dialogWidth:500px;dialogHeight:500px");
+	   	if(returnValue!=null){
+ 		    var postIdStr="";
+ 		    var userIdStr="";
+ 		    var str = "";
+ 		    userNum = returnValue.split(",");
+ 		    if(userNum.length>=2) {
+ 		    	alert("只能选择一位人员！");
+ 		    }else if(userNum.length==1){
+ 	 		    checkeds = returnValue.split(";");
+ 		        $('unitDesName').value = checkeds[1];
+ 		        $('unitDes').value = checkeds[0].split("|")[0];
+ 		    }
+			ResultOfshowModalDialog = "confirm";                        // 弹出页面sysUnitRoleEdit.jsp通过"确认"按钮返回此页面
+ 		}
+
+    }    
 </script>
 </html>
