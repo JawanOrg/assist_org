@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="conf"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7"/>
 	<classpathentry kind="lib" path="D:/jboss/jboss423person/server/default/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="D:/jboss/jboss423person/server/default/lib/jboss-jaxrpc.jar"/>
 	<classpathentry kind="lib" path="D:/jboss/jboss423person/server/default/lib/activation.jar"/>
@@ -122,5 +121,10 @@
 	<classpathentry kind="lib" path="web/WEB-INF/lib/httpmime-4.3.1.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="lib" path="web/WEB-INF/lib/morph-1.1.1.zip"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>

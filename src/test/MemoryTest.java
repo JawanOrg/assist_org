@@ -8,7 +8,7 @@ import java.io.FileReader;
  */
 public class MemoryTest {
 	public void test() {
-		try {
+		try { 
 			String filepath = "com/regaltec/ida40/sa/common/config/ibatis";
 			File file = new File(filepath);
 			if (!file.isDirectory()) {
