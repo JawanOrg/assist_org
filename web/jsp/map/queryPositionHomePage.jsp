@@ -148,15 +148,17 @@
 		}
 	}
 	function getPoint(str) {
-		var myobj = eval(str);
-		for (var i = 0; i < myobj.length; i++) {
-			var point = new BMap.Point(myobj[i].longitude, myobj[i].latitude);
-			addMarker(point, myobj[i].imageType);
-
-			map.addHotspot(new BMap.Hotspot(point, {
-				//text : myobj[i].name + "<br>" + myobj[i].address
-				text : myobj[i].address
-			}));
+		if(str!=null&&str!=""){
+			var myobj = eval(str);
+			for (var i = 0; i < myobj.length; i++) {
+				var point = new BMap.Point(myobj[i].longitude, myobj[i].latitude);
+				addMarker(point, myobj[i].imageType);
+	
+				map.addHotspot(new BMap.Hotspot(point, {
+					//text : myobj[i].name + "<br>" + myobj[i].address
+					text : myobj[i].address
+				}));
+			}
 		}
 	}
 

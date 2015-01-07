@@ -19,6 +19,7 @@ import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.util.Constant;
 import com.free.assist.util.Helper;
 import com.free.assist.util.MapUtil;
+import com.free.assist.util.StringUtil;
 
 @Service("dynamicOperateService")
 public class DynamicOperateServiceImpl extends BaseServiceImpl implements DynamicOperateService {
@@ -81,7 +82,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		action.setOperator(action.getUserVO().getUserId());
 		suptActionDAO.insertSelective(action);
 
-		MapUtil.savePoint(relsease.getPositionAddress(), relsease.getLongitude().toString(), relsease.getLatitude().toString(), relsease.getBillId());
+		MapUtil.savePoint(relsease.getPositionAddress(), StringUtil.nullToEmptyOfObject(relsease.getLongitude()), StringUtil.nullToEmptyOfObject(relsease.getLatitude()), relsease.getBillId());
 
 		return Constant.OPERATE_RESULT_SUCCESS;
 	}
