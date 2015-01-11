@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" pageEncoding="GBK"
 	language="java"%>
 <script type='text/javascript' src='/js/prototype.js'></script>
@@ -5,7 +6,7 @@
 <script type='text/javascript' src='/js/validator.js'></script>
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
-<script type='text/javascript' src='/dwr/interface/dynamicAction.js'></script>
+<script type='text/javascript' src='/dwr/interface/reportAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp'%>
 <link rel="stylesheet" href="/css/cb2.css"
 	type="text/css">
@@ -104,7 +105,7 @@
 										<td class="tabpaneleft2"></td>
 										<td class="tabpanebg2" width="120"><img
 											src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif"
-											width="18" height="15"> <span>&nbsp;动态列表</span></td>
+											width="18" height="15"> <span>&nbsp;项目清单</span></td>
 										<td class="tabpaneright2"></td>
 									</tr>
 								</table>
@@ -121,7 +122,7 @@
 		</table>
 	</form>
 	<script>
-		initTabs('tabView1', Array('动态列表'), 0, '100%', '90%');
+		initTabs('tabView1', Array('项目清单'), 0, '100%', '90%');
 		function getDetail(billId, billSn, userId) {
 			createNewTab(
 					'tabView1',
@@ -135,7 +136,7 @@
 		function initQueryResultList() {
 			DWRUtil.useLoadingMessage('数据读取中...');
 			var formObj = $('queryForm').serialize(true);
-			dynamicAction.queryRemind(formObj, showResultList);
+			reportAction.projectCollect(formObj, showResultList);
 		}
 
 		function showResultList(str) {

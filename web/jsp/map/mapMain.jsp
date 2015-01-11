@@ -208,15 +208,17 @@ body,html,#allmap {
 	function queryData(str) {
 		//alert(str);
 		var data = JSON.parse(str);
-		var allTitle = "";
+		var allAddress = "";
 		if (data.contents != undefined && data.contents.length > 0) {
 			for (var i = 0; i < data.contents.length; i++) {
-				allTitle += (i + 1) + "：" + data.contents[i].title + "<br>";
+				allAddress += (i + 1) + "：" + data.contents[i].address + "<br>";
 			}
 			ymPrompt.alert({
 				message : "此区域包含" + data.contents.length + "个施工点<br>"
-						+ allTitle,
-				title : ''
+						+ allAddress,
+				title : '',
+				width:400,
+				height:250,
 			});
 		}
 	}

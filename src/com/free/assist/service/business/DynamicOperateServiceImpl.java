@@ -216,18 +216,16 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
-	public String finishWork(SuptAction action) {
-		BusReleaseTrendsKey trendsKey = new BusReleaseTrendsKey();
-		trendsKey.setBillId(action.getBillId());
-		BusReleaseTrends oldRelsease = busReleaseTrendsDAO.selectByPrimaryKey(trendsKey);
-		if (oldRelsease != null && !Constant.S_WORK.equals(oldRelsease.getBillStatus())) {
-			return "动态信息已经不在施工状态！";
-		}
-
+	public String finishWork(BusReleaseTrendsWithBLOBs relsease, SuptAction action) {
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(action.getBillId());
 		BusReleaseTrendsWithBLOBs trends = busReleaseTrendsDAO.selectByPrimaryKey(key);
+		if (trends != null && !Constant.S_WORK.equals(trends.getBillStatus())) {
+			return "动态信息已经不在施工状态！";
+		}
 
+		trends.setRealRepairBeginTime(relsease.getRealRepairBeginTime());
+		trends.setRealRepairEndTime(relsease.getRealRepairEndTime());
 		trends.setBillStatus(Constant.S_FINISH);
 		busReleaseTrendsDAO.updateByPrimaryKeySelective(trends);
 

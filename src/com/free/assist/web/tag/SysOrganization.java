@@ -10,51 +10,68 @@ import javax.servlet.jsp.tagext.TagSupport;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.free.assist.domain.SysUnit;
+import com.free.assist.domain.SysUnitExample;
+import com.free.assist.domain.SysUnitKey;
 import com.free.assist.domain.SysUser;
 import com.free.assist.domain.SysUserExample;
 import com.free.assist.service.sys.ISysLoginService;
+import com.free.assist.util.Constant;
 
 public class SysOrganization extends TagSupport {
-    private static final long serialVersionUID = 1695016026335692575L;
-    private String objectId;
-    private String objectType;
+	private static final long serialVersionUID = 1695016026335692575L;
+	private String objectId;
+	private String objectType;
 
-    @Override
-    public int doStartTag() throws JspException {
-        JspWriter out = pageContext.getOut();
-        ApplicationContext context =
-                WebApplicationContextUtils.getWebApplicationContext(pageContext.getServletContext());
-        ISysLoginService sysLoginService = (ISysLoginService) context.getBean("sysLoginService");
+	@Override
+	public int doStartTag() throws JspException {
+		JspWriter out = pageContext.getOut();
+		ApplicationContext context = WebApplicationContextUtils
+				.getWebApplicationContext(pageContext.getServletContext());
+		ISysLoginService sysLoginService = (ISysLoginService) context
+				.getBean("sysLoginService");
 
-        if (objectId != null && !objectId.equalsIgnoreCase("")) {
-            try {
-                SysUserExample ex = new SysUserExample();
-                ex.createCriteria().andUserIdEqualTo(objectId);
-                List list = sysLoginService.selectByExample(ex);
-                if (list != null && list.size() != 0) {
-                    SysUser user = (SysUser) list.get(0);
-                    out.println(user.getUserName());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return SKIP_BODY;
-    }
+		if (objectId != null && !objectId.equalsIgnoreCase("")) {
+			try {
+				if (objectType != null
+						&& !Constant.DEAL_OBJECT_TYPE_PERSON.equals(objectType)) {
+					SysUnitExample ex = new SysUnitExample();
+					ex.createCriteria().andUnitIdEqualTo(objectId);
+					List list = sysLoginService.selectByExample(ex);
+					if (list != null && list.size() != 0) {
+						SysUnit unit = (SysUnit) list.get(0);
+						out.println(unit.getUnitName());
+					}
 
-    public String getObjectId() {
-        return objectId;
-    }
+				} else {
+					SysUserExample ex = new SysUserExample();
+					ex.createCriteria().andUserIdEqualTo(objectId);
+					List list = sysLoginService.selectByExample(ex);
+					if (list != null && list.size() != 0) {
+						SysUser user = (SysUser) list.get(0);
+						out.println(user.getUserName());
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return SKIP_BODY;
+	}
 
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
-    }
+	public String getObjectId() {
+		return objectId;
+	}
 
-    public String getObjectType() {
-        return objectType;
-    }
+	public void setObjectId(String objectId) {
+		this.objectId = objectId;
+	}
 
-    public void setObjectType(String objectType) {
-        this.objectType = objectType;
-    }
+	public String getObjectType() {
+		return objectType;
+	}
+
+	public void setObjectType(String objectType) {
+		this.objectType = objectType;
+	}
 }

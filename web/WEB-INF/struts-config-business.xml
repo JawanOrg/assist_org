@@ -5,7 +5,8 @@
 		<form-bean name="dynamicForm" type="com.free.assist.web.business.DynamicForm" /> 
 		<form-bean name="newsForm" type="com.free.assist.web.business.newsForm" />  
 		<form-bean name="homePageForm" type="com.free.assist.web.homepage.HomePageForm" />  
-		<form-bean name="linePipeForm" type="com.free.assist.web.business.LinePipeForm" />  
+		<form-bean name="linePipeForm" type="com.free.assist.web.business.LinePipeForm" />
+		<form-bean name="reportForm" type="com.free.assist.web.business.ReportForm" />
 	</form-beans>
 	<action-mappings>
 		<action path="/business/dynamicAction" name="dynamicForm" scope="request" parameter="method" validate="false">
@@ -19,6 +20,9 @@
 		</action>
 		<action path="/business/linePipeAction" name="linePipeForm" scope="request" parameter="method" validate="false">
 			<description>管线信息</description>
+		</action>
+		<action path="/business/reportAction" name="reportForm" scope="request" parameter="method" validate="false">
+			<description>报表</description>
 		</action>
 	</action-mappings>
 </struts-config>

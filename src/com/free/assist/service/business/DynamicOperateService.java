@@ -13,6 +13,6 @@ public interface DynamicOperateService extends BaseService {
 
     String writeSuggestion(SuptAction action);
 
-    String finishWork(SuptAction action);
+    String finishWork(BusReleaseTrendsWithBLOBs relsease, SuptAction action);
 
 }

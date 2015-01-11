@@ -101,29 +101,35 @@
 										</tr>
 										<tr>
 											<td height="30" align="right" class="left_txt2">城区：</td>
-											<td height="30"><assist:sysDicDisName
-													itemCodeIn="${requestScope.trends.city}"
-													dictionaryCodeIn="release_city" /></td>
+											<td height="30">${requestScope.trends.city}</td>
+											<td height="30" align="right" class="left_txt2">街道：</td>
+											<td height="30">${requestScope.trends.street}</td>
 											<td height="30" align="right" class="left_txt2">社区：</td>
-											<td height="30"><assist:sysDicDisName
-													itemCodeIn="${requestScope.trends.community}"
-													dictionaryCodeIn="release_community" /></td>
-											<td height="30" align="right" class="left_txt2">道路：</td>
-											<td height="30">${requestScope.trends.road}</td>
+											<td height="30">${requestScope.trends.community}</td>
 										</tr>
 										<tr>
+											<td height="30" align="right" bgcolor="#f2f2f2"
+												class="left_txt2">道路：</td>
+											<td height="30" bgcolor="#f2f2f2">
+												${requestScope.trends.road}</td>
 											<td height="30" align="right" bgcolor="#f2f2f2"
 												class="left_txt2">门牌：</td>
 											<td height="30" bgcolor="#f2f2f2">
 												${requestScope.trends.numberPlate}</td>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2">施工时间：</td>
-											<td height="30" bgcolor="#f2f2f2"><fmt:formatDate
-													value="${requestScope.trends.repairTime}" type="both"
-													pattern="yyyy-MM-dd HH:mm:ss" /></td>
-											<td height="30" align="right" bgcolor="#f2f2f2"
-												class="left_txt2"></td>
-											<td height="30" bgcolor="#f2f2f2"></td>
+											<c:if test="${requestScope.trends.billStatus!='finish'}">
+												<td height="30" align="right" bgcolor="#f2f2f2"
+													class="left_txt2">计划开始时间：</td>
+												<td height="30" bgcolor="#f2f2f2"><fmt:formatDate
+														value="${requestScope.trends.repairTime}" type="both"
+														pattern="yyyy-MM-dd HH:mm" /></td>
+											</c:if>
+											<c:if test="${requestScope.trends.billStatus=='finish'}">
+												<td height="30" align="right" bgcolor="#f2f2f2"
+													class="left_txt2">实际开工时间：</td>
+												<td height="30" bgcolor="#f2f2f2"><fmt:formatDate
+														value="${requestScope.trends.realRepairBeginTime}" type="both"
+														pattern="yyyy-MM-dd HH:mm" /></td>
+											</c:if>
 										</tr>
 										<tr>
 											<td height="30" align="right" class="left_txt2">现场联系人：</td>
@@ -131,8 +137,18 @@
 											<td height="30" align="right" class="left_txt2">现场联系人电话：</td>
 											<td height="30">${requestScope.trends.scenePersonPhone}
 											</td>
-											<td height="30" align="right" class="left_txt2"></td>
-											<td height="30"></td>
+											<c:if test="${requestScope.trends.billStatus!='finish'}">
+												<td height="30" align="right" class="left_txt2">计划结束时间：</td>
+												<td height="30"><fmt:formatDate
+														value="${requestScope.trends.repairEndTime}" type="both"
+														pattern="yyyy-MM-dd HH:mm" /></td>
+											</c:if>
+											<c:if test="${requestScope.trends.billStatus=='finish'}">
+												<td height="30" align="right" class="left_txt2">实际完工时间：</td>
+												<td height="30"><fmt:formatDate
+														value="${requestScope.trends.realRepairEndTime}" type="both"
+														pattern="yyyy-MM-dd HH:mm" /></td>
+											</c:if>
 										</tr>
 										<tr>
 											<td height="30" align="right" bgcolor="#f2f2f2"

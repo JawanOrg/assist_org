@@ -14,6 +14,7 @@ import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 import org.springframework.stereotype.Controller;
 
+import com.free.assist.domain.BusReleaseTrends;
 import com.free.assist.domain.BusReleaseTrendsWithBLOBs;
 import com.free.assist.domain.BusReleaseTrendsWithBLOBsExample;
 import com.free.assist.domain.BusReleaseTrendsKey;
@@ -28,6 +29,7 @@ import com.free.assist.service.business.DynamicOperateService;
 import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.util.ChartHelper;
 import com.free.assist.util.Constant;
+import com.free.assist.util.Helper;
 import com.free.assist.util.ObjectUtil;
 import com.free.assist.util.StringUtil;
 import com.free.assist.web.BaseAction;
@@ -216,6 +218,11 @@ public class DynamicAction extends BaseAction {
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		String taskId = StringUtil.nullToEmptyOfObject(request.getParameter("taskId"));
 		String billSn = StringUtil.nullToEmptyOfObject(request.getParameter("billSn"));
+		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
+		key.setBillId(billId);
+		BusReleaseTrends trends = (BusReleaseTrends) commonOperateService.selectByPrimaryKeyWithBLOBs(key);
+		request.setAttribute("repairTime", Helper.formateDate(trends.getRepairTime(),"yyyy-MM-dd HH:mm"));
+		request.setAttribute("repairEndTime", Helper.formateDate(trends.getRepairEndTime(),"yyyy-MM-dd HH:mm"));
 		request.setAttribute("billId", billId);
 		request.setAttribute("billSn", billSn);
 		request.setAttribute("taskId", taskId);
@@ -228,7 +235,9 @@ public class DynamicAction extends BaseAction {
 		action.setBillId(form.getBillId());
 		action.setTaskId(form.getTaskId());
 		action.setRemark(form.getAuditSuggestion());
-		return dynamicOperateService.finishWork(action);
+		BusReleaseTrendsWithBLOBs busRelease = new BusReleaseTrendsWithBLOBs();
+		ObjectUtil.copyObjectToObject(form, busRelease);
+		return dynamicOperateService.finishWork(busRelease, action);
 	}
 
 	public ActionForward showChart(ActionMapping mapping, ActionForm actionform, HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -48,7 +48,7 @@
 	var customLayer = null;
 	var map = null;
 	var overlayRectangle = null;
-	window.onload = function() {
+	 $(function() {
 		map = new BMap.Map("allmap");
 		map.centerAndZoom(new BMap.Point(120.1511, 30.2445), 12);
 		map.enableScrollWheelZoom(true);
@@ -139,6 +139,7 @@
 		webcamMenu.addItem(new BMap.MenuItem('查看',webcamFun.bind(webcam)));
 		webcam.addContextMenu(webcamMenu);		
 	}
+	 )
 
 	function addMarker(point, imageType) {
 		var marker = new BMap.Marker(point);

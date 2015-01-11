@@ -7,9 +7,31 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="/css/homepage.css" type="text/css">
 <link rel="stylesheet" href="/css/map.css" type="text/css">
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2&ak=esZROYshLrE7kGpuRnNiG4nR"></script>
 <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
 	src="/js/jquery.SuperSlide.2.1.1.source.js"></script>
+<script type="text/javascript">
+	function queryStatusPosition(status) {
+		if (status == "plan") {
+			document.getElementById("plan").className = "map-btn2-on";
+			document.getElementById("doing").className = "map-btn2";
+			document.getElementById("finish").className = "map-btn2";
+			document.getElementById("mapiframe").src = "/jsp/map/queryPositionHomePage.jsp?homePageStatus=plan";
+		} else if (status == "doing") {
+			document.getElementById("plan").className = "map-btn2";
+			document.getElementById("doing").className = "map-btn2-on";
+			document.getElementById("finish").className = "map-btn2";
+			document.getElementById("mapiframe").src = "/jsp/map/queryPositionHomePage.jsp?homePageStatus=doing";
+		} else if (status == "finish") {
+			document.getElementById("plan").className = "map-btn2";
+			document.getElementById("doing").className = "map-btn2";
+			document.getElementById("finish").className = "map-btn2-on";
+			document.getElementById("mapiframe").src = "/jsp/map/queryPositionHomePage.jsp?homePageStatus=finish";
+		}
+	}
+</script>
 <title>管线协作管理系统</title>
 </head>
 
@@ -163,7 +185,7 @@
 			<td width="280" valign="top">
 				<div class="gx-box2-wrap">
 					<div class="box-top">
-						<apsn class="titleName">新闻动态</span> <span class="gx-more"><a
+						<span class="titleName">新闻动态</span> <span class="gx-more"><a
 							href="/homepage/homePageAction.do?method=queryMoreNews">更多 》</a></span>
 					</div>
 
@@ -181,7 +203,7 @@
 				<div class="gx-interlayer-top"></div>
 				<div class="gx-box2-wrap">
 					<div class="box-top">
-						<apsn class="titleName">管线常识</span> <span class="gx-more"><a
+						<span class="titleName">管线常识</span> <span class="gx-more"><a
 							href="/homepage/homePageAction.do?method=queryMorePipeKnowledge">更多
 								》</a></span>
 					</div>
@@ -197,7 +219,7 @@
 				<div class="gx-interlayer-top"></div>
 				<div class="gx-box2-wrap">
 					<div class="box-top">
-						<apsn class="titleName">管线识别</span> <span class="gx-more"><a
+						<span class="titleName">管线识别</span> <span class="gx-more"><a
 							href="/homepage/homePageAction.do?method=queryMorePipeKnow">更多
 								》</a></span>
 					</div>
@@ -213,7 +235,7 @@
 				<div class="gx-interlayer-top"></div>
 				<div class="gx-box2-wrap">
 					<div class="box-top">
-						<apsn class="titleName">管线法规</span> <span class="gx-more"><a
+						<span class="titleName">管线法规</span> <span class="gx-more"><a
 							href="/homepage/homePageAction.do?method=queryMorePipeRule">更多
 								》</a></span>
 					</div>
@@ -242,24 +264,4 @@
 	<jsp:include page="/jsp/portal/bottom.jsp"></jsp:include>
 
 </body>
-<script type="text/javascript">
-	function queryStatusPosition(status) {
-		if (status == "plan") {
-			document.getElementById("plan").className = "map-btn2-on";
-			document.getElementById("doing").className = "map-btn2";
-			document.getElementById("finish").className = "map-btn2";
-			document.getElementById("mapiframe").src = "/jsp/map/queryPositionHomePage.jsp?homePageStatus=plan";
-		} else if (status == "doing") {
-			document.getElementById("plan").className = "map-btn2";
-			document.getElementById("doing").className = "map-btn2-on";
-			document.getElementById("finish").className = "map-btn2";
-			document.getElementById("mapiframe").src = "/jsp/map/queryPositionHomePage.jsp?homePageStatus=doing";
-		} else if (status == "finish") {
-			document.getElementById("plan").className = "map-btn2";
-			document.getElementById("doing").className = "map-btn2";
-			document.getElementById("finish").className = "map-btn2-on";
-			document.getElementById("mapiframe").src = "/jsp/map/queryPositionHomePage.jsp?homePageStatus=finish";
-		}
-	}
-</script>
 </html>

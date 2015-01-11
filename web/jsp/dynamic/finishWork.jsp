@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" language="java"%>
+<%@ include file='/jsp/common/calendar.jsp'%>
 <script type='text/javascript' src='/js/prototype.js'></script>
 <script type='text/javascript' src='/js/commonjs.js'></script>
 <script type='text/javascript' src='/js/validator.js'></script>
@@ -8,6 +10,8 @@
 <%@ include file='/jsp/common/allTag.jsp'%>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+<link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"
+	media="screen">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
@@ -59,6 +63,32 @@
 								cellspacing=0 bordercolorlight=#CCCCCC bordercolordark=#FFFFFF
 								bgcolor="#FFFFFF" frame=box id=powergrid style="FONT-SIZE: 13px"
 								pcolor="#CCCCCC">
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td noWrap>
+										<div align="right">实际开工时间：</div>
+									</td>
+									<td align="left" colspan="2"><input id="realRepairBeginTime" name="realRepairBeginTime"
+															type="text" class="form-control" dataType="Require"
+															msg="'计划开始时间'必填" value="${requestScope.repairTime}"
+															onclick="showcalendar(event, this, true);"
+															onfocus="showcalendar(event, this, true);if(this.value=='0000-00-00') this.value=''" /></td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td noWrap>
+										<div align="right">实际完工时间：</div>
+									</td>
+									<td align="left" colspan="2"><input id="realRepairEndTime" name="realRepairEndTime"
+															type="text" class="form-control" dataType="Require"
+															msg="'计划开始时间'必填" value="${requestScope.repairEndTime}"
+															onclick="showcalendar(event, this, true);"
+															onfocus="showcalendar(event, this, true);if(this.value=='0000-00-00') this.value=''" /></td>
+								</tr>
 								<tr>
 									<td>&nbsp;</td>
 								</tr>
