@@ -90,7 +90,7 @@
 							<li><i class="statistics_icon02"></i><span>图表模式</span></li>
 						</ul>
 					</div>
-					<div class="bd">
+					<div class="bd" style="border:1px solid #c5c2c2; background-color:#f6f4f4; padding:3px;">
 						<div style="height:400px; position:relative;">
 							<iframe id="mapiframe" frameborder="no" border="0"
 								marginwidth="0" marginheight="0" width="100%" height="100%"
@@ -113,10 +113,9 @@
 							地图模式
 						</div>
 						<div style="height:400px">
-							<iframe id="chart" frameborder="no" border="0"
-								marginwidth="0" marginheight="0" width="100%" height="100%"
-								allowTransparency="true"
-								src="/jsp/portal/chart.jsp"></iframe>
+							<iframe id="chart" frameborder="no" border="0" marginwidth="0"
+								marginheight="0" width="100%" height="100%"
+								allowTransparency="true" src="/jsp/portal/chart.jsp"></iframe>
 							图表模式
 						</div>
 					</div>
@@ -247,6 +246,17 @@
 								href="/homepage/homePageAction.do?method=queryDetailPipeRule&billId=${objData.contentId}">${fn:length(objData.theTitle)>25?fn:substring(objData.theTitle,0,25):objData.theTitle}</a></li>
 						</c:forEach>
 					</ul>
+				</div>
+				<div class="gx-interlayer-top"></div>
+				<div class="gx-box2-wrap">
+					<div class="box-top">
+						<apsn class="titleName">相关网站</span>
+					</div>
+					<div class="gx-webSite-wrap">
+						<a href="#"><i></i>广州燃气集团</a> <a href="#"><i></i>广州燃气集团燃气</a> <a
+							href="#"><i></i>广州燃气集团</a> <a href="#"><i></i>广州燃气集团</a> <a
+							href="#"><i></i>广州燃气集团燃气</a> <a href="#"><i></i>广州燃气集团</a>
+					</div>
 				</div>
 				<div class="gx-interlayer-top"></div>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">

@@ -30,14 +30,32 @@ body,html,#allmap {
 	overflow: hidden;
 	margin: 0;
 }
+
+.titleName {
+	white-space: nowrap;
+	text-align: center;
+	filter: alpha(opacity = 50); /*IE滤镜，透明度50%*/
+	-moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+	opacity: 0.5; /*其他，透明度50%*/
+	color: #B22222;
+	font-weight:bold;
+	font-style:italic;
+}
 </style>
 <script type="text/javascript">
 	var customLayer = null;
 	var map = null;
+	var allMarkerStr = null;
+	var currentZoom = null;
 	var overlayRectangle = null;
+	var myIcon = new BMap.Icon("/images/homepage/position_red.png",
+			new BMap.Size(16, 16));
 	function ZoomControl() {
 		this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
 		this.defaultOffset = new BMap.Size(600, 10);
+	}
+	var webcamFun = function(marker) {
+		alert('摄像头接口暂未提供');
 	}
 	window.onload = function() {
 		map = new BMap.Map("allmap");
@@ -50,6 +68,13 @@ body,html,#allmap {
 				map.centerAndZoom("杭州", 12);
 			}
 		}, "杭州市");
+
+		var myZoomCtrl = new ZoomControl();
+		map.addControl(myZoomCtrl);
+		map.addEventListener("zoomend", function() {
+			currentZoom = this.getZoom();
+			showAllMarker(allMarkerStr);
+		});
 
 		ZoomControl.prototype = new BMap.Control();
 		ZoomControl.prototype.initialize = function(map) {
@@ -137,24 +162,44 @@ body,html,#allmap {
 		addCustomLayer(map);
 
 		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10, 'doing',
-				getPoint);
+				showAllMarker);
 	}
 
 	function addMarker(point, imageType) {
-		var marker = new BMap.Marker(point);
-		map.addOverlay(marker);
-		if (imageType == "animation") {
-			marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+		if (currentZoom <= 12) {
+			var marker = new BMap.Marker(point);
+			map.addOverlay(marker);
+		} else {
+			var marker = new BMap.Marker(point, {
+				icon : myIcon
+			});			
+			var label = new BMap.Label("<div class='titleName'>" + '电信'
+					+ "</div>", {
+				offset : new BMap.Size(-10, -16),position:point
+			});
+			label.setTitle("提醒");
+			marker.setLabel(label);
+			map.addOverlay(marker);
+			var markerMenu = new BMap.ContextMenu();
+			markerMenu.addItem(new BMap.MenuItem('查看', webcamFun.bind(marker)));
+			marker.addContextMenu(markerMenu);
+			if (imageType == "animation") {
+				marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+			}
 		}
 	}
-	function getPoint(str) {
-		var myobj = eval(str);
+	function showAllMarker(str) {
+		if (str != undefined && str != null) {
+			allMarkerStr = str;
+		}
+		map.clearOverlays();
+		var myobj = eval(allMarkerStr);
 		for (var i = 0; i < myobj.length; i++) {
 			var point = new BMap.Point(myobj[i].longitude, myobj[i].latitude);
 			addMarker(point, myobj[i].imageType);
 
 			map.addHotspot(new BMap.Hotspot(point, {
-				text : myobj[i].name + "<br>" + myobj[i].address
+				text : myobj[i].address
 			}));
 		}
 	}

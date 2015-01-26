@@ -31,6 +31,17 @@ body, html, #allmap {
 	overflow: hidden;
 	margin: 0;
 }
+
+.titleName {
+	white-space: nowrap;
+	text-align: center;
+	filter: alpha(opacity = 50); /*IE滤镜，透明度50%*/
+	-moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+	opacity: 0.5; /*其他，透明度50%*/
+	color: #B22222;
+	font-weight:bold;
+	font-style:italic;
+}
 </style>
 <script type="text/javascript">
 	$.extend({
@@ -68,8 +79,8 @@ body, html, #allmap {
 	var currentZoom = null;
 	var map = null;
 	var overlayRectangle = null;
-	var myIcon = new BMap.Icon("/images/normal/webcam.png", new BMap.Size(24,
-			24));
+	var myIcon = new BMap.Icon("/images/homepage/position_red.png",
+			new BMap.Size(16, 16));
 	function ZoomControl() {
 		this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
 		this.defaultOffset = new BMap.Size(600, 10);
@@ -200,19 +211,7 @@ body, html, #allmap {
 						}
 						marker.addContextMenu(markerContextMenu);
 					}
-				} /*, {
-																	text : '显示所有施工点',
-																	callback : function() {
-																		addCustomLayer(map);
-																	}
-																}, {
-																	text : '隐藏所有施工点',
-																	callback : function() {
-																		if (customLayer) {
-																			map.removeTileLayer(customLayer);
-																		}
-																	}
-																}*/];
+				} ];
 		for (var i = 0; i < txtMenuItem.length; i++) {
 			contextMenu.addItem(new BMap.MenuItem(txtMenuItem[i].text,
 					txtMenuItem[i].callback, 100));
@@ -229,18 +228,23 @@ body, html, #allmap {
 	}
 
 	function addMarker(point, imageType) {
-		var marker = new BMap.Marker(point);
-		map.addOverlay(marker);
-		if (currentZoom <= 10) {
-			var pt = new BMap.Point(120.2511, 30.2445);
-			var webcam = new BMap.Marker(pt, {
+		if (currentZoom <= 12) {
+			var marker = new BMap.Marker(point);
+			map.addOverlay(marker);
+		} else {
+			var marker = new BMap.Marker(point, {
 				icon : myIcon
+			});			
+			var label = new BMap.Label("<div class='titleName'>" + '电信'
+					+ "</div>", {
+				offset : new BMap.Size(-10, -16),position:point
 			});
-			map.addOverlay(webcam);
-			var webcamMenu = new BMap.ContextMenu();
-			webcamMenu.addItem(new BMap.MenuItem('查看', webcamFun.bind(webcam)));
-			webcam.addContextMenu(webcamMenu);
-
+			label.setTitle("提醒");
+			marker.setLabel(label);
+			map.addOverlay(marker);
+			var markerMenu = new BMap.ContextMenu();
+			markerMenu.addItem(new BMap.MenuItem('查看', webcamFun.bind(marker)));
+			marker.addContextMenu(markerMenu);
 			if (imageType == "animation") {
 				marker.setAnimation(BMAP_ANIMATION_BOUNCE);
 			}
@@ -253,8 +257,7 @@ body, html, #allmap {
 		map.clearOverlays();
 		var myobj = eval(allMarkerStr);
 		for (var i = 0; i < myobj.length; i++) {
-			var point = new BMap.Point(myobj[i].longitude,
-					myobj[i].latitude);
+			var point = new BMap.Point(myobj[i].longitude, myobj[i].latitude);
 			addMarker(point, myobj[i].imageType);
 
 			map.addHotspot(new BMap.Hotspot(point, {
