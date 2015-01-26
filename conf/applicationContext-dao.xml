@@ -106,5 +106,7 @@
     <bean id="busLinePipeKnowDAO" class="com.free.assist.dao.BusLinePipeKnowDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
     <bean id="busLinePipeRuleDAO" class="com.free.assist.dao.BusLinePipeRuleDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
     <bean id="forumTopicsDAO" class="com.free.assist.dao.ForumTopicsDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    <bean id="busReleaseActualDAO" class="com.free.assist.dao.BusReleaseActualDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
+    <bean id="suptNoticeObjectDAO" class="com.free.assist.dao.SuptNoticeObjectDAOImpl" p:sqlMapClientTemplate-ref="sqlMapClientTemplate" />
 
 </beans>

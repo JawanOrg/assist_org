@@ -47,4 +47,7 @@ public class Constant {
 	public static String UNIT_TYPE_UNIT = "U";
 	public static String UNIT_TYPE_POST = "P";
 	public static String UNIT_TYPE_GROUG = "G";
+	
+	public static String S_ACTUAL_NORMAL = "normal";
+	public static String S_ACTUAL_DELETED = "deleted";
 }

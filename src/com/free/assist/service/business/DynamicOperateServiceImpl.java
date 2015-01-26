@@ -100,7 +100,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		BusReleaseTrendsWithBLOBs relsease = new BusReleaseTrendsWithBLOBs();
 		relsease.setBillId(action.getBillId());
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
-			relsease.setBillStatus(Constant.S_RELEASE);
+			relsease.setBillStatus(Constant.S_WORK);
 		} else if (Constant.OP_AUDIT_NOTAGREE.equals(action.getActionType())) {
 			relsease.setBillStatus(Constant.S_CREATE);
 		}
@@ -118,10 +118,9 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
-			task.setTaskStatus(Constant.S_RELEASE);
-			String userRoleName = commonOperateService.queryUserRoleName(action.getUserVO().getUserId());
-			task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId(), userRoleName, relsease.getBillStatus()));
-			task.setDealObjectGroup(commonOperateService.queryUserUnitName(task.getDealObjectId()));
+			task.setTaskStatus(Constant.S_WORK);
+			task.setDealObjectId(oldRelsease.getCreator());
+			task.setDealObjectGroup(oldRelsease.getCreateDept());
 		} else if (Constant.OP_AUDIT_NOTAGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_CREATE);
 			task.setDealObjectId(oldRelsease.getCreator());

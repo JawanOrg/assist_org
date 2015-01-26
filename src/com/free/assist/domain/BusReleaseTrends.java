@@ -80,6 +80,10 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
 
     private String comeFrom;
 
+    private String deptPersonName;
+
+    private String deptPersonPhone;
+
     private static final long serialVersionUID = 1L;
 
     @javax.persistence.Column(name="BILL_SN", nullable=false, length=32)
@@ -319,4 +323,13 @@ public class BusReleaseTrends extends BusReleaseTrendsKey implements Serializabl
 	public void setComeFrom(String comeFrom) {
 		this.comeFrom = comeFrom;
 	}
+
+    @javax.persistence.Column(name="DEPT_PERSON_PHONE", nullable=true, length=32)
+    public String getDeptPersonPhone() {
+        return deptPersonPhone;
+    }
+
+    public void setDeptPersonPhone(String deptPersonPhone) {
+        this.deptPersonPhone = deptPersonPhone;
+    }
 }

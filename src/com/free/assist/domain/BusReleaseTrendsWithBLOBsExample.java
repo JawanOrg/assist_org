@@ -2101,6 +2101,146 @@ public class BusReleaseTrendsWithBLOBsExample  extends BaseExample{
             return this;
         }
 
+        public Criteria andDeptPersonNameIsNull() {
+            addCriterion("DEPT_PERSON_NAME is null");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameIsNotNull() {
+            addCriterion("DEPT_PERSON_NAME is not null");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameEqualTo(String value) {
+            addCriterion("DEPT_PERSON_NAME =", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameNotEqualTo(String value) {
+            addCriterion("DEPT_PERSON_NAME <>", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameGreaterThan(String value) {
+            addCriterion("DEPT_PERSON_NAME >", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameGreaterThanOrEqualTo(String value) {
+            addCriterion("DEPT_PERSON_NAME >=", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameLessThan(String value) {
+            addCriterion("DEPT_PERSON_NAME <", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameLessThanOrEqualTo(String value) {
+            addCriterion("DEPT_PERSON_NAME <=", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameLike(String value) {
+            addCriterion("DEPT_PERSON_NAME like", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameNotLike(String value) {
+            addCriterion("DEPT_PERSON_NAME not like", value, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameIn(List<String> values) {
+            addCriterion("DEPT_PERSON_NAME in", values, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameNotIn(List<String> values) {
+            addCriterion("DEPT_PERSON_NAME not in", values, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameBetween(String value1, String value2) {
+            addCriterion("DEPT_PERSON_NAME between", value1, value2, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonNameNotBetween(String value1, String value2) {
+            addCriterion("DEPT_PERSON_NAME not between", value1, value2, "deptPersonName");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneIsNull() {
+            addCriterion("DEPT_PERSON_PHONE is null");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneIsNotNull() {
+            addCriterion("DEPT_PERSON_PHONE is not null");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneEqualTo(String value) {
+            addCriterion("DEPT_PERSON_PHONE =", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneNotEqualTo(String value) {
+            addCriterion("DEPT_PERSON_PHONE <>", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneGreaterThan(String value) {
+            addCriterion("DEPT_PERSON_PHONE >", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("DEPT_PERSON_PHONE >=", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneLessThan(String value) {
+            addCriterion("DEPT_PERSON_PHONE <", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneLessThanOrEqualTo(String value) {
+            addCriterion("DEPT_PERSON_PHONE <=", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneLike(String value) {
+            addCriterion("DEPT_PERSON_PHONE like", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneNotLike(String value) {
+            addCriterion("DEPT_PERSON_PHONE not like", value, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneIn(List<String> values) {
+            addCriterion("DEPT_PERSON_PHONE in", values, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneNotIn(List<String> values) {
+            addCriterion("DEPT_PERSON_PHONE not in", values, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneBetween(String value1, String value2) {
+            addCriterion("DEPT_PERSON_PHONE between", value1, value2, "deptPersonPhone");
+            return this;
+        }
+
+        public Criteria andDeptPersonPhoneNotBetween(String value1, String value2) {
+            addCriterion("DEPT_PERSON_PHONE not between", value1, value2, "deptPersonPhone");
+            return this;
+        }
+
 		public Criteria andTaskDealObjectIdEqualTo(String dealObjectId) {
 			addCriterion("exists (select * from t_supt_task ta where ta.bill_id=t_bus_release_trends.bill_id and ta.deal_object_id='" + dealObjectId + "' and ta.is_finish='N')");
 			return this;

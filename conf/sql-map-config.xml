@@ -61,4 +61,7 @@
   <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_LINEPIPE_KNOW_SqlMap.xml" />
   <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_LINEPIPE_RULE_SqlMap.xml" />
   <sqlMap resource="com/free/assist/dao/xml/oracle/JFORUM_TOPICS_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_BUS_RELEASE_ACTUAL_SqlMap.xml" />
+  <sqlMap resource="com/free/assist/dao/xml/oracle/T_SUPT_NOTICE_OBJECT_SqlMap.xml" />
+  
 </sqlMapConfig>

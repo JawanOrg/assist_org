@@ -30,6 +30,8 @@
     <result column="REAL_REPAIR_END_TIME" property="realRepairEndTime" jdbcType="TIMESTAMP" />
     <result column="POSITION_ADDRESS" property="positionAddress" jdbcType="VARCHAR" />
     <result column="COME_FROM" property="comeFrom" jdbcType="VARCHAR" />
+    <result column="DEPT_PERSON_NAME" property="deptPersonName" jdbcType="VARCHAR" />
+    <result column="DEPT_PERSON_PHONE" property="deptPersonPhone" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Pagination_Head_Clause" >
     <dynamic >
@@ -83,7 +85,8 @@
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
       SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK, REPAIR_TYPE, CREATOR, CREATE_DEPT,
       CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER, AUDITOR, STREET,
-      NATIVE_NET,REPAIR_END_TIME, REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, POSITION_ADDRESS,COME_FROM, REPAIR_CONTENT
+      NATIVE_NET,REPAIR_END_TIME, REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, POSITION_ADDRESS,COME_FROM, 
+      DEPT_PERSON_NAME, DEPT_PERSON_PHONE, REPAIR_CONTENT
     from T_BUS_RELEASE_TRENDS
     <isParameterPresent >
       <include refid="BusReleaseTrendsWithBLOBs.ibatorgenerated_Example_Where_Clause" />
@@ -98,7 +101,8 @@
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
       SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK, REPAIR_TYPE, CREATOR, CREATE_DEPT,
       CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER, AUDITOR, STREET,
-      NATIVE_NET, REPAIR_END_TIME, REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, COME_FROM, POSITION_ADDRESS
+      NATIVE_NET, REPAIR_END_TIME, REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, COME_FROM, 
+      POSITION_ADDRESS,DEPT_PERSON_NAME, DEPT_PERSON_PHONE
     from T_BUS_RELEASE_TRENDS
     <isParameterPresent >
       <include refid="BusReleaseTrendsWithBLOBs.ibatorgenerated_Example_Where_Clause" />
@@ -112,7 +116,8 @@
     select BILL_ID, BILL_SN, THE_TITLE, CITY, COMMUNITY, ROAD, NUMBER_PLATE, REPAIR_TIME,
       SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK, REPAIR_TYPE, CREATOR, CREATE_DEPT,
       CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS, IS_NEED_GOVERNMENT, PUBLISHER, AUDITOR, STREET,
-      NATIVE_NET, REPAIR_END_TIME, REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, POSITION_ADDRESS,COME_FROM, REPAIR_CONTENT
+      NATIVE_NET, REPAIR_END_TIME, REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, POSITION_ADDRESS,COME_FROM, DEPT_PERSON_NAME,
+      DEPT_PERSON_PHONE, REPAIR_CONTENT
     from T_BUS_RELEASE_TRENDS
     where BILL_ID = #billId:VARCHAR#
   </select>
@@ -132,7 +137,8 @@
       NUMBER_PLATE, REPAIR_TIME, SCENE_PERSON_NAME, SCENE_PERSON_PHONE, TEST_PLAN_REMARK,
       REPAIR_TYPE, CREATOR, CREATE_DEPT, CREATE_TIME, LONGITUDE, LATITUDE, BILL_STATUS,
       IS_NEED_GOVERNMENT, PUBLISHER, AUDITOR, STREET, NATIVE_NET, REPAIR_END_TIME,
-      REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, POSITION_ADDRESS, COME_FROM, REPAIR_CONTENT)
+      REAL_REPAIR_BEGIN_TIME, REAL_REPAIR_END_TIME, POSITION_ADDRESS, COME_FROM,  DEPT_PERSON_NAME,
+      DEPT_PERSON_PHONE,REPAIR_CONTENT)
     values (#billId:VARCHAR#, #billSn:VARCHAR#, #theTitle:VARCHAR#, #city:VARCHAR#,
       #community:VARCHAR#, #road:VARCHAR#, #numberPlate:VARCHAR#, #repairTime:TIMESTAMP#,
       #scenePersonName:VARCHAR#, #scenePersonPhone:VARCHAR#, #testPlanRemark:VARCHAR#,
@@ -140,7 +146,8 @@
       #longitude:DECIMAL#, #latitude:DECIMAL#, #billStatus:VARCHAR#, #isNeedGovernment:VARCHAR#,
       #publisher:VARCHAR#, #auditor:VARCHAR#, #street:VARCHAR#, #nativeNet:VARCHAR#,
       #repairEndTime:TIMESTAMP#, #realRepairBeginTime:TIMESTAMP#, #realRepairEndTime:TIMESTAMP#,
-      #positionAddress:VARCHAR#, #comeFrom:VARCHAR#,
+      #positionAddress:VARCHAR#, #comeFrom:VARCHAR#,#deptPersonName:VARCHAR#,
+      #deptPersonPhone:VARCHAR#,
       #repairContent:CLOB#)
   </insert>
   <insert id="ibatorgenerated_insertSelective" parameterClass="com.free.assist.domain.BusReleaseTrendsWithBLOBs" >
@@ -233,6 +240,12 @@
       <isNotNull prepend="," property="comeFrom" >
         COME_FROM
       </isNotNull>
+      <isNotNull prepend="," property="deptPersonName" >
+        DEPT_PERSON_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="deptPersonPhone" >
+        DEPT_PERSON_PHONE
+      </isNotNull>
       <isNotNull prepend="," property="repairContent" >
         REPAIR_CONTENT
       </isNotNull>
@@ -323,6 +336,12 @@
       </isNotNull>
       <isNotNull prepend="," property="comeFrom" >
         #comeFrom:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deptPersonName" >
+        #deptPersonName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deptPersonPhone" >
+        #deptPersonPhone:VARCHAR#
       </isNotNull>
       <isNotNull prepend="," property="repairContent" >
         #repairContent:CLOB#
@@ -421,6 +440,12 @@
       <isNotNull prepend="," property="record.comeFrom" >
         COME_FROM = #record.comeFrom:VARCHAR#
       </isNotNull>
+      <isNotNull prepend="," property="record.deptPersonName" >
+        DEPT_PERSON_NAME = #record.deptPersonName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.deptPersonPhone" >
+        DEPT_PERSON_PHONE = #record.deptPersonPhone:VARCHAR#
+      </isNotNull>
       <isNotNull prepend="," property="record.repairContent" >
         REPAIR_CONTENT = #record.repairContent:CLOB#
       </isNotNull>
@@ -459,6 +484,8 @@
       REAL_REPAIR_END_TIME = #record.realRepairEndTime:TIMESTAMP#,
       POSITION_ADDRESS = #record.positionAddress:VARCHAR#,
       COME_FROM = #record.comeFrom:VARCHAR#,
+      DEPT_PERSON_NAME = #record.deptPersonName:VARCHAR#,
+      DEPT_PERSON_PHONE = #record.deptPersonPhone:VARCHAR#,
       REPAIR_CONTENT = #record.repairContent:CLOB#
     <isParameterPresent >
       <include refid="BusReleaseTrendsWithBLOBs.ibatorgenerated_Example_Where_Clause" />
@@ -493,7 +520,9 @@
       REAL_REPAIR_BEGIN_TIME = #record.realRepairBeginTime:TIMESTAMP#,
       REAL_REPAIR_END_TIME = #record.realRepairEndTime:TIMESTAMP#,
       POSITION_ADDRESS = #record.positionAddress:VARCHAR#,
-      COME_FROM = #record.comeFrom:VARCHAR#
+      COME_FROM = #record.comeFrom:VARCHAR#,
+      DEPT_PERSON_NAME = #record.deptPersonName:VARCHAR#,
+      DEPT_PERSON_PHONE = #record.deptPersonPhone:VARCHAR#
     <isParameterPresent >
       <include refid="BusReleaseTrendsWithBLOBs.ibatorgenerated_Example_Where_Clause" />
     </isParameterPresent>
@@ -582,6 +611,12 @@
       <isNotNull prepend="," property="comeFrom" >
         COME_FROM = #comeFrom:VARCHAR#
       </isNotNull>
+      <isNotNull prepend="," property="deptPersonName" >
+        DEPT_PERSON_NAME = #deptPersonName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deptPersonPhone" >
+        DEPT_PERSON_PHONE = #deptPersonPhone:VARCHAR#
+      </isNotNull>
       <isNotNull prepend="," property="repairContent" >
         REPAIR_CONTENT = #repairContent:CLOB#
       </isNotNull>
@@ -617,7 +652,9 @@
       REAL_REPAIR_END_TIME = #realRepairEndTime:TIMESTAMP#,
       POSITION_ADDRESS = #positionAddress:VARCHAR#,
       COME_FROM = #comeFrom:VARCHAR#,
-      REPAIR_CONTENT = #repairContent:CLOB#
+      REPAIR_CONTENT = #repairContent:CLOB#,
+      DEPT_PERSON_NAME = #deptPersonName:VARCHAR#,
+      DEPT_PERSON_PHONE = #deptPersonPhone:VARCHAR#
     where BILL_ID = #billId:VARCHAR#
   </update>
   <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="com.free.assist.domain.BusReleaseTrends" >
@@ -648,7 +685,9 @@
       REAL_REPAIR_BEGIN_TIME = #realRepairBeginTime:TIMESTAMP#,
       REAL_REPAIR_END_TIME = #realRepairEndTime:TIMESTAMP#,
       POSITION_ADDRESS = #positionAddress:VARCHAR#,
-      COME_FROM = #comeFrom:VARCHAR#
+      COME_FROM = #comeFrom:VARCHAR#,
+      DEPT_PERSON_NAME = #deptPersonName:VARCHAR#,
+      DEPT_PERSON_PHONE = #deptPersonPhone:VARCHAR#
     where BILL_ID = #billId:VARCHAR#
   </update>
 </sqlMap>

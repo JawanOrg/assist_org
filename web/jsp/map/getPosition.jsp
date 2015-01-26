@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <title></title>
 <style type="text/css">
-body,html,#allmap {
+body, html, #allmap {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -64,11 +64,18 @@ body,html,#allmap {
 		}
 	}
 	var customLayer = null;
+	var allMarkerStr = null;
+	var currentZoom = null;
 	var map = null;
 	var overlayRectangle = null;
+	var myIcon = new BMap.Icon("/images/normal/webcam.png", new BMap.Size(24,
+			24));
 	function ZoomControl() {
 		this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
 		this.defaultOffset = new BMap.Size(600, 10);
+	}
+	var webcamFun = function(marker) {
+		alert('摄像头接口暂未提供');
 	}
 	window.onload = function() {
 		map = new BMap.Map("allmap");
@@ -85,8 +92,13 @@ body,html,#allmap {
 				}
 			}, "杭州市");
 		}
+
 		var myZoomCtrl = new ZoomControl();
 		map.addControl(myZoomCtrl);
+		map.addEventListener("zoomend", function() {
+			currentZoom = this.getZoom();
+			showAllMarker(allMarkerStr);
+		});
 
 		var drawingManager = new BMapLib.DrawingManager(map, {
 			isOpen : false,
@@ -189,18 +201,18 @@ body,html,#allmap {
 						marker.addContextMenu(markerContextMenu);
 					}
 				} /*, {
-														text : '显示所有施工点',
-														callback : function() {
-															addCustomLayer(map);
-														}
-													}, {
-														text : '隐藏所有施工点',
-														callback : function() {
-															if (customLayer) {
-																map.removeTileLayer(customLayer);
-															}
-														}
-													}*/];
+																	text : '显示所有施工点',
+																	callback : function() {
+																		addCustomLayer(map);
+																	}
+																}, {
+																	text : '隐藏所有施工点',
+																	callback : function() {
+																		if (customLayer) {
+																			map.removeTileLayer(customLayer);
+																		}
+																	}
+																}*/];
 		for (var i = 0; i < txtMenuItem.length; i++) {
 			contextMenu.addItem(new BMap.MenuItem(txtMenuItem[i].text,
 					txtMenuItem[i].callback, 100));
@@ -212,20 +224,37 @@ body,html,#allmap {
 		map.addControl(new BMap.NavigationControl());
 		addCustomLayer(map);
 
-		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10,'doing', getPoint);
+		mapOperateAction.queryByPointTypeAndGrade('dynamic', 10, 'doing',
+				showAllMarker);
 	}
 
 	function addMarker(point, imageType) {
 		var marker = new BMap.Marker(point);
 		map.addOverlay(marker);
-		if (imageType == "animation") {
-			marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+		if (currentZoom <= 10) {
+			var pt = new BMap.Point(120.2511, 30.2445);
+			var webcam = new BMap.Marker(pt, {
+				icon : myIcon
+			});
+			map.addOverlay(webcam);
+			var webcamMenu = new BMap.ContextMenu();
+			webcamMenu.addItem(new BMap.MenuItem('查看', webcamFun.bind(webcam)));
+			webcam.addContextMenu(webcamMenu);
+
+			if (imageType == "animation") {
+				marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+			}
 		}
 	}
-	function getPoint(str) {
-		var myobj = eval(str);
+	function showAllMarker(str) {
+		if (str != undefined && str != null) {
+			allMarkerStr = str;
+		}
+		map.clearOverlays();
+		var myobj = eval(allMarkerStr);
 		for (var i = 0; i < myobj.length; i++) {
-			var point = new BMap.Point(myobj[i].longitude, myobj[i].latitude);
+			var point = new BMap.Point(myobj[i].longitude,
+					myobj[i].latitude);
 			addMarker(point, myobj[i].imageType);
 
 			map.addHotspot(new BMap.Hotspot(point, {

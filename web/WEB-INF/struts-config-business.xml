@@ -7,6 +7,7 @@
 		<form-bean name="homePageForm" type="com.free.assist.web.homepage.HomePageForm" />  
 		<form-bean name="linePipeForm" type="com.free.assist.web.business.LinePipeForm" />
 		<form-bean name="reportForm" type="com.free.assist.web.business.ReportForm" />
+		<form-bean name="actualForm" type="com.free.assist.web.business.ActualForm" />
 	</form-beans>
 	<action-mappings>
 		<action path="/business/dynamicAction" name="dynamicForm" scope="request" parameter="method" validate="false">
@@ -22,6 +23,9 @@
 			<description>管线信息</description>
 		</action>
 		<action path="/business/reportAction" name="reportForm" scope="request" parameter="method" validate="false">
+			<description>报表</description>
+		</action>
+		<action path="/business/actualAction" name="actualForm" scope="request" parameter="method" validate="false">
 			<description>报表</description>
 		</action>
 	</action-mappings>

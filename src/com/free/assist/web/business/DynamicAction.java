@@ -54,6 +54,7 @@ public class DynamicAction extends BaseAction {
 		BusReleaseTrendsWithBLOBs busRelease = new BusReleaseTrendsWithBLOBs();
 		ObjectUtil.copyObjectToObject(form, busRelease);
 		SuptAction action = new SuptAction(currentUser);
+		busRelease.setComeFrom(Constant.COME_FROM_WEB);
 		return dynamicOperateService.create(busRelease, action);
 	}
 
