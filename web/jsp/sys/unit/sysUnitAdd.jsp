@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" language="java"%>
 <script type='text/javascript' src='/js/prototype.js'></script>
 <script type='text/javascript' src='/js/commonjs.js'></script>
@@ -6,15 +7,15 @@
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/sysUnitAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp' %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+<link rel="stylesheet" href="/css/cb2.css" type="text/css">
+<link rel="stylesheet" href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css" type="text/css" media="screen">
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 
 <link rel="STYLESHEET" type="text/css" href="/js/dhtmlxtree/dhtmlxtree.css">
-<script src="<%=request.getContextPath()%>/js/dhtmlxtree/dhtmlxcommon.js"></script>
-<script src="<%=request.getContextPath()%>/js/dhtmlxtree/dhtmlxtree.js"></script>
+<script src="/js/dhtmlxtree/dhtmlxcommon.js"></script>
+<script src="/js/dhtmlxtree/dhtmlxtree.js"></script>
 
 <html>
 
@@ -66,7 +67,7 @@
     	document.forms[0].parentName.value ="----";
 		document.forms[0].parentUnitid.value ="0";
 		document.forms[0].unitName.value ="";
-		$("unitType_U").checked=true;
+		$("unitType_G").checked=true;
 		document.forms[0].unitDes.value ="";
 		document.forms[0].phone.value ="";
 		
@@ -87,7 +88,7 @@
 					<tr>
 						<td  class="tabpaneleft2"></td>
 						<td class="tabpanebg2"   width="120">
-							<img src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif" width="18" height="15">
+							<img src="/images/main_01/ico_fellow.gif" width="18" height="15">
 							<span>组织新增</span>
 						</td>
 						<td class="tabpaneright2"></td>
@@ -136,8 +137,11 @@
 															</div>
 														</td>
 														<td align="left">
-															<input type="radio" id="unitType_U" name="unitType" value="U" checked>部门
-															<input type="radio" id="unitType_P" name="unitType" value="P">岗位
+															<input type="radio" id="unitType_P" name="unitType" value="P" checked>部门
+															<input type="radio" id="unitType_U" name="unitType" value="U">单位
+															<input type="radio" id="unitType_S" name="unitType" value="S">市县
+															<input type="radio" id="unitType_N" name="unitType" value="N">地区
+															<input type="radio" id="unitType_G" name="unitType" value="G">协作组
 														</td>
 													</tr>
 													<tr>
@@ -158,7 +162,8 @@
 															</div>
 														</td>
 														<td align="left">
-															<input type="text" class="inputtext01" name="unitDes" maxlength="100" size="50"  />
+															<input type="text" readOnly class="inputtext01" id="unitDesName" name="unitDesName" maxlength="100" size="50" onclick="return showDialogSelectPostUser();"/>
+															<input type="hidden" id="unitDes" name="unitDes"/>
 														</td>
 													</tr>
 													<tr>
@@ -212,15 +217,34 @@
 	{
 		document.forms[0].parentName.value ="${requestScope.parentName}";
 		document.forms[0].unitName.value ="${requestScope.unitName}";
-		document.forms[0].unitType.value ="${requestScope.unitType}";
+		$("unitType_P").checked=true;
 		document.forms[0].unitDes.value ="${requestScope.unitDes}";
 		document.forms[0].phone.value ="${requestScope.phone}";
-		
-		document.forms[0].isValid.value ="${requestScope.isValid}";
+		$("isValid_Y").checked=true;
 		document.forms[0].sortOrder.value ="${requestScope.sortOrder}";
 		document.forms[0].remark.value ="${requestScope.remark}";
 		trimForm();
 	}
 	initData();
+	    
+    function showDialogSelectPostUser() {
+		var roleId='';//$('roleid').value;
+	   	var returnValue= window.showModalDialog("/jsp/sys/role/sysUnitRoleEdit.jsp?roleId="+roleId,"scroll:yes;status:no;help:0;resizable:0;dialogWidth:500px;dialogHeight:500px");
+	   	if(returnValue!=null){
+ 		    var postIdStr="";
+ 		    var userIdStr="";
+ 		    var str = "";
+ 		    userNum = returnValue.split(",");
+ 		    if(userNum.length>=2) {
+ 		    	alert("只能选择一位人员！");
+ 		    }else if(userNum.length==1){
+ 	 		    checkeds = returnValue.split(";");
+ 		        $('unitDesName').value = checkeds[1];
+ 		        $('unitDes').value = checkeds[0].split("|")[0];
+ 		    }
+			ResultOfshowModalDialog = "confirm";                        // 弹出页面sysUnitRoleEdit.jsp通过"确认"按钮返回此页面
+ 		}
+
+    }    
 </script>
 </html>

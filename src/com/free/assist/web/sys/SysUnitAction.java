@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 
 import com.free.assist.domain.SysUnit;
 import com.free.assist.domain.SysUnitExample;
+import com.free.assist.domain.SysUser;
 import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.service.sys.ISysUnitService;
 import com.free.assist.util.ObjectUtil;
@@ -29,6 +30,27 @@ public class SysUnitAction extends BaseAction {
 	@Autowired private ISysUnitService sysUnitService;
 	@Autowired
 	private CommonOperateService commonOperateService;
+	
+	public ActionForward showTreeWithTypeInit(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		SysUser currentUser = (SysUser) request.getSession().getAttribute("currentUser");
+		String id=commonOperateService.queryUserUnitId(currentUser.getUserId());
+		if(id==null||"".equals(id)){
+			id = "0";
+		}
+		request.setAttribute("id", id);
+		return new ActionForward("/jsp/sys/unit/sysUnitManager.jsp");
+	}
+	
+	public ActionForward showTreeWithTypeInitUser(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		SysUser currentUser = (SysUser) request.getSession().getAttribute("currentUser");
+		String id=commonOperateService.queryUserUnitId(currentUser.getUserId());
+		if(id==null||"".equals(id)){
+			id = "0";
+		}
+		request.setAttribute("id", id);
+		return new ActionForward("/jsp/sys/unit/sysUserManager.jsp");
+	}
+		
 
 	/**
 	 * 根据父节点取得子节点列表 并构成DHTML TREE的XML 
@@ -42,18 +64,17 @@ public class SysUnitAction extends BaseAction {
 	 * @throws IOException
 	 */
 	public ActionForward showTreeWithType(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
 		String parentId="";
-		String type="";
 		String id=StringUtil.nullToEmptyOfObject(request.getParameter("id"));
 
+		String type = "";
 		String[]ids =id.split("_");
 		if(ids!=null && ids.length==2){
 			parentId = ids[0];
 			type = ids[1];
 		}
-		parentId = (parentId == null ? "0" : parentId);
-		parentId = (parentId.equals("")? "0" : parentId);
+		parentId = (parentId == null ? id : parentId);
+		parentId = (parentId.equals("")? id : parentId);
 		List nodeList=null;
 		
 		SysUnitExample example=new SysUnitExample();

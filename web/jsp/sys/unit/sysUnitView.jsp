@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" language="java"%>
 <script type='text/javascript' src='/js/prototype.js'></script>
 <script type='text/javascript' src='/js/commonjs.js'></script>
@@ -6,8 +7,8 @@
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/sysUnitAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp' %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+<link rel="stylesheet" href="/css/cb2.css" type="text/css">
+<link rel="stylesheet" href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css" type="text/css" media="screen">
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
@@ -34,7 +35,7 @@
 					<tr>
 						<td  class="tabpaneleft2"></td>
 						<td class="tabpanebg2"   width="120">
-							<img src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif" width="18" height="15">
+							<img src="/images/main_01/ico_fellow.gif" width="18" height="15">
 							<span>组织细节</span>
 						</td>
 						<td class="tabpaneright2"></td>
@@ -155,9 +156,15 @@
 		document.forms[0].parentName.value ="${requestScope.parentName}";
 		document.forms[0].unitName.value ="${requestScope.unitName}";
 		if("U"=="${requestScope.unitType}") {
+			$("unitType").innerText="单位";
+		}else if("P"=="${requestScope.unitType}"){
 			$("unitType").innerText="部门";
-		}else {
-			$("unitType").innerText="岗位";
+		}else if("N"=="${requestScope.unitType}"){
+			$("unitType").innerText="地区";
+		}else if("G"=="${requestScope.unitType}"){
+			$("unitType").innerText="协作组";
+		}else if("S"=="${requestScope.unitType}") {
+			$("unitType").innerText="市县";
 		}
 		document.forms[0].unitDes.value ="${requestScope.unitDes}";
 		document.forms[0].unitDesName.value ="${requestScope.unitDesName}";

@@ -6,14 +6,14 @@
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/sysUserUnitAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp' %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+<link rel="stylesheet" href="/css/cb2.css" type="text/css">
+<link rel="stylesheet" href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css" type="text/css" media="screen">
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 <link rel="STYLESHEET" type="text/css" href="/js/dhtmlxtree/dhtmlxtree.css">
-<script src="<%=request.getContextPath()%>/js/dhtmlxtree/dhtmlxcommon.js"></script>
-<script src="<%=request.getContextPath()%>/js/dhtmlxtree/dhtmlxtree.js"></script>
+<script src="/js/dhtmlxtree/dhtmlxcommon.js"></script>
+<script src="/js/dhtmlxtree/dhtmlxtree.js"></script>
 
 <html>
 <head>
@@ -75,13 +75,13 @@
 
 <script type="text/javascript">
     /*实列化dhtmlxtree树型对象*/
-    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", 0);
+    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", ${requestScope.id});
     tree.setImagePath("/js/dhtmlxtree/imgs/");
     tree.enableCheckBoxes(0);
     tree.setOnClickHandler(clickable);
     tree.enableDragAndDrop(false);
     tree.setXMLAutoLoading("/sys/sysUnitAction.do?method=showTreeWithType");
-	tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithType&id=0");	    
+	tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithType&id="+${requestScope.id});	    
   
 	function getSubName (id) {
 		var name=tree.getItemText(id);

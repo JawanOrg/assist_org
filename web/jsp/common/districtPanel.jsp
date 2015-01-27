@@ -29,7 +29,7 @@ $(document).ready(function(){
 		<div class="OpenFloatBoxBg"></div>
 		<div class="OpenFloatBox">
 			<div class="title">
-				<h4>请选择工作地区</h4>
+				<h4>请选择相关线路单位</h4>
 				<div class="DialogClose" title="关闭"></div>
 			</div>
 			<div class="tip">可多选，最多选择8项</div>

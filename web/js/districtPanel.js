@@ -192,7 +192,7 @@ function CopyItem(showid) {
 
 	var htmlstr = '&nbsp;&nbsp;&nbsp;已经选择分类：<span class=\"empty\">[清空已选]</span><br/>';
 	//$(showid + " .item :input[class='b'][type='checkbox']")
-	$('input[type=checkbox][class="b"]:checked')
+	$('.item :input[type=checkbox][class="b"]:checked')
 			.each(
 					function() { 
 							htmlstr += "<label><input class=\"b\"  type=\"checkbox\" value=\""
@@ -203,11 +203,12 @@ function CopyItem(showid) {
 									+ $(this).attr("title") + "</label>";
 					})
 	//$(showid + " .item :checkbox[class='s']")
-					$('input[type=checkbox][class="s"]:checked')
+	//alert(htmlstr);
+	$('.item :input[type=checkbox][class="s"]:checked')
 			.each(
 					function(index) {
 							if ($(this).parent().parent().prev().find(":checkbox")
-									.attr('checked') == false) {
+									.attr('checked') == true) {
 								htmlstr += "<label><input class=\"s\"  type=\"checkbox\" id=\""
 										+ $(this).attr("id")
 										+ "\" value=\""
@@ -220,6 +221,7 @@ function CopyItem(showid) {
 					})
 	htmlstr += "<div class=\"clear\"></div>";
 	$(showid + " .selecteditem").html(htmlstr);
+	//alert(htmlstr);
 	//if ($(showid + " .item :checkbox[checked]").length > 0) {
 	if($("input[type=checkbox][class=b][checked]").length>0){
 		$(showid + " .selecteditem").css("display", "block");
@@ -230,7 +232,8 @@ function CopyItem(showid) {
 	$(showid + " .selecteditem :checkbox").unbind().click(
 			function() {
 				var selval = $(this).val();
-				$(showid + " .item :checkbox[checked]").each(
+				//$(showid + " .item :checkbox[checked]").each(
+				$(showid + " .item :input[type=checkbox][checked]").each(
 						function() {
 							if ($(this).val() == selval) {
 								$(this).attr("checked", false);

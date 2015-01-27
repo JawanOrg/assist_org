@@ -48,7 +48,7 @@
       (SELECT COUNT(*) FROM t_sys_unit tsu1 WHERE tsu1.Parent_UnitId = t_sys_unit.Unit_Id) childCount
       , (select Unit_Name from t_sys_unit tsu2 WHERE tsu2.Unit_Id = t_sys_unit.Parent_UnitId) parentName
       , CASE WHEN is_valid='Y' THEN '有效' ELSE '无效' end isValidName
-      , CASE WHEN Unit_type='P' THEN '岗位' WHEN Unit_type='G' THEN '协作组' WHEN Unit_type='U' THEN '部门' ELSE '' end unitTypeName
+      , CASE WHEN Unit_type='P' THEN '部门' WHEN Unit_type='G' THEN '协作组' WHEN Unit_type='U' THEN '单位' WHEN Unit_type='N' THEN '地区' WHEN Unit_type='S' THEN '市县' ELSE '' end unitTypeName
     from t_sys_unit
     <isParameterPresent >
       <include refid="SysUnit.ibatorgenerated_Example_Where_Clause" />
@@ -63,7 +63,7 @@
       (SELECT COUNT(*) FROM t_sys_unit tsu1 WHERE tsu1.Parent_UnitId = t_sys_unit.Unit_Id) childCount
       , (select Unit_Name from t_sys_unit tsu2 WHERE tsu2.Unit_Id = t_sys_unit.Parent_UnitId) parentName
       , CASE WHEN is_valid='Y' THEN '有效' ELSE '无效' end isValidName
-      , CASE WHEN Unit_type='P' THEN '岗位' WHEN Unit_type='G' THEN '协作组' WHEN Unit_type='U' THEN '部门' ELSE '' end unitTypeName
+      , CASE WHEN Unit_type='P' THEN '部门' WHEN Unit_type='G' THEN '协作组' WHEN Unit_type='U' THEN '单位' WHEN Unit_type='N' THEN '地区' WHEN Unit_type='S' THEN '市县' ELSE '' end unitTypeName
     from t_sys_unit
     where Unit_Id = #unitId:VARCHAR#
   </select>
@@ -251,7 +251,7 @@
   <select id="selectByUserId" resultMap="ibatorgenerated_BaseResultMap" parameterClass="String" >
 	  Select u.unit_id, u.unit_name, u.unit_type, u.unit_des,u.parent_unitid,u.phone,u.is_valid,u.sort_order,u.remark, level,
 	  0 childCount,'' parentName,CASE WHEN is_valid='Y' THEN '有效' ELSE '无效' end isValidName,
-      CASE WHEN Unit_type='P' THEN '岗位' WHEN Unit_type='G' THEN '协作组' WHEN Unit_type='U' THEN '部门' ELSE '' end unitTypeName
+      CASE WHEN Unit_type='P' THEN '部门' WHEN Unit_type='G' THEN '协作组' WHEN Unit_type='U' THEN '单位' WHEN Unit_type='N' THEN '地区' WHEN Unit_type='S' THEN '市县' ELSE '' end unitTypeName
 	  From t_sys_unit u
 	 Start With u.unit_id =
 	            (select uu.unit_id from t_sys_user_unit uu where uu.user_id = #userId#)

@@ -44,9 +44,11 @@ public class Constant {
 	public static String ROLE_NAME_GENERAL = "普通员工";
 	public static String ROLE_NAME_ADMIN_WEB = "网站管理员";
 
-	public static String UNIT_TYPE_UNIT = "U";
-	public static String UNIT_TYPE_POST = "P";
-	public static String UNIT_TYPE_GROUG = "G";
+	public static String UNIT_TYPE_UNIT = "U"; //单位
+	public static String UNIT_TYPE_POST = "P"; //部门
+	public static String UNIT_TYPE_GROUG = "G"; //协作组
+	public static String UNIT_TYPE_NET = "N"; //地区
+	public static String UNIT_TYPE_S = "S"; //市县
 	
 	public static String S_ACTUAL_NORMAL = "normal";
 	public static String S_ACTUAL_DELETED = "deleted";

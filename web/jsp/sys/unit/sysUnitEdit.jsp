@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=GBK" language="java"%>
 <script type='text/javascript' src='/js/prototype.js'></script>
 <script type='text/javascript' src='/js/commonjs.js'></script>
@@ -6,8 +7,8 @@
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/sysUnitAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp' %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+<link rel="stylesheet" href="/css/cb2.css" type="text/css">
+<link rel="stylesheet" href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css" type="text/css" media="screen">
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
@@ -109,7 +110,11 @@
 															</div>
 														</td>
 														<td align="left">
-															<div id="unitType"></div>
+															<input type="radio" id="unitType_P" name="unitType" value="P" checked>部门
+															<input type="radio" id="unitType_U" name="unitType" value="U">单位
+															<input type="radio" id="unitType_S" name="unitType" value="S">市县
+															<input type="radio" id="unitType_N" name="unitType" value="N">地区
+															<input type="radio" id="unitType_G" name="unitType" value="G">协作组
 														</td>
 													</tr>
 													<tr>
@@ -186,9 +191,15 @@
 		document.forms[0].parentName.value ="${requestScope.parentName}";
 		document.forms[0].unitName.value ="${requestScope.unitName}";
 		if("U"=="${requestScope.unitType}") {
-			$("unitType").innerText="部门";
-		}else {
-			$("unitType").innerText="岗位";
+			$("unitType_U").checked=true;
+		}else if("P"=="${requestScope.unitType}") {
+			$("unitType_P").checked=true;
+		}else if("G"=="${requestScope.unitType}") {
+			$("unitType_G").checked=true;
+		}else if("N"=="${requestScope.unitType}") {
+			$("unitType_N").checked=true;
+		}else if("S"=="${requestScope.unitType}") {
+			$("unitType_S").checked=true;
 		}
 		document.forms[0].unitDes.value ="${requestScope.unitDes}";
 		document.forms[0].unitDesName.value ="${requestScope.unitDesName}";

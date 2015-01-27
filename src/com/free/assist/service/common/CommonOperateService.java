@@ -29,4 +29,6 @@ public interface CommonOperateService extends BaseService {
 	String queryUserRoleName(String userId);
 	
 	String queryUserUnitName(String userId);
+	
+	String queryUserUnitId(String userId);
 }

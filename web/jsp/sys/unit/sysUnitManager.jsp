@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=GBK" language="java"%>
 <script type='text/javascript' src='/js/prototype.js'></script>
 <script type='text/javascript' src='/js/commonjs.js'></script>
@@ -6,14 +7,14 @@
 <script type='text/javascript' src='/dwr/util.js'></script>
 <script type='text/javascript' src='/dwr/interface/sysUnitAction.js'></script>
 <%@ include file='/jsp/common/allTag.jsp' %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/cb2.css" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/tab/webfx.css" type="text/css">
+<link rel="stylesheet" href="/css/cb2.css" type="text/css">
+<link rel="stylesheet" href="/js/tab/webfx.css" type="text/css">
 <link rel="stylesheet" href="/js/tab-view/css/tab-view.css" type="text/css" media="screen">
 <script type="text/javascript" src="/js/tab-view/js/ajax.js"></script>
 <script type="text/javascript" src="/js/tab-view/js/tab-view.js"></script>
 <link rel="STYLESHEET" type="text/css" href="/js/dhtmlxtree/dhtmlxtree.css">
-<script src="<%=request.getContextPath()%>/js/dhtmlxtree/dhtmlxcommon.js"></script>
-<script src="<%=request.getContextPath()%>/js/dhtmlxtree/dhtmlxtree.js"></script>
+<script type="text/javascript" src="/js/dhtmlxtree/dhtmlxcommon.js"></script>
+<script type="text/javascript" src="/js/dhtmlxtree/dhtmlxtree.js"></script>
 
 <html>
 <head>
@@ -75,6 +76,7 @@
 			if(ids.size()>=2) {
 				document.forms[0].unitId.value=ids[0];
 				document.forms[0].typeSplit.value=ids[1];
+				/*不对类型为P的做限制
 				if("P"==document.forms[0].typeSplit.value) {
 					var parentId=tree.getParentId(id);
 					if("0"==parentId)
@@ -90,7 +92,7 @@
 							return false; 
 						}
 					}
-				}
+				}*/
 			} else {
 				alert("节点id格式错误！");
 				return false; 
@@ -246,7 +248,7 @@
 				 
 				<input type="hidden" id="instanceId" name="instanceId" value="${param.ensureInstanceId}">
 				<input type="hidden" id="unitId" name="unitId">
-				<input type="hidden" id="typeSplit" name=""typeSplit">
+				<input type="hidden" id="typeSplit" name="typeSplit">
 			</form>
         </td>
 	</tr>
@@ -255,13 +257,13 @@
 
 <script>
     /*实列化dhtmlxtree树型对象*/
-    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", 0);
+    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", ${requestScope.id});
     tree.setImagePath("/js/dhtmlxtree/imgs/");
     tree.enableCheckBoxes(0);
     tree.enableDragAndDrop(false);
     tree.setOnClickHandler(clickable);
     tree.setXMLAutoLoading("/sys/sysUnitAction.do?method=showTreeWithType");
-    tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithType&id=0");
+    tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithType&id="+${requestScope.id});
 
 	function getSubName (id) {
 		var name=tree.getItemText(id);

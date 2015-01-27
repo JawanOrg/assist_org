@@ -27,7 +27,6 @@ import com.free.assist.domain.SysUser;
 import com.free.assist.domain.SysUserKey;
 import com.free.assist.domain.SysUserRole;
 import com.free.assist.domain.SysUserRoleExample;
-import com.free.assist.domain.SysUserRoleKey;
 import com.free.assist.service.BaseServiceImpl;
 import com.free.assist.util.Constant;
 
@@ -180,6 +179,18 @@ public class CommonOperateServiceImpl extends BaseServiceImpl implements CommonO
 					return unit.getUnitName();
 				} else if (Constant.UNIT_TYPE_GROUG.equals(unit.getUnitType())) {
 					return unit.getUnitName();
+				}
+			}
+		}
+		return "";
+	}
+
+	public String queryUserUnitId(String userId) {
+		List<SysUnit> sysUnitList = this.mySysUnitDAO.selectByUserId(userId);
+		if (sysUnitList != null && sysUnitList.size() > 0) {
+			for (SysUnit unit : sysUnitList) {
+				if (Constant.UNIT_TYPE_UNIT.equals(unit.getUnitType())) {
+					return unit.getUnitId();
 				}
 			}
 		}
