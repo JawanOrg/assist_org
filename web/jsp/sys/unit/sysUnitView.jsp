@@ -122,7 +122,7 @@
 															</div>
 														</td>
 														<td align="left" >
-															<input type="text" class="inputtext01" name="sortOrder" maxlength="3" size="3" disabled />
+															<input type="text" class="inputtext01" name="sortOrder" maxlength="8" size="8" disabled />
 														</td>
 													</tr>
 													<tr>

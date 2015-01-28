@@ -226,7 +226,7 @@
 	}
 </script>
 
-<body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0" marginheight="0" topmargin="0" >
+<body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0" marginheight="0" topmargin="0">
 <table border="0" style="FONT-SIZE: 13px" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" height="100%" width="100%" > 
 	<tr>
 		<td width="29.5%">
@@ -257,14 +257,13 @@
 
 <script>
     /*实列化dhtmlxtree树型对象*/
-    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", ${requestScope.id});
+    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", "${requestScope.rootId}");
     tree.setImagePath("/js/dhtmlxtree/imgs/");
     tree.enableCheckBoxes(0);
     tree.enableDragAndDrop(false);
     tree.setOnClickHandler(clickable);
     tree.setXMLAutoLoading("/sys/sysUnitAction.do?method=showTreeWithType");
-    tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithType&id="+${requestScope.id});
-
+    tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithRootId&id=${requestScope.id}");
 	function getSubName (id) {
 		var name=tree.getItemText(id);
 		var newid=tree.getParentId(id);

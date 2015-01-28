@@ -185,7 +185,7 @@ public class CommonOperateServiceImpl extends BaseServiceImpl implements CommonO
 		return "";
 	}
 
-	public String queryUserUnitId(String userId) {
+	public String queryUserPermissionUnitRootId(String userId) {
 		List<SysUnit> sysUnitList = this.mySysUnitDAO.selectByUserId(userId);
 		if (sysUnitList != null && sysUnitList.size() > 0) {
 			for (SysUnit unit : sysUnitList) {

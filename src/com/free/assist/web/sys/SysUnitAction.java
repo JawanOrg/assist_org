@@ -33,22 +33,81 @@ public class SysUnitAction extends BaseAction {
 	
 	public ActionForward showTreeWithTypeInit(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		SysUser currentUser = (SysUser) request.getSession().getAttribute("currentUser");
-		String id=commonOperateService.queryUserUnitId(currentUser.getUserId());
+		String id=commonOperateService.queryUserPermissionUnitRootId(currentUser.getUserId());
 		if(id==null||"".equals(id)){
 			id = "0";
 		}
 		request.setAttribute("id", id);
+		SysUnitExample example=new SysUnitExample();
+		example.createCriteria().andUnitIdEqualTo(id);
+		List<SysUnit> nodeList = this.sysUnitService.selectByExample(example);
+		if (nodeList != null && nodeList.size() == 1) {
+			request.setAttribute("rootId", nodeList.get(0).getParentUnitid());
+		}else{
+			request.setAttribute("rootId", id);			
+		}
 		return new ActionForward("/jsp/sys/unit/sysUnitManager.jsp");
 	}
 	
 	public ActionForward showTreeWithTypeInitUser(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		SysUser currentUser = (SysUser) request.getSession().getAttribute("currentUser");
-		String id=commonOperateService.queryUserUnitId(currentUser.getUserId());
+		String id=commonOperateService.queryUserPermissionUnitRootId(currentUser.getUserId());
 		if(id==null||"".equals(id)){
 			id = "0";
 		}
 		request.setAttribute("id", id);
+		SysUnitExample example=new SysUnitExample();
+		example.createCriteria().andUnitIdEqualTo(id);
+		List<SysUnit> nodeList = this.sysUnitService.selectByExample(example);
+		if (nodeList != null && nodeList.size() == 1) {
+			request.setAttribute("rootId", nodeList.get(0).getParentUnitid());
+		}else{
+			request.setAttribute("rootId", id);			
+		}
 		return new ActionForward("/jsp/sys/unit/sysUserManager.jsp");
+	}
+	
+	public ActionForward showTreeWithRootId(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String parentId="";
+		String id=StringUtil.nullToEmptyOfObject(request.getParameter("id"));
+
+		String type = "";
+		String[]ids =id.split("_");
+		if(ids!=null && ids.length==2){
+			parentId = ids[0];
+			type = ids[1];
+		}
+		parentId = (parentId == null ? id : parentId);
+		parentId = (parentId.equals("")? id : parentId);
+		List<SysUnit> nodeList=null;
+		
+		SysUnitExample example=new SysUnitExample();
+		example.createCriteria().andUnitIdEqualTo(parentId);		
+		nodeList = this.sysUnitService.selectByExample(example);
+		
+		response.setContentType("text/xml; charset=GBK");
+		response.setHeader("Cache-Control", "no-cache");
+
+		PrintWriter out = response.getWriter();
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append("<?xml version='1.0' encoding='GBK'?>\n");
+		if (nodeList != null && nodeList.size() == 1) {
+			sb.append("<tree id=\"" + nodeList.get(0).getParentUnitid() + "\">");
+			sb.append(this.makeTreeXMLWithType(nodeList));
+		}else{
+			example=new SysUnitExample();
+			example.createCriteria().andParentUnitidEqualTo(parentId);
+			example.setOrderByClause(" Sort_Order");
+			nodeList = this.sysUnitService.selectByExample(example);
+			if (nodeList != null && nodeList.size() > 0) {
+				sb.append("<tree id=\"" + id + "\">");
+				sb.append(this.makeTreeXMLWithType(nodeList));
+			}
+		}
+		sb.append("</tree>");
+		out.println(sb.toString());
+		return null;
 	}
 		
 
@@ -95,7 +154,6 @@ public class SysUnitAction extends BaseAction {
 		}
 		sb.append("</tree>");
 		out.println(sb.toString());
-		//System.out.println("\n\n\n"+sb.toString()+"\n\n\n");
 		return null;
 	}
 

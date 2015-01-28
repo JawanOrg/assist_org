@@ -157,7 +157,7 @@
 															</div>
 														</td>
 														<td align="left" >
-															<input type="text" class="inputtext01" name="sortOrder" maxlength="3" size="3"  msg="排序必须为数字"/>
+															<input type="text" class="inputtext01" name="sortOrder" maxlength="8" size="8"  msg="排序必须为数字"/>
 														</td>
 													</tr>
 													<tr>

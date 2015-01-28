@@ -75,13 +75,13 @@
 
 <script type="text/javascript">
     /*实列化dhtmlxtree树型对象*/
-    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", ${requestScope.id});
+    var tree = new dhtmlXTreeObject("show_tree", "100%", "100%", "${requestScope.rootId}");
     tree.setImagePath("/js/dhtmlxtree/imgs/");
     tree.enableCheckBoxes(0);
     tree.setOnClickHandler(clickable);
     tree.enableDragAndDrop(false);
     tree.setXMLAutoLoading("/sys/sysUnitAction.do?method=showTreeWithType");
-	tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithType&id="+${requestScope.id});	    
+	tree.loadXML("/sys/sysUnitAction.do?method=showTreeWithRootId&id=${requestScope.id}");	    
   
 	function getSubName (id) {
 		var name=tree.getItemText(id);
