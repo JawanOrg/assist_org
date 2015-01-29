@@ -17,9 +17,12 @@ import org.springframework.stereotype.Controller;
 import com.free.assist.domain.BusReleaseActual;
 import com.free.assist.domain.BusReleaseActualExample;
 import com.free.assist.domain.BusReleaseActualKey;
+import com.free.assist.domain.SuptNoticeObject;
+import com.free.assist.domain.SuptNoticeObjectExample;
 import com.free.assist.domain.SysUser;
 import com.free.assist.service.common.CommonOperateService;
 import com.free.assist.util.Constant;
+import com.free.assist.util.Helper;
 import com.free.assist.util.ObjectUtil;
 import com.free.assist.util.StringUtil;
 import com.free.assist.web.BaseAction;
@@ -41,6 +44,7 @@ public class ActualAction extends BaseAction {
 		ex.setOrderByClause(" create_time desc ");
 		@SuppressWarnings("unchecked")
 		List<BusReleaseActual> actualList = commonOperateService.selectPageByExample(ex);
+		
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("actualList", actualList);
@@ -52,15 +56,36 @@ public class ActualAction extends BaseAction {
 	}
 
 	public String addActual(ActualForm form) throws Exception {
-		SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
-		BusReleaseActual actual = new BusReleaseActual();
-		ObjectUtil.copyObjectToObject(form, actual);
-		actual.setCreator(currentUser.getUserId());
-		actual.setCreateDept(currentUser.getUnitId());
-		actual.setCreateTime(commonOperateService.getSysDate());
-		actual.setBillStatus(Constant.S_ACTUAL_NORMAL);
-		commonOperateService.insert(actual);
-		return Constant.OPERATE_RESULT_SUCCESS;
+		if (form.getNoticeObjects() != null && !"".equals(form.getNoticeObjects().trim())) {
+			SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
+			BusReleaseActual actual = new BusReleaseActual();
+			ObjectUtil.copyObjectToObject(form, actual);
+			actual.setCreator(currentUser.getUserId());
+			actual.setCreateDept(commonOperateService.queryUserUnitId(currentUser.getUserId()));
+			actual.setCreateTime(commonOperateService.getSysDate());
+			actual.setBillStatus(Constant.S_ACTUAL_NORMAL);
+			actual.setBillSn(Helper.getCurrentTimeStr() + commonOperateService.buildSequence());
+			commonOperateService.insert(actual);
+			
+			String[] noticeObjs = form.getNoticeObjects().split("-");
+			SuptNoticeObject noticeObj = null; 
+			for(String no:noticeObjs){
+				noticeObj = new SuptNoticeObject();
+				noticeObj.setBusinessType(Constant.BUSINESS_TYPE_ACTUAL);
+				noticeObj.setCreateTime(actual.getCreateTime());
+				noticeObj.setCreator(actual.getCreator());
+				noticeObj.setObjectId(no);
+				noticeObj.setObjectType(Constant.DEAL_OBJECT_TYPE_UNIT);
+				noticeObj.setNoticeContent(form.getActualContent());
+				noticeObj.setBillId(actual.getBillId());
+				noticeObj.setReplyTimes(0);
+				commonOperateService.insert(noticeObj);
+			}
+
+			return Constant.OPERATE_RESULT_SUCCESS;
+		} else {
+			throw new Exception("请选择需要通知的单位！");
+		}
 	}
 
 	public ActionForward modifyActualInit(ActionMapping mapping, ActionForm actionform, HttpServletRequest request, HttpServletResponse response) throws Exception {

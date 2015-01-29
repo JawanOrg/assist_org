@@ -26,7 +26,7 @@
 			<description>报表</description>
 		</action>
 		<action path="/business/actualAction" name="actualForm" scope="request" parameter="method" validate="false">
-			<description>报表</description>
+			<description>实时发布</description>
 		</action>
 	</action-mappings>
 </struts-config>

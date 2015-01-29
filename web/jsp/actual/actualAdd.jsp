@@ -33,8 +33,6 @@
 			return false;
 		}
 		var formObj = $('addForm').serialize(true);
-		var editor_data = CKEDITOR.instances.actualContent.getData();
-		formObj.actualContent = editor_data;
 		actualAction.addActual(formObj, addBack);
 	}
 
@@ -69,8 +67,8 @@
 											地址<span style="color:Red">*</span>：
 										</div>
 									</td>
-									<td align="left" colspan="2"><input name="theTitle"
-										type="text" id="theTitle" class="form-control"
+									<td align="left" colspan="2"><input name="address"
+										type="text" id="address" class="form-control"
 										dataType="Require" msg="'地址'必填" /></td>
 								</tr>
 								<tr>
@@ -83,8 +81,11 @@
 										</div>
 									</td>
 									<td align="left" colspan="2">
-									<input name="noticeObjects"  value="请选择相关线路单位"
-										type="text" id="noticeObjects" class="form-control sltinput" /></td>
+										<input name="noticeObjects_cn"  value="请选择相关线路单位"
+											type="text" id="noticeObjects_cn" class="form-control sltinput" />
+									
+										<input name="noticeObjects" id="noticeObjects" type="hidden" value="" />	
+									</td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>

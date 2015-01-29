@@ -156,7 +156,7 @@
 			});
 		}
 		function deleteActual(billId) {
-			ymPrompt.confirmInfo({message:'确定要删除此管线常识信息？',handler:function(tp){ 
+			ymPrompt.confirmInfo({message:'确定要删除此实时发布信息？',handler:function(tp){ 
 					if(tp=='ok'){
 						actualAction.deleteActual(billId,function goBack(s) {
 							if (s == "success") {

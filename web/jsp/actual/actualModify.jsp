@@ -33,8 +33,6 @@
 			return false;
 		}
 		var formObj = $('modifyForm').serialize(true);
-		var editor_data = CKEDITOR.instances.linePipeContent.getData();
-		formObj.linePipeContent=editor_data;
 		linePipeAction.modifyActual(formObj, modifyBack);
 	}
 

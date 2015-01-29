@@ -44,7 +44,7 @@ public class SuptNoticeObject extends SuptNoticeObjectKey implements Serializabl
 
     private Date receiveTime;
 
-    private Short replyTimes;
+    private int replyTimes;
 
     private static final long serialVersionUID = 1L;
 
@@ -130,11 +130,11 @@ public class SuptNoticeObject extends SuptNoticeObjectKey implements Serializabl
     }
 
     @javax.persistence.Column(name="REPLY_TIMES", nullable=false)
-    public Short getReplyTimes() {
+    public int getReplyTimes() {
         return replyTimes;
     }
 
-    public void setReplyTimes(Short replyTimes) {
+    public void setReplyTimes(int replyTimes) {
         this.replyTimes = replyTimes;
     }
 }

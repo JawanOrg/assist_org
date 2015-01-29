@@ -19,11 +19,13 @@ public class Constant {
 
 	public static String BUSINESS_TYPE_TRENDS = "trends";
 	public static String BUSINESS_TYPE_NEWS = "news";
+	public static String BUSINESS_TYPE_ACTUAL = "actual";
 
 	public static String FLAG_NO = "N";
 	public static String FLAG_YES = "Y";
 
 	public static String DEAL_OBJECT_TYPE_PERSON = "E";
+	public static String DEAL_OBJECT_TYPE_UNIT = "U";
 
 	public static String REPAIR_TYPE_PLAN = "plan";
 	public static String REPAIR_TYPE_EMERGENCY = "emergency";

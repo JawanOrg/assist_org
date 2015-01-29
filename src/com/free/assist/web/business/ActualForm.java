@@ -31,6 +31,8 @@ public class ActualForm extends BaseForm {
 	private BigDecimal longitude;
 
 	private BigDecimal latitude;
+	
+	private String noticeObjects;
 
 	public String getBillId() {
 		return billId;
@@ -126,5 +128,13 @@ public class ActualForm extends BaseForm {
 
 	public void setLatitude(BigDecimal latitude) {
 		this.latitude = latitude;
+	}
+
+	public String getNoticeObjects() {
+		return noticeObjects;
+	}
+
+	public void setNoticeObjects(String noticeObjects) {
+		this.noticeObjects = noticeObjects;
 	}
 }

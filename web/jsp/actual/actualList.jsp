@@ -24,9 +24,9 @@
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				<td align="center" width="13%"><input type="button"
 											class="btn btn-default btn-sm" value="±à¼­(M)" accesskey="M"
-											onclick="modifyActual('${obj.contentId}')" /> <input type="button"
+											onclick="modifyActual('${obj.billId}')" /> <input type="button"
 											class="btn btn-default btn-sm" value="É¾³ý(D)" accesskey="D"
-											onclick="deleteActual('${obj.contentId}')" /></td>
+											onclick="deleteActual('${obj.billId}')" /></td>
 			</tr>
 		</c:forEach>
 	</tbody>

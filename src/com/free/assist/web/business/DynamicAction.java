@@ -24,6 +24,8 @@ import com.free.assist.domain.SuptAttach;
 import com.free.assist.domain.SuptAttachExample;
 import com.free.assist.domain.SuptTask;
 import com.free.assist.domain.SuptTaskExample;
+import com.free.assist.domain.SysUnit;
+import com.free.assist.domain.SysUnitExample;
 import com.free.assist.domain.SysUser;
 import com.free.assist.service.business.DynamicOperateService;
 import com.free.assist.service.common.CommonOperateService;
@@ -119,7 +121,7 @@ public class DynamicAction extends BaseAction {
 	public ActionForward detail(ActionMapping mapping, ActionForm actionform, HttpServletRequest request, HttpServletResponse response) {
 		String userId = StringUtil.nullToEmptyOfObject(request.getParameter("userId"));
 		request.setAttribute("userRoleName", commonOperateService.queryUserRoleName(userId));
-		
+
 		String billId = StringUtil.nullToEmptyOfObject(request.getParameter("billId"));
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(billId);
@@ -222,8 +224,8 @@ public class DynamicAction extends BaseAction {
 		BusReleaseTrendsKey key = new BusReleaseTrendsKey();
 		key.setBillId(billId);
 		BusReleaseTrends trends = (BusReleaseTrends) commonOperateService.selectByPrimaryKeyWithBLOBs(key);
-		request.setAttribute("repairTime", Helper.formateDate(trends.getRepairTime(),"yyyy-MM-dd HH:mm"));
-		request.setAttribute("repairEndTime", Helper.formateDate(trends.getRepairEndTime(),"yyyy-MM-dd HH:mm"));
+		request.setAttribute("repairTime", Helper.formateDate(trends.getRepairTime(), "yyyy-MM-dd HH:mm"));
+		request.setAttribute("repairEndTime", Helper.formateDate(trends.getRepairEndTime(), "yyyy-MM-dd HH:mm"));
 		request.setAttribute("billId", billId);
 		request.setAttribute("billSn", billSn);
 		request.setAttribute("taskId", taskId);
@@ -289,5 +291,25 @@ public class DynamicAction extends BaseAction {
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("trendsList", trendsList);
 		return wctx.forwardToString("/jsp/dynamic/remindList.jsp");
+	}
+
+	public String queryDistrictList() throws Exception {
+		String unitId = commonOperateService.queryUserPermissionUnitRootId(((SysUser) super.getSessionByDWR().getAttribute("currentUser")).getUserId());
+		SysUnitExample example = new SysUnitExample();
+		example.createCriteria().andUnitIdEqualTo(unitId);
+		List<SysUnit> districtList = commonOperateService.selectByExample(example);
+		String parentId = null;
+		if (districtList != null && districtList.size() == 1) {
+			parentId = districtList.get(0).getParentUnitid();
+		}
+		if (parentId != null) {
+			example = new SysUnitExample();
+			example.createCriteria().andParentUnitidEqualTo(parentId).andUnitTypeEqualTo(Constant.UNIT_TYPE_UNIT);
+			districtList = commonOperateService.selectByExample(example);
+		}
+		WebContext wctx = WebContextFactory.get();
+		HttpServletRequest request = wctx.getHttpServletRequest();
+		request.setAttribute("districtList", districtList);
+		return wctx.forwardToString("/jsp/common/districtList.jsp");
 	}
 }

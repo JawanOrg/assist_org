@@ -56,7 +56,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		String billSn = Helper.getCurrentTimeStr() + this.buildSequence();
 		relsease.setBillSn(billSn);
 		relsease.setCreator(action.getUserVO().getUserId());
-		relsease.setCreateDept(action.getUserVO().getUnitId());
+		relsease.setCreateDept(commonOperateService.queryUserUnitId(action.getUserVO().getUserId()));
 		relsease.setCreateTime(this.getSysDate());
 		relsease.setBillStatus(billStatus);
 		busReleaseTrendsDAO.insertSelective(relsease);
@@ -71,7 +71,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setIsRedo(Constant.FLAG_NO);
 		task.setDealObjectId(commonOperateService.queryNextDealObject(action.getUserVO().getUserId(), userRoleName, billStatus));
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
-		task.setDealObjectGroup(commonOperateService.queryUserUnitName(task.getDealObjectId()));
+		task.setDealObjectGroup(commonOperateService.queryUserUnitId(task.getDealObjectId()));
 		task.setTaskIdParent("0");
 		suptTaskDAO.insertSelective(task);
 
@@ -117,13 +117,12 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setBusinessType(Constant.BUSINESS_TYPE_TRENDS);
 		task.setTaskSn(Helper.getCurrentTimeStr() + this.buildSequence());
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
+		task.setDealObjectId(oldRelsease.getCreator());
+		task.setDealObjectGroup(oldRelsease.getCreateDept());
 		if (Constant.OP_AUDIT_AGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_WORK);
-			task.setDealObjectId(oldRelsease.getCreator());
-			task.setDealObjectGroup(oldRelsease.getCreateDept());
 		} else if (Constant.OP_AUDIT_NOTAGREE.equals(action.getActionType())) {
 			task.setTaskStatus(Constant.S_CREATE);
-			task.setDealObjectId(oldRelsease.getCreator());
 		}
 		task.setCreator(action.getUserVO().getUserId());
 		task.setIsFinish(Constant.FLAG_NO);
@@ -244,7 +243,7 @@ public class DynamicOperateServiceImpl extends BaseServiceImpl implements Dynami
 		task.setIsRedo(Constant.FLAG_NO);
 		task.setDealObjectId(action.getUserVO().getUserId());
 		task.setDealObjectType(Constant.DEAL_OBJECT_TYPE_PERSON);
-		task.setDealObjectGroup(action.getUserVO().getUnitId());
+		task.setDealObjectGroup(commonOperateService.queryUserUnitId(action.getUserVO().getUserId()));
 		task.setTaskIdParent(action.getTaskId());
 		suptTaskDAO.insertSelective(task);
 

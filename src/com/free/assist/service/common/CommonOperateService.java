@@ -30,5 +30,7 @@ public interface CommonOperateService extends BaseService {
 	
 	String queryUserUnitName(String userId);
 	
+	String queryUserUnitId(String userId);
+	
 	String queryUserPermissionUnitRootId(String userId);
 }
