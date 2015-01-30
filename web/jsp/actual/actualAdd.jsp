@@ -93,7 +93,7 @@
 								<tr>
 									<td noWrap>
 										<div align="right">
-											描述<span style="color:Red">*</span>：
+											描述及通知内容<span style="color:Red">*</span>：
 										</div>
 									</td>
 									<td align="left" colspan="2"><textarea

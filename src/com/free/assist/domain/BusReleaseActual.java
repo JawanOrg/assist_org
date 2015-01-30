@@ -48,6 +48,8 @@ public class BusReleaseActual extends BusReleaseActualKey implements Serializabl
     private BigDecimal longitude;
 
     private BigDecimal latitude;
+    
+    private String noticeObjectNames;
 
     private static final long serialVersionUID = 1L;
 
@@ -149,4 +151,12 @@ public class BusReleaseActual extends BusReleaseActualKey implements Serializabl
     public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
+
+	public String getNoticeObjectNames() {
+		return noticeObjectNames;
+	}
+
+	public void setNoticeObjectNames(String noticeObjectNames) {
+		this.noticeObjectNames = noticeObjectNames;
+	}
 }

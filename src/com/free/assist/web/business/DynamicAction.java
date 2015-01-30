@@ -294,7 +294,8 @@ public class DynamicAction extends BaseAction {
 	}
 
 	public String queryDistrictList() throws Exception {
-		String unitId = commonOperateService.queryUserPermissionUnitRootId(((SysUser) super.getSessionByDWR().getAttribute("currentUser")).getUserId());
+		SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
+		String unitId = commonOperateService.queryUserPermissionUnitRootId(currentUser.getUserId());
 		SysUnitExample example = new SysUnitExample();
 		example.createCriteria().andUnitIdEqualTo(unitId);
 		List<SysUnit> districtList = commonOperateService.selectByExample(example);
@@ -304,7 +305,7 @@ public class DynamicAction extends BaseAction {
 		}
 		if (parentId != null) {
 			example = new SysUnitExample();
-			example.createCriteria().andParentUnitidEqualTo(parentId).andUnitTypeEqualTo(Constant.UNIT_TYPE_UNIT);
+			example.createCriteria().andParentUnitidEqualTo(parentId).andUnitTypeEqualTo(Constant.UNIT_TYPE_UNIT).andUnitIdNotEqualTo(commonOperateService.queryUserUnitId(currentUser.getUserId()));
 			districtList = commonOperateService.selectByExample(example);
 		}
 		WebContext wctx = WebContextFactory.get();

@@ -64,10 +64,10 @@
 									bordercolorlight=#D7D7D7 border=0 frame=box pcolor="#BCC8F5">
 									<tr style="display:display">
 										<td align="right">地址：</td>
-										<td><input type="text" name="theTitle"
+										<td><input type="text" name="address"
 											class="form-control"></td>
-										<td align="right">描述：</td>
-										<td><input type="text" name="newsContent"
+										<td align="right">描述及通知内容：</td>
+										<td><input type="text" name="actualContent"
 											class="form-control"></td>
 										<td colspan="4" align="right"><input type="button"
 											class="btn btn-default" value="查询(Q)" accesskey="Q"
@@ -87,7 +87,7 @@
 									<tr>
 										<td class="tabpaneleft2"></td>
 										<td class="tabpanebg2" width="120"><img
-											src="<%=request.getContextPath()%>/images/main_01/ico_fellow.gif"
+											src="/images/main_01/ico_fellow.gif"
 											width="18" height="15"> <span>&nbsp;实时发布清单</span></td>
 										<td class="tabpaneright2"></td>
 									</tr>

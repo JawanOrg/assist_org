@@ -33,12 +33,20 @@ public class ActualAction extends BaseAction {
 	private CommonOperateService commonOperateService;
 
 	public String queryActual(ActualForm form) throws Exception {
+		SysUser currentUser = (SysUser) super.getSessionByDWR().getAttribute("currentUser");
+		String currentUnitId = commonOperateService.queryUserUnitId(currentUser.getUserId());
+		String currentUnitName = commonOperateService.queryUserUnitName(currentUser.getUserId());
+		
 		BusReleaseActualExample ex = new BusReleaseActualExample();
 		com.free.assist.domain.BusReleaseActualExample.Criteria cr = ex.createCriteria();
 		if (StringUtils.isNotBlank(form.getAddress())) {
 			cr.andAddressLike("%" + form.getAddress() + "%");
 		}
+		if (StringUtils.isNotBlank(form.getActualContent())) {
+			cr.andActualContentLike("%" + form.getActualContent() + "%");
+		}
 		cr.andBillStatusEqualTo(Constant.S_ACTUAL_NORMAL);
+		cr.andMySendOrReceive(currentUnitId, currentUnitName);
 		ex.setSkipResults(form.getSkipResults());
 		ex.setMaxResults(form.getMaxResults());
 		ex.setOrderByClause(" create_time desc ");
@@ -48,6 +56,9 @@ public class ActualAction extends BaseAction {
 		WebContext wctx = WebContextFactory.get();
 		HttpServletRequest request = wctx.getHttpServletRequest();
 		request.setAttribute("actualList", actualList);
+		request.setAttribute("currentUnitId",currentUnitId);
+		request.setAttribute("currentUnitName",currentUnitName);
+		
 		return wctx.forwardToString("/jsp/actual/actualList.jsp");
 	}
 

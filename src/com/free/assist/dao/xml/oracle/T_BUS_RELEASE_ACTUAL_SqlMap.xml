@@ -14,7 +14,26 @@
     <result column="AUDITOR" property="auditor" jdbcType="VARCHAR" />
     <result column="LONGITUDE" property="longitude" jdbcType="DECIMAL" />
     <result column="LATITUDE" property="latitude" jdbcType="DECIMAL" />
+    <result column="noticeObjectNames" property="noticeObjectNames" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Pagination_Head_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[select * from ( select t.*, ROWNUM ROWNUM_ from ( ]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
+  <sql id="Pagination_Tail_Clause" >
+    <dynamic >
+      <isNotEmpty property="fromNumber" >
+        <isNotEmpty property="toNumber" >
+          <![CDATA[) t where rownum <= #toNumber# ) where rownum_ > #fromNumber#]]>
+        </isNotEmpty>
+      </isNotEmpty>
+    </dynamic>
+  </sql>
   <sql id="ibatorgenerated_Example_Where_Clause" >
     <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
       <isEqual property="oredCriteria[].valid" compareValue="true" >
@@ -42,8 +61,9 @@
     </iterate>
   </sql>
   <select id="ibatorgenerated_selectByExample" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusReleaseActualExample" >
+  	<include refid="Pagination_Head_Clause" />
     select BILL_ID, BILL_SN, CREATOR, CREATE_DEPT, CREATE_TIME, ADDRESS, ACTUAL_CONTENT,
-      BILL_STATUS, PUBLISHER, AUDITOR, LONGITUDE, LATITUDE
+      BILL_STATUS, PUBLISHER, AUDITOR, LONGITUDE, LATITUDE,(select WMSYS.WM_CONCAT(u.unit_name) From t_supt_notice_object n,t_sys_unit u where n.object_id=u.unit_id and n.object_type!='E' and n.bill_id=T_BUS_RELEASE_ACTUAL.BILL_ID GROUP BY n.bill_id) as noticeObjectNames 
     from T_BUS_RELEASE_ACTUAL
     <isParameterPresent >
       <include refid="BusReleaseActual.ibatorgenerated_Example_Where_Clause" />
@@ -51,10 +71,11 @@
         order by $orderByClause$
       </isNotNull>
     </isParameterPresent>
+    <include refid="Pagination_Tail_Clause" />
   </select>
   <select id="ibatorgenerated_selectByPrimaryKey" resultMap="ibatorgenerated_BaseResultMap" parameterClass="com.free.assist.domain.BusReleaseActualKey" >
     select BILL_ID, BILL_SN, CREATOR, CREATE_DEPT, CREATE_TIME, ADDRESS, ACTUAL_CONTENT,
-      BILL_STATUS, PUBLISHER, AUDITOR, LONGITUDE, LATITUDE
+      BILL_STATUS, PUBLISHER, AUDITOR, LONGITUDE, LATITUDE,(select WMSYS.WM_CONCAT(u.unit_name) From t_supt_notice_object n,t_sys_unit u where n.object_id=u.unit_id and n.object_type!='E' and n.bill_id=T_BUS_RELEASE_ACTUAL.BILL_ID GROUP BY n.bill_id) as noticeObjectNames 
     from T_BUS_RELEASE_ACTUAL
     where BILL_ID = #billId:VARCHAR#
   </select>
